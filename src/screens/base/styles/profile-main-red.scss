@@ -1,0 +1,73 @@
+.coupon-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  .coupon-item {
+    @include clearfix();
+    background: $white;
+  }
+}
+
+.coupon-brief {
+  position: relative;
+  display: block;
+  width: 280px;
+  height: 80px;
+  float: left;
+  margin: 8px 20px 0;
+  @include bg-image('../../../app/assets/imgs/profile/coupon-bg.png', '../../../app/assets/imgs/profile/coupon-bg.png', 280px, 80px);
+
+  @include clearfix();
+
+  .coupon-left {
+    float: left;
+    width: 190px;
+    color: $white;
+
+    .coupon-money {
+      text-align: center;
+      width: 100%;
+      height: 50px;
+      font-size: 30px;
+      line-height: 30px;
+      padding-top: 20px;
+
+      .coupon-money-sign {
+        font-size: 20px;
+      }
+    }
+
+    .coupon-desc {
+      text-align: center;
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+    }
+  }
+
+  .coupon-right {
+    position: absolute;
+    top: 0;
+    right: 2px;
+    width: 90px;
+    height: 80px;
+    color: $white;
+
+    .coupon-use {
+      @include bg-image('../../../app/assets/imgs/profile/coupon-use.png', '../../../app/assets/imgs/profile/coupon-use.png', 70px);
+      background-repeat: no-repeat;
+      margin: 10px;
+      width: 70px;
+      height: 70px;
+    }
+
+    .coupon-unuse {
+      height: 80px;
+      line-height: 80px;
+      text-align: center;
+      width: 100%;
+      font-size: 14px;
+    }
+  }
+
+}

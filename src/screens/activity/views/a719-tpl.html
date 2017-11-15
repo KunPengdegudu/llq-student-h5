@@ -1,0 +1,179 @@
+<div class="active-main a719" data-ng-style="a719Main">
+    <img src="../../../app/assets/imgs/active/a719-banner-top.jpg" class="active-0719-header">
+    <div class="active-0719-main">
+        <div class="active-0719-main-coupon">
+            <div class="coupon" data-ng-repeat="item in couponList" data-ng-click="getRed(item)">
+                <div class="coupon-left" data-ng-bind="item.amount"></div>
+                <div class="coupon-right">
+                    <small class="coupon-right-top" data-ng-bind="item.ruleDescList[0]"></small>
+                    <span class="coupon-right-bottom">元红包</span>
+                </div>
+            </div>
+        </div>
+        <div class="active-0719-hot" data-ng-if="hotProductList.length>0">
+            <div class="header">
+                <img src="../../../app/assets/imgs/active/a719-title-01.jpg"/>
+            </div>
+            <div class="active-0719-hot-list">
+                <ul style="width: 1350px">
+                    <li ng-repeat="item in hotProductList"
+                        ng-click="gotoProductDetail(item.productId, item.promotionId,item.promotionType)">
+                        <div class="active-0719-hot-list-img">
+                            <img data-ng-src="{{item.mainProImgUrl|filterImg:'@!200x200'}}">
+                        </div>
+                        <div class="list-name">{{item.name}}</div>
+                        <div class="list-ice">冰点价：<span>￥{{item.basePrice}}</span></div>
+                        <div class="list-mouth">月供:<span>￥{{item.defaultEveryAmount}}x{{item.defaultPeriod}}</span>
+                        </div>
+                        <button>立即抢购</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="active-0719-banner" ng-click="gotoProductDetail(38407, 273)">
+            <img src="../../../app/assets/imgs/active/a719-banner.jpg"/>
+        </div>
+        <div class="active-0719-hall block-content"
+             data-ng-if="goodsItems.length!=0 && goodsItems2.length!=0 &&goodsItems3.length!=0 ">
+            <div class="header">
+                <img src="../../../app/assets/imgs/active/a719-title-02.jpg"/>
+            </div>
+            <div class="active-0719-hall-list block-content" data-ng-if="goodsItems.length>0">
+                <div class="block-content-inner grid-row">
+                    <div class="list-left grid-item border-right flex4"
+                         data-ng-click="gotoTemplate(goodsItems[3].widgetCode,goodsItems[3].name)">
+                        <div class="right-text block" data-ng-bind="goodsItems[3].name"></div>
+                        <div class="right-text xi" data-ng-bind="goodsItems[3].description"></div>
+                        <div class="right-text red" data-ng-bind="goodsItems[3].promotionDesc"></div>
+                        <img data-ng-src="{{goodsItems[3].imageUrl|filterImg:'@!200x200'}}" class="right-image">
+                    </div>
+                    <div class="list-right grid-item flex6">
+                        <div class="grid-column">
+                            <div class="grid-item border-bottom">
+                                <div class="list-right-top grid-row">
+                                    <div class="grid-item border-right"
+                                         data-ng-click="gotoTemplate(goodsItems[0].widgetCode,goodsItems[0].name)">
+                                        <div class="right-text block" data-ng-bind="goodsItems[0].name"></div>
+                                        <div class="right-text" data-ng-bind="goodsItems[0].description"></div>
+                                        <img data-ng-src="{{goodsItems[0].imageUrl|filterImg:'@!200x200'}}"
+                                             class="right-image">
+                                    </div>
+                                    <div class="grid-item"
+                                         data-ng-click="gotoTemplate(goodsItems[2].widgetCode,goodsItems[2].name)">
+                                        <div class="right-text block" data-ng-bind="goodsItems[2].name"></div>
+                                        <div class="right-text" data-ng-bind="goodsItems[2].description"></div>
+                                        <img data-ng-src="{{goodsItems[2].imageUrl|filterImg:'@!200x200'}}"
+                                             class="right-image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-right-bottom grid-item">
+                                <div class="grid-row">
+                                    <div class="grid-item border-right"
+                                         data-ng-click="gotoTemplate(goodsItems[1].widgetCode,goodsItems[1].name)">
+                                        <div class="right-text block" data-ng-bind="goodsItems[1].name"></div>
+                                        <div class="right-text" data-ng-bind="goodsItems[1].description"></div>
+                                        <img data-ng-src="{{goodsItems[1].imageUrl|filterImg:'@!200x200'}}"
+                                             class="right-image">
+                                    </div>
+                                    <div class="grid-item"
+                                         data-ng-click="gotoTemplate(goodsItems[4].widgetCode,goodsItems[4].name)">
+                                        <div class="right-text block" data-ng-bind="goodsItems[4].name"></div>
+                                        <div class="right-text" data-ng-bind="goodsItems[4].description"></div>
+                                        <img data-ng-src="{{goodsItems[4].imageUrl|filterImg:'@!200x200'}}"
+                                             class="right-image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="active-0719-hall-list block-content" data-ng-if="goodsItems2.length>0">
+                <div class="block-content-inner grid-row">
+                    <div class="list-right grid-item flex6">
+                        <div class="grid-column">
+                            <div class="grid-item border-bottom">
+                                <div class="list-right-top grid-row">
+                                    <div class="grid-item border-right"
+                                         data-ng-click="gotoTemplate(goodsItems2[0].widgetCode,goodsItems2[0].name)">
+                                        <div class="right-text block" data-ng-bind="goodsItems2[0].name"></div>
+                                        <div class="right-text" data-ng-bind="goodsItems2[0].description"></div>
+                                        <img data-ng-src="{{goodsItems2[0].imageUrl|filterImg:'@!200x200'}}"
+                                             class="right-image">
+                                    </div>
+                                    <div class="grid-item"
+                                         data-ng-click="gotoTemplate(goodsItems2[1].widgetCode,goodsItems2[1].name)">
+                                        <div class="right-text block" data-ng-bind="goodsItems2[1].name"></div>
+                                        <div class="right-text" data-ng-bind="goodsItems2[1].description"></div>
+                                        <img data-ng-src="{{goodsItems2[1].imageUrl|filterImg:'@!200x200'}}"
+                                             class="right-image">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-right-bottom grid-item">
+                                <div class="grid-row">
+                                    <div class="grid-item border-right"
+                                         data-ng-click="gotoTemplate(goodsItems2[3].widgetCode,goodsItems2[3].name)">
+                                        <div class="right-text block" data-ng-bind="goodsItems2[3].name"></div>
+                                        <div class="right-text" data-ng-bind="goodsItems2[3].description"></div>
+                                        <img data-ng-src="{{goodsItems2[3].imageUrl|filterImg:'@!200x200'}}"
+                                             class="right-image">
+                                    </div>
+                                    <div class="grid-item"
+                                         data-ng-click="gotoTemplate(goodsItems2[4].widgetCode,goodsItems2[4].name)">
+                                        <div class="right-text block" data-ng-bind="goodsItems2[4].name"></div>
+                                        <div class="right-text" data-ng-bind="goodsItems2[4].description"></div>
+                                        <img data-ng-src="{{goodsItems2[4].imageUrl|filterImg:'@!200x200'}}"
+                                             class="right-image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="list-left grid-item border-left flex4"
+                         data-ng-click="gotoTemplate(goodsItems2[2].widgetCode,goodsItems2[2].name)">
+                        <div class="right-text block" data-ng-bind="goodsItems2[2].name"></div>
+                        <div class="right-text xi" data-ng-bind="goodsItems2[2].description"></div>
+                        <div class="right-text red" data-ng-bind="goodsItems2[2].promotionDesc"></div>
+                        <img data-ng-src="{{goodsItems2[2].imageUrl}}" class="right-image">
+                    </div>
+                </div>
+            </div>
+            <div class="active-0719-hall-list block-brief" data-ng-if="goodsItems3.length>0">
+                <div class="active-0719-threeList grid-item border-right flex3"
+                     data-ng-repeat="item in goodsItems3 track by $index"
+                     data-ng-click="gotoTemplate(item.widgetCode,item.name)">
+                    <div class="right-text block" data-ng-bind="item.name"></div>
+                    <div class="right-text red" data-ng-bind="item.promotionDesc"></div>
+                    <img data-ng-src="{{item.imageUrl|filterImg:'@!200x200'}}" class="right-image">
+                </div>
+            </div>
+        </div>
+        <div class="active-0719-life" data-ng-if="nodeTree.length>0">
+            <div class="header">
+                <img src="../../../app/assets/imgs/active/a719-title-03.jpg"/>
+            </div>
+            <div class="active-0719-life-one" data-ng-repeat="item in goodsAreaList track by $index"
+                 data-ng-if="item.goodsList.length>0">
+                <div class="life-title" data-ng-click="gotoMore(item)">
+                    <img data-ng-src="{{item.bannerSrc}}" class="life-title-img">
+                </div>
+                <ul class="life-list">
+                    <li data-ng-repeat="itemProduct in item.goodsList"
+                        ng-click="gotoProductDetail(itemProduct.productId, itemProduct.promotionId,itemProduct.promotionType)"
+                        class="life-list-li">
+                        <div class="life-list-img">
+                            <img data-ng-src="{{itemProduct.mainProImgUrl|filterImg:'@!200x200'}}" class="list-img">
+                        </div>
+                        <div class="list-name" data-ng-bind="itemProduct.name"></div>
+                        <div class="list-ice">￥<span data-ng-bind="itemProduct.marketPrice"></span></div>
+                        <div class="list-mouth">
+                            月供:￥{{itemProduct.defaultEveryAmount}}x{{itemProduct.defaultPeriod}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

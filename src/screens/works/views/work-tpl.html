@@ -1,0 +1,303 @@
+<div class="work-main" data-ng-cloak>
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text ui-tabs ui-top-menu-tab">
+            <a class="ui-tab-item" data-ng-class="{active: isActive('partTime')}" ng-click="switchTab('partTime','short')">
+                <p class="ui-tab-content">兼职</p>
+                <div class="ui-landmark"></div>
+            </a>
+            <a class="ui-tab-item" data-ng-class="{active: isActive('intern')}" ng-click="switchTab('intern','long')">
+                <p class="ui-tab-content">实习</p>
+                <div class="ui-landmark"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="login-main-content">
+        <div class="work-aging-wrapper" ng-if="pageType=='partTime'" data-ng-include="'screens/works/views/work-part-time-tpl.html'"></div>
+        <div class="work-aging-wrapper" ng-if="pageType=='intern'" data-ng-include="'screens/works/views/work-intern-tpl.html'"></div>
+    </div>
+
+</div>
+
+<article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" class="aging" threshold="200"
+         trigger-on-event="reload"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/works/views/work-abnormal-tpl.html' : 'screens/works/views/work-normal-tpl.html'">
+    </div>
+
+</article>
+
+
+
+
+<!--地区选框-->
+<div ui-dialog class="aging-dialog" overlay="true" close-by-overlay="true" is-visible="cityDialog.isVisible"
+     before-hide="dialogBeforeHide();" z-index="560">
+
+    <div class="order-by-wrapper">
+        <div class="order-by-category one-category">
+            <div class="order-by-category-item"
+                 data-ng-click="selectOption(null,'全城')">
+                <div class="left">全城</div>
+            </div>
+            <div class="order-by-category-item" data-ng-class="{'selected': item.id==filterDialog.selectedCategoryId}"
+                 data-ng-repeat="item in areasList" data-ng-click="selectOption(item.areaCode,item.areaName)">
+                <div class="left">{{item.areaName}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--职业种类选框-->
+<div ui-dialog class="aging-dialog" overlay="true" close-by-overlay="true" is-visible="filterDialog.isVisible"
+     before-hide="dialogBeforeHide();" z-index="560">
+
+    <div class="order-by-wrapper">
+        <div class="order-by-category one-category">
+            <div class="order-by-category-item"
+                 data-ng-click="selectOption(null,'全部')">
+                <div class="left">全部</div>
+            </div>
+            <div class="order-by-category-item" data-ng-class="{'selected': item.id==filterDialog.selectedCategoryId}"
+                 data-ng-repeat="item in options.category" data-ng-click="selectOption(item.id,item.name)">
+                <div class="left">{{item.name}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--智能选框-->
+<div ui-dialog class="aging-dialog" overlay="true" close-by-overlay="true" is-visible="smartDialog.isVisible"
+     before-hide="dialogBeforeHide();" z-index="560">
+
+    <div class="order-by-wrapper">
+        <div class="order-by-category one-category">
+            <div class="order-by-category-item"
+                 data-ng-click="selectOption(null,'发布时间')">
+                <div class="left">发布时间</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="selectOption('once_payment','工资排序')">
+                <div class="left">工资排序</div>
+            </div>
+            <!--<div class="order-by-category-item"-->
+            <!--data-ng-click="selectOption(null,'只看日结')">-->
+            <!--<div class="left">只看日结</div>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+
+</div>
+
+
+<!--来源选框-->
+<div ui-dialog class="aging-dialog" overlay="true" close-by-overlay="true" is-visible="sourceDialog.isVisible"
+     before-hide="dialogBeforeHide();" z-index="560">
+
+    <div class="order-by-wrapper">
+        <div class="order-by-category one-category">
+            <div class="order-by-category-item"
+                 data-ng-click="selectOption(null,'所有来源')">
+                <div class="left">所有来源</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="selectOption('bull','零零期')">
+                <div class="left">零零期</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="selectOption('qtshe','青团社')">
+                <div class="left">青团社</div>
+            </div>
+            <!--<div class="order-by-category-item"-->
+            <!--data-ng-click="selectOption(null,'只看日结')">-->
+            <!--<div class="left">只看日结</div>-->
+            <!--</div>-->
+        </div>
+
+    </div>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="detailsView.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="detailsView.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>工作详情</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content work-info-work ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+
+        <ol class="goods-list">
+            <li class="goods-item">
+                <div class="goods-brief">
+
+                    <div class="goods-desc  work-describe-container">
+                        <div class="goods-text-large">
+                            <span data-ng-bind="details.title | toTrusted"></span>
+                        </div>
+
+
+                        <div class="goods-subtitle">
+                            <span class="goods-text-gray">{{details.status | workStatus}} </span>
+                        <span>
+                                <span class="goods-text-warn" data-ng-bind="details.oncePayment"></span>
+                                <span ng-if="details.salaryTimeUnitDesc!='其他'">{{details.salaryTimeUnitDesc}}</span>
+                                <span data-ng-if="!details.salaryTimeUnitDesc||details.salaryTimeUnitDesc=='其他'">元</span>
+                        </span>
+                        </div>
+                        <div class="goods-subtitle" data-ng-if="details.paymentTypeDesc">
+                            <span class="goods-text-gray">结算方式 </span>
+                            <span ng-bind="details.paymentTypeDesc | toTrusted"></span>
+                        </div>
+                        <div class="goods-subtitle">
+                            <span class="goods-text-gray">发布时间 </span>
+                            <span data-ng-bind='details.createTime'></span>
+                        </div>
+
+                        <div class="goods-subtitle" data-ng-if="details.source=='qtshe'">
+                            <span class="goods-text-gray">来源 </span>
+                            <span>青团社</span>
+                        </div>
+                        <div class="goods-subtitle">
+                        <span data-ng-repeat='tag in details.tagNameList' class="goods-text-brand"
+                              data-ng-bind="tag | toTrusted"></span>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+
+
+
+            <li class="goods-item">
+                <div class="goods-brief">
+                    <div class="goods-desc work-describe-container">
+                        <div class="goods-subtitle" data-ng-if="details.corpBaseInfo.name">
+
+                            <span class="goods-text-gray">公司名称</span>
+                            <span data-ng-bind="details.corpBaseInfo.name | toTrusted"></span>
+
+                        </div>
+                        <div class="goods-subtitle">
+
+                            <span class="goods-text-gray">招聘人数</span>
+                            <span data-ng-bind="details.teamCount"></span>
+
+                        </div>
+
+                        <div class="goods-subtitle">
+
+                            <span class="goods-text-gray">报名截止</span>
+                            <span data-ng-bind="details.applyCloseTime.split(' ')[0]"></span>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+
+            <li class="goods-item">
+                <div class="goods-brief">
+
+
+                    <div class="goods-desc work-describe-container">
+                        <div class="goods-subtitle">
+                            <span class="goods-text-gray">工作地点</span>
+                            <span ng-bind-html="details.address | toTrusted "></span>
+                        </div>
+                        <div class="goods-subtitle" data-ng-if="details.beginTime">
+                            <span class="goods-text-gray">工作日期</span>
+                            <span data-ng-bind='details.beginTime.substr(5,5)'></span>
+                            <span>~</span>
+                            <span data-ng-bind='details.endTime.substr(5,5)'></span>
+                        </div>
+                        <div class="goods-subtitle" data-ng-if="!details.beginTime">
+                            <span class="goods-text-gray">工作日期</span>
+                            <span data-ng-bind='details.jobTimeStandard | toTrusted'></span>
+                        </div>
+                        <div class="goods-subtitle" ng-if="details.jobTime">
+                            <span class="goods-text-gray">工作时间</span>
+                            <span data-ng-bind='details.jobTime | toTrusted'></span>
+                        </div>
+                        <div class="goods-subtitle" ng-if="details.needSex">
+                            <span class="goods-text-gray">性别要求</span>
+                            <span ng-bind="details.sexRequire | toTrusted"></span>
+                        </div>
+                        <div class="goods-subtitle" ng-if="details.needHeight">
+                            <span class="goods-text-gray">身高要求</span>
+                            <span ng-bind="details.heightRequire | toTrusted"></span>
+                        </div>
+                        <div class="goods-subtitle" ng-if="details.needHealth">
+                            <span class="goods-text-gray">健康要求</span>
+                            <span ng-bind="details.healthRequire | toTrusted"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="goods-item">
+                <div class="goods-brief">
+                    <div class="goods-desc work-describe-container">
+                        <div class="goods-title">
+                            <span>工作内容</span>
+
+                        </div>
+                        <div class="goods-subtitle">
+
+                            <span class="work-describe-order" ng-bind-html='details.content | toTrusted'></span>
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+
+            <li class="goods-item" data-ng-if="details.contactPhone">
+                <div class="goods-brief">
+
+
+                    <div class="goods-desc work-describe-container">
+                        <div class="goods-subtitle">
+                            <span class="goods-text-gray">联系人</span>
+                            <span data-ng-bind='details.contactName | toTrusted'></span>
+                        </div>
+                        <div class="goods-subtitle">
+                            <span class="goods-text-gray">电话号码</span>
+                            <span><a data-ng-href="tel:{{details.contactPhone}}">{{details.contactPhone}}</a></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ol>
+
+    </div>
+
+    <div class="dialog-bottom-btn-wrapper" ng-if="details.status=='recruiting'">
+        <button class="nav-hint single-row submit-btn" ng-click="detailsView.doApply()"
+                data-ng-if="listRequirementApplysStatus || !isLogin()">
+            立即申请
+        </button>
+        <button class="nav-hint single-row submit-btn" ng-disabled="true"
+                data-ng-if="!listRequirementApplysStatus && isLogin()">
+            已申请
+        </button>
+    </div>
+    <div class="dialog-bottom-btn-wrapper" ng-if="details.status!='recruiting'">
+        <button class="nav-hint single-row submit-btn" ng-disabled="true">
+            {{details.status | workStatus}}
+        </button>
+    </div>
+
+</div>

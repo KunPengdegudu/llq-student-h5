@@ -1,0 +1,39 @@
+<div class="profile-main profile-main-show-header feedback">
+
+
+    <ul class="setting-table">
+        <li class="feedback-content">
+            <div class="feedback-content-title">
+                反馈内容
+            </div>
+            <div class="feedback-content-textarea">
+                <textarea cols="40" rows="40" class="textarea" maxlength="100" data-ng-model="feedback.content"
+                          placeholder="请输入反馈内容，我们将努力改进"></textarea>
+            </div>
+            <div class="textarea_number">
+                <span>{{ feedback.content.length || 0 }}</span>
+                /
+                <span>100</span>
+            </div>
+        </li>
+    </ul>
+
+
+    <div class="blanknote-aging" data-ng-click="usualQuestion()">
+
+        <div class="title">常见问题</div>
+
+        <i class="iconfont icon-right-arrow"></i>
+
+    </div>
+    <sys-notice type="feedback"></sys-notice>
+
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn"
+                ng-click="feedback.Submit()">
+            <span>提交</span>
+        </button>
+    </div>
+
+</div>
+

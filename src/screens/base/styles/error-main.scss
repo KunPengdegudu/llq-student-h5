@@ -1,0 +1,79 @@
+.error {
+  padding-top: 70px;
+
+  .icon.mark, .icon.logo {
+    @include bg-image('../assets/error/error-1x.png', '../assets/error/error-2x.png', 150px, 150px);
+  }
+
+  .icon.logo {
+    padding: 76px 0 0 76px;
+    background-position: -2px -2px;
+  }
+
+  .header {
+    @include size(82px, 79px);
+    margin: 0 auto;
+    position: relative;
+
+    .pic-hint, .logo {
+      position: absolute;
+    }
+
+    .mark {
+      position: absolute;
+      right: 0px;
+      bottom: 0px;
+    }
+  }
+
+  .content {
+    padding-top: 10px;
+    text-align: center;
+    font-size: 16px;
+
+    .opt > .btn {
+      display: inline-block;
+      border: 1px solid #2e97ea;
+      border-radius: 5px;
+      line-height: 34px;
+      padding: 0 12px;
+      color: #2e97ea;
+    }
+  }
+
+  &.no-permission {
+    .icon.mark {
+      padding: 36px 0 0 36px;
+      background-position: -85px -45px;
+    }
+  }
+
+  &.over-load {
+    .icon.mark {
+      padding: 45px 0 0 45px;
+      background-position: -79px 1px;
+    }
+    .header {
+      @include size(91px, 79px);
+    }
+  }
+
+  &.err-404 {
+    .header {
+      @include size(165px, 95px);
+    }
+    .icon.pic-hint {
+      @include bg-image('../assets/error/404-1x.png', '../assets/error/404-2x.png', 165px, 95px);
+      padding: 95px 0 0 165px;
+      background-position: 0 0;
+    }
+  }
+
+}
+
+.over-load {
+  .btn {
+    color: #FD7F23 !important;
+    border-color: #FD7F23 !important;
+  }
+}

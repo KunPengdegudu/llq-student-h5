@@ -1,0 +1,25 @@
+<div class="goods-desc blanknote-order"
+     data-ng-if="item.status == 'wait_audit' && item.cashApplyType == 'product_cash'">
+    <div class="goods-title">
+        <span data-ng-bind="item.title"></span>
+        <span class="goods-tip">拍下立放款</span>
+    </div>
+    <div class="goods-subtitle">
+        <div class="goods-text-all">
+            <span>借款金额：</span>
+            <span data-ng-bind="item.totalAmount | moneyFixed"></span>
+            <span class="goods-hint">放款前请先购买指定商品</span>
+        </div>
+    </div>
+</div>
+<div class="goods-desc" data-ng-if="item.status != 'wait_audit' || item.cashApplyType != 'product_cash'">
+    <div class="goods-title">
+        <span data-ng-bind="item.title"></span>
+    </div>
+    <div class="goods-subtitle">
+        <div class="goods-text-all">
+            <span>借款金额：</span>
+            <span data-ng-bind="item.totalAmount | moneyFixed"></span>
+        </div>
+    </div>
+</div>

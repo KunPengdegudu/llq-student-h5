@@ -1,0 +1,123 @@
+<div class="profile-main security-main profile-main-show-header" data-ng-cloak>
+    <ul class="setting-table">
+        <!--<li class="setting-table-cell">-->
+        <!--<div class="second-column head-photo">-->
+        <!--<div class="setting-left">头像</div>-->
+
+        <!--&lt;!&ndash;-->
+        <!--<span class="iconfont icon-right-arrow"></span>-->
+        <!--&ndash;&gt;-->
+
+        <!--<div class="setting-right">-->
+        <!--<i><img width="100%" src="../../assets/imgs/profile/userlogo.png"/></i>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</li>-->
+    </ul>
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/setting/address')">
+                <div class="second-column">
+                    <div class="setting-left">收货地址管理</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+        <!--<li class="setting-table-cell">-->
+        <!--<a ng-click="gotoUrl('/profile/res')">-->
+        <!--<div class="second-column">-->
+        <!--<div class="setting-left">账户密码设置</div>-->
+        <!--<span class="iconfont icon-right-arrow"></span>-->
+        <!--</div>-->
+        <!--</a>-->
+        <!--</li>-->
+    </ul>
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/setting/outsourcing')">
+                <div class="second-column">
+                    <div class="setting-left">海外购实名认证</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <!--
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left">接收通知</div>
+                <span class="iconfont icon-right icon-info"></span>
+            </div>
+        </li>
+    </ul>
+    -->
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/setting/about')">
+                <div class="second-column">
+                    <div class="setting-left">关于我们</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+
+        <!--
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left">意见反馈</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        -->
+
+        <li class="setting-table-cell">
+            <a data-ng-href="tel:4006288007">
+                <div class="second-column">
+                    <div class="setting-left">客服电话&nbsp;&nbsp;400-6288-007</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                    <span class="iconfont icon-right icon-setting-phone with-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+
+        <li class="setting-table-cell" data-ng-if="canRateApp()">
+            <div class="second-column" data-ng-click="doRateApp()">
+                <div class="setting-left">给零零期好评</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+    </ul>
+
+    <!--
+    <ul class="setting-table" ng-if="!version.isAppleStore">
+
+        <li class="setting-table-cell">
+            <div class="second-column" data-ng-click="version.dialogOpen()">
+                <div class="setting-left">当前版本&nbsp;&nbsp;{{version.info.localVer}}</div>
+                <span class="iconfont icon-right-arrow" ng-if="version.info.hasNew"></span>
+
+                <div class="update-version label label-danger" ng-if="version.info.hasNew">有新版本</div>
+                <div class="new-version label label-success" ng-if="!version.info.hasNew">最新版本</div>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left">清理缓存</div>
+                <span class="iconfont icon-right-arrow"></span>
+                <span class="text-right with-right-arrow">6.89M</span>
+            </div>
+        </li>
+    </ul>
+     -->
+
+    <button class="nav-hint single-row submit-btn" ng-click="doLogout()">
+        退出登录
+    </button>
+
+</div>

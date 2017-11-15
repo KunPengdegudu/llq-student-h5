@@ -1,0 +1,51 @@
+<div class="template-main">
+    <div class="carousel-page">
+        <ul data-ng-style="template.styles" rn-carousel rn-carousel-index="template.carouselIndex"
+            rn-carousel-auto-slide="5" rn-carousel-pause-on-hover class="carousel2">
+            <li ng-repeat="slide in template.slides track by slide.id" ng-class="'id-' + slide.id"
+                data-ng-click="carouseClick(slide.url)">
+                <img data-ng-src="{{slide.img}}" class="bg-image">
+            </li>
+        </ul>
+        <div class="carousel-indicator-wrapper" rn-carousel-indicators ng-if="template.slides.length > 1"
+             slides="template.slides" rn-carousel-index="template.carouselIndex"></div>
+    </div>
+
+    <ul class="template-floor" data-ng-repeat="item in nodeTreeList">
+        <li class="floor-item">
+            <div class="floor-title" data-ng-if="!item.nodeImgUrl">
+                <div class="floor-memo" data-ng-bind="item.nodeName"></div>
+                <div class="floor-more" data-ng-click="gotoMore(item)">更多 >></div>
+            </div>
+            <div class="floor-title bg-img" data-ng-if="item.nodeImgUrl">
+                <img data-ng-src="{{item.nodeImgUrl}}" class="title-img" data-ng-click="gotoMore(item)"/>
+            </div>
+            <div class="floor-content">
+                <div class="item-goods" data-ng-repeat="goods in item.templateGoodsList">
+                    <a ng-click="gotoProductDetail(goods.productId, goods.promotionId, goods.promotionType)">
+                        <div class="floor-image">
+                            <img data-ng-src="{{goods.mainProImgUrl | filterImg : '@!300x300'}}"/>
+
+                            <!--<div class="block-discount">-->
+                            <!--<img src="../../../app/assets/imgs/base/sale-discount.png"/>-->
+
+                            <!--<div class="discount-price" data-ng-bind="goods.basePrice*goods.discount/100 | moneyFixed"></div>-->
+                            <!--</div>-->
+
+                        </div>
+                        <div class="goods-name" data-ng-bind="goods.name"></div>
+                        <div class="goods-price">
+                            <span data-ng-bind="goods.basePrice*goods.discount/100 | moneyFixed"></span>
+                            <span class="goods-discount"
+                                  data-ng-if="goods.discount < 100">{{goods.discount | discount}}</span>
+                        </div>
+
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+<!--<div class="a1111-enter" data-ng-click="gotoOperation()">-->
+<!--<img src="../../../app/assets/imgs/base/operation-enter.png"/>-->
+<!--</div>-->

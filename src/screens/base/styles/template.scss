@@ -1,0 +1,265 @@
+.template-main {
+  width: 100%;
+  position: absolute;
+  background-color: $base-background-color;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 200;
+
+  &.sale-main {
+    position: relative;
+    top: 0;
+    .template-stage {
+      .template-content {
+        .template-items {
+          .template-item {
+            .product-item {
+              height: 25px;
+              line-height: 25px;
+              width: 95%;
+              position: relative;
+              .item-price {
+                text-decoration: line-through;
+                position: absolute;
+                left: 0;
+              }
+              .item-count {
+                position: absolute;
+                right: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .template-image {
+    width: 100%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .template-stage {
+    width: 100%;
+    padding: 5px 0;
+    background-color: #f0f0f0;
+    position: relative;
+
+    .item-sort-button {
+      background-color: $white;
+      font-size: $font-size-base;
+      height: 35px;
+      line-height: 35px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+
+      span {
+        font-size: $font-size-base;
+        color: $white;
+        background-color: $base-color;
+        padding: 2px;
+        border-radius: 3px;
+        margin-left: 3px;
+      }
+    }
+    .memo-text {
+      width: 100%;
+      text-align: center;
+      height: 35px;
+      line-height: 35px;
+      font-size: $font-size-xxxl;
+      font-weight: $bold-font-weight;
+    }
+
+    .template-content {
+      width: 100%;
+      .template-items {
+        width: 100%;
+        background-color: $white;
+        margin-bottom: 10px;
+        padding: 5px 0;
+        @include flexBox();
+        @include flexDirectionRow();
+
+        .template-item {
+          position: relative;
+          &.images {
+            width: 40%;
+            text-align: center;
+            img {
+              width: 80%
+            }
+            .block-discount {
+              position: absolute;
+              width: 45px;
+              left: 10%;
+              bottom: 0;
+              img {
+                width: 100%;
+              }
+              .discount-price {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                color: $white;
+                font-size: $font-size-base;
+                bottom: 8px;
+                height: 20px;
+                line-height: 20px;
+              }
+            }
+          }
+          &.information {
+            width: 60%;
+            padding-left: 15px;
+
+            .item-title {
+              width: 95%;
+              max-height: 60px;
+              line-height: 20px;
+              overflow: hidden;
+              white-space: inherit;
+              font-size: $font-size-large;
+              font-weight: $bolder-font-weight;
+            }
+            .item-price {
+              color: $brand-danger;
+              text-decoration: line-through;
+              line-height: 20px;
+            }
+          }
+          .item-button {
+            width: 80%;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            color: $white;
+            background-color: $base-color;
+            font-size: $font-size-large;
+            border-radius: 3px;
+          }
+        }
+      }
+    }
+  }
+
+  .template-floor {
+    width: 100%;
+    position: relative;
+    background-color: $base-background-color;
+    padding-top: 10px;
+
+    .floor-item {
+      width: 100%;
+      background-color: $white;
+      .floor-title {
+        width: 100%;
+        height: $nav-height;
+        line-height: $nav-height;
+        padding: 0 10px;
+        border-bottom: 1px solid $base-border-color;
+        .floor-memo {
+          font-size: $font-size-xl;
+          font-weight: $bold-font-weight;
+          float: left;
+        }
+        .floor-more {
+          float: right;
+        }
+        &.bg-img {
+          padding: 0;
+          height: auto;
+          .title-img {
+            width: 100%;
+          }
+        }
+      }
+      .floor-content {
+        width: 100%;
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify($justify: flex-start);
+        @include flexWrap($wrap: wrap);
+
+        .item-goods {
+          width: 33.33%;
+          padding: 10px 0;
+          text-align: center;
+          font-size: $font-size-large;
+
+          .floor-image {
+            width: 100%;
+            position: relative;
+            text-align: center;
+            img {
+              width: 80%;
+            }
+
+            .block-discount {
+              position: absolute;
+              width: 45px;
+              left: 10%;
+              bottom: 0;
+              img {
+                width: 100%;
+              }
+              .discount-price {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                color: $white;
+                font-size: $font-size-base;
+                font-weight: $bolder-font-weight;
+                bottom: 10px;
+              }
+            }
+          }
+          .goods-name {
+            width: 80%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            margin: 0 auto;
+            font-weight: $bold-font-weight;
+          }
+          .goods-price {
+            font-size: $font-size-base;
+            color: $base-color;
+            .goods-discount {
+              color: $white;
+              background-color: $brand-danger;
+              padding: 0.2em 0.6em 0.2em;
+              line-height: 10px;
+              border-radius: 0.25em;
+              font-size: $font-size-base;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.new-rules {
+  width: 24px;
+  background-color: $brand-primary;
+  border-radius: 5px 0 0 5px;
+  line-height: 18px;
+  color: $white;
+  font-size: $font-size-large;
+  position: fixed;
+  padding: 10px 5px;
+  right: 5px;
+  top: 35%;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2);
+  z-index: 580;
+}

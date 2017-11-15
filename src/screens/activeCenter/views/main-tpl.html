@@ -1,0 +1,231 @@
+<div class="active-center center-main" data-ng-style="activeCenter" id="activeMain">
+    <div class="center-main-top">
+        <img src="/app/assets/imgs/active-center/main/active-center-banner.jpg" class="main-banner-top"/>
+        <div class="active-time-mode">
+            <div class="time-node-top two">
+                <div class="node-item" data-ng-repeat="itemNode in timeNodeTop">
+                    <div data-ng-bind="itemNode.timeShow"></div>
+                    <div class="item-title" data-ng-bind="itemNode.titleShow"></div>
+                    <div class="item-btn">
+                        <span data-ng-bind="itemNode.btnShow" data-ng-class="itemNode.active?'active':''"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="node-time-line">
+                <img src="/app/assets/imgs/active-center/main/time-node-line.png" class="line-img"/>
+                <div class="time-nodes">
+                    <div class="item-node" data-ng-repeat="item in activeTimeNodes track by $index">
+                        <img src="/app/assets/imgs/active-center/main/time-node-active.png" data-ng-if="item.active"/>
+                        <img src="/app/assets/imgs/active-center/main/time-node.png" data-ng-if="!item.active"/>
+                    </div>
+                </div>
+            </div>
+            <div class="time-node-top three">
+                <div class="node-item" data-ng-repeat="itemNode in timeNodeBottom">
+                    <div data-ng-bind="itemNode.timeShow"></div>
+                    <div class="item-title" data-ng-bind="itemNode.titleShow"></div>
+                    <div class="item-btn">
+                        <span data-ng-bind="itemNode.btnShow" data-ng-class="itemNode.active?'active':''"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="active-coupon-main">
+        <div class="coupon-main-top">
+            <img src="/app/assets/imgs/active-center/main/coupon-top-bg.png" class="active-enter-bg"/>
+
+            <div class="coupon-main-title" data-ng-bind="showEnterTitle"></div>
+            <div class="coupon-enter-wrapper" data-ng-if="activeTimeNodes[0].active||activeTimeNodes[1].active">
+                <div class="coupon-hint" data-ng-click="gotoUrl('/activeCenter/coupon')">
+                    <div class="mint-title">神券在手 买单不愁</div>
+                    <div class="title-btn">
+                        抢先看券 > >
+                    </div>
+                </div>
+                <div class="coupon-enters" data-ng-click="gotoUrl('/activeCenter/coupon')">
+                    <img src="../../../app/assets/imgs/active-center/main/coupon-enter.png"/>
+                </div>
+            </div>
+            <div class="coupon-enter-wrapper" data-ng-if="activeTimeNodes[2].active">
+                <div class="coupon-enter-banner" data-ng-click="gotoUrl('/activeCenter/goods')">
+                    <img src="/app/assets/imgs/active-center/main/active-goods-banner.jpg"/>
+                </div>
+            </div>
+            <div class="coupon-enter-wrapper" data-ng-if="activeTimeNodes[3].active">
+                <div class="carousel-page">
+                    <ul data-ng-style="pageInfo.styles" rn-carousel rn-carousel-index="pageInfo.carouselIndex"
+                        rn-carousel-auto-slide="5"
+                        rn-carousel-pause-on-hover rn-carousel-buffered class="carousel2">
+                        <li ng-repeat="slide in pageInfo.slides track by slide.id" ng-class="'id-' + slide.id"
+                            data-ng-click="gotoUrl(slide.url)">
+                            <img data-ng-src="{{slide.img}}" class="bg-image">
+                        </li>
+                    </ul>
+                    <div class="carousel-indicator-wrapper" rn-carousel-indicators ng-if="pageInfo.slides.length > 1"
+                         slides="pageInfo.slides" rn-carousel-index="pageInfo.carouselIndex"></div>
+                </div>
+            </div>
+            <div class="coupon-enter-wrapper" data-ng-if="activeTimeNodes[4].active">
+                <div class="coupon-enter-banner">
+                    <img src="/app/assets/imgs/active-center/main/active-pre-banner.jpg"/>
+                </div>
+            </div>
+        </div>
+        <div class="coupon-main-bottom">
+            <img src="/app/assets/imgs/active-center/main/coupon-bottom-bg.png" class="coupon-bottom-bg"/>
+            <div class="coupon-bottom-wrapper">
+                <div class="goods-and-coupon">
+                    <div class="item-enter" data-ng-click="gotoUrl('/activeCenter/goods')"></div>
+                    <div class="item-enter" data-ng-click="gotoUrl('/activeCenter/coupon')"></div>
+                </div>
+                <div class="wangyi-and-jd">
+                    <div class="item-enter" data-ng-click="gotoUrl('/activeCenter/kaola')"></div>
+                    <div class="item-enter" data-ng-click="gotoUrl('/activeCenter/yx')"></div>
+                    <div class="item-enter" data-ng-click="gotoUrl('/activeCenter/jd')"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="active-product-hot">
+        <ul class="product-wrapper" data-ng-style="hotProduct">
+            <li class="item-product" data-ng-repeat="item in hotProductList01" data-ng-click="gotoProduct(item)">
+                <div class="product-img">
+                    <img ng-src="{{item.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                </div>
+                <div class="product-price">¥{{item.proSkuPrice}}</div>
+                <div class="product-discount">
+                    月供{{item.defaultEveryAmount}}起
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="active-phone-hot">
+        <div class="phone-img">
+            <img src="/app/assets/imgs/active-center/main/active-phone-hot.png" class="top-bar">
+        </div>
+        <div class="phone-wrappers">
+            <div class="phone-content">
+                <div class="item-product" data-ng-repeat="item in hotProductList02 track by $index">
+
+                    <div class="item-hot-flag" data-ng-class="$index%2==0?'left-img':'right-img'">
+                        <img src="/app/assets/imgs/active-center/main/active-flag-left.png"
+                             data-ng-if="$index%2==0"/>
+                        <img src="/app/assets/imgs/active-center/main/active-flag-right.png"
+                             data-ng-if="$index%2==1"/>
+                    </div>
+                    <div class="hot-product-info" data-ng-class="$index%2==0?'theOne':'theTwo'">
+                        <div class="item-img">
+                            <img data-ng-src="{{item.mainProImgUrl}}"/>
+                        </div>
+                        <div class="item-desc">
+                            <div class="item-name" data-ng-bind="item.name"></div>
+                            <!--<div class="item-sku">4GB + 6GB | 4G手机 | 双卡双待</div>-->
+                            <div class="item-btn">
+                                <img src="/app/assets/imgs/active-center/main/active-phone-btn.png"
+                                     data-ng-click="gotoProduct(item)"/>
+                            </div>
+                            <div class="item-price">
+                                <div class="base-price">¥<span data-ng-bind="item.proSkuPrice"></span></div>
+                                <div class="aging-price">
+                                    <div>月供：</div>
+                                    <div>
+                                        ¥<span data-ng-bind="item.defaultEveryAmount"></span>
+                                        x
+                                        <span data-ng-bind="item.defaultPeriod"></span>期
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-bottom-img">
+                        <img src="/app/assets/imgs/active-center/main/active-phone-bottom-01.png"
+                             data-ng-if="$index%2==0"/>
+                        <img src="/app/assets/imgs/active-center/main/active-phone-bottom-02.png"
+                             data-ng-if="$index%2==1"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="active-enters">
+        <div class="active-title">
+            <img src="/app/assets/imgs/active-center/main/active-enters-title.png" class="title-img">
+            <div class="title-content">
+                <div class="main-title">品类生活场</div>
+                <div class="sub-title">购物分类大全</div>
+            </div>
+        </div>
+        <div class="enters-wrapper">
+            <div class="enter-items" data-ng-style="enterRowsStyle"
+                 data-ng-repeat="itemRows in activeEnters track by $index">
+                <div class="item-enter" data-ng-repeat="item in itemRows track by $index"
+                     data-ng-click="gotoTemplate(item.widgetCode,item.name)">
+                    <img data-ng-src="{{item.imageUrl | filterImg:'@!300x300'}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="active-goods-area" id="goodsArea">
+        <div class="active-title-list" id="goodsTitles">
+            <div class="title-wrapper" data-ng-style="goodsAreaTitle">
+                <div class="item-title" data-ng-repeat="item in ActiveGoodsTitles track by $index"
+                     data-ng-click="selectGoodsNodeId(item)">
+                    <span class="iconfont icon-address-isActive" data-ng-class="item.isActive?'active':''"
+                          data-ng-if="item.isActive"></span>
+                    <span data-ng-bind="item.nodeName"></span>
+                </div>
+            </div>
+        </div>
+        <div class="active-title">
+            <div class="active-title">
+                <img src="/app/assets/imgs/active-center/main/active-enters-title.png" class="title-img">
+                <div class="title-content" data-ng-bind="selectedNode.nodeName">
+
+                </div>
+            </div>
+        </div>
+        <div class="active-goods" id="goodsContent">
+            <div class="goods-rows">
+                <div class="item-row" data-ng-repeat="itemRows in goodsList track by $index">
+                    <div class="item-goods" data-ng-repeat="item in itemRows track by $index"
+                         data-ng-click="gotoProduct(item)">
+                        <div class="goods-img">
+                            <img data-ng-src="{{item.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                        </div>
+                        <div class="goods-name" data-ng-bind="item.name"></div>
+                        <div class="goods-marketPrice">
+                            ¥<span data-ng-bind="item.marketPrice"></span>
+                        </div>
+                        <div class="good-price">
+                            <div class="goods-base-price">
+                                ¥<span data-ng-bind="item.proSkuPrice"></span>
+                            </div>
+                            <div class="goods-discount-info">
+                                月供:¥<span data-ng-bind="item.defaultEveryAmount"></span>
+                                x
+                                <span data-ng-bind="item.defaultPeriod"></span>期
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-goods-btn" data-ng-click="getActiveGoods(selectedNode.nodeId, 'add')" data-ng-if="showBtn">
+            加载更多
+        </div>
+        <div class="no-more" data-ng-if="!showBtn">
+            没有更多了...
+        </div>
+    </div>
+</div>
+
+<div style="position: fixed;width: 40px;height: 40px;  z-index: 300;  bottom: 10%;  right: 0;"
+     data-ng-click="backToTop()">
+    <img src="../../../app/assets/imgs/active-center/main/active-back-top.png" style="width: 100%"/>
+</div>

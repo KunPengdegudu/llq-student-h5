@@ -1,0 +1,37 @@
+<ol class="goods-list" data-ng-cloak>
+    <li class="goods-item" style="position: relative" data-ng-repeat="item in items">
+            <div class="goods-brief">
+                <img class="goods-img-thumbnail" data-ng-src="{{item.mainProImgUrl | filterImg : '@!200x200'}}" ng-click="gotoProductDetail(item.productId, item.promotionId,item.promotionType)">
+
+                <div class="goods-desc" ng-click="gotoProductDetail(item.productId, item.promotionId,item.promotionType)">
+                    <div class="goods-title" data-ng-bind="item.name"></div>
+                    <div class="goods-subtitle">
+                        <div class="goods-text-left">
+                            <span>售价:</span>
+                            <span class="goods-text-warn" data-ng-bind="(item.proSkuPrice*item.discount/100) | moneyFixed"></span>
+                            <s style="margin-left:5px;" data-ng-if="item.discount<100">{{item.proSkuPrice | moneyFixed}}</s>
+                        </div>
+                        <div class="goods-text-right">
+                            <span>市场价:</span>
+                            <span class="goods-text-gray goods-text-delete" data-ng-bind="item.marketPrice | moneyFixed"></span>
+                        </div>
+                    </div>
+                    <div class="goods-subtitle" ng-if="item.discount<100">
+                        <div class="label label-danger" data-ng-bind="item.discount | discount"></div>
+                    </div>
+                    <div class="goods-subtitle">
+                        <span class="goods-text-highlight" data-ng-bind="item.customTitle | delTag"></span>
+                    </div>
+                    <div class="goods-subtitle" ng-if="item.defaultPeriod">
+                        <span>月供：</span>
+                        <span class="goods-text-warn" data-ng-bind="(item.defaultEveryAmount*item.discount/100) | moneyFixed"></span>
+                        <span class="goods-text-gray" data-ng-bind="'x'+item.defaultPeriod"></span>
+                    </div>
+                </div>
+                <span class="iconfont icon-help-buy list-add-cart" ng-click="goCart(item,$event)" ng-if="item.singleSku && item.stock>0"></span>
+            </div>
+        </a>
+        <img src="../../../app/assets/imgs/active/a214_tip.png" class="active-list-tip" data-ng-if="item.needTip"/>
+
+    </li>
+</ol>

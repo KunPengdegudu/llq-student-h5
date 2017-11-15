@@ -1,0 +1,888 @@
+.blanknote-main {
+  width: 100%;
+  position: absolute;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  top: $header-height;
+  bottom: $nav-height;
+  left: 0;
+  right: 0;
+  z-index: $zindex-login;
+  background: $base-background-color;
+
+  .title.quota-count-text {
+    color: $brand-danger;
+    font-size: $font-size-base;
+    line-height: 35px;
+    height: 35px;
+    .icon-prompt {
+      font-size: $font-size-xxl;
+      margin-right: 5px;
+
+    }
+  }
+  .blanknote-quota {
+    width: 100%;
+    height: 60px;
+    line-height: 45px;
+    margin-top: 2px;
+    text-align: center;
+    font-size: $font-size-large;
+    display: flex;
+    flex-direction: row;
+    background: #F2F1F1;
+    .blanknote-amount {
+      padding: 0 10px;
+      flex: 1;
+      border: 1px solid #e6e6e6;
+      background-color: white;
+      margin: 0 10px;
+      box-shadow: 3px 6px 6px #E5E5E5;
+      .blanknote-limit {
+        margin-bottom: -25px;
+      }
+      .blanknote-value {
+        color: #7DDCFC;
+      }
+    }
+  }
+
+  .quota-wrapper {
+    width: 100%;
+    background-color: $white;
+    padding: 5px 15px;
+    margin: 5px 0;
+    .quota-title {
+      width: 100%;
+      font-size: $font-size-base;
+      color: $base-text-color2;
+      height: 20px;
+      line-height: 20px;
+    }
+    .quota-all {
+      width: 100%;
+      height: 30px;
+      line-height: 30px;
+      .all-amount {
+        font-size: 25px;
+        color: $base-text-color;
+      }
+      .quota-btn {
+        font-size: $font-size-base;
+        margin-left: 10px;
+        img {
+          width: 12px;
+        }
+        .btn-text {
+          color: $base-color;
+        }
+      }
+    }
+    .quota-remaining {
+      width: 100%;
+      font-size: $font-size-base;
+      color: $base-text-color2;
+      .remaining-amount {
+        color: $base-text-color;
+        margin-left: 10px;
+      }
+    }
+  }
+  .broduct-banner {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .blanknote-product {
+    width: 95%;
+    padding: 10px;
+    margin: 15px auto;
+    background-color: $white;
+    border-radius: 5px;
+    @include flexBox();
+    @include flexDirectionRow();
+    @include flexJustify(space-between);
+
+    .product-left {
+      @include flex(1);
+      text-align: center;
+      padding-right: 10px;
+      border-right: 1px solid $base-border-color;
+      .left-img {
+        width: 50px;
+      }
+      .left-name {
+        color: $black;
+        font-size: $font-size-large;
+      }
+    }
+    .product-right {
+      @include flex(2);
+      padding-left: 10px;
+      @include flexBox();
+      @include flexDirectionColumn();
+      @include flexJustify(space-between);
+      .right-title {
+        font-size: $font-size-xl;
+        color: $black;
+        margin-top: 5px;
+      }
+      .right-icons {
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify(space-around);
+      }
+      .item-icon {
+        @include flex(1);
+        text-align: center;
+        .icon-font {
+          width: 25px;
+          height: 25px;
+          margin: 0 auto;
+          .iconfont {
+            font-size: 20px;
+            line-height: 25px;
+            text-align: center;
+          }
+        }
+        .item-text {
+          margin-top: 10px;
+          color: $base-text-color2;
+        }
+      }
+      .right-btn {
+        width: 115px;
+        height: 35px;
+        line-height: 35px;
+        text-align: center;
+        background-color: $base-color;
+        color: $white;
+        font-size: $font-size-xxl;
+        border-radius: 35px;
+      }
+    }
+  }
+
+  .blanknote-applyTop{
+    width: 100%;
+    margin:0 auto;
+    .applyTop-icon{
+      width:50%;
+      height:100px;
+      margin:0 auto;
+      padding-top:20px;
+      text-align: center;
+      img{
+        width: 80px;
+        height:80px;
+      }
+    }
+    .applyTop-text{
+      width: 100%;
+      height: 50px;
+      text-align: center;
+      line-height: 25px;
+      margin-bottom: 20px;
+    }
+  }
+}
+.successApply{
+  bottom:0;
+}
+.blanknote-applyBot{
+  height:40px;
+  line-height: 40px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e8e8e8;
+  .title{
+    float: left;
+    margin-left: 20px;
+    font-size: 14px;
+  }
+  .icon{
+    float: right;
+    margin-right: 10px;
+    span{
+      color:#ff9600;
+    }
+    .textColor{
+      line-height: 40px;
+      color:#ff9600;
+    }
+    .iconfont{
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}
+.applyTop-btn{
+  width: 100%;
+  height:40px;
+  padding-top: 20px;
+  button{
+    width:40%;
+    height:40px;
+    float: left;
+    margin: 0 5%;
+    font-size: 16px;
+    border: 1px solid #ff9600;
+    background-color: #ff9600;
+    border-radius: 5px;
+    color: #ffffff;
+    line-height: 40px;
+    text-align: center;
+  }
+  .btn-jilu{
+    background: rgb(249,237,222);
+    color:#ff9600;
+  }
+}
+.blanknote-bottom-btn-wrapper {
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $zindex-content;
+  background-color: #FFFFFF;
+  border: 0 none;
+  text-align: center;
+  .nav-hint {
+    &.single-row {
+      margin: 0;
+      width: 30%;
+      height: $nav-height;
+      line-height: $nav-height;
+      padding: 0;
+      border-radius: 0;
+      float: right;
+      span {
+        top: 0;
+        padding: 0;
+        margin: 0;
+      }
+    }
+    .submit-btn {
+      background-color: $base-color;
+    }
+  }
+  .blanknote-bottom {
+    padding-left: 20px;
+    padding-top: 10px;
+    .repay {
+      font-size: 16px;
+      color: $base-color;
+    }
+    .anonymity-box {
+      width: 15px;
+      height: 15px;
+      position: relative;
+      top: 3px;
+      left: 5px;
+    }
+  }
+
+}
+.openList{
+  width:100%;
+  margin-top:10px;
+  .openList-main{
+    width: 90%;
+    height: 80px;
+    margin-left: 5%;
+    border-radius: 5px;
+    position: relative;
+    .openList-fixed{
+      width: 100%;
+      height: 20px;
+      line-height: 20px;
+      color:white;
+      margin-left: 10px;
+      padding-top: 20px;
+    }
+    .openList-dialog{
+      position: absolute;
+      top:10px;
+      right:10px;
+      width: 70px;
+      height:28px;
+      border-radius: 8px;
+      border:1px solid white;
+      color:white;
+      line-height: 28px;
+      text-align: center;
+    }
+  }
+}
+.closeList{
+  width:100%;
+  margin-top: 10px;
+  .closeList-main{
+    width: 90%;
+    height: 80px;
+    margin-left: 5%;
+    border-radius: 5px;
+    background-color: #e23c3e;
+    position: relative;
+    .closeList-fixed{
+      width: 100%;
+      height: 20px;
+      line-height: 20px;
+      color:white;
+      margin-left: 10px;
+      padding-top: 20px;
+    }
+    .closeList-dialog{
+      position: absolute;
+      top:0;
+      left:0;
+      width: 100%;
+      height:75px;
+      border-radius: 5px;
+      background-color: rgba(0,0,0,0.3);
+      .closeList-span{
+        position: absolute;
+        top:10px;
+        right:10px;
+        width: 70px;
+        height:28px;
+        border-radius: 8px;
+        border:1px solid white;
+        color:white;
+        line-height: 28px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.closeList-dialog{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:75px;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0.3);
+  .closeList-span{
+    position: absolute;
+    top:10px;
+    right:10px;
+    width: 70px;
+    height:28px;
+    border-radius: 8px;
+    border:1px solid white;
+    color:white;
+    line-height: 28px;
+    text-align: center;
+  }
+}
+.openList-dialog{
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height:75px;
+  border-radius: 5px;
+  background-color: rgba(0,0,0,0);
+  .openList-span{
+    position: absolute;
+    top:10px;
+    right:10px;
+    width: 70px;
+    height:28px;
+    border-radius: 8px;
+    border:1px solid white;
+    color:white;
+    line-height: 28px;
+    text-align: center;
+  }
+}
+.closeListLiSpan{
+  margin-top: 10px;
+}
+.instructor-dialog {
+  .setting-table {
+    .setting-table-cell {
+      .second-column {
+        .headTeacher {
+          line-height: 20px;
+          margin: 5px 0;
+        }
+      }
+    }
+    .quota-hint {
+      color: $base-color;
+    }
+    .second-column {
+      .setting-left {
+        &.auth-code {
+          width: 70%;
+          padding-right: 120px;
+        }
+        &.img-code-text {
+          width: 70%;
+          padding-right: 120px;
+        }
+        &.contact-input {
+          width: 65%;
+        }
+      }
+      .setting-right {
+        &.img-code-img {
+          width: 80px;
+          height: 30px;
+          margin-right: 20px;
+          position: absolute;
+          right: 0;
+          margin-top: 10px;
+          padding: 0;
+        }
+
+        &.auth-code-btn {
+          position: absolute;
+          right: 0;
+        }
+
+        &.contact-btn {
+          position: absolute;
+          right: 0;
+        }
+
+        .nav-hint {
+          border: 0 none;
+        }
+      }
+    }
+    .one-column {
+      color: #333;
+      padding-left: 10px;
+      padding-right: 10px;
+      overflow: hidden;
+      zoom: 1;
+      border-bottom: 1px solid #d9d9d9;
+
+      .setting-left {
+        float: left;
+      }
+      .setting-right {
+        float: right;
+      }
+
+      .description {
+        p {
+          margin: 0px;
+          padding: 0px;
+          height: 60px;
+          line-height: 60px;
+        }
+      }
+    }
+
+    .icon-right {
+      &.icon-checked {
+        color: $brand-primary;
+      }
+    }
+  }
+}
+
+.blanknote-banner {
+  @include clearfix();
+
+  background-size: 100% 100%;
+  height: auto;
+  width: 100%;
+  background-position: center center;
+}
+
+.blanknote-money {
+  margin-top: 5px;
+  background: $white;
+  overflow: hidden;
+
+  .title {
+    font-size: $font-size-xl;
+    width: 100%;
+    line-height: 40px;
+    padding: 0 20px;
+    color: #BBBBBB;
+    .left-text {
+      float: left;
+    }
+
+    .right-text {
+      float: right;
+      color: $base-color;
+      font-size: 14px;
+      .iconfont {
+        font-size: 14px;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  .money-item-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 5px 10px 10px;
+
+    .money-row {
+      width: 100%;
+    }
+
+    .use-wrapper {
+      width: 25%;
+      padding: 0 5px;
+      float: left;
+    }
+
+    .use-item {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid $base-border-color;
+      border-radius: 2px;
+      margin-bottom: 10px;
+
+      &.selected {
+        border: 1px solid $base-color;
+        background-color: $base-color;
+        color: $white;
+      }
+
+      &.more-item {
+        background-color: $base-background-color;
+      }
+    }
+
+    .money-wrapper {
+      width: 33.33333333%;
+      padding: 0 5px;
+      float: left;
+    }
+    .money-over {
+      background: $base-background-color;
+      color: $base-text-color2;
+    }
+
+    .money-item {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid $base-border-color;
+      border-radius: 5px;
+      margin-bottom: 10px;
+
+      &.selected {
+        border: 1px solid $base-color;
+        color: $base-color;
+      }
+
+      &.more-item {
+        background-color: $base-background-color;
+      }
+    }
+
+  }
+  .money-wrapper-forbid {
+    background: $base-text-color2;
+  }
+}
+
+.blanknote-contract {
+  font-size: $font-size-xl;
+  line-height: 40px;
+  padding: 0 20px;
+}
+
+.blanknote-aging {
+
+  background: $white;
+  position: relative;
+  margin-top: 5px;
+
+  .coupon-brand {
+    width: 25px;
+    position: relative;
+    -webkit-transform: rotate(-15deg);
+    -moz-transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    -o-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+    left: -5px;
+    top: 5px;
+    margin-right: 9px;
+  }
+  .title {
+    font-size: $font-size-xl;
+    line-height: 40px;
+    padding-left: 15px;
+    .detail {
+      font-size: $font-size-base;
+    }
+
+  }
+  .content {
+    font-size: $font-size-base;
+    line-height: 20px;
+    padding: 0 20px 10px;
+  }
+  .text-right,
+  .icon-right-arrow {
+    float: right;
+    padding-right: 10px;
+    line-height: 40px;
+    color: $base-text-color;
+    position: absolute;
+    top: 0;
+
+  }
+
+  .text-right {
+    font-size: $font-size-xl;
+    right: 20px;
+  }
+
+  .icon-right-arrow {
+    font-size: 18px;
+    right: 0;
+  }
+
+  .repay {
+    color: $base-color;
+  }
+}
+
+.blanknote-desc {
+  font-size: $font-size-base;
+}
+
+.weixin-code {
+  @include bg-image('../assets/blanknote/weixin-code.jpg', '../assets/blanknote/weixin-code.jpg', 200px);
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.blanknote-btn {
+  .nav-hint {
+    padding: 15px;
+  }
+}
+
+.blanknote-help {
+  margin-top: 10px;
+}
+
+.blanknote-help2 {
+  margin: 10px 15px;
+}
+
+//运营商认证
+.servicepsd {
+  background: white !important;
+  .service-mobile-desc {
+    border-bottom: 1px solid lightgray;
+    padding-left: 20px
+  }
+
+  .setting-input {
+    height: 45px;
+    font-size: $font-size-xl;
+    color: black !important;
+    line-height: 40px;
+    input {
+      border: 0 none;
+      background: white;
+    }
+  }
+
+  .service-psd-warn {
+    border-bottom: 1px solid lightgray;
+    line-height: 30px;
+    padding-left: 20px;
+    color: $brand-danger;
+    .icon-warn {
+      margin-right: 10px;
+    }
+  }
+  .service-help {
+    padding-left: 10px;
+    p {
+      margin: 0;
+
+      .icon-star-color {
+        font-size: $font-size-xl;
+        color: $brand-danger;
+        margin-right: 5px;
+      }
+    }
+  }
+}
+
+.Scoupon-list {
+  list-style-type: none;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  display: inline-block;
+
+  .Scoupon-item {
+    width: 30%;
+    background: $white;
+    margin: 5px;
+    float: left;
+    .Scoupon-left {
+      position: relative;
+      width: 100%;
+      .Scoupon-img {
+        width: 100%;
+        height: 50px;
+      }
+      .Scoupon-money {
+        text-align: center;
+        width: 100%;
+        font-size: 18px;
+        line-height: 50px;
+        position: absolute;
+        top: 0;
+        &.withdrawal {
+          color: #2c7cd9;
+        }
+
+        &.instalments {
+          color: #ff4672;
+        }
+
+        .Scoupon-money-sign {
+          font-size: $font-size-xs;
+        }
+      }
+    }
+
+  }
+}
+
+.ui-dialog {
+  &.success-dialog {
+    .setting-table {
+      padding-top: 0;
+    }
+    .success-top {
+      @include flexBox();
+      @include flexDirectionRow();
+      background-color: $white;
+      padding: 15px 0;
+      .left-image {
+        @include flex(1);
+        padding-left: 10px;
+        img {
+          width: 70%;
+        }
+      }
+      .right-text {
+        @include flex(4);
+        padding-right: 20px;
+        .top-title {
+          font-size: $font-size-xl;
+          color: $black;
+          margin-bottom: 5px;
+        }
+        .top-text {
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          .text-hint {
+            color: $brand-danger;
+          }
+        }
+      }
+    }
+    .success-activity {
+      @include flexBox();
+      @include flexDirectionRow();
+      @include flexJustify(center);
+      height: 50px;
+      line-height: 50px;
+      .activity-line {
+        background-color: $black;
+        width: 15px;
+        height: 2px;
+        margin: 24px 10px;
+      }
+      .activity-name {
+        color: $black;
+        font-size: $font-size-xl;
+      }
+    }
+    .activty-product {
+      width: 100%;
+      height: 110px;
+      padding: 10px;
+      background-color: $white;
+      .product-img {
+        width: 25%;
+        float: left;
+        img {
+          width: 100%;
+        }
+      }
+      .product-desc {
+        width: 70%;
+        float: right;
+        .product-name {
+          font-size: $font-size-large;
+          margin-bottom: 5px;
+          height: 42px;
+          line-height: 20px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+        .product-tag {
+          font-size: $font-size-base;
+          color: $base-color;
+          padding: 2px 5px;
+          border: 1px solid $base-color;
+        }
+        .product-price {
+          margin-top: 10px;
+          .base-price {
+            font-size: $font-size-xxxl;
+            color: $base-color;
+            margin-right: 15px;
+          }
+          .market-price {
+            font-size: $font-size-large;
+            color: $base-text-color2;
+            text-decoration: line-through;
+          }
+        }
+      }
+    }
+    .activity-btn {
+      clear: both;
+      width: 90%;
+      height: 50px;
+      line-height: 50px;
+      text-align: center;
+      margin: 0 auto;
+      background: $base-color;
+      margin-top: 40px;
+      font-size: $font-size-xxl;
+      color: $white;
+      border-radius: 3px;
+    }
+    .activity-hint {
+      font-size: $font-size-base;
+      padding: 10px 5%;
+      color: #478FFB;
+      .icon-hint {
+        color: $base-text-color2;
+        margin-right: 5px;
+      }
+    }
+  }
+}

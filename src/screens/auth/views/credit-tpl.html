@@ -1,0 +1,76 @@
+<div class="login-main auth-credit" data-ng-cloak data-ng-if="hasLevel">
+    <img class="credit-bg" src="../../../app/assets/imgs/login/auth-credit.png">
+
+    <div class="credit-tips">
+        <div class="llq-pay-notice-wrapper">
+            <div class="llq-pay-notice">
+                多积累信用多消费,按时还款,帮助提高信用评级
+            </div>
+        </div>
+    </div>
+    <div class="credit-content">
+        <span class="credit-Info">{{userLevel.name}}&nbsp;:</span>
+
+        <div class="credit-top">
+            根据《零零期信用等级》评定，您的的信用等级为:
+        </div>
+        <div class="credit-level">
+            <span class="level-data" data-ng-bind="userLevel.level"></span>级
+        </div>
+        <div class="credit-level">
+            <span class="level-memo" data-ng-bind="userLevel.memo"></span>
+        </div>
+        <div class="credit-footer">
+            <div class="service-memo" data-ng-bind="userLevel.serviceMemo"></div>
+        </div>
+    </div>
+    <div class="credit-notice-yes" data-ng-click="creditInfo.openDialog()">了解信用等级</div>
+</div>
+
+<div class="login-main auth-credit" data-ng-cloak data-ng-if="!hasLevel">
+    <div class="credit-tips">
+        <div class="llq-pay-notice-wrapper">
+            <div class="llq-pay-notice">
+                多积累信用多消费,按时还款,帮助提高信用评级
+            </div>
+        </div>
+    </div>
+    <div class="credit-null">
+        <div class="credit-null-hint" data-ng-if="isUserVip">
+            亲，您的信用等级有待提高
+            <div>
+                请用洪荒之力加油提升!
+            </div>
+            <div>
+                有信用服务更周到！
+            </div>
+        </div>
+        <img class="credit-null-img" src="../../../app/assets/imgs/login/credit-null.png">
+    </div>
+    <div class="credit-notice-no" data-ng-click="creditInfo.openDialog()">了解信用等级</div>
+</div>
+
+<div ui-dialog class="credit-dialog"
+     is-visible="creditInfo.isVisible" z-index="570">
+    <div class="ui-header-bar">
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>评级说明</span>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon">
+            <div class="iconfont header-bar-icon icon-close"
+                 ng-click="creditInfo.closeDialog()"></div>
+        </div>
+    </div>
+
+    <div class="setting-table">
+        <div class="auth-credit-img">
+            <img src="../../../app/assets/imgs/auth/auth_credit.png"/>
+        </div>
+        <sys-notice class="credit-notice" type="user_vip_level"></sys-notice>
+    </div>
+
+
+</div>

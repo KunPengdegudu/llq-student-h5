@@ -1,0 +1,154 @@
+.shop-main {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $base-background-color;
+  overflow: hidden;
+  z-index: 200;
+  article {
+    &.shop-article {
+      top: 0;
+      padding: 10px;
+      .shop-infos {
+        width: 100%;
+        position: relative;
+        .info-bg {
+          width: 100%;
+        }
+        .info-wrapper {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          @include flexBox();
+          @include flexDirectionColumn();
+          @include flexJustify(center);
+          .info-content {
+            width: 100%;
+            @include flexBox();
+            @include flexDirectionRow();
+            @include flexJustify(start);
+            .shop-img {
+              padding-left: 20px;
+              .shop-head {
+                width: 50px;
+                height: 50px;
+                border-radius: 4px;
+                overflow: hidden;
+              }
+            }
+            .shop-info {
+              @include flex(1);
+              padding-left: 20px;
+              .shop-name {
+                width: 100%;
+                height: 40px;
+                font-size: $font-size-xxxl;
+                font-weight: $bold-font-weight;
+                color: $white;
+                line-height: 40px;
+              }
+              .shop-flags {
+                width: 100%;
+                @include flexBox();
+                @include flexDirectionRow();
+                @include flexJustify(start);
+                @include flexWrap(wrap);
+                .item-flag {
+                  color: $white;
+                  padding: 0px 5px;
+                  font-size: $font-size-base;
+                  border: 1px solid $white;
+                  border-radius: 4px;
+                  margin-right: 10px;
+                }
+              }
+            }
+          }
+
+        }
+      }
+      .carousel-page {
+        width: 100%;
+        margin: 5px 0;
+        div.rn-carousel-indicator span {
+          cursor: pointer;
+          color: #b2b2b2;
+          margin-right: 2px;
+          &:last-child {
+            margin-right: 0;
+          }
+          &.active {
+            color: $white;
+          }
+        }
+      }
+    }
+    &.search-article {
+      top: 5px;
+    }
+    .shop-abnormal {
+      width: 100%;
+      padding-top: 50px;
+      text-align: center;
+      .empty-img {
+        width: 100%;
+        img {
+          width: 35%;
+          margin-bottom: 10px;
+        }
+      }
+      .empty-content {
+        color: #666666;
+        font-size: $font-size-large;
+        height: 20px;
+        line-height: 20px;
+      }
+      .empty-hint {
+        color: #999999;
+        height: 17px;
+        line-height: 17px;
+      }
+    }
+  }
+
+  .block-brief {
+    background-color: transparent;
+    &.shop-product {
+      .block-title {
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        font-size: $font-size-large;
+        color: #666666;
+      }
+      .block-content {
+        .grid-row {
+          border-bottom: none;
+          margin-bottom: 10px;
+          .shop-item {
+            padding: 10px;
+            margin-right: 10px;
+            background-color: $white;
+            &:last-child {
+              margin-right: 0;
+            }
+            .block-text {
+              &.market-price {
+                @include flexBox();
+                @include flexDirectionRow();
+                @include flexJustify(space-between);
+                padding-right: 5px;
+              }
+
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

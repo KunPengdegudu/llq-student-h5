@@ -1,0 +1,14 @@
+<div class="entrance" data-ng-style="item.styles">
+    <div class="entrance-item" data-ng-style="item.itemStyles" data-ng-repeat="btn in item.btns" data-ng-click="gotoNav(btn.url)">
+        <div class="entrance-item-img-wrapper">
+            <img class="entrance-item-img" data-ng-src="{{btn.img}}" />
+        </div>
+        <div class="entrance-item-text" data-ng-bind="btn.text"></div>
+    </div>
+    <div class="entrance-item" data-ng-style="item.itemStyles" data-ng-repeat="btn in item.btns2" data-ng-click="gotoNav(btn.url)">
+        <div class="entrance-item-img-wrapper">
+            <img class="entrance-item-img" data-ng-src="{{btn.img}}" />
+        </div>
+        <div class="entrance-item-text" data-ng-bind="btn.text"></div>
+    </div>
+</div>

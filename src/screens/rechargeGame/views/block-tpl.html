@@ -1,0 +1,17 @@
+<div class="entrance recharge" data-ng-style="item.styles">
+    <div class="recharge-title">热门游戏／会员</div>
+    <div class="entrance-item" data-ng-style="item.itemStyles" data-ng-repeat="btn in item.btns"
+         data-ng-click="gotoDetail(btn)">
+        <div class="entrance-item-img-wrapper">
+            <img class="entrance-item-img" data-ng-src="{{btn.img}}"/>
+        </div>
+        <div class="recharge-name" data-ng-bind="btn.text"></div>
+    </div>
+    <div class="entrance-item" data-ng-style="item.itemStyles" data-ng-repeat="btn in item.btns2"
+         data-ng-click="gotoDetail(btn)">
+        <div class="entrance-item-img-wrapper">
+            <img class="entrance-item-img" data-ng-src="{{btn.img}}"/>
+        </div>
+        <div class="recharge-name" data-ng-bind="btn.text"></div>
+    </div>
+</div>

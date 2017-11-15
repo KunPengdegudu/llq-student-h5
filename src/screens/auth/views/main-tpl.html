@@ -1,0 +1,114 @@
+<div class="auth-main">
+    <div class="auth-mian-banner">
+        <img src="../../../app/assets/imgs/auth/auth-banner.jpg" class="banner-img"/>
+    </div>
+    <ul class="setting-table auth-wrapper">
+        <li class="setting-table-cell" data-ng-repeat="item in items">
+            <div class="second-column auth-product">
+                <div class="product-icon" data-ng-if="!(item.certProCode == 'LHH' && byjIsPassed)">
+                    <img ng-src="{{item.icoUrl}}" class="icon-img"/>
+                </div>
+                <div class="product-icon" data-ng-if="item.certProCode == 'LHH' && byjIsPassed">
+                    <img src="../../../app/assets/imgs/auth/auth-loss-img.png" class="icon-img"/>
+                </div>
+                <div class="product-content">
+                    <div class="content-top">
+                        <div class="content-name" data-ng-bind="item.certProName"></div>
+                        <div class="content-status" data-ng-if="!(item.certProCode == 'LHH' && byjIsPassed)">
+                            <!--未申请-->
+                            <img src="../../../app/assets/imgs/auth/auth-noapplied.png"
+                                 data-ng-if="item.censorResult.censorStatus == 'not_submit'"/>
+                            <!--未通过-->
+                            <img src="../../../app/assets/imgs/auth/auth-nopass.png"
+                                 data-ng-if="item.censorResult.censorStatus == 'rejected' || item.censorResult.censorStatus == 'reject_resubmit'"/>
+                            <!--已通过-->
+                            <img src="../../../app/assets/imgs/auth/auth-pass.png"
+                                 data-ng-if="item.censorResult.censorStatus == 'passed'"/>
+                            <!--未提交材料-->
+                            <img src="../../../app/assets/imgs/auth/auth-nopass.png"
+                                 data-ng-if="item.censorResult.censorStatus == 'supplement'"/>
+                            <!--审核中-->
+                            <img src="../../../app/assets/imgs/auth/auth-review.png"
+                                 data-ng-if="item.censorResult.censorStatus == 'on_going' || item.censorResult.censorStatus == 'wait_audit'"/>
+                        </div>
+                        <div class="content-status" data-ng-if="item.certProCode == 'LHH' && byjIsPassed">
+                            <!--已失效-->
+                            <img src="../../../app/assets/imgs/auth/auth-loss-flag.png"/>
+                        </div>
+                    </div>
+                    <div class="content-bottom" data-ng-bind="item.title"></div>
+                </div>
+                <div class="product-null"></div>
+                <div class="product-btn" data-ng-if="!(item.certProCode == 'LHH' && byjIsPassed)">
+                    <div class="auth-btn" data-ng-if="item.censorResult.censorStatus == 'passed'"
+                         data-ng-click="gotoEnter()">
+                        消费
+                    </div>
+                    <div class="auth-btn" data-ng-if="item.censorResult.censorStatus == 'passed'"
+                         data-ng-click="gotoBlanknote()">
+                        取现
+                    </div>
+                    <div class="auth-btn" data-ng-if="item.censorResult.censorStatus == 'not_submit'"
+                         data-ng-click="download()">
+                        去认证
+                    </div>
+                    <div class="auth-btn" data-ng-click="showReason.openDialog(item)"
+                         data-ng-if="item.censorResult.censorStatus == 'rejected' || item.censorResult.censorStatus == 'reject_resubmit'">
+                        查看原因
+                    </div>
+                </div>
+                <div class="product-btn" data-ng-if="item.certProCode == 'LHH' && byjIsPassed">
+                    <img src="../../../app/assets/imgs/auth/auth-lose-btn.png" class="loss-btn"/>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<div ui-dialog class="loan-recommend-dialog" overlay="true" close-by-overlay="true"
+     is-visible="recommendDialog.isVisible" z-index="584">
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+        <img src="../../../app/assets/imgs/works-share/cancel.png" class="cancel-button"
+             data-ng-click="recommendDialog.closeDialog()"/>
+        <div class="recommend-main">
+            <img src="../../../app/assets/imgs/loan/loan_banner.png" class="recommend-banner"/>
+            <div class="recommend-products" data-ng-repeat="itemRows in goodsList track by $index">
+                <div class="recommend-rows">
+                    <div class="item-product" data-ng-click="gotoLoanProductDetail(item)"
+                         data-ng-repeat="item in itemRows track by $index">
+                        <div class="item-top">
+                        <span class="img-container">
+                            <img data-ng-src="{{item.imgUrl}}" class="banner-img">
+                        </span>
+                            <div class="item-top-right">
+                                <div class="name" data-ng-bind="item.platformName"></div>
+                                <div class="amount"><span>{{item.loanCount | numHand}}</span>人已放款</div>
+                            </div>
+                        </div>
+                        <div class="desc" data-ng-bind="item.simpleDesc"></div>
+                        <img src="../../../app/assets/imgs/loan/lebal_loan_hot.png" class="hot-recommend"
+                             data-ng-if="item.indexId===1">
+                    </div>
+                </div>
+            </div>
+            <div class="more" data-ng-click="gotoLoan()">
+                更多借贷平台&gt;
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ui-dialog class="loan-recommend-dialog auth-fail" overlay="true" close-by-overlay="true"
+     is-visible="showReason.isVisible" z-index="583">
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+        <div class="reason-title">未提交材料</div>
+        <div class="reason-content" data-ng-bind="showReason.authReason"></div>
+        <div class="reason-btns">
+            <div data-ng-click="showReason.closeDialog()">关闭</div>
+            <div data-ng-click="recommendDialog.openDialog()">其他借贷产品</div>
+        </div>
+    </div>
+</div>

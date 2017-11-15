@@ -1,0 +1,1988 @@
+//拼团玩法
+.groupon-rule {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 0;
+  background-color: $base-background-color;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 200;
+  .grounpon-rule-main {
+    width: 100%;
+    .rule-img-desc {
+      width: 100%;
+    }
+  }
+
+  .rule-container {
+    position: relative;
+    width: 100%;
+    background: url('../../../app/assets/imgs/groupon/image_ptgrules_bg.png');
+    background-size: 100%;
+    margin-top: -3px;
+    padding-top: 25px;
+    padding-bottom: 20px;
+
+    .ptrule-bg {
+      width: 100%;
+      padding: 0 3%;
+    }
+    .rule-content {
+      position: absolute;
+      top: 57px;
+      bottom: 40px;
+      width: 100%;
+      padding: 0 5%;
+      overflow-y: hidden;
+      .rule-title {
+        width: 100%;
+        img {
+          width: 70%;
+          margin: 0 15%;
+        }
+      }
+      .content {
+        width: 100%;
+        height: 90%;
+        padding: 20px 25px;
+        .llq-sys-notice-wrapper {
+          height: 100%;
+          overflow-y: scroll;
+          .p {
+            span, font {
+              font-size: 12px !important;
+              font-weight: 700;
+            }
+          }
+        }
+
+      }
+    }
+  }
+}
+
+//拼团首页
+.groupon-main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 50px;
+  background-color: $base-background-color;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 200;
+
+  .active-goods-area {
+    width: 100%;
+    min-height: 100%;
+    .active-title-list {
+      width: 100%;
+      overflow: auto;
+      box-shadow: 0 2px 5px #8a8a8a;
+      position: fixed;
+      top: 40px;
+      background-color: $white;
+      z-index: 300;
+      .title-wrapper {
+        height: 40px;
+        line-height: 40px;
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-title {
+          @include flex(1);
+          text-align: center;
+          font-size: $font-size-large;
+          .item-title-text {
+            &.active {
+              padding-bottom: 9px;
+              border-bottom: solid 3px $base-color;
+            }
+          }
+        }
+      }
+    }
+
+    .main-wrapper {
+      width: 100%;
+      padding-top: 40px;
+      .choiceness {
+        width: 100%;
+        margin-bottom: 10px;
+        .choiceness-banner {
+          position: relative;
+          width: 100%;
+        }
+        //轮播
+        .notice-main {
+          &.share-notice-main {
+            position: absolute;
+            top: 52px;
+            left: 15px;
+            width: auto;
+            height: 30px;
+            border-radius: 15px;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 0;
+            .notice-wrapper {
+              height: 30px;
+              line-height: 30px;
+              font-size: $font-size-large;
+              margin: 0;
+              padding: 0;
+              color: $white;
+              .notice-list {
+                font-size: 12px;
+                .notice-item {
+                  line-height: 30px;
+                  @include flexBox();
+                  .notice-img {
+                    width: 30px;
+                    height: 30px;
+                    img {
+                      width: 100%;
+                      height: 100%;
+                      border-radius: 50%;
+                    }
+                  }
+                  .notice-tip {
+                    margin-left: 10px;
+                    padding-right: 15px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .choiceness-foreshow {
+          width: 100%;
+          height: 76px;
+          background-color: $white;
+          padding: 11px 0;
+          @include flexBox();
+          .foreshow-item {
+            @include flex(1);
+            @include flexBox();
+            @include flexJustify(center);
+            height: 54px;
+            padding: 12px 0;
+            text-align: center;
+            &:first-child {
+              border-right: solid 1px $base-border-color;
+            }
+            .foreshow-item-img {
+              width: 30px;
+              height: 30px;
+              margin-right: 8px;
+            }
+            .foreshow-item-text {
+              font-size: $font-size-large;
+              line-height: 30px;
+            }
+          }
+        }
+
+      }
+
+      .active-goods {
+        width: 100%;
+        .foreshow-item {
+          width: 100%;
+          background-color: $white;
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+          .item-img-container {
+            position: relative;
+            width: 100%;
+            padding-left: 15px;
+            padding-top: 40px;
+            padding-bottom: 45px;
+            padding-right: 15px;
+            text-align: center;
+            //border-bottom: solid 1px $base-border-color;
+            .popup {
+              position: absolute;
+              left: 15px;
+              top: 10px;
+              height: 30px;
+              line-height: 30px;
+              border-radius: 15px;
+              color: $white;
+              background-color: rgba(0, 0, 0, 0.6);
+              .oppup-img {
+                width: 30px;
+                margin-right: 6px;
+              }
+              .groupon-name {
+                padding-right: 15px;
+              }
+            }
+            .groupon-time {
+              position: absolute;
+              right: 0px;
+              top: 20px;
+              height: 20px;
+              line-height: 20px;
+              background-color: #CCCCCC;
+              border-radius: 10px 0 0 10px;
+              .time-text {
+                color: $white;
+                padding: 0 10px;
+              }
+            }
+            .foreshow-item-img {
+              width: 52%;
+            }
+          }
+          .foreshow-item-detail {
+            width: 100%;
+            padding: 0 15px;
+            .postage-name {
+              width: 100%;
+              height: 16px;
+              line-height: 16px;
+              @include flexBox();
+              .postage {
+                padding: 0 4px;
+                margin-right: 5px;
+                font-size: $font-size-base;
+                color: $white;
+                background-color: $base-color;
+                border-radius: 3px;
+              }
+              .name {
+                @include flex(1);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: $font-size-xxl;
+              }
+            }
+            .instruction {
+              padding: 8px 0;
+              color: $base-text-color2;
+              font-size: $font-size-large;
+              .tag {
+                color: $base-text-color2;
+                font-size: $font-size-large;
+                font-weight: normal;
+              }
+              .limit {
+                margin: 0 5px;
+              }
+            }
+            .price-buttons {
+              @include flexBox();
+              width: 100%;
+              height: 30px;
+              line-height: 30px;
+              .prices {
+                @include flex(1);
+                .price {
+                  font-size: 20px;
+                  font-weight: 700;
+                  color: #f23030;
+                  margin-right: 8px;
+                  i {
+                    font-style: normal;
+                    font-size: $font-size-base;
+                    text-align: end;
+                  }
+                }
+                .old-price {
+                  font-size: $font-size-base;
+                  color: $base-text-color2;
+                }
+              }
+              .buttons {
+                @include flexBox();
+                width: 152px;
+                border: solid 1px #cccccc;
+                border-radius: 5px;
+                &.active {
+                  border: solid 1px $base-color;
+                }
+                .button-left {
+                  width: 76px;
+                  background-color: $white;
+                  color: $brand-disabled;
+                  text-align: center;
+                  &.active {
+                    color: $base-color;
+                  }
+                }
+                .button-right {
+                  width: 76px;
+                  color: $white;
+                  background-color: $brand-disabled;
+                  text-align: center;
+                  &.active {
+                    background-color: $base-color;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .add-goods-btn {
+          font-size: $font-size-xl;
+          color: $base-text-color;
+          width: 100%;
+          height: $nav-height;
+          line-height: $nav-height;
+          text-align: center;
+          color: $base-color;
+          text-decoration: underline;
+        }
+        .no-more {
+          font-size: $font-size-xl;
+          width: 100%;
+          height: $nav-height;
+          line-height: $nav-height;
+          text-align: center;
+          color: $base-color;
+        }
+
+        .no-goods {
+          width: 100%;
+          position: absolute;
+          top: 40px;
+          bottom: 0;
+          background-color: $base-background-color;
+          left: 0;
+          padding-top: 20%;
+          text-align: center;
+          .nothing-img {
+            width: 100%;
+            height: auto;
+            img {
+              width: 50%;
+            }
+          }
+          .nothing-text {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-size: $font-size-large;
+            color: #999999;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.button-bottom {
+  @include flexBox();
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  z-index: 201;
+  border-top: solid 1px $base-border-color;
+  background-color: $white;
+  font-size: $font-size-xxl;
+  .home-page, .groupon-user {
+    @include flex(1);
+    border-right: solid 1px $base-border-color;
+    text-align: center;
+    .iconfont {
+      font-size: $font-size-xxxl !important;
+    }
+    .button-text {
+      margin-left: 12px;
+    }
+  }
+  .groupon-user {
+    border-right: 0;
+  }
+}
+
+//明日上新
+.groupon-foreshow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 0;
+  background-color: $base-background-color;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 200;
+  //轮播
+  .notice-main {
+    &.share-notice-main {
+      position: fixed;
+      top: 50px;
+      left: 15px;
+      width: auto;
+      height: 30px;
+      border-radius: 15px;
+      background-color: rgba(0, 0, 0, 0.4);
+      padding: 0;
+      z-index: 201;
+      .notice-wrapper {
+        height: 30px;
+        line-height: 30px;
+        font-size: $font-size-large;
+        margin: 0;
+        padding: 0;
+        color: $white;
+        .notice-list {
+          font-size: 12px;
+          .notice-item {
+            line-height: 30px;
+            @include flexBox();
+            .notice-img {
+              width: 30px;
+              height: 30px;
+              img {
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+              }
+            }
+            .notice-tip {
+              margin-left: 10px;
+              padding-right: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+  article {
+    top: 0;
+    bottom: 0;
+  }
+  .foreshow-item {
+    width: 100%;
+    background-color: $white;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    .item-img-container {
+      position: relative;
+      width: 100%;
+      padding-left: 15px;
+      padding-top: 40px;
+      padding-bottom: 45px;
+      padding-right: 15px;
+      text-align: center;
+      //border-bottom: solid 1px $base-border-color;
+      .popup {
+        position: absolute;
+        left: 15px;
+        top: 10px;
+        height: 30px;
+        line-height: 30px;
+        border-radius: 15px;
+        color: $white;
+        background-color: rgba(0, 0, 0, 0.6);
+        .oppup-img {
+          width: 30px;
+          margin-right: 6px;
+        }
+        .groupon-name {
+          padding-right: 15px;
+        }
+      }
+      .groupon-time {
+        position: absolute;
+        right: 0px;
+        top: 20px;
+        height: 20px;
+        line-height: 20px;
+        background-color: #CCCCCC;
+        border-radius: 10px 0 0 10px;
+        .time-text {
+          color: $white;
+          padding: 0 10px;
+        }
+      }
+      .foreshow-item-img {
+        width: 52%;
+      }
+    }
+    .foreshow-item-detail {
+      width: 100%;
+      padding: 0 15px;
+      .postage-name {
+        width: 100%;
+        height: 16px;
+        line-height: 16px;
+        @include flexBox();
+        .postage {
+          padding: 0 4px;
+          margin-right: 5px;
+          font-size: $font-size-base;
+          color: $white;
+          background-color: $base-color;
+          border-radius: 3px;
+        }
+        .name {
+          @include flex(1);
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: $font-size-xxl;
+        }
+      }
+      .instruction {
+        padding: 8px 0;
+        color: $base-text-color2;
+        font-size: $font-size-large;
+        .tag {
+          color: $base-text-color2;
+          font-size: $font-size-large;
+          font-weight: normal;
+        }
+        .limit {
+          margin: 0 5px;
+        }
+      }
+      .price-buttons {
+        @include flexBox();
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        .prices {
+          @include flex(1);
+          .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #f23030;
+            margin-right: 8px;
+            i {
+              font-style: normal;
+              font-size: $font-size-base;
+              text-align: end;
+            }
+          }
+          .old-price {
+            font-size: $font-size-base;
+            color: $base-text-color2;
+          }
+        }
+        .buttons {
+          @include flexBox();
+          width: 152px;
+          border: solid 1px #cccccc;
+          border-radius: 5px;
+
+          .button-left {
+            width: 76px;
+            background-color: $white;
+            color: $brand-disabled;
+            text-align: center;
+          }
+          .button-right {
+            width: 76px;
+            color: $white;
+            background-color: $brand-disabled;
+            text-align: center;
+            &.active {
+              background-color: $base-color;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .foreshow-nothing {
+    width: 100%;
+    position: absolute;
+    top: 40px;
+    bottom: 0;
+    background-color: $base-background-color;
+    left: 0;
+    padding-top: 20%;
+    text-align: center;
+    .nothing-img {
+      width: 100%;
+      height: auto;
+      img {
+        width: 50%;
+      }
+    }
+    .nothing-text {
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      font-size: $font-size-large;
+      color: #999999;
+    }
+  }
+}
+
+//参团详情
+.groupon-details-main {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 0;
+  background-color: $base-background-color;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 200;
+
+  .active-goods {
+    &.groupon-details-goods {
+      width: 100%;
+      background-color: $white;
+      .goods-rows {
+        width: 100%;
+        .my-groupon-item {
+          width: 100%;
+          background-color: $white;
+          //margin-bottom: 10px;
+          .my-groupon-item-shop {
+            @include flexBox();
+            padding: 0 15px;
+            height: 32px;
+            line-height: 32px;
+            @include flexJustify(space-between);
+            .merchant {
+              .iconfont {
+                font-size: 14px;
+                margin-right: 7px;
+              }
+              .shop-name {
+                font-size: $font-size-base;
+              }
+            }
+            .order {
+              color: $base-color;
+              font-size: $font-size-base;
+              .order-stutas {
+                margin-right: 15px;
+              }
+            }
+          }
+          .my-groupon-item-goods {
+            @include flexBox();
+            position: relative;
+            width: 100%;
+            padding: 15px;
+            height: 110px;
+            background-color: $base-background-color;
+            .goods-img {
+              width: 80px;
+              height: 80px;
+              margin-right: 10px;
+            }
+            .goods-desc {
+              height: 80px;
+              @include flex(1);
+              .goods-name {
+                width: 100%;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                height: 14px;
+                line-height: 14px;
+                font-size: $font-size-large;
+                margin-bottom: 10px;
+              }
+              .label {
+                height: 12px;
+                line-height: 12px;
+                color: $base-text-color2;
+              }
+            }
+            .mypt-badge {
+              position: absolute;
+              right: 15px;
+              top: 15px;
+              width: 80px;
+              height: 80px;
+              img {
+                width: 100%;
+              }
+            }
+          }
+          .my-groupon-item-groupon {
+            @include flexBox();
+            width: 100%;
+            padding: 0 15px;
+            height: 50px;
+            line-height: 60px;
+            //border-bottom: solid 1px $base-border-color;
+            .groupon-status {
+              @include flex(1);
+              color: $base-text-color;
+              font-size: $font-size-base;
+              .text-title {
+                color: $base-text-color2;
+              }
+            }
+            .total-amount {
+              color: $base-text-color2;
+              text-align: right;
+              .price {
+                font-size: $font-size-xl;
+                color: $base-text-color;
+                .postage-status {
+                  font-size: $font-size-base;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .group-detail {
+        width: 100%;
+        background-color: $white;
+        padding-bottom: 15px;
+        .top-line {
+          width: 100%;
+        }
+        .group-members {
+          width: 100%;
+          text-align: center;
+          .title {
+            width: 100%;
+            height: 16px;
+            line-height: 16px;
+            text-align: center;
+            font-size: $font-size-xxl;
+          }
+          .img-container {
+            display: inline-block;
+            padding: 0 10px;
+            text-align: center;
+            max-width: 270px;
+            .avatar {
+              float: left;
+              width: 35px;
+              height: 35px;
+              margin-right: 15px;
+              margin-bottom: 10px;
+              &:last-child {
+                margin-right: 0;
+              }
+            }
+
+          }
+          .tips {
+            clear: both;
+            width: 100%;
+            height: 14px;
+            line-height: 14px;
+            padding: 0 10px;
+            text-align: center;
+            margin-bottom: 10px;
+            font-weight: 700;
+            span {
+              color: $base-color;
+            }
+          }
+          .time-countdown {
+            @include flexBox();
+            width: 100%;
+            padding: 0 10px;
+            height: 20px;
+            line-height: 20px;
+            .countdown-left, .countdown-right {
+              margin-top: 10px;
+              border-top: solid 1px $base-border-color;
+              @include flex(1);
+            }
+            .time {
+              @include flexBox();
+              margin: 0 10px;
+              ul.timeList {
+                margin-left: 5px;
+                color: $base-text-color2;
+                li {
+                  float: left;
+                  &.sqaure {
+                    background-color: black;
+                    color: $white;
+                    padding: 0 5px;
+                    margin: 0 3px;
+                  }
+                  &.colon {
+                    color: black;
+                    font-weight: 700;
+                  }
+                  &:last-child {
+                    margin-right: 0;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .button {
+          margin: 10px 15px 0 15px;
+          height: 45px;
+          line-height: 44px;
+          text-align: center;
+          background-color: $base-color;
+          border-radius: 5px;
+          font-size: $font-size-xxl;
+          color: $white;
+          float: none;
+          width: auto;
+          &.button-disabled {
+            background-color: $brand-disabled;
+          }
+        }
+        .groupon-wraming {
+          width: 100%;
+          padding: 0 15px;
+          margin-top: 5px;
+          .wram {
+            clear: both;
+            height: 32px;
+            line-height: 32px;
+            font-size: $font-size-base;
+            color: $base-text-color2;
+          }
+          .groupon-advice-list {
+            width: 100%;
+            .groupon-advice {
+              position: relative;
+              @include flexBox();
+              width: 100%;
+              height: 45px;
+              border: solid 1px $base-color;
+              border-radius: 22px;
+              background-color: #fff2e5;
+              margin-bottom: 15px;
+              &:last-child {
+                margin-bottom: 0;
+              }
+              .avatar {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 45px;
+                height: 45px;
+                img {
+                  width: 100%;
+                }
+              }
+              .group-item {
+                margin-left: 55px;
+                @include flex(1);
+                @include flexBox();
+                .group-text {
+                  @include flex(1);
+                  .group-member {
+                    height: 12px;
+                    padding-top: 10px;
+                    padding-bottom: 7px;
+                    font-size: $font-size-base;
+                    color: $base-text-color;
+                  }
+                  .deadline {
+                    height: 10px;
+                    padding-top: 10px;
+                    font-size: 10px;
+                    color: $base-text-color2;
+                  }
+                }
+                .member-amount {
+                  height: 45px;
+                  line-height: 45px;
+                  //margin: 0 15px;
+                  margin-right: 5px;
+                  font-size: $font-size-base;
+                  color: $base-text-color2;
+                  span {
+                    color: #ff0000;
+                  }
+                }
+              }
+              .join-groupon {
+                //padding: 0 15px;
+                padding: 0 15px 0 5px;
+                height: 45px;
+                line-height: 45px;
+                font-size: $font-size-base;
+                color: $white;
+                background-color: $base-color;
+                .iconfont {
+                  //padding-left: 5px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .more-groupon {
+    width: 100%;
+    background-color: $base-background-color;
+    .title {
+      @include flexBox();
+      margin: 0 15px;
+      height: 39px;
+      .title-text {
+        height: 14px;
+        line-height: 14px;
+        font-size: $font-size-large;
+        margin: 15px 5px 10px 5px;
+        padding: 0 10px;
+        .iconfont {
+          font-size: 12px;
+          color: #f23030;
+          margin-right: 3px;
+        }
+      }
+      .title-left, .title-right {
+        @include flex(1);
+        margin-top: 19px;
+        border-top: solid 1px $base-border-color;
+      }
+    }
+    .goods-conent {
+      width: 100%;
+      .foreshow-item {
+        width: 100%;
+        background-color: $white;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+        .item-img-container {
+          position: relative;
+          width: 100%;
+          padding-left: 15px;
+          padding-top: 40px;
+          padding-bottom: 45px;
+          padding-right: 15px;
+          text-align: center;
+          //border-bottom: solid 1px $base-border-color;
+          .groupon-time {
+            position: absolute;
+            right: 0px;
+            top: 20px;
+            height: 20px;
+            line-height: 20px;
+            background-color: #CCCCCC;
+            border-radius: 10px 0 0 10px;
+            .time-text {
+              color: $white;
+              padding: 0 10px;
+            }
+          }
+          .foreshow-item-img {
+            width: 52%;
+          }
+        }
+        .foreshow-item-detail {
+          width: 100%;
+          padding: 0 15px;
+          .postage-name {
+            width: 100%;
+            height: 16px;
+            line-height: 16px;
+            @include flexBox();
+            .postage {
+              padding: 0 4px;
+              margin-right: 5px;
+              font-size: $font-size-base;
+              color: $white;
+              background-color: $base-color;
+              border-radius: 3px;
+            }
+            .name {
+              @include flex(1);
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-size: $font-size-xxl;
+            }
+          }
+          .instruction {
+            padding: 8px 0;
+            color: $base-text-color2;
+            font-size: $font-size-large;
+            .tag {
+              color: $base-text-color2;
+              font-size: $font-size-large;
+              font-weight: normal;
+            }
+            .limit {
+              margin: 0 5px;
+            }
+          }
+          .price-buttons {
+            @include flexBox();
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            .prices {
+              @include flex(1);
+              .price {
+                font-size: 20px;
+                font-weight: 700;
+                color: #f23030;
+                margin-right: 8px;
+                i {
+                  font-style: normal;
+                  font-size: $font-size-base;
+                  text-align: end;
+                }
+              }
+              .old-price {
+                font-size: $font-size-base;
+                color: $base-text-color2;
+              }
+            }
+            .buttons {
+              @include flexBox();
+              width: 152px;
+              border: solid 1px #cccccc;
+              border-radius: 5px;
+              &.active {
+                border: solid 1px $base-color;
+              }
+
+              .button-left {
+                width: 76px;
+                background-color: $white;
+                color: $brand-disabled;
+                text-align: center;
+                &.active {
+                  color: $base-color;
+                }
+              }
+              .button-right {
+                width: 76px;
+                color: $white;
+                background-color: $brand-disabled;
+                text-align: center;
+                &.active {
+                  background-color: $base-color;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.pt-index {
+  z-index: 200;
+  position: fixed;
+  right: 15px;
+  bottom: 25%;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: $base-color;
+  text-align: center;
+  color: $white;
+  padding: 6px;
+  box-shadow: -1px 1px 2px #888888;
+  .iconfont {
+    font-size: $font-size-large;
+    line-height: 16px;
+  }
+  .index {
+    font-size: 10px;
+    line-height: 10px;
+  }
+}
+
+//团成员弹框
+.ui-dialog {
+  &.groupon-info-dialog {
+    position: fixed;
+    top: 20%;
+    bottom: 25%;
+    left: 10%;
+    right: 10%;
+    width: 80%;
+    z-index: 501;
+    margin-left: 0;
+    margin-top: 0;
+    //overflow-x: hidden;
+    background: $base-background-color;
+    .setting-table {
+      &.groupon-info-dialog-content {
+        height: 100%;
+        padding-top: 0px;
+        @include flexBox;
+        @include flexDirectionColumn();
+        .groupon-info-top {
+          position: relative;
+          width: 100%;
+          background-color: $white;
+          text-align: center;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          .img-close {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            top: 10px;
+            right: 15px;
+          }
+          .avatar {
+            width: 35px;
+            height: 35px;
+          }
+          .phone {
+            font-size: $font-size-large;
+            color: $base-text-color;
+            margin: 10px 0;
+          }
+          .groupon-time {
+            font-size: 10px;
+            color: $base-text-color2;
+            span {
+              margin-right: 5px;
+            }
+          }
+        }
+        .groupon-info-list-blank {
+          @include flex(1);
+          position: relative;
+          width: 100%;
+          padding: 10px;
+          text-align: center;
+          img {
+            height: 100%;
+          }
+          .no-member {
+            position: absolute;
+            left: 25%;
+            bottom: 20px;
+            width: 50%;
+            padding: 5px 10px;
+            color: $base-text-color2;
+          }
+        }
+        .groupon-info-list {
+          @include flex(1);
+          width: 100%;
+          padding: 10px 10px 0 10px;
+          margin-bottom: 20px;
+          overflow-x: hidden;
+          overflow-y: scroll;
+          .group-member {
+            width: 100%;
+            height: 35px;
+            margin-top: 10px;
+            line-height: 35px;
+            @include flexBox();
+            .avatar {
+              width: 35px;
+              height: 35px;
+              margin-right: 8px;
+            }
+            .phone {
+              font-size: $font-size-base;
+              color: $base-text-color;
+              width: 78px;
+            }
+            .groupon-time {
+              @include flex(1);
+              text-align: right;
+              font-size: 10px;
+              color: $base-text-color2;
+            }
+          }
+          .group-member-blank {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+//产品详情弹框
+.ui-dialog {
+  &.join-groupon-dialog {
+    position: fixed;
+    top: 25%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 501;
+    margin-left: 0;
+    margin-top: 0;
+    background: $base-background-color;
+    .setting-table {
+      padding-top: 0px;
+      .content {
+        position: relative;
+        width: 100%;
+        padding-bottom: 50px;
+        background-color: $base-background-color;
+        .groupon-product {
+          width: 100%;
+          padding-left: 15px;
+          background-color: $white;
+          //overflow-x: scroll;
+          .product-details {
+            position: relative;
+            width: 100%;
+            height: 110px;
+            padding-top: 15px;
+            border-bottom: solid 1px $base-border-color;
+            .product-img {
+              position: absolute;
+              top: -15px;
+              left: 0;
+              width: 110px;
+              height: 110px;
+              border-radius: 5px;
+            }
+            .close-img {
+              position: absolute;
+              right: 15px;
+              top: 15px;
+              width: 16px;
+              height: 16px;
+            }
+            .product-instruction {
+              margin-left: 130px;
+              .price {
+                height: 14px;
+                line-height: 14px;
+                font-size: $font-size-large;
+                font-weight: 700;
+                color: #f23030;
+                margin: 10px 15px 10px 0;
+              }
+              .desc {
+                margin-right: 15px;
+                height: 20px;
+                line-height: 20px;
+                font-size: 10px;
+                color: $base-text-color2;
+              }
+            }
+          }
+          .user-choise {
+            width: 100%;
+            //height: 200px;
+            overflow-y: scroll;
+            .color-choice, .size-choice {
+              width: 100%;
+              padding-right: 15px;
+              border-bottom: solid 1px $base-border-color;
+              font-size: $font-size-large;
+              .color-title {
+                height: 14px;
+                line-height: 14px;
+                margin: 15px 0;
+              }
+              .color-map {
+                width: 100%;
+                @include flexBox();
+                flex-wrap: wrap;
+                margin-bottom: 15px;
+                .color-item {
+                  padding: 6px 10px;
+                  margin-right: 10px;
+                  margin-bottom: 10px;
+                  font-size: $font-size-base;
+                  background-color: #f5f5f5;
+                  color: $base-text-color;
+                  border-radius: 3px;
+                  &.active {
+                    background-color: $base-color;
+                    color: $white;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .bottom-button {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          font-size: 18px;
+          background-color: $brand-disabled;
+          color: $white;
+          &.active {
+            background-color: $base-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+//拼团商品详情
+.groupon-product-details {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 40px;
+  bottom: 50px;
+  background-color: $base-background-color;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 200;
+  .product-img {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  //轮播图
+  .carousel-page {
+    width: 100%;
+    ul.carousel2 {
+      width: 100%;
+      height: 100%;
+      li {
+        display: inline-block;
+        .bg-image {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+  .product-instruction {
+    width: 100%;
+    padding: 15px 15px 0 15px;
+    border-bottom: solid 1px $base-border-color;
+    background-color: $white;
+    .name {
+      width: 100%;
+      //height: 40px;
+      line-height: 20px;
+      font-size: $font-size-xxl;
+      color: $base-text-color;
+    }
+    .desc {
+      line-height: 14px;
+      margin: 10px 0;
+      font-size: $font-size-large;
+      color: $base-text-color2;
+    }
+    .goods-detail {
+      @include flexBox();
+      margin: 15px 0;
+      line-height: 18px;
+      .prices-label {
+        @include flex(1);
+        .price {
+          font-size: 18px;
+          color: #f23030;
+          font-weight: 500;
+          margin-right: 10px;
+          i {
+            font-style: normal;
+            font-size: 16px;
+            margin-right: 5px;
+          }
+        }
+        .old-price {
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          margin-right: 10px;
+        }
+        .label {
+          display: inline-block;
+          height: 18px;
+          line-height: 18px;
+          padding: 0 5px;
+          color: $base-color;
+          border: solid 1px $base-color;
+          border-radius: 3px;
+        }
+      }
+      .amount {
+        height: 18px;
+        padding: 3px 10px 0 10px;
+        font-size: $font-size-large;
+        color: $base-text-color2;
+        span {
+          color: $base-color;
+        }
+      }
+    }
+  }
+  .groupon-container {
+    width: 100%;
+    padding: 15px 0 15px 15px;
+    margin-top: 10px;
+    background-color: $white;
+    .groupon-top {
+      width: 100%;
+      padding-right: 15px;
+      //border-bottom: solid 1px $base-border-color;
+      .title-rules {
+        width: 100%;
+        height: 14px;
+        line-height: 14px;
+        .title {
+          float: left;
+          font-size: $font-size-large;
+          color: $base-text-color;
+          font-weight: 700;
+        }
+        .rules {
+          float: right;
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          .iconfont {
+            padding-left: 7px;
+          }
+        }
+      }
+      .warn {
+        width: 100%;
+        margin: 15px 0 10px 0;
+        line-height: 12px;
+        font-size: $font-size-base;
+        color: $base-text-color2;
+      }
+    }
+    .label-list {
+      width: 100%;
+      padding-right: 15px;
+      height: 32px;
+      line-height: 32px;
+      border-top: solid 1px $base-border-color;
+      border-bottom: solid 1px $base-border-color;
+      .label-item {
+        float: left;
+        padding-right: 20px;
+        font-size: $font-size-base;
+        color: $base-text-color2;
+        &:last-child {
+          padding-right: 0;
+        }
+        .iconfont {
+          padding-right: 5px;
+          font-size: 10px;
+          color: $base-color;
+        }
+      }
+    }
+    .groupon-wraming {
+      width: 100%;
+      padding-right: 15px;
+      //border-top: solid 1px $base-border-color;
+      .wram {
+        clear: both;
+        height: 32px;
+        line-height: 32px;
+        font-size: $font-size-base;
+        color: $base-text-color2;
+      }
+      .groupon-advice-list {
+        width: 100%;
+        .groupon-advice {
+          position: relative;
+          @include flexBox();
+          width: 100%;
+          height: 45px;
+          border: solid 1px $base-color;
+          border-radius: 22px;
+          background-color: #fff2e5;
+          margin-bottom: 15px;
+          &:last-child {
+            margin-bottom: 0;
+          }
+          .avatar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 45px;
+            height: 45px;
+            img {
+              width: 100%;
+            }
+          }
+          .group-item {
+            margin-left: 55px;
+            @include flex(1);
+            @include flexBox();
+            .group-text {
+              @include flex(1);
+              .group-member {
+                height: 12px;
+                padding-top: 10px;
+                padding-bottom: 7px;
+                font-size: $font-size-base;
+                color: $base-text-color;
+              }
+              .deadline {
+                padding-top: 10px;
+                font-size: 10px;
+                color: $base-text-color2;
+              }
+            }
+            .member-amount {
+              height: 45px;
+              line-height: 45px;
+              //margin: 0 15px;
+              margin-right: 5px;
+              font-size: $font-size-base;
+              color: $base-text-color2;
+              span {
+                color: #ff0000;
+              }
+            }
+          }
+          .join-groupon {
+            //padding: 0 15px;
+            padding: 0 15px 0 5px;
+            height: 45px;
+            line-height: 45px;
+            font-size: $font-size-base;
+            color: $white;
+            background-color: $base-color;
+            .iconfont {
+              //padding-left: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+  .address {
+    width: 100%;
+    margin-top: 10px;
+    //.address-content,.address-content-blank{
+    //  @include flexBox();
+    //  width:100%;
+    //  padding: 15px;
+    //  background-color: $white;
+    //}
+    .address-content {
+      //height: 66px;
+      @include flexBox();
+      width: 100%;
+      padding: 15px;
+      background-color: $white;
+      .address-left {
+        font-size: $font-size-base;
+        color: $gray-light;
+        margin-right: 20px;
+      }
+      .address {
+        @include flex(1);
+        line-height: 18px;
+        color: $gray;
+        font-size: $font-size-large;
+        margin-top: 0px;
+      }
+      .iconfont {
+        //height: 36px;
+        //line-height: 36px;
+        margin-left: 15px;
+        color: $gray-light;
+      }
+    }
+    .address-content-blank {
+      @include flexBox();
+      width: 100%;
+      padding: 15px;
+      line-height: 27px;
+      margin-top: 0px;
+      background-color: white;
+      .address {
+        @include flex(1);
+        color: $gray;
+        font-size: $font-size-large;
+        margin-top: 0;
+      }
+      .iconfont {
+        width: 12px;
+        color: $gray-light;
+      }
+    }
+
+  }
+  .product-evalution {
+    width: 100%;
+    height: 44px;
+    padding: 15px;
+    margin-top: 10px;
+    font-size: $font-size-large;
+    background-color: $white;
+    margin-bottom: 10px;
+    .text {
+      float: left;
+      color: $base-text-color;
+    }
+    .iconfont {
+      float: right;
+      color: $base-text-color2;
+    }
+  }
+  .kaola {
+    width: 100%;
+    height: 70px;
+    margin-top: 10px;
+    background-color: $white;
+    clear: both;
+    .kaola-content {
+      @include flexBox();
+      padding: 15px 15px 15px 0;
+      margin-left: 15px;
+      border-bottom: solid 1px $base-border-color;
+      .kaola-logo {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        img {
+          width: 100%;
+        }
+      }
+      .kaola-instruction {
+        @include flex(1);
+        .name {
+          height: 14px;
+          line-height: 14px;
+          font-size: $font-size-large;
+          color: $base-text-color;
+          font-weight: 500;
+          margin-bottom: 8px;
+        }
+        .kaola-desc {
+          width: 100%;
+          span {
+            font-size: $font-size-base;
+            color: #888888;
+            padding-right: 10px;
+          }
+        }
+      }
+      .kaola-button {
+        font-size: $font-size-base;
+        padding: 10px 10px;
+        border: solid 1px $base-border-color;
+        border-radius: 5px;
+        color: $gray;
+        .iconfont {
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+  .guide {
+    @include flexBox();
+    width: 100%;
+    height: 42px;
+    padding: 15px 18%;
+    .guide-text {
+      line-height: 12px;
+      font-size: $font-size-base;
+      color: #888888;
+      margin: 0 10px;
+    }
+    .left-line, .right-line {
+      @include flex(1);
+      margin-top: 5px;
+      border-top: solid 1px $base-border-color;
+    }
+  }
+  .product-info {
+    width: 100%;
+    .product-nav {
+      @include flexBox();
+      width: 100%;
+      padding: 0 15px;
+      height: 45px;
+      line-height: 45px;
+      background-color: $white;
+      .nav-item {
+        @include flex(1);
+        text-align: center;
+        font-size: $font-size-large;
+        &.active {
+          color: $base-color;
+        }
+      }
+    }
+  }
+
+  .product-info-container {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+.pt-product-bottom-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  @include flexBox();
+  width: 100%;
+  height: 50px;
+  border-top: solid 1px $base-border-color;
+  z-index: 201;
+  background-color: $white;
+  .homepage {
+    width: 16%;
+    text-align: center;
+    padding-top: 5px;
+    .iconfont {
+      height: 18px;
+      font-size: 18px;
+      color: $gray;
+    }
+    .text {
+      height: 20px;
+      line-height: 20px;
+      font-size: 10px;
+      color: $gray;
+    }
+  }
+  .normal-purches, .pintu-button {
+    @include flex(1);
+    text-align: center;
+    padding-top: 5px;
+    .price {
+      height: 16px;
+      font-size: $font-size-xxl;
+    }
+    .text {
+      font-size: $font-size-base;
+      margin: 5px 0;
+    }
+  }
+  .normal-purches {
+    background-color: rgb(245, 201, 199);
+    color: #f23030;
+  }
+  .pintu-button {
+    background-color: #f23030;
+    color: $white;
+    &.pintu-button-start {
+      background-color: $brand-disabled;
+    }
+    &.pintu-button-limit {
+      background-color: $brand-disabled;
+      .limit {
+        font-size: $font-size-xxl;
+        padding-top: 8px;
+      }
+    }
+  }
+}
+
+//我的拼团
+.mygroupon-tab {
+  .ui-tabs {
+    &.ui-top-menu-tab {
+      .ui-tab-item {
+        padding: 0;
+        &.active {
+          border-bottom: 0;
+          .ui-tab-content {
+            //border-bottom: solid 2px red;
+            .ui-landmark {
+
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.active-goods {
+  &.my-groupon-all, &.my-groupon-waitpay, &.my-groupon-waitdeal, &.my-groupon-waitdeliver, &.my-groupon-waitreceive {
+    width: 100%;
+    .goods-rows {
+      width: 100%;
+      .my-groupon-item {
+        width: 100%;
+        background-color: $white;
+        margin-bottom: 10px;
+        .my-groupon-item-shop {
+          @include flexBox();
+          padding: 0 15px;
+          height: 32px;
+          line-height: 32px;
+          @include flexJustify(space-between);
+          .merchant {
+            .iconfont {
+              font-size: 14px;
+              margin-right: 7px;
+            }
+            .shop-name {
+              font-size: $font-size-base;
+            }
+          }
+          .order {
+            color: $base-color;
+            font-size: $font-size-base;
+            .order-stutas {
+              margin-right: 10px;
+            }
+          }
+        }
+        .my-groupon-item-goods {
+          position: relative;
+          @include flexBox();
+          width: 100%;
+          padding: 15px;
+          height: 110px;
+          background-color: $base-background-color;
+          .goods-img {
+            width: 80px;
+            height: 80px;
+            margin-right: 10px;
+          }
+          .goods-desc {
+            height: 80px;
+            @include flex(1);
+            .goods-name {
+              width: 100%;
+              overflow: hidden;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              height: 14px;
+              line-height: 14px;
+              font-size: $font-size-large;
+              margin-bottom: 10px;
+            }
+            .label {
+              height: 12px;
+              line-height: 12px;
+              color: $base-text-color2;
+            }
+          }
+
+          .mypt-badge {
+            position: absolute;
+            right: 15px;
+            top: 15%;
+            width: 80px;
+            height: 80px;
+            img {
+              width: 100%;
+            }
+          }
+        }
+        .my-groupon-item-groupon {
+          @include flexBox();
+          width: 100%;
+          padding: 0 15px;
+          height: 60px;
+          line-height: 60px;
+          border-bottom: solid 1px $base-border-color;
+          .groupon-status {
+            color: $base-text-color;
+            font-size: $font-size-base;
+            .text-title {
+              color: $base-text-color2;
+            }
+          }
+          .total-amount {
+            color: $base-text-color2;
+            @include flex(1);
+            text-align: right;
+            .price {
+              font-size: $font-size-xl;
+              color: $base-text-color;
+              .postage-status {
+                font-size: $font-size-base;
+              }
+            }
+          }
+        }
+        .order-step {
+          width: 100%;
+          padding: 0 15px;
+          @include flexBox();
+          @include flexJustify(flex-end);
+          .order-step-status {
+            margin: 10px 0;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            background-color: $white;
+            font-size: $font-size-large;
+            color: $gray;
+            border: solid 1px $base-border-color;
+            border-radius: 5px;
+            margin-right: 10px;
+            padding: 0 10px;
+            &:last-child {
+              margin-right: 0;
+            }
+            &.active {
+              background-color: $base-color;
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.groupbuy-order-nothing {
+  width: 100%;
+  position: absolute;
+  top: 40px;
+  bottom: 0;
+  background-color: $base-background-color;
+  left: 0;
+  text-align: center;
+  .nothing-img {
+    width: 100%;
+    height: auto;
+    img {
+      width: 50%;
+    }
+  }
+  .nothing-text {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    font-size: $font-size-large;
+    color: #999999;
+  }
+  .nothing-button {
+    width: 40%;
+    margin: 10px auto 0;
+    color: $base-color;
+    border: solid 1px $base-color;
+    padding: 5px 0;
+    font-size: $font-size-large;
+  }
+}
+
+.assess-btn {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+
+
+

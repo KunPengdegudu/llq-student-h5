@@ -1,0 +1,192 @@
+<div class="activity-main a915" data-ng-cloak>
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            寻找信用代言人
+        </div>
+    </div>
+
+    <div class="activity-main-content">
+
+        <img class="activity-banner" src="../../../screens/base/assets/a915/app_banner.png"/>
+        <img class="activity-banner activity-a915-coupon" ng-click="inviteFriends()"
+             src="../../../screens/base/assets/a915/coupon.png"/>
+
+        <div class="activity-banner activity-a915-desc">
+            <div class="activity-a915-desc-content">
+                <div class="title">
+                    活动攻略
+                </div>
+
+                <div class="text">
+                    <p>1.手机客户端线上认证</p>
+
+                    <p>2.完成认证即可领取信用额度，99元购买原价220元的大礼包</p>
+
+                    <p>3.购买苹果专区手机即可获赠原价150元的大礼包，购买三星专区的手机可获赠原价220元的大礼包，购买其他手机可获赠原价120元的大礼包</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="activity-banner activity-a915-area">
+            <div class="title">—— 价值220元大礼包 ——</div>
+            <div class="desc">
+                <div class="desc-content-915">
+                    内含：龙猫充电宝 Mini自拍杆 多功能USB排插 耳机 懒人支架 两用数据线 充电头 手机支架 LED灯 防尘塞 绕线器
+                </div>
+                <div class="desc-money">99元秒杀</div>
+            </div>
+            <a ng-click="gotoProductDetail(giftProduct.productId,giftProduct.promotionId, giftProduct.promotionType)">
+                <div class="desc-btn-wrapper">
+                    <div class="desc-btn">立即抢购</div>
+                </div>
+            </a>
+            <!--
+            <div class="desc-row">
+                <div class="desc-row-item" data-ng-repeat="item in gift">
+                    <a ng-click="gotoProductDetail(item.productId,item.promotionId, item.promotionType)">
+                        <div class="desc-bg-img" ng-style="{'background-image': 'url(' + item.mainProImgUrl + ')'}"></div>
+                        <div class="desc-text">
+                            <span data-ng-bind="item.name | omitStr : 8"></span>
+                        </div>
+                        <div class="desc-text">
+                            <span>售价：</span><span data-ng-bind="item.proSkuPrice | moneyFixed"></span>
+                        </div>
+                        <div class="desc-aging">
+                            <span>月供</span>
+                            <span data-ng-bind="item.defaultEveryAmount | moneyFixed"></span>
+                            <span>x</span>
+                            <span data-ng-bind="item.defaultPeriod"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            -->
+        </div>
+
+        <div class="activity-banner activity-a915-area">
+            <div class="title">—— 三星专区 ——</div>
+            <div class="desc">
+                <div class="desc-title">送价值220元大礼包</div>
+                <div class="desc-content">
+                    礼包内容：龙猫充电宝 Mini自拍杆 多功能USB排插 耳机 懒人支架 两用数据线 充电头 手机支架 LED灯 防尘塞 绕线器
+                </div>
+            </div>
+            <div class="desc-row">
+                <div class="desc-row-item" data-ng-repeat="item in sungsang">
+                    <a ng-click="gotoProductDetail(item.productId,item.promotionId, item.promotionType)">
+
+                        <div class="desc-img">
+                            <img class="desc-bg-img" data-ng-src="{{item.mainProImgUrl + '@!300x300'}}"/>
+                        </div>
+
+                        <div class="desc-text">
+                            <span data-ng-bind="item.name"></span>
+                        </div>
+                        <div class="desc-text">
+                            <span>售价：</span><span data-ng-bind="item.proSkuPrice | moneyFixed"></span>
+                        </div>
+                        <div class="desc-aging">
+                            <span>月供</span>
+                            <span data-ng-bind="item.defaultEveryAmount | moneyFixed"></span>
+                            <span>x</span>
+                            <span data-ng-bind="item.defaultPeriod"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-banner activity-a915-area">
+            <div class="title">—— 苹果专区 ——</div>
+            <div class="desc">
+                <div class="desc-title">送价值150元大礼包</div>
+                <div class="desc-content">
+                    礼包内容：卡通充电宝 Mini自拍杆 耳机 数据线 充电头 手机支架 LED灯 防尘塞 绕线器
+                </div>
+            </div>
+
+            <div class="desc-row">
+                <div class="desc-row-item" data-ng-repeat="item in apple">
+                    <a ng-click="gotoProductDetail(item.productId,item.promotionId, item.promotionType)">
+                        <div class="desc-img">
+                            <img class="desc-bg-img" data-ng-src="{{item.mainProImgUrl + '@!300x300'}}"/>
+                        </div>
+                        <div class="desc-text">
+                            <span data-ng-bind="item.name"></span>
+                        </div>
+                        <div class="desc-text">
+                            <span>售价：</span><span data-ng-bind="item.proSkuPrice | moneyFixed"></span>
+                        </div>
+                        <div class="desc-aging">
+                            <span>月供</span>
+                            <span data-ng-bind="item.defaultEveryAmount | moneyFixed"></span>
+                            <span>x</span>
+                            <span data-ng-bind="item.defaultPeriod"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="activity-banner activity-a915-area">
+            <div class="title">—— 其他专区 ——</div>
+            <div class="desc">
+                <div class="desc-title">送价值100元大礼包</div>
+                <div class="desc-content">
+                    礼包内容：Mini自拍杆 耳机 数据线充电头 手机支架 LED灯 防尘塞 绕线器
+                </div>
+            </div>
+
+            <div class="desc-row">
+                <div class="desc-row-item" data-ng-repeat="item in other">
+                    <a ng-click="gotoProductDetail(item.productId,item.promotionId, item.promotionType)">
+                        <div class="desc-img">
+                            <img class="desc-bg-img" data-ng-src="{{item.mainProImgUrl + '@!300x300'}}"/>
+                        </div>
+                        <div class="desc-text">
+                            <span data-ng-bind="item.name"></span>
+                        </div>
+                        <div class="desc-text">
+                            <span>售价：</span><span data-ng-bind="item.proSkuPrice | moneyFixed"></span>
+                        </div>
+                        <div class="desc-aging">
+                            <span>月供</span>
+                            <span data-ng-bind="item.defaultEveryAmount | moneyFixed"></span>
+                            <span>x</span>
+                            <span data-ng-bind="item.defaultPeriod"></span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div ui-dialog class="qrcode-dialog" overlay="true" close-by-overlay="true"
+           is-visible="qrCodeDialog.isVisible" z-index="570">
+    <div class="qrcode-content" id="qrcode"></div>
+    <div class="qrcode-division">
+        <hr/>
+        <div class="text">or</div>
+    </div>
+    <div class="share-desc clearfix">
+        <div class="share-wrapper clearfix" data-ng-click="share('weixin')">
+            <div class="share-img share-weixin"></div>
+            <div class="share-text">微信</div>
+        </div>
+        <div class="share-wrapper clearfix" data-ng-click="share('timeline')">
+            <div class="share-img share-timeline"></div>
+            <div class="share-text">朋友圈</div>
+        </div>
+    </div>
+    <div class="qrcode-desc qrcode-text clearfix">扫描二维码或者分享朋友圈，新注册用户购买99元大礼包，即可领取10元现金奖励</div>
+
+</div>

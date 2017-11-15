@@ -1,0 +1,33 @@
+<ol class="goods-list" data-ng-cloak>
+    <li class="goods-item" data-ng-repeat="item in items">
+
+        <div class="goods-brief">
+
+            <div class="goods-title-bar">
+                <div class="goods-left">{{item.title}}</div>
+            </div>
+
+            <div class="goods-segment"></div>
+
+            <div class="bill-detail">
+                <div class="bill-detail-row">
+                    <div class="left">{{item.createTime | dateFormat}}</div>
+                    <div class="right">总共{{item.period}}期</div>
+                </div>
+                <div class="bill-detail-row">
+                    状态：{{item.status | billStatus}}
+                </div>
+
+            </div>
+            <div class="mybill-next-flex">
+
+                <div class="mybill-button" ng-click="more(item)">
+                    <button class="button">查看账单</button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </li>
+</ol>

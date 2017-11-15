@@ -1,0 +1,32 @@
+<article class="recharge-article" data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" threshold="200"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+    <ul class="gameSearch-table" data-ng-if="isAbnormal">
+        <div class="gameSearch-table-cell" data-ng-repeat="item in items">
+            <div class="search-wrapper" data-ng-click="gotoDetail(item)">
+                <div class="wrapper-left">
+                    <img data-ng-src="{{item.mainProImgUrl}}"/>
+                </div>
+                <div class="wrapper-right">
+                    <div class="wrapper-name" data-ng-bind="item.name"></div>
+                    <div class="wrapper-price">
+                        <div class="wrapper-proSkuPrice">
+                            售价:<span>¥{{item.proSkuPrice}}</span>
+                        </div>
+                        <div class="wrapper-marketPrice">
+                            市场价:<span>¥{{item.marketPrice}}</span>
+                        </div>
+                    </div>
+                    <div class="wrapper-default" data-ng-if="item.defaultEveryAmount && item.defaultPeriod">
+                        月供:<span class="amount">¥{{item.defaultEveryAmount}}</span>
+                        x
+                        <span class="period" data-ng-bind="item.defaultPeriod"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ul>
+    <ul class="gameSearch-table" data-ng-if="!isAbnormal">
+        没东西
+    </ul>
+
+</article>

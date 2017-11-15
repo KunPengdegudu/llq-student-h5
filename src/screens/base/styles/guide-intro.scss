@@ -1,0 +1,239 @@
+#viewport {
+  position: absolute;
+  z-index: 205;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  background: #fff;
+  overflow: hidden;
+
+  .guide-intro-desc-goto {
+    width: 35px;
+    height: 35px;
+    line-height: 33px;
+    font-size: 12px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: white;
+    z-index: 210;
+    text-align: center;
+    border-radius: 30px;
+    border: 1px solid white;
+  }
+  ul, li, p {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  #wrapper {
+    width: 100%;
+    height: 100%;
+  }
+
+  #scroller {
+    position: absolute;
+    z-index: 1;
+    width: 960px;
+    height: 100%;
+    transform: translateZ(0);
+    @include user-select(none);
+    text-size-adjust: none;
+    background-color: #fff;
+  }
+
+  .painting {
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    margin: auto;
+    margin-top: 28%;
+  }
+
+  .slide {
+    width: 100%;
+    height: 100%;
+    float: left;
+    background: #fff;
+    position: relative;
+
+    .slide-title {
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      z-index: 220;
+      top: 6%;
+      font-size: 26px;
+      color: $white;
+      font-weight: $bolder-font-weight;
+    }
+
+    .through{
+      height: 50px;
+      width: 50px;
+      position: absolute;
+      border: 1px solid white;
+      text-align: center;
+      line-height: 50px;
+      font-size: 15px;
+      border-radius: 50%;
+      color: white;
+      top: 20vw;
+      right: 20px;
+    }
+    .slide-desc {
+      position: absolute;
+      z-index: 220;
+      top: 115vw;
+      text-align: center;
+      width: 100%;
+      font-size: 20px;
+      color: $white;
+      font-weight: $bold-font-weight;
+      .desc-line1 {
+
+      }
+
+      .desc-line2 {
+
+      }
+    }
+  }
+
+  .slide1 {
+    background: #e34a3c;
+
+    .bg-img {
+      @include bg-image('../assets/profile/slide-bg1.png', '../assets/profile/slide-bg1.png');
+      background-size: contain;
+      width: 300px;
+      height: 300px;
+      background-repeat: no-repeat;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  .slide2 {
+    background: #9465ff;
+
+    .bg-img {
+      @include bg-image('../assets/profile/slide-bg2.png', '../assets/profile/slide-bg2.png');
+      background-size: contain;
+      width: 300px;
+      height: 300px;
+      background-repeat: no-repeat;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+
+  .slide3 {
+    background: #00947e;
+
+    .bg-img {
+      @include bg-image('../assets/profile/slide-bg3.png', '../assets/profile/slide-bg3.png');
+      background-size: contain;
+      width: 300px;
+      height: 300px;
+      background-repeat: no-repeat;
+      text-align: center;
+      margin: 0 auto;
+    }
+  }
+}
+
+.channel_logo_wrapper {
+  position: absolute;
+  display: none;
+  width: 100%;
+  bottom: 50px;
+
+  .channel_logo {
+    @include bg-image('../assets/profile/channel-logo.png', '../assets/profile/channel-logo.png', 169px, 46px);
+    width: 169px;
+    height: 46px;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+  }
+}
+
+
+.guide-intro-desc-button {
+  position: absolute;
+  z-index: 210;
+  bottom: 3%;
+  left: 50%;
+  border-radius: 3px;
+  border: 1px solid $white;
+  width: 120px;
+  height: 40px;
+  margin-left: -60px;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  font-size: 14px;
+  visibility: hidden;
+}
+
+#indicator {
+  position: absolute;
+  z-index: 210;
+  left: 50%;
+  margin-left: -50px;
+  bottom: 3%;
+  width: 100px;
+  height: 11px;
+}
+
+#dotty {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.indicator-background {
+  position: absolute;
+  z-index: 205;
+  bottom: 3%;
+  left: 50%;
+  margin-left: -65px;
+  width: 130px;
+  text-align: center;
+  li {
+    width: 5px;
+    height: 5px;
+    background: #b4dcff;
+    display: inline-block;
+    margin: 0px 17px;
+    border-radius: 50%;
+  }
+}
+
+.button-hide {
+  @include animation("0.3s FadeOut ease-in-out forwards");
+}
+
+.button-show {
+  @include animation("0.3s FadeIn ease-in-out forwards");
+}
+
+.explore-entry {
+  .first-part {
+    li:first-child {
+      display: none !important;
+    }
+  }
+}
+
+.feedback-container {
+  .submit-wrapper {
+    .md-button {
+      background-color: $base-color;
+    }
+  }
+}
+

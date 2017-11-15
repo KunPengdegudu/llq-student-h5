@@ -1,0 +1,52 @@
+{
+
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "StuiYAuM",
+  "data":
+  {
+    "items":
+    [
+      {
+        "productId": 2,
+        "categoryId": 1,
+        "basePrice": 4000,
+        "contents": "test",
+        "status": "online",
+        "proSkuId": null,
+        "name": "测试其他手机",
+        "productSkuId": 5,
+        "proSkuPrice": 345,
+        "mainProImgUrl": "http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1Niq6GXXXXXbCXXXXXXXXXXXX.jpg_360x360Q90.jpg",
+        "promotionType": null,
+        "defaultEveryAmount": 23.93,
+        "defaultPeriod": 12,
+        "discount": 99,
+        "customTitle": "活动开始了",
+        "stock": 0
+      },
+      {
+        "productId": 1,
+        "categoryId": 1,
+        "basePrice": 5050,
+        "contents": "iphone12",
+        "status": "online",
+        "proSkuId": null,
+        "name": "苹果手机CW",
+        "productSkuId": 1,
+        "proSkuPrice": 5288,
+        "mainProImgUrl": "http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1Niq6GXXXXXbCXXXXXXXXXXXX.jpg_360x360Q90.jpg",
+        "promotionType": null,
+        "defaultEveryAmount": 366.89,
+        "defaultPeriod": 12,
+        "discount": 99,
+        "customTitle": "分期活动开始了",
+        "stock": 180
+      }
+    ]
+  },
+  "fieldErrMsg": null,
+  "login": false
+
+}
+

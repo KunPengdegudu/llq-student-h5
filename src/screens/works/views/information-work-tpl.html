@@ -1,0 +1,161 @@
+<div class="work-info-content work-info-work">
+
+    <ol class="goods-list">
+        <li class="goods-item">
+            <div class="goods-brief">
+
+                <div class="goods-desc  work-describe-container">
+                    <div class="goods-text-large">
+                        <span data-ng-bind="details.title"></span>
+                    </div>
+
+
+                    <div class="goods-subtitle">
+                        <span class="goods-text-gray">{{details.status | workStatus}} </span>
+                        <span>
+                                <span class="goods-text-warn" data-ng-bind="details.oncePayment"></span>
+                                <span ng-if="details.salaryTimeUnitDesc!='其他'">{{details.salaryTimeUnitDesc}}</span>
+                                <span data-ng-if="!details.salaryTimeUnitDesc||details.salaryTimeUnitDesc=='其他'">元</span>
+                        </span>
+                    </div>
+                    <div class="goods-subtitle" data-ng-if="details.paymentTypeDesc">
+                        <span class="goods-text-gray">结算方式 </span>
+                        <span ng-bind="details.paymentTypeDesc"></span>
+                    </div>
+                    <div class="goods-subtitle">
+                        <span class="goods-text-gray">发布时间 </span>
+                        <span data-ng-bind='details.createTime'></span>
+                    </div>
+
+                    <div class="goods-subtitle" data-ng-if="details.source=='qtshe'">
+                        <span class="goods-text-gray">来源 </span>
+                        <span>青团社</span>
+                    </div>
+                    <div class="goods-subtitle">
+                        <span data-ng-repeat='tag in details.tagNameList' class="goods-text-brand"
+                              data-ng-bind="tag | toTrusted"></span>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+
+
+
+
+        <li class="goods-item">
+            <div class="goods-brief">
+                <div class="goods-desc work-describe-container">
+                    <div class="goods-subtitle" data-ng-if="details.corpBaseInfo.name">
+
+                        <span class="goods-text-gray">公司名称</span>
+                        <span data-ng-bind="details.corpBaseInfo.name"></span>
+
+                    </div>
+                    <div class="goods-subtitle">
+
+                        <span class="goods-text-gray">招聘人数</span>
+                        <span data-ng-bind="details.teamCount"></span>
+
+                    </div>
+
+                    <div class="goods-subtitle">
+
+                        <span class="goods-text-gray">报名截止</span>
+                        <span data-ng-bind="details.applyCloseTime.split(' ')[0]"></span>
+
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+        <li class="goods-item">
+            <div class="goods-brief">
+
+
+                <div class="goods-desc work-describe-container">
+                    <div class="goods-subtitle">
+                        <span class="goods-text-gray">工作地点</span>
+                        <span ng-bind-html="details.address | toTrusted "></span>
+                    </div>
+                    <div class="goods-subtitle" data-ng-if="details.beginTime">
+                        <span class="goods-text-gray">工作日期</span>
+                        <span data-ng-bind='details.beginTime.substr(5,5)'></span>
+                        <span>~</span>
+                        <span data-ng-bind='details.endTime.substr(5,5)'></span>
+                    </div>
+                    <div class="goods-subtitle" data-ng-if="!details.beginTime">
+                        <span class="goods-text-gray">工作日期</span>
+                        <span data-ng-bind='details.jobTimeStandard | toTrusted'></span>
+                    </div>
+                    <div class="goods-subtitle" ng-if="details.jobTime">
+                        <span class="goods-text-gray">工作时间</span>
+                        <span data-ng-bind='details.jobTime | toTrusted'></span>
+                    </div>
+                    <div class="goods-subtitle" ng-if="details.needSex">
+                        <span class="goods-text-gray">性别要求</span>
+                        <span ng-bind="details.sexRequire | toTrusted"></span>
+                    </div>
+                    <div class="goods-subtitle" ng-if="details.needHeight">
+                        <span class="goods-text-gray">身高要求</span>
+                        <span ng-bind="details.heightRequire | toTrusted"></span>
+                    </div>
+                    <div class="goods-subtitle" ng-if="details.needHealth">
+                        <span class="goods-text-gray">健康要求</span>
+                        <span ng-bind="details.healthRequire | toTrusted"></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="goods-item">
+            <div class="goods-brief">
+                <div class="goods-desc work-describe-container">
+                    <div class="goods-title">
+                        <span>工作内容</span>
+
+                    </div>
+                    <div class="goods-subtitle">
+
+                        <span class="work-describe-order" ng-bind-html='details.content | toTrusted'></span>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+
+        <li class="goods-item" data-ng-if="details.contactPhone">
+            <div class="goods-brief">
+
+
+                <div class="goods-desc work-describe-container">
+                    <div class="goods-subtitle">
+                        <span class="goods-text-gray">联系人</span>
+                        <span data-ng-bind='details.contactName | toTrusted'></span>
+                    </div>
+                    <div class="goods-subtitle">
+                        <span class="goods-text-gray">电话号码</span>
+                        <span><a data-ng-href="tel:{{details.contactPhone}}">{{details.contactPhone}}</a></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ol>
+
+</div>
+
+<div class="dialog-bottom-btn-wrapper" ng-if="details.status=='recruiting'">
+    <button class="nav-hint single-row submit-btn" ng-click="openApply()"
+            data-ng-if="listRequirementApplysStatus || !isLogin()">
+        立即申请
+    </button>
+    <button class="nav-hint single-row submit-btn" ng-disabled="true"
+            data-ng-if="!listRequirementApplysStatus && isLogin()">
+        已申请
+    </button>
+</div>
+<div class="dialog-bottom-btn-wrapper" ng-if="details.status!='recruiting'">
+    <button class="nav-hint single-row submit-btn" ng-disabled="true">
+        {{details.status | workStatus}}
+    </button>
+</div>

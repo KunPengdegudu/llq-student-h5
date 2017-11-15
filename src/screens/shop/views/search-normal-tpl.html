@@ -1,0 +1,23 @@
+<div class="block-brief shop-product">
+    <div class="block-content">
+        <div class="block-content-inner grid-row" data-ng-repeat="row in itemRows">
+            <div class="grid-item shop-item border-right" data-ng-repeat="item in row track by $index"
+                 data-ng-click="gotoProductDetail(item.productId,item.promotionId,item.promotionType)"
+                 data-ng-if="item.productId">
+                <img data-ng-src="{{item.mainProImgUrl | filterImg : '@!300x300'}}" class="block-image">
+                <div class="block-text title large">{{item.name}}</div>
+
+                <div class="block-text market-price center large">
+                    <span class="goods-text-gray">{{item.proSkuPrice | moneyFixed}}</span>
+                    <span class="goods-text-gray goods-text-delete">¥ {{item.marketPrice}}</span>
+                </div>
+                <div class="block-text center large" data-ng-if="item.defaultEveryAmount">
+                    <span class="goods-text-gray goods-text-small">月供</span>
+                    <span class="goods-text-warn">¥ {{item.defaultEveryAmount}}</span>
+                    <span class="period goods-text-gray">x{{item.defaultPeriod}}</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

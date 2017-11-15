@@ -1,0 +1,219 @@
+.ticket-main {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $white;
+  .ticket-wrappers {
+    position: absolute;
+    top: $header-height;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 30px;
+    background-color: $white;
+    z-index: 200;
+    .ticket-wrapper {
+      width: 300px;
+      border: 2px solid #b5b5b5;
+      margin: 20px auto;
+      padding-bottom: 30px;
+      .ticket-title {
+        margin: -24px auto 0;
+        width: 200px;
+        background-color: $white;
+        img {
+          width: 100%;
+        }
+      }
+      .img-upload {
+        width: 100%;
+        padding: 35px 0 45px;
+        text-align: center;
+        img {
+          width: 85px;
+          height: 112px;
+        }
+      }
+      .user-info {
+        width: 100%;
+        .user-item {
+          width: 80%;
+          height: 35px;
+          line-height: 35px;
+          border-bottom: 2px solid #b5b5b5;
+          margin: 5px auto;
+          @include flexBox();
+          @include flexDirectionRow();
+          .item-left {
+            width: 40px;
+            padding: 5px 0;
+            img {
+              width: 25px;
+            }
+          }
+          .item-right {
+            @include flex(1);
+            .item-input {
+              width: 100%;
+              font-size: $font-size-large;
+              height: 30px;
+              line-height: 30px;
+              border: none;
+            }
+          }
+        }
+      }
+    }
+    .ticket-btn {
+      width: 100%;
+      text-align: center;
+      img {
+        width: auto;
+        height: 40px;
+        margin-top: 20px;
+      }
+    }
+    .ticket-show {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  .ticket-content {
+    width: 100%;
+  }
+
+  .ticket-canvas {
+    width: 640px;
+    margin: 0 auto;
+    border: 2px solid #b5b5b5;
+    font-size: $font-size-large;
+    color: $base-text-color2;
+    position: relative;
+    padding: 10px;
+    .ticket-titles {
+      width: 100%;
+      padding: 5px 0 20px;
+      .main-title {
+        width: 100%;
+        font-size: 17px;
+        text-align: center;
+        color: $base-text-color;
+      }
+      .subtitle {
+        width: 100%;
+        font-size: 22px;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        color: $base-text-color;
+      }
+    }
+    .ticket-user {
+      width: 100%;
+      @include flexBox();
+      @include flexDirectionRow();
+      .user-left {
+        width: 80px;
+        .user-img {
+          width: 80px;
+          height: auto;
+        }
+      }
+      .user-right {
+        @include flex(1);
+        padding-left: 20px;
+        .right-item {
+          @include flexBox();
+          @include flexDirectionRow();
+          width: 100%;
+          height: 35px;
+          line-height: 35px;
+          .item-content {
+            @include flex(1);
+            color: $base-text-color;
+            padding-left: 5px;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .ticket-exam {
+      width: 100%;
+      padding-top: 10px;
+      .exam-item {
+        width: 100%;
+        height: 35px;
+        line-height: 35px;
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-content {
+          color: $base-text-color;
+          @include flex(1);
+          padding-left: 5px;
+          font-weight: bold;
+          &.subjects {
+            color: $base-text-color2;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+    .our-QR {
+      position: absolute;
+      width: 70px;
+      bottom: 15px;
+      right: 15px;
+      .QR-hint {
+        width: 100%;
+        font-size: 8px;
+        text-align: center;
+      }
+      .QR-code {
+        width: 70px;
+        height: 70px;
+        .QR-img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+  }
+}
+
+.ui-dialog {
+  &.sex-dialog {
+    width: 80%;
+    left: 50%;
+    margin-left: -40%;
+    min-height: 100px;
+    padding: 5px 0;
+    .setting-table {
+      padding-top: 0;
+    }
+  }
+  &.dialog-fullscreen.ticket-show-dialog {
+    width: 100%;
+    .dialog-content {
+      width: 100%;
+      text-align: center;
+      background-color: $white !important;
+      .ticket-show-photo {
+        width: 90%;
+        margin-top: 30px;
+      }
+      .ticket-show-hint {
+        width: 100%;
+        margin: 20px 0;
+        img {
+          width: 80%;
+        }
+      }
+    }
+  }
+
+}

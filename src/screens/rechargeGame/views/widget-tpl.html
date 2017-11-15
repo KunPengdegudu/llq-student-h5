@@ -1,0 +1,36 @@
+<div class="rechargeGame-main">
+    <div class="widget-teb">
+        <div class="item-teb" data-ng-class="item.selected?'selected':'nonSelected'" data-ng-repeat="item in tebList"
+             data-ng-click="selectTeb(item)">
+            <div class="teb-name" data-ng-bind="item.nodeName"></div>
+        </div>
+    </div>
+    <article class="widget-article recharge-article" threshold="200">
+        <div class="entrance recharge">
+            <div class="recharge-title">热门游戏</div>
+            <div class="widget-hot">
+                <div class="hot-cell" data-ng-repeat="item in hotList" data-ng-click="gotoDetail(item)">
+                    <div class="hot-img">
+                        <img data-ng-src="{{item.imgUrl}}">
+                    </div>
+                    <div class="hot-content">
+                        <div class="hot-name" data-ng-bind="item.name"></div>
+                        <div class="hot-detail" data-ng-bind="item.detail"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="purchase-table" data-ng-if="isAbnormal">
+            <div class="purchase-cell" data-ng-repeat="itemCell in items">
+                <div class="purchase-type" ng-bind="itemCell.type"></div>
+                <ul class="setting-table">
+                    <li class="setting-table-cell" data-ng-repeat="item in itemCell.productInfoDTO">
+                        <div class="second-column" data-ng-click="gotoDetail(item)">
+                            <div class="setting-left" data-ng-bind="item.name"></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+</div>

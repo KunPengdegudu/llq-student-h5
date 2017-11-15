@@ -1,0 +1,24 @@
+<div class="block-brief">
+
+    <div class="block-title">
+        <div class="block-title-bg today-sale">
+            <span class="iconfont icon-todaySale"></span>今日必逛
+        </div>
+        <!--<div class="block-text-right" ng-click="gotoMore(item.moreUrl)">-->
+        <!--<span>更多</span><span class="iconfont icon-right more-arrow"></span>-->
+        <!--</div>-->
+    </div>
+
+    <div class="today-content">
+
+        <div class="today-sale" data-ng-style="itemStyle" data-ng-repeat="type in item.items">
+            <div class="today-flex" data-ng-click="gotoTemplate(type.widgetCode,type.name)">
+                <div class="today-text title large">{{type.name}}</div>
+                <div class="today-text title small">{{type.promotionDesc}}</div>
+                <img data-ng-src="{{type.imageUrl | fixImage : '@!300x300'}}"/>
+            </div>
+        </div>
+
+    </div>
+
+</div>

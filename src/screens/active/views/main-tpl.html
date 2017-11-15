@@ -1,0 +1,64 @@
+<div class="active-main a1111-main" id="activeMain">
+    <div class="active-banner">
+        <img src="../../../app/assets/imgs/active/a1111/main/main-banner.png"/>
+    </div>
+    <div class="active-coupon-area">
+        <div class="active-coupons main" data-ng-repeat="itemWrapper in couponWrappers track by $index">
+            <div class="item-coupon-wrapper">
+                <div class="item-bg">
+                    <img data-ng-src="{{itemWrapper.imgBg}}"/>
+                </div>
+                <div class="item-content">
+                    <div class="item-name"></div>
+                    <div class="item-coupon" data-ng-repeat="itemCoupon in itemWrapper.list track by $index"
+                         data-ng-click="getRed(itemCoupon)"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="active-shop-area">
+        <div class="active-game-enter" data-ng-click="gotoGames()">
+            <img src="../../../app/assets/imgs/active/a1111/main/game-enter.png">
+        </div>
+        <div class="item-goods-area">
+            <div class="area-name">
+                <img src="../../../app/assets/imgs/active/a1111/main/shop-title.png"/>
+            </div>
+            <div class="shop-content">
+                <div class="shop-box">
+                    <div class="item-shop" data-ng-repeat="item in enterList track by $index"
+                         data-ng-click="item.link()">
+                        <img data-ng-src="{{item.imgUrl}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="item-goods-area" data-ng-repeat="itemArea in goodsArealist track by $index"
+         data-ng-if="itemArea.goodsList.length>0">
+        <div class="area-name">
+            <img data-ng-src="{{itemArea.titleImg}}"/>
+        </div>
+        <div class="goods-content">
+            <div class="goods-rows" data-ng-repeat="itemRow in itemArea.goodsList track by $index">
+                <div class="item-goods" data-ng-repeat="item in itemRow track by $index"
+                     data-ng-click="gotoProduct(item)" data-ng-class="item.productId?'':'none-product'">
+                    <div class="goods-img">
+                        <img data-ng-src="{{item.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                    </div>
+                    <div class="goods-name" data-ng-bind="item.name"></div>
+                    <div class="goods-btn">
+                        双11价 <span class="goods-price">¥<span data-ng-bind="item.proSkuPrice"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <active-goods-inline data-widget-code="goodsObject.widgetCode"> </active-goods-inline>
+</div>
+
+
+<div style="position: fixed;width: 40px;height: 40px;  z-index: 300;  bottom: 10%;  right: 0;"
+     data-ng-click="backToTop()">
+    <img src="../../../app/assets/imgs/active-center/main/active-back-top.png" style="width: 100%"/>
+</div>

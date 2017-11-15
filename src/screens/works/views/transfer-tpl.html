@@ -1,0 +1,173 @@
+<div class="works-main transfer-main">
+    <div class="top-banner">
+        <img src="../../../app/assets/imgs/works-share/pic.png" class="top-banner-img"/>
+        <div class="top-banner-text">
+            <div class="task-count" data-ng-click="userAccountTypeDialog.openDialog()">
+                <span class="task-count-text" data-ng-bind="thisAccount"></span>
+                <span class="iconfont icon-bottom"></span>
+            </div>
+
+            <div class="center-text" data-ng-if="idx == 2">
+                <div class="special-text">当前可提现</div>
+                <div class="withdraw-count">
+                    <span>￥</span>
+                    <span data-ng-bind="wallet.moneyAmount"></span>
+                    <span data-ng-click="gotoFinancialDetail()" class="details">查看明细<i class="iconfont icon-right-arrow"></i></span>
+                </div>
+                <div class="total-cash">累计返现<span class="amount">￥<span data-ng-bind="userHistoryWithdrawAmount"></span></span>
+                </div>
+            </div>
+            <div class="center-text" data-ng-if="idx == 1">
+                <div class="special-text">当前可提现</div>
+                <div class="withdraw-count">
+                    <span>￥</span>
+                    <span data-ng-bind="wallet.moneyAmount"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="withdraw-cash">
+        <div class="withdrawTo">提现至</div>
+        <div class="withdraw-button">
+            <button data-ng-repeat="fundType in supportAccountFundTypeList"
+                    data-ng-class="isSelectFundType(fundType) ? 'selected': ''"
+                    data-ng-click="selectFundType(fundType)">
+                <span data-ng-bind="fundType |fundType"></span>
+            </button>
+        </div>
+    </div>
+
+    <ul class="setting-table transfer-setting-table" data-ng-if="transfer.accountType=='person_pingan'">
+        <li class="setting-table-cell" data-ng-if="bankCardAccount">
+            <div class="second-column">
+                <div class="setting-left title">绑定银行</div>
+                <div class="setting-left desc">
+                    <input type="text" class="setting-input" data-ng-model="bankCardName"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column" data-ng-click="bankCardList.openDialog()">
+                <div class="setting-left title">银行卡账号</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" placeholder="绑定银行卡账号" readonly
+                           data-ng-model="bankCardAccount"/>
+                </div>
+                <span class="iconfont icon-right more-arrow"></span>
+            </div>
+        </li>
+    </ul>
+    <ul class="setting-table transfer-setting-table" data-ng-if="transfer.accountType=='person_alipay'">
+        <li class="setting-table-cell">
+            <div class="second-column" data-ng-click="alipay.openDialog()">
+                <div class="setting-left title">支付宝账号</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" placeholder="绑定支付宝账号" readonly
+                           data-ng-model="alipayAccount"/>
+                </div>
+                <span class="iconfont icon-right more-arrow"></span>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table transfer-setting-table">
+        <li class="setting-table-cell" data-ng-if="idx == 1">
+            <div class="second-column">
+                <div class="setting-left title">提现金额</div>
+                <div class="setting-left desc">
+                    <input class="setting-input desc" type="tel" placeholder="请输入提现金额"
+                           data-ng-model="wallet.drawAmount"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell transfer-table-cell" data-ng-if="idx == 2">
+            <div class="second-column">
+                <div class="setting-left title">提现金额</div>
+                <div class="setting-left desc">
+                    <input class="setting-input desc" type="tel" placeholder="请输入提现金额"
+                           data-ng-model="wallet.drawAmount"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell transfer-table-cell" ng-if="!enroll.data.authSuccess">
+            <div class="second-column">
+                <div class="setting-left title">支付密码</div>
+                <div class="setting-left desc">
+                    <input class="setting-input desc" type="password" placeholder="请输入6位支付密码"
+                           data-ng-model="wallet.payPassword" data-ng-focus="gotoTransfer()"/>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="tip">温馨提示：满{{taskCanTakeNow}}元可提现，款项3天内到账！</div>
+</div>
+
+<div class="dialog-bottom-btn-wrapper ng-scope">
+    <button class="nav-hint single-row submit-btn" data-ng-disabled="popCanTakeNow" data-ng-click="confirmBefore()">
+        确认提现
+    </button>
+</div>
+
+
+<div ui-dialog class="account-type-dialog" overlay="true" close-by-overlay="true"
+     is-visible="userAccountTypeDialog.isVisible" z-index="583">
+
+    <ul class="account-type-list">
+        <li class="account-type-item" data-ng-repeat="fundType in AccountFundTypeList"
+            data-ng-click="selectAccountType(fundType)">
+            <div data-ng-bind="fundType.name"></div>
+        </li>
+    </ul>
+</div>
+
+
+<card-manager
+        data-reload-cards-fn="cardFn.reloadCardsFn"
+        data-selected-fn="cardFn.selectedFn">
+</card-manager>
+
+
+<!--支付宝-->
+<div ui-dialog class="alipay-dialog" overlay="true" close-by-overlay="true"
+     before-hide="alipay.dialogBeforeHide();"
+     is-visible="alipay.isVisible" z-index="583">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="alipay.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>修改绑定支付宝账号</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">旧支付宝账号</div>
+                <div class="setting-left desc">
+                    <span data-ng-bind="alipayAccount || '未绑定支付宝账号'"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">新支付宝账号</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" data-ng-model="alipay.newAlipayAccount"
+                           placeholder="请输入新支付宝账号"/>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="alipay.dialogSubmit()">
+        确认修改
+    </button>
+
+</div>
+
+<pay-password/>

@@ -1,0 +1,153 @@
+<div class="profile-main profile-main-show-header" data-ng-cloak>
+
+    <div class="main-title">
+
+        <div class="main-content-wrapper">
+
+            <div class="main-res-pie">
+                <!--<canvas width="100" height="100"-->
+                <!--class="chart chart-doughnut" chart-data="resData" chart-legend="false"-->
+                <!--chart-options="resOptions"></canvas>-->
+
+                <img src="../../../app/assets/imgs/profile/default-head.png" ng-if="sex=='0'">
+                <img src="../../../app/assets/imgs/profile/default-man-head.png" ng-if="sex=='1'">
+                <img src="../../../app/assets/imgs/profile/userlogo.png" ng-if="sex!='1' && sex!='0'">
+                <div class="chart-inner-container">
+                    <div class="pie-name" data-ng-bind="data.name" data-ng-if="showUserName"></div>
+                    <div class="pie-name" data-ng-if="!showUserName">【未实名认证】</div>
+                </div>
+
+            </div>
+
+            <!--
+            <div class="main-res-lift" data-ng-click="gotoLifting()">
+                <span>申请提额>></span>
+            </div>
+            -->
+        </div>
+    </div>
+    <div class="setting-order-wrapper">
+
+        <div class="setting-group-wrapper">
+            <div class="setting-group no-top-border">
+                <!--
+                <div class="setting-item">
+                    <div class="text-container"><span>1</span></div>
+                    <span class="setting-item-text">抵用券</span>
+                </div>
+                -->
+                <div class="setting-item" style="width:50%">
+                    <span class="setting-item-text">
+                        消费额度(元)
+                        <span class="iconfont icon-help2" ng-click="questionDialog.openDialog(1)"></span>
+                    </span>
+                    <div class="text-container">
+                        <span data-ng-bind="data.balanceCreditAmount | keepFixed:2"></span>
+                        /
+                        <span data-ng-bind="data.totalCreditAmount"></span>
+                    </div>
+                    <div class="setting-btn" data-ng-click="gotoProduct(38407,273,'sale')">
+                        <span class="btn-text">点我提额</span>
+                    </div>
+
+                </div>
+                <div class="setting-item" style="width:50%">
+                    <span class="setting-item-text">
+                        借款额度(元)
+                        <span class="iconfont icon-help2" ng-click="questionDialog.openDialog()"></span>
+                    </span>
+                    <div class="text-container">
+                        <span data-ng-bind="data.blankBalanceCreditAmount | keepFixed:2"></span>
+                        /
+                        <span data-ng-bind="data.blankTotalCreditAmount"></span>
+                    </div>
+                    <div class="setting-btn" data-ng-click="gotoProduct(31055,273,'sale')">
+                        <span class="btn-text">点我提额</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="setting-order-wrapper">
+        <div class="order-top-bar">
+            我的账单
+            <div class="order-service" ng-click="gotoUrl('/profile/setting/service')">
+                <span>服务条款</span>
+            </div>
+            <div class="order-more" ng-click="gotoUrl('/profile/mybill/billcurrent')">
+                <span>查看全部</span><span class="iconfont icon-right more-arrow"></span>
+            </div>
+        </div>
+        <div class="setting-group-wrapper">
+            <div class="setting-group">
+                <div class="setting-item"
+                     data-ng-repeat="item in settingBillItem" ng-class="{'overDue':item.isOverDue}"
+                     ng-click="gotoUrl(item.url)">
+                    <div class="text-container bill-number-container"><span ng-bind="item.value"></span></div>
+                    <span class="setting-item-text" data-ng-bind="item.name"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="setting-order-wrapper">
+        <div class="order-top-bar">
+            我的订单
+            <div class="order-more" ng-click="gotoCategory('all')">
+                <span>查看全部</span><span class="iconfont icon-right more-arrow"></span>
+            </div>
+        </div>
+        <div class="setting-group-wrapper">
+            <div class="setting-group">
+                <div class="setting-item order-item" style="width:33.33333%" data-ng-click="gotoCategory(item.type)"
+                     data-ng-repeat="item in settingOrderItem">
+                    <div class="icon-container"><span class="iconfont {{item.icon}}"></span></div>
+                    <span class="setting-item-text" data-ng-bind="item.name"></span>
+                    <em ng-bind="item.orderCount" ng-hide="item.orderCount==0" class="ui-tab-brand"
+                        style="right:26%;"></em>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="setting-group-wrapper">
+        <div class="setting-group" data-ng-repeat="settingGroup in settings">
+            <div class="setting-item" data-ng-style="settingItemStyle" data-ng-click="gotoUrl(item.src)"
+                 data-ng-repeat="item in settingGroup">
+                <img src="{{item.imgUrl}}" data-ng-if="item.imgUrl">
+                <span class="setting-item-text" data-ng-bind="item.label" data-ng-if="item.label"></span>
+            </div>
+
+        </div>
+        <span class="quota-count ng-binding ng-scope" data-ng-bind="quotaSettings.count"
+              data-ng-if="quotaSettings.hasBadge"></span>
+    </div>
+
+
+</div>
+<div ui-dialog class="active-dialog" overlay="true" close-by-overlay="true"
+     before-hide="questionDialog.dialogBeforeHide();"
+     is-visible="questionDialog.isVisible" z-index="583">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+
+            </div>
+        </div>
+        <div class="iconfont icon-close" ng-click="questionDialog.closeDialog()"></div>
+    </div>
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+        <div class="img-container">
+            <img src="../../../app/assets/imgs/operation/help-pig.png">
+        </div>
+        <div class="tip-container">
+            <div class="title">零零期小课堂</div>
+            <div class="content">{{questionDialog.content}}</div>
+        </div>
+    </div>
+    <div class="tip-button" ng-click="questionDialog.gotosm()">
+        <span data-ng-bind="questionDialog.btn"></span>
+    </div>
+
+</div>

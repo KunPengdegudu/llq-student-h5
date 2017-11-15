@@ -1,0 +1,177 @@
+<div class="work-main order-category-main" data-ng-cloak>
+
+    <div class="login-main-content">
+        <div class="work-aging-wrapper">
+            <div class="aging-item" data-ng-class="{'selected': status.type==item.type}" ng-repeat='item in statusList'
+                 data-ng-click="status.clickStatus(item.type)">
+                <div class="aging-order">{{item.name}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<article class="profile-category" data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" class="aging" threshold="200"
+         trigger-on-event="reload"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/profile/views/myCategory-status-abnormal-tpl.html' : 'screens/profile/views/myCategory-status-normal-tpl.html'">
+    </div>
+
+</article>
+<pay data-pay-type="'order'" data-pay-title="payDialog.item.title"
+     data-pay-amount="payDialog.item.actualPayAmount" data-pay-params="payDialog.params">
+</pay>
+
+<div ui-dialog class="dialog-fullscreen logistics-dialog" overlay="true" close-by-overlay="true"
+     is-visible="traceDialog.isVisible" z-index="560">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="traceDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <span>查看物流</span>
+        </div>
+    </div>
+
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}" data-ng-if="hasLogistics">
+        <div class="logistics-title-wrappers">
+            <div class="item-title" data-ng-repeat="itemTitle in traceDialog.logisticsInfoList"
+                 data-ng-if="isMultiPackageDelivery" data-ng-click="traceDialog.selectTrace(itemTitle)"
+                 data-ng-class="itemTitle.selected?'isSelected':''">
+                <span data-ng-bind="itemTitle.packageName"></span>
+            </div>
+        </div>
+        <div class="item-logistics" data-ng-repeat="itemTrace in traceDialog.logisticsInfoList"
+             data-ng-if="itemTrace.selected">
+            <div class="logistics-product">
+                <div class="product-left">
+                    <div class="product-img">
+                        <img ng-src="{{itemTrace.orderDetails[0].productPic | filterImg:'@!200x200'}}"/>
+                    </div>
+                    <div class="product-amount">
+                        <span ng-bind="itemTrace.countNumber"></span>件
+                    </div>
+                </div>
+                <div class="product-right">
+                    <div class="logistics-status">
+                        物流状态：<span ng-bind="itemTrace.orderDetails[0].orderStatusDesc"></span>
+                    </div>
+                    <div class="logistics-company">
+                        快递公司：<span ng-bind="itemTrace.expressCompanyName"></span>
+                    </div>
+                    <div class="order-no">
+                        运单号：<span data-ng-bind="itemTrace.deliveryNo"></span>
+                    </div>
+                </div>
+
+            </div>
+            <ul class="setting-table">
+                <li class="setting-table-cell" data-ng-if="!hasTraceItems">
+                    <div class="second-column">
+                        <div class="setting-left">
+                            <span class="trace-title">追踪物流：</span>
+                        </div>
+                    </div>
+                </li>
+                <li class="setting-table-cell" data-ng-repeat="item in itemTrace.traces"
+                    data-ng-if="itemTrace.traces && itemTrace.traces.length>0">
+                    <div class="second-column">
+                        <div class="trace-text" data-ng-class="{'with-first': $index==0}">
+                            <span data-ng-bind="item.acceptStation"></span>
+                        </div>
+                        <div class="trace-time" data-ng-class="{'with-first': $index==0}">
+                            <span data-ng-bind="item.acceptTime"></span>
+                        </div>
+                    </div>
+                </li>
+                <li class="setting-table-cell" data-ng-if="!itemTrace.traces || itemTrace.traces.length==0">
+                    <div class="second-column">
+                        <div class="setting-left">
+                            <span>暂无物流信息，请登录物流公司官网查询。</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}"
+        data-ng-if="!hasLogistics">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">
+                    承运公司：
+                </div>
+                <div class="setting-left desc">
+                    <span data-ng-bind="traceCompany"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column" style="padding-left: 15px">
+                暂无物流状态信息，请登陆物流公司官网查询
+            </div>
+        </li>
+    </ul>
+</div>
+
+
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="reasonDialog.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="reasonDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>取消原因</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="order-cancel">
+        <div class="iconfont icon-help2 cancelIcon"></div>
+        <p>订单取消原因</p>
+    </div>
+
+    <p class="cancel-reason">选择取消订单原因，帮助我们改进</p>
+
+    <div>
+        <ul class="reasonList">
+            <li ng-repeat="rs in reasonList" ng-click="reasonDialog.chooseReason(rs.reasonKey)">{{rs.reason}}<span
+                    class="iconfont icon-selected" ng-class="{'selected':reasonDialog.reasonKey==rs.reasonKey}"></span>
+            </li>
+        </ul>
+    </div>
+
+    <button class="submitBtn" ng-click="reasonDialog.submitReason()">提交</button>
+
+
+</div>
+<div ui-dialog class="share-dialog reverse red-share-container" overlay="true" close-by-overlay="true"
+     is-visible="share.isVisible"
+     z-index="560">
+    <div class="share-pic-container">
+        <img src="../../../app/assets/imgs/profile/red.png" class="bg-img">
+        <div class="share-title" ng-bind="share.envelopeTitle"></div>
+        <div class="share-brand-container">
+            <ul>
+                <li class="brand" style="float:right;" ng-click="shareFn('friend')">
+                    <img src="../../../app/assets/imgs/profile/friend.png" alt="">
+                </li>
+            </ul>
+            <ul>
+                <li class="brand" style="float:left" ng-click="shareFn('weixin')">
+                    <img src="../../../app/assets/imgs/profile/weixin.png" alt="">
+                </li>
+            </ul>
+        </div>
+        <button class="nav-hint single-row submit-btn" ng-click="share.closeDialog()">
+            取消
+        </button>
+    </div>
+
+</div>

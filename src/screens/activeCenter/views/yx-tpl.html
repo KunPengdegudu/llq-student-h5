@@ -1,0 +1,72 @@
+<div class="active-center active-yx" data-ng-style="activeCenter" id="activeMain">
+    <div class="yx-banner">
+        <img src="../../../app/assets/imgs/active-center/yx/yx-banner.jpg"/>
+        <div class="banner-wrapper">
+            <div class="item-btn" data-ng-click="getRed('498','red_envelope')"></div>
+            <div class="item-btn" data-ng-click="getRed('499','red_envelope')"></div>
+        </div>
+    </div>
+    <div class="yx-hot-area1">
+        <div class="area-title">人气推荐</div>
+        <div class="product-wrapper" data-ng-repeat="item in hotProductList track by $index">
+            <div class="item-product"
+                 data-ng-click="gotoProductDetail(item)">
+                <div class="product-img">
+                    <img data-ng-src="{{item.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                </div>
+                <div class="product-desc">
+                    <div class="product-name" data-ng-bind="item.name"></div>
+                    <div class="product-price">
+                        ¥ <span data-ng-bind="item.proSkuPrice"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="hot-product-flg">超级断货王</div>
+        </div>
+    </div>
+    <div class="yx-goods-area">
+        <div class="item-goods-area" data-ng-repeat="itemArea in productAreaList track by $index">
+            <div class="area-title">
+                <img data-ng-src="{{itemArea.nodeImgUrl}}" data-ng-if="itemArea.nodeImgUrl"/>
+                <div class="title-content" data-ng-bind="itemArea.nodeName" data-ng-if="!itemArea.nodeImgUrl"></div>
+            </div>
+            <div class="area-content">
+                <div class="content-rows" data-ng-repeat="itemRow in itemArea.templateGoodsList track by $index">
+                    <div class="item-product" data-ng-repeat="itemProduct in itemRow track by $index"
+                         data-ng-click="gotoProductDetail(itemProduct)">
+                        <div class="product-img">
+                            <img data-ng-src="{{itemProduct.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                        </div>
+                        <div class="product-name" data-ng-bind="itemProduct.name"></div>
+                        <div class="product-discount">
+                            月供:¥
+                            <span data-ng-bind="itemProduct.defaultEveryAmount"></span>
+                            x
+                            <span data-ng-bind="itemProduct.defaultPeriod"></span>期
+                        </div>
+                        <div class="product-price">
+                            <div class="proSku-price">
+                                ¥<span data-ng-bind="itemProduct.proSkuPrice"></span>
+                            </div>
+                            <div class="market-price">
+                                ¥<span data-ng-bind="itemProduct.marketPrice"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="area-btn" data-ng-click="gotoMore(itemArea)">
+                <span class="btn-text">
+                    所有<span data-ng-bind="itemArea.nodeName"></span>
+                </span>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div style="position: fixed;width: 40px;height: 40px;  z-index: 300;  bottom: 10%;  right: 0;"
+     data-ng-click="backToTop()">
+    <img src="../../../app/assets/imgs/active-center/main/active-back-top.png" style="width: 100%"/>
+</div>

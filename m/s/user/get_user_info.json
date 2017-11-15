@@ -1,0 +1,16 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "rmEbCCAC",
+  "data": {
+    "name": "张云",
+    "idNo": "123123",
+    "phone": "13512345678",
+    "email": "xxx@test.com",
+    "alipayAccount": "13512345311",
+    "totalCreditAmount": 5000.000,
+    "balanceCreditAmount": 5900.000
+  },
+  "fieldErrMsg": null,
+  "login": true
+}

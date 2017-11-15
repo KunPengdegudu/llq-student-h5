@@ -1,0 +1,39 @@
+<div class="profile-main profile-main-show-header card-main" data-ng-cloak>
+
+    <ul class="setting-table dialog-content" ng-if="!isCardListEmpty()">
+
+        <li class="setting-table-cell" data-ng-repeat="item in cardList" ng-if="!isCardListEmpty()"
+            ng-style="{'background-color': item.banner.sideColor}">
+            <div class="second-column " data-ng-click="showCardDialog.openDialog(item)">
+                <div class="cardImg">
+                    <img data-ng-src="{{item.banner.imgUrl}}" class="bankCardImg">
+                </div>
+                <div class="cardText">
+                    <div class="bankCardName" data-ng-bind="item.bankName"></div>
+                    <div class="bankCardStyle">储蓄卡</div>
+                    <div class="bankCardNo" data-ng-bind="item.bankNo"></div>
+                </div>
+                <div class="bankCardType">
+                    <span>{{item.bindType | cardType}}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <div class="addButton" ng-click="addCardDialog.openDialog()">
+                +&nbsp;&nbsp;&nbsp;添加新银行卡
+            </div>
+        </li>
+    </ul>
+
+    <div class="llq-sys-notice-wrapper">
+        <div class="textColor">注意：</div>
+        <div class="textColor">1.绑定的银行卡，可用于还款代扣</div>
+        <div class="textColor">2.绑定的银行卡，可用于圆梦金提现到账账户</div>
+    </div>
+</div>
+
+<card-manager></card-manager>
+

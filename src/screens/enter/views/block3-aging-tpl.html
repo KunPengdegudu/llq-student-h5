@@ -1,0 +1,24 @@
+<div class="block-brief">
+
+    <div class="block-title">
+        <div class="block-title-bg"><div class="bg"></div></div>
+        <div class="block-text-center"><span class="title">{{item.title}}</span></div>
+        <div class="block-text-right"ng-click="gotoMore(item.moreUrl)">
+            <span>更多</span><span class="iconfont icon-right more-arrow"></span>
+        </div>
+    </div>
+
+    <div class="block-content">
+        <div class="block-content-inner">
+            <div class="block-content-item {{$last?'right-border':' '}}" ng-repeat="block in item.blocks" ng-click="gotoProductDetail(block.productId, block.promotionId,item.promotionType)">
+                <img data-ng-src="{{block.mainProImgUrl | fixImage : '@!200x200'}}" class="block-image" />
+                <div class="block-text title">{{block.name | omitStr : 16}}</div>
+                <div class="block-text center">
+                    <span class="goods-text-warn">{{block.defaultEveryAmount | moneyFixed}}</span>
+                    <span class="period goods-text-gray">x{{block.defaultPeriod}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

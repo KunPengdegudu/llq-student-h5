@@ -1,0 +1,249 @@
+.works-resume {
+  width: 100%;
+  position: absolute;
+  overflow: auto;
+  top: $header-height;
+  bottom: $nav-height;
+  left: 0;
+  right: 0;
+  z-index: $zindex-login;
+  background: $base-background-color;
+  -webkit-overflow-scrolling: touch;
+
+  .resume-table {
+    .resume-table-cell {
+      width: 100%;
+      height: 120px;
+      padding-top: 10px;
+      background-color: $white;
+      @include flexBox();
+      @include flexDirectionRow();
+      .resume-table-left {
+        width: 90px;
+        position: relative;
+        .head-img {
+          width: 80px;
+          height: 80px;
+          overflow: hidden;
+          border-radius: 40px;
+          margin: 10px auto;
+        }
+      }
+      .resume-table-right {
+        @include flex(1);
+        padding-left: 10px;
+
+        .resume-name {
+          margin-bottom: 5px;
+          span {
+            font-size: $font-size-xl;
+          }
+          .w-icon {
+            color: #ff66a8;
+          }
+          .m-icon {
+            color: #00b9ff;
+          }
+        }
+
+        .resume-info {
+          .resume-info-content {
+            span {
+              font-size: $font-size-base;
+              line-height: 16px;
+              color: $base-text-color2;
+              margin-bottom: 3px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .resume-content-table {
+    width: 100%;
+    .resume-content-sell {
+      width: 100%;
+      padding: 10px;
+      border-bottom: 1px solid $base-border-color;
+      .resume-content-sell-title {
+        font-size: $font-size-xl;
+        height: 45px;
+        line-height: 45px;
+      }
+      .resume-content-sell-add {
+        width: 100%;
+        height: 50px;
+        padding: 5px 10px;
+        background-color: $white;
+        border: 1px solid $base-border-color;
+        border-radius: 5px;
+        font-size: 30px;
+        text-align: center;
+        line-height: 30px;
+        color: $base-text-color2;
+      }
+      .resume-content-sell-substance {
+        width: 100%;
+        padding: 5px 10px;
+        background-color: $white;
+        border: 1px solid $base-border-color;
+        border-radius: 5px;
+        line-height: 20px;
+        color: $base-text-color;
+      }
+      .resume-content-person {
+        @include flexBox();
+        @include flexDirectionRow();
+
+        .resume-person-img {
+          height: 70px;
+          width: 33.333333%;
+          padding: 5px;
+          border: 0 none;
+
+          .resume-person-img-add {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            line-height: 68px;
+            font-size: 30px;
+            color: $base-text-color2;
+            background-color: $white;
+            border: 1px solid $base-border-color;
+            border-radius: 5px;
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.resume-text {
+  background: $white;
+  position: relative;
+  .textarea {
+    width: 95%;
+    height: 250px;
+    line-height: 20px;
+    padding: 10px 0 30px;
+    margin: 0 auto;
+    display: block;
+    border: none;
+    resize: none;
+  }
+  .setting-input {
+    border: none;
+    line-height: 40px;
+    padding: 0 10px;
+  }
+  .textarea_number {
+    position: absolute;
+    bottom: -30px;
+    right: 15px;
+    color: $base-color;
+  }
+}
+
+.ui-dialog.resume-dialog {
+  width: 100%;
+  height: 180px;
+  margin: 0;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  font-size: $font-size-base;
+
+  .photo-img {
+    width: 100%;
+    top: 0;
+    bottom: 180px;
+    background-size: 100% 100%;
+    background-position: center center;
+    position: absolute;
+  }
+
+  .setting-table {
+    bottom: 80px;
+    height: 100px;
+    padding-top: 0;
+    width: 100%;
+    position: absolute;
+
+    &.one-row {
+      height: 50px;
+    }
+
+    .setting-table-cell {
+      border-bottom: 1px solid $base-border-color;
+
+      .second-column {
+        border-bottom: 0 none;
+      }
+    }
+
+    .setting-table-cell:first-child {
+      border-top: 1px solid $base-border-color;
+    }
+  }
+
+  .nav-hint {
+    bottom: 0;
+    position: absolute;
+
+    &.single-row {
+      margin: 20px 10%;
+    }
+  }
+
+}
+.resume-photo-dialog{
+  .ui-header-bar{
+    .ui-header-bar-left-icon{
+      width: 100%;
+      .icon-back{
+        padding-left: 10px;
+        .resume-photo-number{
+          font-size: $font-size-xl;
+        }
+      }
+    }
+  }
+  .resume-photo-change{
+    width: 100%;
+    padding: 10px;
+  }
+}
+.assess-resume-photo{
+
+    .ui-header-bar{
+      .ui-header-bar-left-icon{
+
+        .icon-back{
+
+          .resume-photo-number{
+
+          }
+        }
+      }
+    }
+    .resume-photo-change{
+      width: 100%;
+      top: 45px;
+      bottom: 45px;
+      position: absolute;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      text-align: center;
+      img{
+        max-width:100%;
+      }
+    }
+    .submit-btn{
+      position:absolute;
+      bottom:0;
+      margin-bottom:0;
+    }
+}

@@ -1,0 +1,53 @@
+<div ui-dialog class="dialog-fullscreen search-dialog" overlay="true" close-by-overlay="true"
+     is-visible="shopSearchDialog.isVisible" z-index="583">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="shopSearchDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="ui-header-search-box search-box-border">
+                <div class="ui-header-search-input">
+                    <input id="llq-index-search" data-ng-model="searchName"
+                           type="text" class="search search-border" placeholder="{{RECOM_WORD}}"
+                           data-ng-focus="getCompletionSuggest()"/>
+                </div>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon ui-header-bar-right-text">
+            <span ng-click="search()">搜索</span>
+        </div>
+    </div>
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}"
+         data-ng-click="blurSearch()">
+        <div class="search-item-list">
+            <div class="search-history-container">
+                <div class="title-text">
+                    <span>历史搜索</span>
+                    <span class="iconfont icon-delete search-delete-icon" ng-click="deleteHistory()"></span></div>
+                <div>
+                    <ul>
+                        <li class="text-brand" ng-repeat="item in shopHistoryItems">
+                            <span data-ng-bind="item.keyword" ng-click="wordSearch(item.keyword)"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="search-hot-container">
+                <div class="title-text">热门搜索</div>
+                <div>
+                    <ul>
+                        <li class="text-brand" ng-repeat="item in hotItems">
+                            <span data-ng-bind="item" ng-click="wordSearch(item)"></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="keyword-top10-wrapper" data-ng-if="showKeyword">
+        <li class="item-keyword" data-ng-repeat="item in keywordTop track by $index"
+            data-ng-click="selectKeyword(item)">
+            <span data-ng-bind="item"></span>
+        </li>
+    </ul>
+</div>

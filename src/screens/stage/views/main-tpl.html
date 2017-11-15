@@ -1,0 +1,67 @@
+<div class="aging-wrapper">
+    <div class="aging-item with-three-items" data-ng-class="{'selected': orderby.orderType=='default'}" data-ng-click="orderby.clickDefault()">
+        <div class="aging-order">默认排序</div>
+    </div>
+    <div class="aging-item with-three-items" data-ng-class="{'selected': orderby.orderType=='price'}" data-ng-click="orderby.clickPrice()">
+        <div class="aging-order" ng-bind="priceDialog.priceName"></div>
+    </div>
+    <div class="aging-item with-three-items" data-ng-class="{'selected': orderby.orderType=='filter'}" data-ng-click="orderby.clickFilter()">
+        <div class="aging-order">筛选</div>
+    </div>
+</div>
+
+
+<article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" class="aging" threshold="200"
+         trigger-on-event="reload"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/stage/views/main-abnormal-tpl.html' : 'screens/stage/views/main-normal-tpl.html'">
+    </div>
+
+</article>
+
+
+<div ui-dialog class="aging-dialog" overlay="true" close-by-overlay="true" is-visible="filterDialog.isVisible"
+           before-hide="filterDialog.dialogBeforeHide();" z-index="560">
+
+    <div class="order-by-wrapper">
+        <div class="order-by-category has-bg">
+            <div class="order-by-category-item" data-ng-class="{'selected': item.id==filterDialog.selectedCategoryId}"
+                 data-ng-repeat="item in filterDialog.categoryList" data-ng-click="filterDialog.clickCategory(item.id)">
+                <div class="left">{{item.name}}</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </div>
+        <div class="order-by-category">
+            <div class="order-by-category-item"
+                 data-ng-click="filterDialog.clickBrand(null)">
+                <div class="left">全部</div>
+            </div>
+            <div class="order-by-category-item" data-ng-class="{'selected': item.id==filterDialog.selectedBrandId}"
+                 data-ng-repeat="item in filterDialog.brandList" data-ng-click="filterDialog.clickBrand(item.id)">
+                <div class="left">{{item.name}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div ui-dialog class="aging-dialog price-dialog" overlay="true" close-by-overlay="true" is-visible="priceDialog.isVisible"
+     before-hide="priceDialog.dialogBeforeHide();" z-index="560">
+
+    <div class="order-by-wrapper price-choose-container">
+       <div ng-click="priceDialog.chooseOrder('desc')">价格由高到低</div>
+       <div ng-click="priceDialog.chooseOrder('asc')">价格由低到高</div>
+       <div>价格区间(元) <span class='price-input-container'> <input name='beginPrice' ng-model="priceDialog.beginPrice" class='price-input' type="number" placeholder="最低价"></span>-
+           - <span class='price-input-container'><input name='endPrice' ng-model="priceDialog.endPrice" type="number" placeholder="最高价"></span><span class="iconfont icon-search" ng-click="priceDialog.choosePrice()"></span></div>
+    </div>
+
+</div>
+
+<search-dialog></search-dialog>
+
+<fly data-start="flyObject.start"
+     data-end="flyObject.end"
+     data-img-url="flyObject.imgUrl"
+     data-vertex-rtop="flyObject.vertexRtop">
+</fly>

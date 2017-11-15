@@ -1,0 +1,56 @@
+<div class="template-main newExclusive-main">
+    <img class="newExclusive-banner" src="../../../app/assets/imgs/banner/newEBanner.png"/>
+
+    <div class="template-stage newExclusive-stage">
+        <div class="template-content">
+            <div class="template-items" data-ng-repeat="item in items">
+                <div class="template-item images">
+                    <img src="{{item.mainProImgUrl | fixImage : '@!300x300'}}">
+                </div>
+                <div class="template-item information">
+                    <div class="item-title" data-ng-bind="item.name"></div>
+                    <div class="item-price">
+                        原价：<span data-ng-bind="item.marketPrice | moneyFixed"></span>
+                    </div>
+                    <div class="item-button"
+                         ng-click="gotoProductDetail(item.productId, item.promotionId,item.promotionType)">
+                        抢购价：<span data-ng-bind="item.basePrice * item.discount /100 | moneyFixed"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="new-rules" data-ng-click="rulesDialog.openDialog()">
+    活动详情
+</div>
+<div ui-dialog class="active-dialog" overlay="true" close-by-overlay="true"
+     before-hide="rulesDialog.dialogBeforeHide();"
+     is-visible="rulesDialog.isVisible" z-index="583">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>活动详情</span>
+            </div>
+        </div>
+        <div class="iconfont icon-close" ng-click="rulesDialog.closeDialog()"></div>
+    </div>
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <sys-notice type="newExclusive"></sys-notice>
+    </div>
+    <div class="active-button" ng-click="rulesDialog.closeDialog()">
+        我知道了 >>
+    </div>
+
+</div>
+
+<share title="shareInfo.title"
+       description="shareInfo.description"
+       thumb="shareInfo.thumb"
+       share-url="shareInfo.shareUrl">
+</share>
+
+
+
+

@@ -1,0 +1,53 @@
+<div class="profile-main profile-main-show-header" data-ng-cloak>
+
+    <div class="blanknote-help2" id="liftingDialogContent"></div>
+
+
+    <ul class="setting-table" data-ng-if="liftingDialog.showInput">
+        <li class="feedback-content">
+            <div class="feedback-content-title">
+                报名信息
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-repeat="item in liftingDialog.activityDefinitionList track by $index">
+            <div class="second-column">
+                <div class="setting-left title" data-ng-bind="item.showName"></div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" data-ng-model="item.defValue"/>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="setting-table" data-ng-if="!liftingDialog.showInput">
+        <li class="feedback-content">
+            <div class="feedback-content-title">
+                报名理由
+            </div>
+            <div class="feedback-content-textarea">
+                <textarea cols="40" rows="40" class="textarea" maxlength="100" data-ng-model="liftingDialog.content"
+                          placeholder="{{liftingDialog.memo}}" ng-readonly="!liftingDialog.canApply"></textarea>
+            </div>
+            <div class="textarea_number">
+                <span>{{ liftingDialog.content.length || 0 }}</span>
+                /
+                <span>100</span>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="liftingDialog.doApply()"
+            data-ng-if="liftingDialog.canApply && liftingDialog.timeStatus">
+        立即报名
+    </button>
+
+    <button class="nav-hint single-row submit-btn" data-ng-if="!liftingDialog.canApply && liftingDialog.activityStatus"
+            data-ng-disabled="!liftingDialog.canApply">
+        已报名
+    </button>
+
+    <button class="nav-hint single-row submit-btn" data-ng-if="!liftingDialog.activityStatus && !liftingDialog.canApply"
+            data-ng-disabled="!liftingDialog.canApply">
+        活动已截止
+    </button>
+
+</div>

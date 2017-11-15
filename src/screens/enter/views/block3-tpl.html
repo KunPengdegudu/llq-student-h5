@@ -1,0 +1,32 @@
+<div class="block-brief">
+    <div class="block-title sale-title">
+        <div class="block-title-bg goods-text-large">
+            <img class="sale-image" src="../../../app/assets/imgs/base/sale.png">
+        </div>
+        <div class="block-text-right" ng-click="gotoMore(item.moreUrl)">
+            <span>更多</span><span class="iconfont icon-right more-arrow"></span>
+        </div>
+    </div>
+
+    <div class="block-content with-fix">
+        <div class="block-content-inner-fix" data-ng-style="item.wrapperStyles">
+            <div class="block-content-item-fix {{$last?'right-border':''}}"
+                 data-ng-style="item.itemStyles"
+                 ng-repeat="block in item.items"
+                 ng-click="gotoProductDetail(block.productId, block.promotionId,item.promotionType)">
+                <img data-ng-src="{{block.mainProImgUrl | filterImg : '@!200x200'}}" class="block-image"/>
+
+                <!--<div class="block-discount">-->
+                    <!--<img src="../../../app/assets/imgs/base/sale-discount.png"/>-->
+
+                    <!--<div class="discount-price" data-ng-bind="block.proSkuPrice | moneyFixed"></div>-->
+                <!--</div>-->
+                <div class="block-text title">{{block.name}}</div>
+                <div class="block-text center" style="margin-bottom: 5px;">
+                    <span class="goods-text-warn">{{block.proSkuPrice | moneyFixed}}</span>
+                    <span class="goods-text-gray goods-text-small goods-text-delete">{{block.marketPrice | moneyFixed}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

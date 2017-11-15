@@ -1,0 +1,84 @@
+<div class="work-info-main">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text ui-tabs ui-top-menu-tab">
+            <a class="ui-tab-item" data-ng-class="{active: isActive('work')}" ng-click="switchTab('work')" data-ng-if="corpId!='null'">
+                <p class="ui-tab-content">工作详情</p>
+
+                <div class="ui-landmark"></div>
+            </a>
+            <a class="ui-tab-item" data-ng-class="{active: isActive('company')}" ng-click="switchTab('company')" data-ng-if="corpId!='null'">
+                <p class="ui-tab-content">公司详情</p>
+
+                <div class="ui-landmark"></div>
+            </a>
+            <a class="ui-tab-item" data-ng-if="corpId=='null'">
+                <p class="ui-tab-content">工作详情</p>
+                <div class="ui-landmark"></div>
+            </a>
+        </div>
+    </div>
+
+    <ng-include src="'screens/works/views/information-work-tpl.html'" ng-if="pageType=='work'"></ng-include>
+    <ng-include src="'screens/works/views/information-company-tpl.html'" ng-if="pageType=='company'&&corpId!='null'"></ng-include>
+
+
+</div>
+
+<!--立即申请-->
+<div ui-dialog class="dialog-fullscreen information-goods-container" overlay="true" close-by-overlay="true"
+     is-visible="apply.isVisible" z-index="583">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="apply.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>立即申请</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table">
+
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">姓名</div>
+                <div class="setting-left desc">
+                    <span data-ng-bind="userInfo.name"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">手机号</div>
+                <div class="setting-left desc">
+                    <span data-ng-bind="userInfo.phone"></span>
+                </div>
+            </div>
+        </li>
+
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="goods-top-bar">自我推荐</div>
+                <div class="desc">
+                    <div class="feedback-content">
+                        <textarea class="textarea" maxlength="100"
+                                  data-ng-model="apply.content" placeholder="有什么想对boss说的,提高录用机会哦！"></textarea>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn" ng-click="apply.doApply()">
+            确定申请
+        </button>
+    </div>
+
+</div>
+

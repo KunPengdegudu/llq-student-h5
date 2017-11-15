@@ -1,0 +1,80 @@
+<div class="active-center active-kaola" data-ng-style="activeCenter" id="activeMain">
+    <div class="kaola-banner">
+        <img src="../../../app/assets/imgs/active-center/kaola/kaola-banne.jpg"/>
+        <img src="../../../app/assets/imgs/active-center/kaola/active-enter.jpg" class="active-enter"
+             data-ng-click="gotoQuota()"/>
+    </div>
+    <div class="kaola-hot-areas">
+        <div class="item-area" data-ng-repeat="itemArea in productAreaList01 track by $index">
+            <div class="kaola-area-title">
+                <img data-ng-src="{{itemArea.nodeImgUrl}}" data-ng-if="itemArea.nodeImgUrl"/>
+                <div class="area-title" data-ng-bind="itemArea.nodeName" data-ng-if="!itemArea.nodeImgUrl"></div>
+            </div>
+            <div class="kaola-product" data-ng-repeat="itemProduct in itemArea.templateGoodsList track by $index"
+                 data-ng-click="gotoProduct(itemProduct)">
+                <div class="product-desc">
+                    <div class="product-name">
+                        <div class="name-content" data-ng-bind="itemProduct.name"></div>
+                    </div>
+                    <div class="product-price">
+                        <div class="price-content">
+                            <div class="item-price">
+                                ¥：<span class="priceForInt" data-ng-bind="itemProduct.priceForInt"></span>.<span
+                                    data-ng-bind="itemProduct.priceForDecimal"></span>
+                            </div>
+                            <div class="item-btn">
+                                <span class="btn-content">立即购买</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-line"></div>
+                <div class="product-img">
+                    <img data-ng-src="{{itemProduct.mainProImgUrl}}"/>
+                    <div class="img-box"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kaola--product-more">
+        <img src="../../../app/assets/imgs/active-center/kaola/kaola-product-enter.jpg"/>
+        <div class="more-enter" data-ng-click="gotoTemplate('WX028','更多洋货')"></div>
+    </div>
+    <div class="kaola-product-areas">
+        <div class="item-product-area" data-ng-repeat="itemArea in productAreaList02 track by $index">
+            <div class="item-area-title">
+                <img data-ng-src="{{itemArea.nodeImgUrl | filterImg:'@!300x300'}}" data-ng-if="itemArea.nodeImgUrl"/>
+                <div class="area-title" data-ng-bind="itemArea.nodeName" data-ng-if="!itemArea.nodeImgUrl"></div>
+            </div>
+            <div class="item-rows" data-ng-repeat="itemRows in itemArea.templateGoodsList track by $index">
+                <div class="item-product" data-ng-repeat="item in itemRows track by $index"
+                     data-ng-click="gotoProduct(item)">
+                    <div class="product-top">
+                        <div class="product-img">
+                            <img data-ng-src="{{item.mainProImgUrl}}"/>
+                        </div>
+                        <div class="product-name" data-ng-bind="item.name"></div>
+                    </div>
+                    <div class="product-bottom">
+                        <div class="product-price">
+                            ¥<span data-ng-bind="item.proSkuPrice"></span>
+                        </div>
+                        <div class="product-btn">
+                            立即购买
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div style="position: fixed;width: 40px;height: 40px;  z-index: 300;  bottom: 10%;  right: 0;"
+     data-ng-click="backToTop()">
+    <img src="../../../app/assets/imgs/active-center/main/active-back-top.png" style="width: 100%"/>
+</div>
+
+
+

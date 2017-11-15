@@ -1,0 +1,23 @@
+<div class="aging-item" data-ng-class="{'selected': intern.type=='applying'}"
+     data-ng-click="intern.choseType('applying')">
+    <div class="aging-order">待接受</div>
+</div>
+<div class="aging-item" data-ng-class="{'selected': intern.type=='accept'}"
+     data-ng-click="intern.choseType('accept')">
+    <div class="aging-order">待确认</div>
+</div>
+<div class="aging-item" data-ng-class="{'selected': intern.type=='reject'}"
+     data-ng-click="intern.choseType('reject')">
+    <div class="aging-order">被驳回</div>
+</div>
+<div class="aging-item" data-ng-class="{'selected': intern.type=='user_cancel'}"
+     data-ng-click="intern.choseType('user_cancel')">
+    <div class="aging-order">已取消</div>
+
+</div>
+<div class="aging-item" data-ng-class="{'selected': intern.type==null}" data-ng-click="intern.choseType(null)">
+    <div class="aging-order">全部</div>
+
+</div>
+
+

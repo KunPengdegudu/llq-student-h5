@@ -1,0 +1,73 @@
+<div class="active-goods-inline-area" id="goodsArea">
+    <div class="active-title-list" id="goodsTitles">
+        <div class="title-wrapper" data-ng-style="goodsAreaTitle">
+            <div class="item-title" data-ng-repeat="item in ActiveGoodsTitles track by $index"
+                 data-ng-click="selectGoodsNodeId(item)">
+                    <span class="iconfont icon-address-isActive" data-ng-class="item.isActive?'active':''"
+                          data-ng-if="item.isActive"></span>
+                <span data-ng-bind="item.nodeName"></span>
+            </div>
+        </div>
+    </div>
+    <div class="active-title">
+        <div class="active-title">
+            <img src="/app/assets/imgs/active-center/main/active-enters-title.png" class="title-img">
+            <div class="title-content" data-ng-bind="selectedNode.nodeName">
+
+            </div>
+        </div>
+    </div>
+    <div class="active-goods goodsContent" id="goodsContent">
+        <div class="goods-rows" data-ng-if="arrayStyle == 'row'">
+            <div class="item-row" data-ng-repeat="itemRows in goodsList track by $index">
+                <div class="item-goods" data-ng-repeat="item in itemRows track by $index"
+                     data-ng-click="gotoProduct(item)">
+                    <div class="goods-img">
+                        <img data-ng-src="{{item.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                    </div>
+                    <div class="goods-name" data-ng-bind="item.name"></div>
+                    <div class="goods-marketPrice">
+                        ¥<span data-ng-bind="item.marketPrice"></span>
+                    </div>
+                    <div class="good-price">
+                        <div class="goods-base-price">
+                            ¥<span data-ng-bind="item.proSkuPrice"></span>
+                        </div>
+                        <div class="goods-discount-info">
+                            月供:¥<span data-ng-bind="item.defaultEveryAmount"></span>
+                            x
+                            <span data-ng-bind="item.defaultPeriod"></span>期
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="active-stage" data-ng-if="arrayStyle == 'column'">
+            <div class="active-items" data-ng-repeat="item in  goodsList track by $index">
+                <div class="item-product" data-ng-class="reverse=='end'?'end':''"
+                     data-ng-click="gotoProductDetail(item)">
+                    <div class="product-img">
+                        <img data-ng-src="{{item.mainProImgUrl | filterImg : '@!300x300'}}"  data-ng-class="reverse=='end'?'end':''"/>
+                    </div>
+                    <div class="product-desc">
+                        <div class="item-title" data-ng-bind="item.name"></div>
+                        <div class="item-price">
+                            <div>扒光价</div>
+                            <div class="price-amount">¥<span data-ng-bind="item.basePrice * item.discount /100"></span>
+                            </div>
+                        </div>
+                        <div class="item-btn">
+                            <span>立即购买</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="add-goods-btn" data-ng-click="getActiveGoods(selectedNode.nodeId, 'add')" data-ng-if="showBtn">
+        加载更多
+    </div>
+    <div class="no-more" data-ng-if="!showBtn">
+        没有更多了...
+    </div>
+</div>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title data-ng-bind="screenTitle">Scroll Loader Simple Demo</title>
+    <meta name="description" content="零零期"/>
+    <meta name="keywords" content="零零期"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no, email=no" name="format-detection"/>
+
+    <link rel="stylesheet" type="text/css" href="../../../app/app.css"/>
+    <link rel="stylesheet" type="text/css" href="./demo.css"/>
+
+    <script src="../../../vendors/requirejs/2.1.15/require.js"></script>
+    <script type="text/javascript">
+        requirejs.config({
+            baseUrl: '../../../'
+        });
+        require(['require', 'app.config'], function (require) {
+            require(['angular', 'components/spinning-wheel/directives/spinning-wheel'], function (angular) {
+                var app = angular.module('Demo', ['components.spinningWheel']);
+
+                app.controller('VerticleDemo', ['$q', '$scope', '$timeout', function ($q, $scope, $timeout) {
+
+                    $scope.isVisible = false;
+
+                    $scope.closeDlg = function () {
+                        $scope.isVisible = false;
+                    }
+
+                    $scope.beforeHide = function () {
+                        // do somethings...
+                        return true; // true -- do close dialog, otherwise false
+                    }
+
+                }]);
+
+                angular.element(document).ready(function () {
+                    angular.bootstrap(document, ['Demo']);
+                });
+            });
+
+        });
+    </script>
+
+</head>
+<body ng-controller="VerticleDemo" attach-to-window="true">
+<div class="container">
+    <div>
+        <h1>Angular Dialog Demo</h1>
+
+        <p>
+            <button ng-click="isVisible=true;">click</button>
+            to show dialog
+        </p>
+
+    </div>
+</div>
+
+<ui-spinning-wheel style="height: 300px;"
+                   data-overlay="true" data-close-by-overlay="true" data-is-visible="isVisible"
+                   data-before-hide="beforeHide();"
+                   data-template-url="components/spinning-wheel/views/spinning-wheel-tpl.html"
+                   data-z-index="560">
+</ui-spinning-wheel>
+
+</body>
+</html>

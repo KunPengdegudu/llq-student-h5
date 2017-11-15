@@ -1,0 +1,153 @@
+<div class="profile-main profile-main-show-header security-main" data-ng-cloak>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell" ng-click="loginPassword()">
+            <div class="security-cell">
+                <div class="setting-security title">修改登录密码</div>
+                <div class="setting-security desc">
+                    定期修改密码 保护账户安全
+                </div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-click="doResetPayPassword()">
+            <div class="security-cell">
+                <div class="setting-security title">修改支付密码</div>
+                <div class="setting-security desc">
+                    账户变动时需验证,以确定本人操做
+                </div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+
+    </ul>
+
+    <ul class="setting-table">
+
+        <li class="setting-table-cell" ng-click="confirmPhone()">
+            <div class="security-cell">
+                <div class="setting-security title">验证手机</div>
+                <div class="setting-security desc">
+                    如验证手机已丢失或停用请立即更换
+                </div>
+                <div class="security-status" data-ng-if="bindPhone.status">已认证</div>
+
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-click="confirmEmail()">
+            <div class="security-cell">
+                <div class="setting-security title">个人邮箱</div>
+                <div class="setting-security desc">
+                    用于个人邮箱的绑定
+                </div>
+                <div class="security-status" data-ng-if="emailStatus">已提交</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+
+    </ul>
+
+    <ul class="setting-table">
+
+        <!--
+        <li class="setting-table-cell" ng-click="gotouserDorm()">
+            <div class="security-cell">
+                <div class="setting-security title">寝室地址</div>
+                <div class="setting-security desc">
+                    该地址用于收件以及学生身份证明
+                </div>
+                <div class="security-status" data-ng-if="userDorm.status">已提交</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-click="gotoworkAddress()">
+            <div class="security-cell">
+                <div class="setting-security title">工作地址</div>
+                <div class="setting-security desc">
+                    此地址为毕业后的住宿地址
+                </div>
+                <div class="security-status" data-ng-if="workAddress.status">已提交</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+
+        <li class="setting-table-cell" ng-click="gotouserAddress()">
+            <div class="security-cell">
+                <div class="setting-security title">宿舍/常用地址</div>
+                <div class="setting-security desc">
+                    此地址请详细填写到门牌号
+                </div>
+                <div class="security-status" data-ng-if="userAddress.status">已提交</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        -->
+
+    </ul>
+
+    <ul class="setting-table">
+        <!--
+        <li class="setting-table-cell" ng-click="changeGraduation()">
+            <div class="security-cell">
+                <div class="setting-security title">认证信息</div>
+                <div class="setting-security desc">
+                    修改毕业时间等信息
+                </div>
+                <div class="security-status" data-ng-if="">已提交</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        -->
+        <li class="setting-table-cell" ng-click="gotoBankWithhold()">
+            <div class="second-column">
+                <div class="setting-left">自动代扣</div>
+                <div class="setting-right setting-status" data-ng-if="!applyBotInfo">未开启</div>
+                <div class="setting-right setting-status" data-ng-if="applyBotInfo">已开启</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<!--支付密码-->
+<pay-password></pay-password>
+
+<!--<div class="flex-icon" data-ng-if="showContactUs" data-ng-click="contactUs()">-->
+<!--<div class="iconfont icon-service"></div>-->
+<!--<div class="name">在线客服</div>-->
+<!--</div>-->
+
+<!--绑定微信号-->
+<div ui-dialog class="dialog-weixin" overlay="true" close-by-overlay="true"
+     is-visible="bindWeixin.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="bindWeixin.dialogClose()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>绑定微信号</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">微信账号</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" data-ng-model="bindWeixin.weixin"
+                           placeholder="请输入您的微信账号">
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="bindWeixin.dialogSubmit()">
+        确认绑定
+    </button>
+</div>
+

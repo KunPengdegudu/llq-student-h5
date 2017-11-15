@@ -1,0 +1,41 @@
+<article class="template-main" data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" threshold="200"
+         trigger-on-event="reload" data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+    <div class="template-stage" data-ng-repeat="nodeTree in templateList">
+        <!--<div class="memo-text" data-ng-bind="nodeTree.nodeName"></div>-->
+        <div class="item-sort-button" data-ng-style="getSort" data-ng-if="hasSortBtn">
+            价格
+            <span data-ng-click="getNewGoodsSort(asc)"
+                  data-ng-if="ascendShow">由低到高</span>
+            <span data-ng-click="getNewGoodsSort(desc)"
+                  data-ng-if="descendShow">由高到低</span>
+        </div>
+        <div class="template-content">
+            <div class="template-items" data-ng-repeat="item in items">
+                <div class="template-item images">
+                    <img data-ng-src="{{item.mainProImgUrl | filterImg : '@!300x300'}}" />
+
+                    <!--<div class="block-discount">-->
+                    <!--<img src="../../../app/assets/imgs/base/sale-discount.png"/>-->
+                    <!--<div class="discount-price"-->
+                    <!--data-ng-bind="item.basePrice * item.discount /100 | moneyFixed"></div>-->
+                    <!--</div>-->
+
+                </div>
+                <div class="template-item information">
+                    <div class="item-title" data-ng-bind="item.name"></div>
+                    <div class="item-price">
+                        原价：<span data-ng-bind="item.marketPrice | moneyFixed"></span>
+                    </div>
+                    <div class="item-button"
+                         ng-click="gotoProductDetail(item.productId, item.promotionId,item.promotionType)">
+                        抢购价：<span data-ng-bind="item.basePrice * item.discount /100 | moneyFixed"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</article>
+<!--<div class="a1111-enter" data-ng-click="gotoOperation()">-->
+    <!--<img src="../../../app/assets/imgs/base/operation-enter.png"/>-->
+<!--</div>-->

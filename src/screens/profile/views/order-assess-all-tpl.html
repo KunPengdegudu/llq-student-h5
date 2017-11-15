@@ -1,0 +1,37 @@
+<div class="work-main order-category-main" data-ng-cloak>
+
+    <div class="login-main-content">
+        <div class="work-aging-wrapper">
+            <div class="aging-item" data-ng-class="{'selected': status.type==item.type}" ng-repeat='item in statusList' data-ng-click="status.clickStatus(item.type)">
+                <div class="aging-order">{{item.name}}</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" class="aging my-assess-list-container" threshold="200"
+         trigger-on-event="reload"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/profile/views/order-assess-all-abnormal-tpl.html' : 'screens/profile/views/order-assess-all-normal-tpl.html'">
+    </div>
+
+</article>
+<!--图片放大-->
+<div ui-dialog class="dialog-fullscreen resume-photo-dialog assess-resume-photo" overlay="true"
+     close-by-overlay="true" is-visible="photoView.isVisible"
+     before-hide="photoView.dialogBeforeHide();" z-index="555">
+    <div class="ui-header-bar">
+
+        <div class="ui-header-bar-left-icon">
+            <span class="iconfont header-bar-icon icon-back"
+                  ng-click="photoView.dialogClose()"></span>
+        </div>
+    </div>
+
+    <div class="resume-photo-change" style="width: 100%;">
+        <img class="header-photo" data-ng-src="{{photoView.rightImg}}"/>
+    </div>
+
+</div>

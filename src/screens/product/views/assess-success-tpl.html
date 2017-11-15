@@ -1,0 +1,76 @@
+<div class="pay-success-container">
+    <div class="ui-header-bar">
+
+    </div>
+
+    <div class="dialog-content pay-result-wrapper ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <div class="order-cancel">
+            <div class="iconfont icon-selected successIcon"></div>
+            <p>评论成功</p>
+        </div>
+
+        <div class="button-box">
+            <div class="pay-button" data-ng-click="goHome()">返回首页</div>
+            <div class="pay-button" ng-click="gotoMyAssess()">我的评价</div>
+        </div>
+
+        <div class="hint-text">
+
+        </div>
+        <div class="block-brief pay-success">
+            <div class="block-title">
+                <div class="block-title-bg">
+                    <div class="bg"></div>
+                </div>
+                <div class="block-text-center"><span class="title guess">猜你还喜欢</span></div>
+            </div>
+
+            <div class="block-content">
+
+                <div class="block-content-inner grid-row" data-ng-repeat="row in items">
+                    <div class="grid-item rows-item border-right"
+                         ng-click="gotoProductDetail(row[0].productId,row[0].promotionId,'aging')">
+                        <img data-ng-src="{{row[0].mainProImgUrl |filterImg : '@!300x300'}}" class="block-image"/>
+
+                        <div class="block-text title large">{{row[0].name}}</div>
+
+                        <div class="block-text center large">
+                            <span class="goods-text-gray goods-text-small">月供</span>
+                            <span class="goods-text-warn">{{row[0].defaultEveryAmount | moneyFixed}}</span>
+                            <span class="period goods-text-gray">x{{row[0].defaultPeriod}}</span>
+                        </div>
+                        <div class="block-text center large">
+                            <span class="goods-text-gray"> {{row[0].proSkuPrice | moneyFixed}}</span>
+                            <span class="goods-text-gray goods-text-small goods-text-delete" style="margin-left: 5px;">
+                                {{row[0].marketPrice | moneyFixed}}</span>
+                        </div>
+                    </div>
+                    <div class="grid-item rows-item"
+                         ng-click="gotoProductDetail(row[1].productId,row[1].promotionId,'aging')"
+                         data-ng-if="row[1]">
+                        <img data-ng-src="{{row[1].mainProImgUrl | filterImg : '@!300x300'}}"
+                             class="block-image"/>
+
+                        <div class="block-text title large">{{row[1].name}}</div>
+
+                        <div class="block-text center large">
+                            <span class="goods-text-gray goods-text-small">月供</span>
+                            <span class="goods-text-warn">{{row[1].defaultEveryAmount | moneyFixed}}</span>
+                            <span class="period goods-text-gray">x{{row[1].defaultPeriod}}</span>
+                        </div>
+                        <div class="block-text center large">
+                            <span class="goods-text-gray"> {{row[1].proSkuPrice | moneyFixed}}</span>
+                            <span class="goods-text-gray goods-text-small goods-text-delete" style="margin-left: 5px;">{{row[1].marketPrice | moneyFixed}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<share title="shareInfo.title"
+       description="shareInfo.description"
+       thumb="shareInfo.thumb"
+       share-url="shareInfo.shareUrl">
+</share>

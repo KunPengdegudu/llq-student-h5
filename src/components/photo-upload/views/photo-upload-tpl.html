@@ -1,0 +1,28 @@
+<!--上传相片-->
+<div ui-dialog class="resume-dialog reverse" overlay="true"
+     close-by-overlay="true" is-visible="photo.isVisible"
+     before-hide="photo.dialogBeforeHide();" z-index="560">
+
+    <ul class="setting-table">
+
+        <li class="setting-table-cell" ng-click="photo.fromAlbum()">
+            <div class="second-column">
+                <div class="setting-left">从相册选择一张</div>
+                <i class="iconfont icon-right-arrow"></i>
+            </div>
+        </li>
+
+        <li class="setting-table-cell" ng-click="photo.fromCamera()">
+            <div class="second-column">
+                <div class="setting-left">拍一张照片</div>
+                <i class="iconfont icon-right-arrow"></i>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="photo.dialogClose()">
+        取消
+    </button>
+
+
+</div>

@@ -1,0 +1,17 @@
+<article class="profile-main-show-header-content profile-bill-content top" threshold="200"
+         data-scroll-loader="loadItems();" type="both" data-can-load="canLoad"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/profile/views/mybill-current-abnormal-tpl.html' : 'screens/profile/views/mybill-current-normal-tpl.html'">
+    </div>
+
+</article>
+
+<pay data-pay-type="'repay'" data-pay-title="payDialog.item.title"
+     data-pay-amount="payDialog.schedule.shouldPayAmount"
+     data-pay-params="payDialog.params">
+</pay>
+
+
+<card-manager data-selected-fn="selectedCardFn">
+</card-manager>

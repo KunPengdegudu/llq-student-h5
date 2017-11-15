@@ -1,0 +1,36 @@
+<div class="login-main login-check">
+    <div class="check-header-bar">
+        <div class="iconfont header-bar-icon icon-back ng-scope" data-ng-click="gotoUrl('/login')"></div>
+    </div>
+    <div class="check-title">您正在登陆零零期</div>
+    <div class="check-content">
+        <div class="content-title">
+            <div>已发送验证码到</div>
+            <div data-ng-bind="showUsername"></div>
+        </div>
+        <div class="content-auth-wrapper">
+            <div class="show-wrapper">
+                <div class="show-item">
+                    <span data-ng-bind="index01"></span>
+                </div>
+                <div class="show-item">
+                    <span data-ng-bind="index02"></span>
+                </div>
+                <div class="show-item">
+                    <span data-ng-bind="index03"></span>
+                </div>
+                <div class="show-item">
+                    <span data-ng-bind="index04"></span>
+                </div>
+            </div>
+            <div class="content-auth-input">
+                <input type="text" class="check-input" data-ng-model="authCode"/>
+            </div>
+        </div>
+
+    </div>
+    <div class="check-time" data-ng-class="timeIndex <= 0?'canClick':''" data-ng-click="sendAuthCode()">
+        重新发送 <span class="auth-time" data-ng-if="timeIndex<=60 && timeIndex>0">( {{timeText}} )</span>
+    </div>
+    <div class="check-auth-msg" data-ng-bind="authMsg"></div>
+</div>

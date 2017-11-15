@@ -1,0 +1,32 @@
+<div class="task-experience-container">
+    <div class="work-main">
+        <div class="login-main-content">
+            <div class="work-aging-wrapper">
+                <div class="aging-item" data-ng-class="{'selected':type=='processing'}"
+                     data-ng-click="choseExperienceType('processing')">
+                    <div class="aging-order">进行中</div>
+                </div>
+                <div class="aging-item" data-ng-class="{'selected':type=='audit'}"
+                     data-ng-click="choseExperienceType('audit')">
+                    <div class="aging-order">审核中</div>
+                </div>
+                <div class="aging-item" data-ng-class="{'selected':type=='finished'}"
+                     data-ng-click="choseExperienceType('finished')">
+                    <div class="aging-order">已结束</div>
+                </div>
+                <div class="aging-item" data-ng-class="{'selected':type=='all'}"
+                     data-ng-click="choseExperienceType('all')">
+                    <div class="aging-order">全部</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" class="task-aging task-experience-aging" threshold="200"
+         trigger-on-event="reload"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/works/views/task-experience-abnormal-tpl.html' : 'screens/works/views/task-experience-normal-tpl.html'">
+    </div>
+
+</article>

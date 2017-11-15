@@ -1,0 +1,13 @@
+<div class="quota-banner">
+    <div class="quota-text">
+        <span class="iconfont icon-prompt"></span>按时还款，帮助您提升信用额度
+    </div>
+    <article class="quota-content" threshold="200"
+             data-scroll-loader="loadItems();" type="both" data-can-load="canLoad"
+             data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+        <div data-ng-include="isAbnormal ? 'screens/profile/views/quota-content-abnormal-tpl.html' : 'screens/profile/views/quota-content-normal-tpl.html'">
+        </div>
+
+    </article>
+</div>

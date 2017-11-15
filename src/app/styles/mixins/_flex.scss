@@ -1,0 +1,145 @@
+@charset "UTF-8";
+@mixin flexBox() {
+  overflow: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  & > * {
+    display: block;
+    overflow: hidden;
+  }
+}
+
+@mixin flexDirectionRow($reverse: false) {
+
+  @if $reverse {
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -moz-flex-direction: row-reverse;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-flex-direction: row;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }
+
+}
+
+@mixin flexDirectionColumn($reverse: false) {
+
+  @if $reverse {
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -moz-flex-direction: column-reverse;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -moz-flex-direction: column;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }
+
+}
+
+@mixin flex($flex: 1) {
+  -webkit-box-flex: $flex;
+  -webkit-flex: $flex;
+  -ms-flex: $flex;
+  flex: $flex;
+}
+
+//支持的参数: flex-start | flex-end | center | space-between | space-around;
+
+//box-pack: start | end | center | justify;
+//主轴对齐：左对齐（默认） | 右对齐 | 居中对齐 | 左右对齐
+//justify-content: flex-start | flex-end | center | space-between | space-around;
+//主轴对齐方式：左对齐（默认） | 右对齐 | 居中对齐 | 两端对齐 | 平均分布
+@mixin flexJustify($justify: center) {
+  @if $justify == flex-start {
+    -webkit-box-pack: start;
+  } @else if $justify == flex-end {
+    -webkit-box-pack: end;
+  } @else if $justify == space-between {
+    -webkit-box-pack: justify;
+  } @else if $justify == space-around {
+    -webkit-box-pack: justify;
+  } @else {
+    -webkit-box-pack: $justify;
+  }
+  -moz-justify-content: $justify;
+  -webkit-justify-content: $justify;
+  justify-content: $justify;
+}
+
+//支持的参数: flex-start | flex-end | center | baseline | stretch;
+
+//box-align: start | end | center | baseline | stretch;
+//交叉轴对齐: 顶部对齐（默认） | 底部对齐 | 居中对齐 | 文本基线对齐 | 上下对齐并铺满
+//align-items: flex-start | flex-end | center | baseline | stretch;
+//交叉轴对齐方式: 顶部对齐（默认） | 底部对齐 | 居中对齐 | 上下对齐并铺满 | 文本基线对齐
+@mixin flexAlign($align: center) {
+  @if $align == flex-start {
+    -webkit-box-align: start;
+  } @else if $align == flex-start {
+    -webkit-box-align: start;
+  } @else {
+    -webkit-box-align: $align;
+  }
+  -moz-align-items: $align;
+  -webkit-align-items: $align;
+  align-items: $align;
+}
+
+//align-self：auto | flex-start | flex-end | center | baseline | stretch
+//auto：如果'align-self'的值为'auto'，则其计算值为元素的父元素的'align-items'值，如果其没有父元素，则计算值为'stretch'。
+//flex-start：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。
+//flex-end：弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。
+//center：弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。
+//baseline：如弹性盒子元素的行内轴与侧轴为同一条，则该值与'flex-start'等效。其它情况下，该值将参与基线对齐。
+//stretch：如果指定侧轴大小的属性值为'auto'，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照'min/max-width/height'属性的限制。
+@mixin flexAlignSelf($align: center) {
+  -webkit-align-self: $align;
+  -ms-flex-item-align: $align;
+  align-self: $align;
+}
+
+@mixin flexOrder($order: 1) {
+  -webkit-box-ordinal-group: $order;
+  -moz-order: $order;
+  -webkit-order: $order;
+  order: $order;
+}
+
+//flex-wrap：nowrap | wrap | wrap-reverse
+//nowrap：flex容器为单行。该情况下flex子项可能会溢出容器
+//wrap：flex容器为多行。该情况下flex子项溢出的部分会被放置到新行，子项内部会发生断行
+//wrap-reverse：反转 wrap 排列。
+@mixin flexWrap($wrap: wrap) {
+  -webkit-flex-wrap: $wrap;
+  -ms-flex-wrap: $wrap;
+  flex-wrap: $wrap;
+}
+
+//使 div 元素看上去像一个按钮
+//appearance: normal|icon|window|button|menu|field;
+//normal	将元素呈现为常规元素。
+//icon	    将元素呈现为图标（小图片）。
+//window	将元素呈现为视口。
+//button	将元素呈现为按钮。
+//menu	    将元素呈现为一套供用户选择的选项。
+//field	    将元素呈现为输入字段。
+@mixin appearance($appearance: button) {
+  -webkit-appearance: $appearance; /* Safari 和 Chrome */
+  -moz-appearance: $appearance; /* Firefox */
+  appearance: $appearance;
+}

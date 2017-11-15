@@ -1,0 +1,37 @@
+// label
+.label {
+  border-radius: 0.25em;
+  color: $white;
+  display: inline;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.2em 0.6em 0.3em;
+  text-align: center;
+  vertical-align: baseline;
+  white-space: nowrap;
+
+  &.label-primary {
+    background-color: $brand-primary;
+  }
+  &.label-info {
+    background-color: $brand-info;
+  }
+  &.label-success {
+    background-color: $brand-success;
+  }
+  &.label-warning {
+    background-color: $brand-warning;
+  }
+  &.label-danger {
+    background-color: $brand-danger;
+  }
+  &.label-disabled {
+    background-color: $brand-disabled;
+  }
+
+}
+
+.label:empty {
+  display: none;
+}

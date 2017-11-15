@@ -1,0 +1,40 @@
+<ol class="goods-list" data-ng-cloak>
+
+    <li class="goods-item" data-ng-repeat="item in items">
+        <a ng-click="gotoProductDetail(item.productId, item.promotionId,item.promotionType)">
+            <div class="goods-brief">
+                <img class="goods-img-thumbnail" data-ng-src="{{item.mainProImgUrl | fixImage : '@!200x200'}}" alt="">
+                <div class="goods-desc">
+                    <div class="goods-title" data-ng-bind="item.name"></div>
+                    <div class="goods-subtitle">
+                        <div class="goods-text-left">
+                            <span>售价：</span>
+                            <span data-ng-bind="(item.proSkuPrice*item.discount/100) | moneyFixed"></span>
+                            <s style="margin-left:5px;" data-ng-if="item.discount<100">{{item.proSkuPrice | moneyFixed}}</s>
+                        </div>
+                        <div class="goods-text-right">
+                            <span>仅剩</span>
+                            <span class="goods-text-warn"
+                                  data-ng-bind="item.stock | numShortHand"></span>
+                            <span>件</span>
+                        </div>
+                    </div>
+                    <div class="goods-subtitle" ng-if="item.discount<100">
+                        <div class="label label-danger" data-ng-bind="item.discount | discount"></div>
+                    </div>
+                    <div class="goods-subtitle">
+                        <span class="goods-text-highlight" data-ng-bind="item.customTitle | delTag"></span>
+                    </div>
+                    <div class="goods-subtitle">
+                        <span>定金：</span>
+                        <span class="goods-text-warn">50元</span>
+                    </div>
+                    <div class="goods-subtitle">
+                        <span class="goods-text-gray">实体店验货后再付余款</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </li>
+
+</ol>

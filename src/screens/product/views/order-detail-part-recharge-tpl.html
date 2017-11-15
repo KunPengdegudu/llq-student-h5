@@ -1,0 +1,42 @@
+<li class="setting-table-cell">
+    <div class="second-column">
+        <div class="setting-row goods-brief">
+            <img class="goods-img-thumbnail" data-ng-src="{{data.productPic | fixImage}}"/>
+
+            <div class="goods-desc">
+                <div class="goods-title" data-ng-bind="data.title | omitStr : 30"></div>
+                <div class="goods-subtitle">
+                    <span data-ng-bind="data.productSkuName"></span>
+                </div>
+                <div class="goods-subtitle">
+                    <span>售价：</span>
+                    <span data-ng-bind="data.productPrice | moneyFixed"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+<li class="setting-table-cell" ng-if="data.virtualOrderDTO.chargeAccount">
+    <div class="second-column">
+        <div class="setting-left">账号</div>
+        <span class="text-right">
+            {{data.virtualOrderDTO.chargeAccount}}
+        </span>
+    </div>
+</li>
+<li class="setting-table-cell" ng-if="data.virtualOrderDTO.gameServer">
+    <div class="second-column">
+        <div class="setting-left">游戏服务区</div>
+        <span class="text-right">
+            {{data.virtualOrderDTO.gameServer}}
+        </span>
+    </div>
+</li>
+<li class="setting-table-cell">
+    <div class="second-column">
+        <div class="setting-left">金额</div>
+        <span class="text-right">
+            {{data.orderAmount | moneyFixed}}
+        </span>
+    </div>
+</li>

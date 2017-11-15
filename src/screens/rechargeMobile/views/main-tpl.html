@@ -1,0 +1,39 @@
+<div class="rechargeMobile-main">
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left desc">
+                    <input type="tel" class="setting-input" data-ng-model="userPhone" placeholder="请输入充值号码"/>
+                </div>
+                <div class="setting-left title" data-ng-bind="phoneHint"></div>
+            </div>
+        </li>
+    </ul>
+    <div class="mobile-tebs">
+        <div class="item-teb">
+            <div class="teb-name" data-ng-class="item.selected?'active':''" data-ng-repeat="item in tebList"
+                 data-ng-click="selectTeb(item)">
+                <span class="main-title" data-ng-bind="item.title"></span>
+                <span class="sub-title" data-ng-bind="item.subtitle"></span>
+            </div>
+        </div>
+    </div>
+    <div class="mobile-content">
+        <div class="item-content" data-ng-repeat="item in chooseItem.content" data-ng-class="item.default?'active':''"
+             data-ng-click="selectContent(item)">
+            <div class="sku-name" data-ng-bind="item.skuName"></div>
+            <div class="sell-price">
+                售价:<span data-ng-bind="item.sellPrice | moneyFixed:2"></span>
+            </div>
+        </div>
+    </div>
+    <button class="nav-hint single-row submit-btn" ng-click="chooseItem.submit()">
+        确认购买
+    </button>
+</div>
+
+
+<pay data-pay-type="'order'" data-pay-title="payDialog.name"
+     data-pay-amount="payDialog.amount"
+     data-pay-params="payDialog.params">
+</pay>

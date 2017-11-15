@@ -1,0 +1,439 @@
+<div class="blanknote-main" data-ng-cloak>
+
+    <img class="blanknote-banner" data-ng-src="{{bannerSrc}}"/>
+
+    <!--<div class="llq-pay-notice-wrapper" data-ng-click="gotoAddProduct()">-->
+    <!--<sys-notice type="llqpay" class="llq-pay-notice"></sys-notice>-->
+    <!--</div>-->
+
+    <div class="blanknote-quota" data-ng-if="userType == 'grad'">
+        <div class="blanknote-amount">
+            <div class="blanknote-limit">总额度</div>
+            <span class="blanknote-value" data-ng-bind="blankTotalCreditAmount | moneyFixed"></span>
+        </div>
+        <div class="blanknote-amount">
+            <div class="blanknote-limit">剩余额度</div>
+            <span class="blanknote-value" data-ng-bind="blankBalanceCreditAmount | moneyFixed"></span>
+        </div>
+    </div>
+    <div class="quota-wrapper" data-ng-if="userType == 'normal'">
+        <div class="quota-title">总额度(元)</div>
+        <div class="quota-all">
+            <span class="all-amount" data-ng-bind="blankTotalCreditAmount"></span>
+            <span class="quota-btn" data-ng-click="gotoProduct()">
+                <img src="../../../app/assets/imgs/blacknote/combined_shape.png"/>
+                <span class="btn-text">点我提额</span>
+            </span>
+        </div>
+        <div class="quota-remaining">
+            <span class="remaining-title">剩余额度(元)</span>
+            <span class="remaining-amount" data-ng-bind="blankBalanceCreditAmount"></span>
+        </div>
+    </div>
+
+    <div class="blanknote-money">
+        <div class="title">取现用途</div>
+        <div class="money-item-wrapper">
+            <div class="money-row" data-ng-if="cashApplyPurposeVOList && cashApplyPurposeVOList.length <= 4">
+                <div class="use-wrapper" data-ng-repeat="purpose in cashApplyPurposeVOList"
+                     data-ng-click="selectBlankNotePurpose(purpose)">
+                    <div class="use-item" ng-class="{selected:isSelectPurpose(purpose)}">{{purpose.purposeDesc}}</div>
+                </div>
+            </div>
+            <div class="money-row"
+                 data-ng-if="cashApplyPurposeVOList && cashApplyPurposeVOList.length > 4 && showAllPurpose">
+                <div class="use-wrapper" data-ng-repeat="purpose in cashApplyPurposeVOList"
+                     data-ng-click="selectBlankNotePurpose(purpose)">
+                    <div class="use-item" ng-class="{selected:isSelectPurpose(purpose)}">{{purpose.purposeDesc}}</div>
+                </div>
+                <div class="use-wrapper" data-ng-click="foldBlankNotePurpose()">
+                    <div class="use-item more-item">收起</div>
+                </div>
+            </div>
+            <div class="money-row"
+                 data-ng-if="cashApplyPurposeVOList && cashApplyPurposeVOList.length > 4 && !showAllPurpose">
+                <div class="use-wrapper" data-ng-click="selectBlankNotePurpose(cashApplyPurposeVOList[index])"
+                     data-ng-repeat="index in samePurposeList">
+                    <div class="use-item" ng-class="{selected:isSelectPurpose(cashApplyPurposeVOList[index])}">
+                        {{cashApplyPurposeVOList[index].purposeDesc}}
+                    </div>
+                </div>
+                <div class="use-wrapper" data-ng-click="moreBlankNotePurpose()">
+                    <div class="use-item more-item">更多...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blanknote-money">
+        <div class="title">
+            取现金额
+            <span class="right-text" data-ng-click="gotoProduct()">
+                点我提额<span class="iconfont icon-right-arrow"></span>
+            </span>
+        </div>
+        <div class="money-item-wrapper">
+            <div class="money-row" data-ng-if="blankNoteAmountList && blankNoteAmountList.length <= 9">
+                <div class="money-wrapper" data-ng-repeat="amount in blankNoteAmountList"
+                     data-ng-click="selectBlankNoteAmount(amount)">
+                    <div class="money-item"
+                         ng-class="{selected:isSelectAmount(amount),'money-over':(amount > blankBalanceCreditAmount)}">
+                        {{amount}}元
+                    </div>
+                </div>
+            </div>
+            <div class="money-row" data-ng-if="blankNoteAmountList && blankNoteAmountList.length > 9 && showAllAmount">
+                <div class="money-wrapper" data-ng-repeat="amount in blankNoteAmountList"
+                     data-ng-click="selectBlankNoteAmount(amount)">
+                    <div class="money-item"
+                         ng-class="{selected:isSelectAmount(amount),'money-over':(amount > blankBalanceCreditAmount)}">
+                        {{amount}}元
+                    </div>
+                </div>
+                <div class="money-wrapper" data-ng-click="foldAmounts()">
+                    <div class="money-item more-item">收起</div>
+                </div>
+            </div>
+            <div class="money-row" data-ng-if="blankNoteAmountList && blankNoteAmountList.length > 9 && !showAllAmount">
+                <div class="money-wrapper" data-ng-repeat="index in sameAmountList"
+                     data-ng-click="selectBlankNoteAmount(blankNoteAmountList[index])">
+                    <div class="money-item"
+                         ng-class="{selected:isSelectAmount(blankNoteAmountList[index]),'money-over':(blankNoteAmountList[index] > blankBalanceCreditAmount)}">
+                        {{blankNoteAmountList[index]}}元
+                    </div>
+                </div>
+                <div class="money-wrapper" data-ng-click="moreAmounts()">
+                    <div class="money-item more-item">更多...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blanknote-aging" data-ng-if="quotaCount && quotaCount != 0">
+        <div class="title quota-count-text" data-ng-click="gotoQuota()">
+            <span class="iconfont icon-prompt"></span>恭喜您！您的额度可以提升，请点击领取
+        </div>
+        <i class="iconfont icon-right-arrow"></i>
+        <ol class="Scoupon-list" data-ng-click>
+            <li class="Scoupon-item" data-ng-repeat="item in ScouponList" ng-click="useCoupon(item)">
+                <div class="Scoupon-brief-quota">
+                    <div class="Scoupon-left">
+                        <img ng-if="item.status =='waiting_fetch' && item.accountType == 'blank_note'"
+                             src="../../../app/assets/imgs/profile/coupon-bgS.png"
+                             class="Scoupon-img">
+                        <img ng-if="item.status =='waiting_fetch' && item.accountType == 'main'"
+                             src="../../../app/assets/imgs/profile/coupon-bgM.png"
+                             class="Scoupon-img">
+
+                        <div class="Scoupon-money withdrawal"
+                             data-ng-if="item.status =='waiting_fetch' && item.accountType == 'blank_note'">
+                            {{item.amount | numShortHand}}<span
+                                class="Scoupon-money-sign">元</span></div>
+                        <div class="Scoupon-money instalments"
+                             data-ng-if="item.status =='waiting_fetch' && item.accountType == 'main'">
+                            {{item.amount | numShortHand}}<span
+                                class="Scoupon-money-sign">元</span></div>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="blanknote-money" data-ng-if="canShow">
+
+        <div class="title">选择分期数</div>
+
+        <div class="money-item-wrapper">
+            <div class="money-row">
+                <div class="money-wrapper" data-ng-repeat="myPeriod in cashInterestRuleList"
+                     data-ng-click="selectCashInterestRule(myPeriod)">
+                    <div class="money-item" ng-class="{selected:isSelectPeriod(myPeriod)}">{{myPeriod}}个月</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="blanknote-money" data-ng-if="canShow">
+
+        <div class="title">转账账户类型</div>
+
+        <div class="money-item-wrapper">
+            <div class="money-row">
+                <div class="money-wrapper" data-ng-repeat="fundType in supportAccountFundTypeList"
+                     data-ng-click="selectFundType(fundType)">
+                    <div class="money-item" ng-class="{selected:isSelectFundType(fundType)}">{{fundType | fundType}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <div class="blanknote-aging" data-ng-click="cardFn.openSelectCard('blanknote')"
+         data-ng-if="blankNote.accountType=='person_pingan' && canShow">
+
+        <div class="title">银行卡账号</div>
+
+        <div class="text-right">
+            <span>{{bankCardAccount}}</span>
+        </div>
+        <i class="iconfont icon-right-arrow"></i>
+
+    </div>
+
+
+    <div class="blanknote-aging" data-ng-click="alipay.openDialog()"
+         data-ng-if="blankNote.accountType=='person_alipay' && canShow">
+
+        <div class="title">支付宝账号</div>
+
+        <div class="text-right">
+            <span>{{alipayAccount}}</span>
+        </div>
+        <i class="iconfont icon-right-arrow"></i>
+
+    </div>
+    <!--==============我的抵扣券================-->
+    <div class="blanknote-aging" data-ng-click="red.openDialog()" ng-if="serviceCouponsItems">
+
+        <div class="title"><img class='coupon-brand' src="/app/assets/imgs/profile/myCoupon.png" alt="">我的抵扣券（可在还款时使用）
+        </div>
+
+        <i class="iconfont icon-right-arrow"></i>
+
+    </div>
+    <div class="blanknote-aging setting-table">
+        <div class="second-column car-express">
+            <div class="left-text" style="width:25%;float:left;padding-left: 15px;">
+                贷款描述
+            </div>
+            <div class="left-text" style="width:75%;float:left">
+                <input class="setting-input" type="text" placeholder="在这里用语言和真诚打动对方" maxlength="200"
+                       data-ng-model="blankNote.memo"/>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="blanknote-contract" data-ng-click="autoRepaySignObject.toggleStatus()">-->
+    <!--<input type="checkbox" ng-checked="autoRepaySignObject.userFundAccountId" onclick="return false"-->
+    <!--ng-if="autoRepaySignObject.userFundAccountId"/>-->
+    <!--<input type="checkbox" ng-checked="false" onclick="return false"-->
+    <!--ng-if="!autoRepaySignObject.userFundAccountId"/>-->
+    <!--<a-->
+    <!--&gt;-->
+    <!--自动代扣-->
+    <!--<span data-ng-if="autoRepaySignObject.userFundAccountId">({{autoRepaySignObject.userFundAccountNo}})</span></a>-->
+    <!--</div>-->
+
+
+    <div class="blanknote-contract">
+        <input type="checkbox" ng-model="isAgree">
+        本人同意<span class="llq-text-highlight llq-text-underline" ng-click="agreementDialog.openDialog()">居间服务协议</span>
+    </div>
+
+
+    <sys-notice type="blank_note_tip" class="blanknote-help"></sys-notice>
+
+    <!--<div class="weixin-code"></div>-->
+</div>
+
+
+<div class="blanknote-bottom-btn-wrapper">
+    <div class="blanknote-bottom" data-ng-if="canShow" style="float: left">
+        <div class="title" style="line-height: 30px;">
+            <span>月供：<span class="repay"
+                           data-ng-bind="firstRepay.amountPrinciple | moneyFixed"></span>+<span
+                    class="repay" data-ng-bind="firstRepay.amountInterest | moneyFixed"></span>(手续费)</span>
+        </div>
+    </div>
+    <button class="nav-hint single-row submit-btn" ng-click="doApply()" ng-disabled="!isAgree">
+        确定
+    </button>
+</div>
+
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="agreementDialog.isVisible" z-index="560">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="agreementDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>居间服务协议</span>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon">
+        </div>
+    </div>
+
+    <div id="agreementDialogContent" class="dialog-content agreement-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+    </div>
+</div>
+
+
+<card-manager
+        data-reload-cards-fn="cardFn.reloadCardsFn"
+        data-selected-fn="cardFn.selectedFn">
+</card-manager>
+
+
+<!--支付宝-->
+<div ui-dialog class="alipay-dialog" overlay="true" close-by-overlay="true"
+     before-hide="alipay.dialogBeforeHide();"
+     is-visible="alipay.isVisible" z-index="583">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="alipay.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>修改绑定支付宝账号</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">旧支付宝账号</div>
+                <div class="setting-left desc">
+                    <span data-ng-bind="alipayAccount || '未绑定支付宝账号'"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">新支付宝账号</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" data-ng-model="alipay.newAlipayAccount"
+                           placeholder="请输入新支付宝账号"/>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="alipay.dialogSubmit()">
+        确认修改
+    </button>
+
+</div>
+
+<!--===============还款券====================-->
+<div ui-dialog class="dialog-fullscreen instructor-dialog"
+     is-visible="red.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="red.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>还款券</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
+    <img src="../../../app/assets/imgs/profile/myCoupon-bg1.png">
+    -->
+
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ol class="goods-list mybill-main blanknote-coupon-main">
+            <li class="myCoupon-item" data-ng-repeat="item in serviceCouponsItems" ng-if="serviceCouponsItems">
+                <div class="item-left not-used" data-ng-style="item.style" data-ng-if="item.showNumber">
+                    <div class="item-typeText" data-ng-bind="item.typeText"></div>
+                    ¥<span class="item-amount">{{item.amount | numShortHand}}</span>
+                </div>
+                <div class="item-left not-used" data-ng-style="item.style" data-ng-if="!item.showNumber">
+                    <div class="item-typeText" data-ng-bind="item.typeText"></div>
+                    <span class="item-desc" data-ng-bind="item.desc"></span>
+                </div>
+                <div class="item-right">
+                    <div class="item-name" data-ng-bind="item.name"></div>
+                    <div class="item-rules">
+                        <div class="rule-amount">
+                            <div>*<span>还款时使用</span></div>
+                        </div>
+                    </div>
+                    <div class="item-date">
+                        *有效期：<span data-ng-bind="item.beginTime | dateFormat:'yyyy-MM-dd'"></span>
+                        ～
+                        <span data-ng-bind="item.endTime | dateFormat:'yyyy-MM-dd'"></span>
+                    </div>
+                </div>
+            </li>
+            <li ng-if="!serviceCouponsItems || serviceCouponsItems.length==0" style="font-size: 16px;margin-left: 21px;"
+                class="mycoupon-abnormal">
+                <div class="get-coupon-container">
+                    <div class="get-coupon-img">
+                        <img src="../../../app/assets/imgs/works-share/get-coupon.png">
+                    </div>
+                    <div class="abnormal-info">您暂时还没有可用的还款券！</div>
+                    <div class='btn-info' ng-click="gotoTaskShare()">去邀请领券>>></div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</div>
+
+<!--灰名单借款成功-->
+<div ui-dialog class="dialog-fullscreen success-dialog" is-visible="successDialog.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="successDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>申请结果</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="setting-table cmcc-dialog-table dialog-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+        <div class="success-top">
+            <div class="left-image">
+                <img src="../../../app/assets/imgs/blacknote/success.png"/>
+            </div>
+            <div class="right-text">
+                <div class="top-title">还差一步，即可申请成功</div>
+                <div class="top-text">
+                    一大波现金正奔向您的口袋，放款前<span class="text-hint">请先购买指定商品</span>
+                </div>
+            </div>
+        </div>
+        <div class="success-activity">
+            <div class="activity-line"></div>
+            <span class="activity-name">“韩蜜美妆”校园大使活动商品</span>
+            <div class="activity-line"></div>
+        </div>
+        <div class="activty-product">
+            <div class="product-img">
+                <img src="{{successDialog.cashProduct.productImg.imgUrl}}"/>
+            </div>
+            <div class="product-desc">
+                <div class="product-name" data-ng-bind="successDialog.cashProduct.product.name"></div>
+                <span class="product-tag">拍下立即放款</span>
+                <div class="product-price">
+                    <span class="base-price" data-ng-bind="'¥'+successDialog.cashProduct.productSku.price"></span>
+                    <span class="market-price"
+                          data-ng-bind="'¥'+successDialog.cashProduct.productSku.marketPrice"></span>
+                </div>
+            </div>
+        </div>
+        <div class="activity-btn" data-ng-click="successDialog.submit()">
+            立即购买
+        </div>
+        <div class="activity-hint">
+            <span class="iconfont icon-hint"></span>
+            全额购买该商品，立即放款
+        </div>
+    </div>
+</div>

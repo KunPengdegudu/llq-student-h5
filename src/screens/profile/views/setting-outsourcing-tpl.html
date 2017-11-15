@@ -1,0 +1,29 @@
+<div class="profile-main profile-main-show-header outSourcing-main" data-ng-cloak>
+
+    <ul class="setting-table" data-ng-if="!hasRealNameAuth">
+        <li class="setting-table-cell">
+            <div class="real-content">
+                暂无海外购实名认证信息
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table" data-ng-if="hasRealNameAuth">
+        <li class="setting-table-cell" data-ng-repeat="itemAuth in realNameAuthList">
+            <div class="real-content">
+                <div class="real-info">
+                    <div class="real-name" data-ng-bind="itemAuth.name"></div>
+                    <div class="real-No">
+                        身份证<span class="No-text" data-ng-bind="itemAuth.identityId"></span>
+                    </div>
+                </div>
+                <div class="real-remove" data-ng-click="deleteAuthUser(itemAuth)">
+                    <span class="iconfont icon-delete"></span>
+                    删除
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+

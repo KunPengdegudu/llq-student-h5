@@ -1,0 +1,119 @@
+/**
+* nav style for sycm-c-phone
+ * @create 2014/12/08
+ * @author zhaxi
+ * @update 2014/12/16
+ * @author zhaxi
+*/
+
+.ui-tabs {
+  width: 100%;
+
+  .ui-tab-item {
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    height: 100%;
+    //color: #c61d15;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    .ui-tab-icon {
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+    }
+    .ui-tab-content {
+      text-align: center;
+    }
+  }
+  &.ui-tabs-icon-top {
+    .ui-tab-icon {
+      display: block;
+      margin: auto;
+      margin-top: 2px;
+    }
+    .ui-tab-content {
+      width: 100%;
+      margin: 5px auto;
+    }
+  }
+  &.ui-main-nav {
+    background: $base-background-color;
+    max-height: $nav-height;
+    .ui-tab-item {
+      width: 20%;
+      height: $nav-height;
+      border-top: 1px solid $base-border-color;
+    }
+    .ui-tab-item.active {
+      color: $base-color;
+      //color:#D69D1D;
+    }
+
+    .ui-tab-content {
+      font-size: 10px;
+      height: 10px;
+      line-height: 10px;
+    }
+  }
+  &.ui-top-menu-tab {
+    width: 100%;
+    height: $header-height;
+    background: $white;
+    border-bottom: 1px solid $base-border-color;
+    @include flexBox();
+    @include flexDirectionRow();
+    .ui-tab-item {
+      @include flex();
+      padding: 0 15px;
+      &.active {
+        .ui-landmark {
+          background: $base-color;
+        }
+        .ui-tab-content {
+          color: $base-color;
+        }
+      }
+    }
+    .ui-tab-content {
+      margin: 0;
+      padding: 0 5px;
+      height: $header-height - 4;
+      font-size: 15px;
+      line-height: $header-height - 2;
+    }
+    .ui-landmark {
+      height: 3px;
+      display: block;
+    }
+  }
+}
+.ui-tabs-bottom {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: $zindex-nav;
+}
+.ui-tabs-top {
+  position: fixed;
+  top: 40px;
+  width: 100%;
+  z-index: $zindex-nav;
+}
+.ui-tab-brand {
+  position: absolute;
+  top: 2px;
+  right: 10%;
+  background-color: $brand-danger;
+  height: 18px;
+  min-width: 18px;
+  text-align: center;
+  line-height: 18px;
+  padding: 0 3px;
+  font-size: $font-size-base;
+  font-weight: $bolder-font-weight;
+  border-radius: 9px;
+  color: $white;
+}

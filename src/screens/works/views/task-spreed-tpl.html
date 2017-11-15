@@ -1,0 +1,100 @@
+<div class="task-spreed-container works-main">
+    <div class="task-spreed-content">
+        <div class="spreed-top">成功邀请好友可获得</div>
+        <div class="spreed-top top-third-part"><span>现金奖励</span><span>徒弟奖励</span><span>徒孙奖励</span></div>
+        <div class="spreed-top top-third-part">
+            <span><span data-ng-bind="item.refereeFixedReward"></span>元</span>
+            <span><span data-ng-bind="item.levelOnePercent"></span>%</span>
+            <span><span data-ng-bind="item.levelTwoPercent"></span>%</span></div>
+    </div>
+    <div class="task-spreed-content">
+        <div class="spreed-apprentices">
+            <div>我的徒弟</div>
+            <div class="goods-text-highlight goods-text-large"><span data-ng-bind="item.levelOneCount"></span>人</div>
+        </div>
+        <div class="spreed-apprentices">
+            <div>我的徒孙</div>
+            <div class="goods-text-highlight goods-text-large"><span data-ng-bind="item.levelTwoCount"></span>人</div>
+        </div>
+    </div>
+    <div class="task-spreed-content task-spreed-describe">
+        <div class="blanknote-aging">
+            <div class="title">冻结中奖励</div>
+            <span class="text-right" data-ng-bind="freezeAmount"></span>
+        </div>
+        <div class="blanknote-aging">
+            <div class="title">我的邀请码{{clipboard.canCopy?'（点击复制）':'（长按复制）'}}</div>
+            <div class="text-right">
+                <div class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="spreadCode"></div>
+                <div class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                     data-ng-click="clipboard.setClipboard()" data-ng-if="clipboard.canCopy"
+                     data-ng-bind="spreadCode"></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="task-spreed-content">
+        <div class="blanknote-aging" data-ng-click="strategyShow()">
+            <div class="title">收徒攻略</div>
+            <i class="iconfont icon-right-arrow" data-ng-bi></i>
+        </div>
+    </div>
+
+    <div class="llq-sys-notice-wrapper">
+        <p class="goods-text-highlight">注意：</p>
+
+        <p class="goods-text-highlight">1.新用户通过邀请码注册后，需要使用自己手机下载零零期APP并完成一次登录，奖励才能生效</p>
+
+        <p class="goods-text-highlight">2.徒弟自己也能获得{{item.fixedReward}}元奖励哦</p>
+
+        <p class="danger">3.用户所邀请新用户账号信息必须真实有效，若发现虚假注册信息，零零期将采取封号处理</p>
+    </div>
+
+</div>
+
+<div class="dialog-bottom-btn-wrapper">
+    <button class="nav-hint single-row submit-btn" ng-click="inviteFriends()">
+        扫码和分享邀请注册
+    </button>
+</div>
+
+
+<div ui-dialog class="qrcode-dialog" overlay="true" close-by-overlay="true"
+     is-visible="qrCodeDialog.isVisible" z-index="570">
+    <div class="qrcode-content" id="qrcode"></div>
+    <div class="qrcode-division">
+        <hr/>
+        <div class="text">or</div>
+    </div>
+    <div class="share-desc clearfix">
+        <div class="share-wrapper clearfix" data-ng-click="share('weixin')">
+            <div class="share-img share-weixin"></div>
+            <div class="share-text">微信</div>
+        </div>
+        <div class="share-wrapper clearfix" data-ng-click="share('timeline')">
+            <div class="share-img share-timeline"></div>
+            <div class="share-text">朋友圈</div>
+        </div>
+    </div>
+    <div class="qrcode-desc qrcode-text clearfix">扫描二维码或者分享朋友圈，邀请朋友注册吧！</div>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="strategy.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="strategy.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>收徒攻略</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content strategy-info-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <sys-notice type="reg_task_spead"></sys-notice>
+    </div>
+</div>
+

@@ -1,0 +1,48 @@
+<div class="block-brief">
+
+    <div class="block-title" data-ng-if="item.guessIndex==1">
+        <div class="block-title-bg">
+            <div class="bg"></div>
+        </div>
+        <div class="block-text-center"><span class="title guess">猜你喜欢</span></div>
+    </div>
+
+    <div class="block-content">
+
+        <div class="block-content-inner grid-row" data-ng-repeat="row in item.rows">
+            <div class="grid-item border-right"
+                 ng-click="gotoProductDetail(row[0].productId,row[0].promotionId,'aging')">
+                <img data-ng-src="{{row[0].mainProImgUrl | filterImg : '@!300x300'}}" class="block-image"/>
+
+                <div class="block-text title large">{{row[0].name}}</div>
+
+                <div class="block-text center large">
+                    <span class="goods-text-gray goods-text-small">月供</span>
+                    <span class="goods-text-warn">{{row[0].defaultEveryAmount | moneyFixed}}</span>
+                    <span class="period goods-text-gray">x{{row[0].defaultPeriod}}</span>
+                </div>
+                <div class="block-text center large">
+                    <span class="goods-text-gray"> {{row[0].proSkuPrice | moneyFixed}}</span>
+                    <span class="goods-text-gray goods-text-small goods-text-delete" style="margin-left: 5px;">{{row[0].marketPrice | moneyFixed}}</span>
+                </div>
+            </div>
+            <div class="grid-item" ng-click="gotoProductDetail(row[1].productId,row[1].promotionId,'aging')">
+                <img data-ng-src="{{row[1].mainProImgUrl | filterImg : '@!300x300'}}" class="block-image"/>
+
+                <div class="block-text title large">{{row[1].name}}</div>
+
+                <div class="block-text center large">
+                    <span class="goods-text-gray goods-text-small">月供</span>
+                    <span class="goods-text-warn">{{row[1].defaultEveryAmount | moneyFixed}}</span>
+                    <span class="period goods-text-gray">x{{row[1].defaultPeriod}}</span>
+                </div>
+                <div class="block-text center large">
+                    <span class="goods-text-gray"> {{row[1].proSkuPrice | moneyFixed}}</span>
+                    <span class="goods-text-gray goods-text-small goods-text-delete" style="margin-left: 5px;">{{row[1].marketPrice | moneyFixed}}</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

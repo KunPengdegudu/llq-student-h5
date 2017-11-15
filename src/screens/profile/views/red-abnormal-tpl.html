@@ -1,0 +1,11 @@
+<section class="order-abnormal" ng-if="canGotoShare">
+    <div class="get-coupon-container">
+        <div class="get-coupon-img">
+            <img src="../../../app/assets/imgs/works-share/get-coupon.png">
+        </div>
+    <div class="abnormal-info">您暂时还没有可用的红包！</div>
+    <div class='btn-info' ng-click="gotoTaskShare()">去邀请领红包>>></div></div>
+</section>
+<section class="order-abnormal mycoupon-abnormal" ng-if="!canGotoShare">
+    <div class="abnormal-info">暂无此类红包！</div>
+</section>

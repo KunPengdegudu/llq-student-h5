@@ -1,0 +1,101 @@
+<div class="active-center center-goods" data-ng-style="activeCenter" id="activeMain">
+    <div class="goods-banner">
+        <img src="../../../app/assets/imgs/active-center/goods/goods-banner.png"/>
+    </div>
+    <div class="goods-show-area">
+        <div class="goods-area01">
+            <div class="first-goods"
+                 data-ng-click="gotoProductDetail(hotProductList[0])">
+                <div class="first-img">
+                    <img src="../../../app/assets/imgs/active-center/goods/first-goods.png"/>
+                </div>
+                <div class="first-name" data-ng-bind="hotProductList[0].name"></div>
+                <div class="first-price">
+                    扒光节 <span>¥{{hotProductList[0].proSkuPrice}}</span>
+                </div>
+            </div>
+            <div class="goods-wrapper">
+                <div class="goods-list left-item">
+                    <div class="goods-item" data-ng-repeat="item in hotGoodsLeft track by $index"
+                         data-ng-click="gotoProductDetail(item)">
+                        <div class="item-img">
+                            <img data-ng-src="{{item.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                        </div>
+                        <div class="item-price">
+                            扒光价 <span>¥ {{item.proSkuPrice}}</span>
+                        </div>
+                        <div class="item-btn">
+                            <span>+ 购买</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="goods-list right-item">
+                    <div class="goods-item" data-ng-repeat="item in hotGoodsRight track by $index"
+                         data-ng-click="gotoProductDetail(item)">
+                        <div class="item-img">
+                            <img data-ng-src="{{item.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                        </div>
+                        <div class="item-price">
+                            扒光价 <span>¥ {{item.proSkuPrice}}</span>
+                        </div>
+                        <div class="item-btn">
+                            <span>+ 购买</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="active-goods-area" id="goodsArea">
+        <div class="active-title-list" id="goodsTitles">
+            <div class="title-wrapper" data-ng-style="goodsAreaTitle">
+                <div class="item-title" data-ng-repeat="item in ActiveGoodsTitles track by $index"
+                     data-ng-click="selectGoodsNodeId(item)">
+                    <span class="iconfont icon-address-isActive" data-ng-class="item.isActive?'active':''"
+                          data-ng-if="item.isActive"></span>
+                    <span data-ng-bind="item.nodeName"></span>
+                </div>
+            </div>
+        </div>
+        <div class="active-title">
+            <img src="../../../app/assets/imgs/active-center/goods/goods-title.png" class="title-img goods-title">
+            <div class="title-content" data-ng-bind="selectedNode.nodeName">
+
+            </div>
+        </div>
+        <div class="active-stage" id="goodsContent">
+            <div class="active-items" data-ng-repeat="item in  goodsList track by $index">
+                <div class="item-product"
+                     data-ng-click="gotoProductDetail(item)">
+                    <div class="product-desc">
+                        <div class="item-title" data-ng-bind="item.name"></div>
+                        <div class="item-price">
+                            <div>扒光价</div>
+                            <div class="price-amount">¥<span data-ng-bind="item.basePrice * item.discount /100"></span>
+                            </div>
+                        </div>
+                        <div class="item-btn">
+                            <img src="../../../app/assets/imgs/active-center/goods/goods-btn.png"/>
+                        </div>
+                    </div>
+                    <div class="product-img">
+                        <img data-ng-src="{{item.mainProImgUrl | filterImg : '@!300x300'}}"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-goods-btn" data-ng-click="getActiveGoods(selectedNode.nodeId, 'add')" data-ng-if="showBtn">
+            加载更多
+        </div>
+        <div class="no-more" data-ng-if="!showBtn">
+            没有更多了...
+        </div>
+    </div>
+</div>
+
+
+
+<div style="position: fixed;width: 40px;height: 40px;  z-index: 300;  bottom: 10%;  right: 0;"
+     data-ng-click="backToTop()">
+    <img src="../../../app/assets/imgs/active-center/main/active-back-top.png" style="width: 100%"/>
+</div>

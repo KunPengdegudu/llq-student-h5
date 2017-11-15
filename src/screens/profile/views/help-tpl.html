@@ -1,0 +1,160 @@
+<div class="profile-main security-main profile-main-show-header" data-ng-cloak>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left setting-bar">
+                    <span class="iconfont icon-stage icon-help-stage"></span>
+                    <span>分期说明</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/help/who')">
+                <div class="second-column">
+                    <div class="setting-left">什么人能够分期</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+
+        <!--
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/help/limit')">
+                <div class="second-column">
+                    <div class="setting-left">分期额度说明</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+        -->
+
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/help/material')">
+                <div class="second-column">
+                    <div class="setting-left">分期资料说明</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left setting-bar">
+                    <span class="iconfont icon-help-buy"></span>
+                    <span>购物相关</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="setting-table-cell">
+            <a ng-click="helpGuide.openDialog()">
+                <div class="second-column">
+                    <div class="setting-left">新手指引</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/help/procedure')">
+                <div class="second-column">
+                    <div class="setting-left">购物流程</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/help/question')">
+                <div class="second-column">
+                    <div class="setting-left">常见问题</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <ul class="setting-table">
+
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left setting-bar">
+                    <span class="iconfont icon-help-us"></span>
+                    <span>关于我们</span>
+                </div>
+            </div>
+        </li>
+
+        <li class="setting-table-cell">
+            <a ng-click="contactUs()">
+                <div class="second-column">
+                    <div class="setting-left">在线客服</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                    <span class="iconfont icon-right icon-service with-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+
+        <li class="setting-table-cell">
+            <a data-ng-href="tel:4006288007">
+                <div class="second-column">
+                    <div class="setting-left">客服电话&nbsp;&nbsp;400-6288-007</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                    <span class="iconfont icon-right icon-setting-phone with-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/setting/us')">
+                <div class="second-column">
+                    <div class="setting-left">关于零零期</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/setting/service')">
+                <div class="second-column">
+                    <div class="setting-left">服务条款</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+
+        <li class="setting-table-cell">
+            <a ng-click="gotoUrl('/profile/setting/connectus')">
+                <div class="second-column">
+                    <div class="setting-left">联系我们</div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div>
+<div ui-dialog class="dialog-fullscreen help-guide"
+     is-visible="helpGuide.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="helpGuide.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                新手指引
+            </div>
+        </div>
+
+    </div>
+
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <img class="guide-img" src="../../../app/assets/imgs/profile/help-guide1.png"/>
+        <img class="guide-img" src="../../../app/assets/imgs/profile/help-guide2.png"/>
+    </div>
+</div>

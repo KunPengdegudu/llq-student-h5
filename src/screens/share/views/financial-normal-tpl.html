@@ -1,0 +1,33 @@
+<div data-ng-repeat="itemTittle in items">
+    <div class="financial-title" data-ng-bind="itemTittle.month" data-ng-if="itemTittle.month"></div>
+    <ul class="financial-list">
+        <li class="financial-item" data-ng-repeat="item in itemTittle.records">
+            <img src="../../../app/assets/imgs/works-share/icon_refund.png" class="financial-picture"
+                 data-ng-if="item.refType == 'withdraw'"/>
+            <img src="../../../app/assets/imgs/works-share/icon_recharge.png" class="financial-picture"
+                 data-ng-if="item.refType == 'transfer'"/>
+            <img src="../../../app/assets/imgs/works-share/icon_financial_money.png" class="financial-picture"
+                 data-ng-if="item.refType == 'charge'"/>
+            <img src="../../../app/assets/imgs/works-share/icon_financial_money.png" class="financial-picture"
+                 data-ng-if="item.refType != 'charge' && item.refType != 'withdraw' && item.refType != 'transfer'"/>
+            <div class="financial-middle-text">
+                <div class="name" data-ng-bind="item.memo"></div>
+                <div class="time" data-ng-bind="item.updateTime | dateFormat:'yyyy-MM-dd hh:mm'"></div>
+            </div>
+            <div class="financial-right-text">
+                <div class="amount">
+                    <span data-ng-bind="{{item.transferAmount | keepFixed:2}}"></span>元
+                </div>
+                <div class="count">
+                    <div>
+                        {{item.transferStr}}<span data-ng-if="item.transferOp != 'I'">到{{item.toAccFundTypeDesc}}</span>
+                        <span data-ng-bind="item.statusDesc"></span>
+                    </div>
+                    <!--<div data-ng-bind="item.statusDesc">-->
+
+                    <!--</div>-->
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>

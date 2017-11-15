@@ -1,0 +1,19 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "farlwyMq",
+  "data": {
+    "id": 1,
+    "provinceCode": "3",
+    "cityCode": "2",
+    "areaCode": "1",
+    "address": "test",
+    "userId": 1,
+    "tag": "home",
+    "status": "normal",
+    "memo": "4",
+    "createTime": "Jul 24, 2015 1:02:49 PM",
+    "updateTime": "Jul 24,2015 2:17:00 PM"
+  },
+  "isLogin": false
+}

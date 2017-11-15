@@ -1,0 +1,20 @@
+<ol class="msg-list" data-ng-cloak>
+    <li class="msg-item" data-ng-repeat="item in items" data-ng-click="showMsgDetail(item)">
+        <div class="msg-brief">
+
+            <i class="iconfont msg-icon" data-ng-class="{'msg-icon-read': item.readFlag=='read'}">
+                <div class="iconfont icon-dot msg-icon-active" data-ng-if="item.readFlag=='unread'"></div>
+            </i>
+
+            <div class="msg-desc">
+                <div class="msg-title" data-ng-bind="item.title | omitStr : 16"></div>
+                <div class="msg-subtitle" data-ng-bind="item.text | delTag"></div>
+            </div>
+
+            <div class="msg-time" data-ng-bind="item.createTime | msgTime"></div>
+
+        </div>
+    </li>
+</ol>
+
+

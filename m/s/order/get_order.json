@@ -1,0 +1,71 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "liF9Egrt",
+  "data": {
+    "isAttachProdcutInfo": true,
+    "productSku": {
+      "productDTO": {
+        "productId": 1,
+        "categoryId": 1,
+        "basePrice": 6000.0,
+        "contents": "iphone",
+        "status": "online",
+        "storeId": 1,
+        "proSkuId": 1,
+        "brandName": "苹果",
+        "proSkuPrice": 6288.0,
+        "categoryName": "手手机",
+        "selectedSkuAttrItemIds": "1,3"
+      },
+      "proSkuList": [
+        {
+          "shareSkuAttr": {
+            "id": 1,
+            "categoryId": 1,
+            "name": "颜色色",
+            "description": "颜色色"
+          },
+          "shareSkuAttrItemList": [
+            {
+              "id": 1,
+              "shareSkuAttrId": 1,
+              "value": "土土豪金金",
+              "isSelected": true
+            }
+          ]
+        },
+        {
+          "shareSkuAttr": {
+            "id": 2,
+            "categoryId": 1,
+            "name": "尺寸寸",
+            "description": "尺寸寸"
+          },
+          "shareSkuAttrItemList": [
+            {
+              "id": 3,
+              "shareSkuAttrId": 2,
+              "value": "4.7寸寸",
+              "isSelected": true
+            }
+          ]
+        }
+      ]
+    },
+    "id": 1,
+    "type": "sale",
+    "refId": 0,
+    "totalAmount": 6288.000,
+    "payAmount": 12.300,
+    "status": "wait_pay",
+    "userId": 1,
+    "orderNo": "201507171342140000000001FQ565015",
+    "createTime": "Jul 17, 2015 1:42:17 PM",
+    "updateTime": "Jul 17, 2015 1:42:17 PM",
+    "productSkuId": 1,
+    "productId": 1,
+    "productCount": 1
+  },
+  "isLogin": false
+}

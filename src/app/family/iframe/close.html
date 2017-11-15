@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>大学生分期购物商城-零零期分期</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta content="m.007fenqi.com" name="author"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no, email=no" name="format-detection"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+
+</head>
+<body>
+
+正在跳转...
+
+<script src="../../../vendors/requirejs/2.1.15/require.js"></script>
+<script src="../../../cordova.js"></script>
+
+<script type="text/javascript">
+
+    requirejs.config({
+        baseUrl: '../../../'
+    });
+
+    require(['require', 'app.config'], function (require) {
+        // load app
+        require(['angular'], function (angular) {
+            angular.element(document).ready(function () {
+                if (window.cordova) {
+                    if (navigator.appupdate && navigator.appupdate.openUrlInner && navigator.appupdate.closeUrlInner) {
+                        navigator.appupdate.closeUrlInner(null, 'success');
+                    } else {
+                        var parent = window.parent;
+                        if (parent && parent.outerPageFn) {
+                            parent.outerPageFn.hide(true);
+                        } else {
+                            // 跳回app
+                            var ua = navigator.userAgent.toLowerCase();
+                            var isIos = ua.indexOf('os') > 0;
+                            if (isIos) {
+                                window.location = "llq298373829de://";
+                            } else {
+                                window.location = "llq298373829de://splash?to=/profile/myorder/orderall";
+                            }
+                        }
+                    }
+                } else if (window.postMessage) {
+                    window.postMessage('success');
+                } else if (window.WebViewBridge) {
+                    window.WebViewBridge.send('success');
+                }
+            });
+        });
+    });
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,341 @@
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="bankCardList.isVisible" z-index="580">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="bankCardList.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>选择银行卡</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-content card-main ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+
+        <ul class="setting-table dialog-content" ng-if="!isCardListEmpty()">
+
+            <li class="setting-table-cell" data-ng-repeat="item in cardList" ng-if="!isCardListEmpty()"
+                ng-style="{'background-color':item.banner.sideColor}">
+                <div class="second-column " data-ng-click="bankCardList.closeDialog(item.bankNo, item.id)">
+                    <div class="cardImg">
+                        <img data-ng-src="{{item.banner.imgUrl}}" class="bankCardImg">
+                    </div>
+                    <div class="cardText">
+                        <div class="bankCardName" data-ng-bind="item.bankName"></div>
+                        <div class="bankCardStyle">储蓄卡</div>
+                        <div class="bankCardNo" data-ng-bind="item.bankNo"></div>
+                    </div>
+                    <div class="bankCardType">
+                        <span>{{item.bindType | cardType}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="setting-table">
+            <li class="setting-table-cell add-card">
+                <div class="second-column" data-ng-click="addCardDialog.openDialog()">
+                    +
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"-->
+     <!--is-visible="bankCardListEdit.isVisible" z-index="581">-->
+
+    <!--<div class="ui-header-bar">-->
+        <!--<div class="ui-header-bar-left-icon">-->
+            <!--<div class="iconfont header-bar-icon icon-back" ng-click="bankCardListEdit.closeDialog()"></div>-->
+        <!--</div>-->
+        <!--<div class="ui-header-bar-text">-->
+            <!--<div class="setting-left">-->
+                <!--<span>编辑银行卡</span>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="ui-header-bar-right-icon">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="dialog-content fix-bottom-btn card-main ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">-->
+
+        <!--<ul class="setting-table" ng-if="!isCardListEmpty()">-->
+            <!--<li class="setting-table-cell" data-ng-repeat="item in cardList"-->
+                <!--ng-style="{'background-color':item.banner.sideColor}">-->
+                <!--<div class="second-column" data-ng-click="showCardDialog.openDialog(item)">-->
+                    <!--<div class="cardImg">-->
+                        <!--<img src="{{item.banner.imgUrl}}" class="bankCardImg">-->
+                    <!--</div>-->
+                    <!--<div class="cardText">-->
+                        <!--<div class="bankCardName">{{item.bankName}}</div>-->
+                        <!--<div class="bankCardStyle">储蓄卡</div>-->
+                        <!--<div class="bankCardNo">{{item.cardNo}}</div>-->
+                    <!--</div>-->
+                    <!--<div class="bankCardState">-->
+                        <!--<span>{{item.cardStateStr}}</span>-->
+                    <!--</div>-->
+                    <!--<div class="bankCardType">-->
+                        <!--<span>{{item.bindType | cardType}}</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+
+        <!--<ul class="setting-table">-->
+            <!--<li class="setting-table-cell add-card">-->
+                <!--<div class="second-column" data-ng-click="addCardDialog.openDialog()">-->
+                    <!--+-->
+                <!--</div>-->
+            <!--</li>-->
+        <!--</ul>-->
+
+    <!--</div>-->
+
+<!--</div>-->
+
+<!--银行卡绑定界面-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="addCardDialog.isVisible" z-index="581">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="addCardDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>新增银行卡</span>
+            </div>
+        </div>
+
+        <div class="ui-header-bar-right-icon">
+        </div>
+    </div>
+    <div class="addBankCard-main">
+        <ul class="setting-table" style="padding-top:20px;">
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">开户人</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" readonly="readonly" type="text" placeholder="开户人姓名" data-ng-model="userInfo.name"/>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">身份证</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" readonly="readonly" type="text" placeholder="身份证，请先通过V1认证" data-ng-model="userInfo.idNo"/>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">手机号码</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" readonly="readonly" type="tel" placeholder="银行卡绑定的手机号码" data-ng-model="userInfo.phone"/>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="setting-table" style="padding-top:20px;">
+            <li class="setting-table-cell" ng-click="addBankDialog.openDialog()">
+                <div class="second-column">
+                    <div class="setting-left title">开户银行</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" type="text" readonly="readonly" placeholder="请选择银行" data-ng-model="closeListName"/>
+                        <i class="iconfont icon-right-arrow"></i>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">银行卡号</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" type="text" placeholder="请填写银行卡号" data-ng-model="addCardDialog.item.cardNo"/>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <p class="addBankCard-chang"
+           ng-click="changeDialog.openDialog()">
+            常见问题
+        </p>
+    </div>
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn"
+                ng-click="addCardDialog.bind()"
+                ng-if="!cardAuthCode.show"
+                ng-disabled="lockBindBtn">
+            确认添加
+        </button>
+        <button class="nav-hint single-row submit-btn"
+                ng-click="cardAuthCode.submit()"
+                ng-if="cardAuthCode.show">
+            确定
+        </button>
+    </div>
+
+</div>
+
+<!-- 展示银行卡信息 -->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="showCardDialog.isVisible" z-index="582">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="showCardDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>银行卡信息</span>
+            </div>
+        </div>
+
+        <div class="ui-header-bar-right-icon">
+        </div>
+    </div>
+
+    <div class="dialog-content fix-bottom-btn ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ul class="setting-table">
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">开户人</div>
+                    <div class="setting-left desc">
+                        {{userInfo.name}}
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">开户银行</div>
+                    <div class="setting-left desc">
+                        {{showCardDialog.item.bankName}}
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">银行卡号</div>
+                    <div class="setting-left desc">
+                        {{showCardDialog.item.bankNo}}
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">身份证</div>
+                    <div class="setting-left desc">
+                        {{userInfo.idNo}}
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">手机号码</div>
+                    <div class="setting-left desc">
+                        {{userInfo.phone}}
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+
+
+    </div>
+
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn" ng-click="showCardDialog.unbind()">
+            <span data-ng-bind="'解除绑定'"></span>
+        </button>
+    </div>
+
+</div>
+
+<!--开户银行列表-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="addBankDialog.isVisible" z-index="581">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="addBankDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>开户银行</span>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon">
+        </div>
+    </div>
+
+    <div class="dialog-content fix-bottom-btn add-card-main ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ul class="setting-table">
+            <li class="setting-table-cell bankList" ng-click="addBankDialog.closeListDialog(item.bankCode,item.bankName)" ng-repeat="item in addBankDialog.addBankList" ng-bind="item.bankName"></li>
+        </ul>
+    </div>
+</div>
+
+
+<!--常见问题-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="changeDialog.isVisible" z-index="581">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="changeDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>常见问题</span>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon">
+        </div>
+    </div>
+
+    <div class="dialog-content fix-bottom-btn add-card-main ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <sys-notice type="bind_card_note" class=""></sys-notice>
+    </div>
+</div>
+<!--验证码-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="authCode.isVisible" z-index="581">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="authCode.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>短信验证</span>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon">
+        </div>
+    </div>
+
+    <div class="dialog-content fix-bottom-btn add-card-main ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <div class="authCode-header">
+            未确认您本人操作,需短信验证.验证码已发送到手机<span>{{authCode.phoneMi}}</span>，请按提示操作
+        </div>
+        <div class="authCode-main">
+            <div class="authCode-main-left">
+                <input type="text" placeholder="请输入验证码" data-ng-model="authCode.codeText">
+            </div>
+            <!--<div class="" data-ng-click="" ng-disabled="!authCode.enable">-->
+                <!--<span data-ng-bind="authCode.text"></span>-->
+            <!--</div>-->
+            <div class="setting-right auth-code-btn authCode-main-right">
+                <button class="bgNone" ng-disabled="!authCode.btn.enable" ng-click="authCode.sendAuthCode()">
+                    <span data-ng-bind="authCode.btn.text"></span>
+                </button>
+            </div>
+        </div>
+        <div class="authCode-footer" data-ng-click="authCode.successBtn()">
+            提交验证
+        </div>
+    </div>
+</div>

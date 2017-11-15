@@ -1,0 +1,8 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "FNpBbgWK",
+  "data": 1,
+  "fieldErrMsg": null,
+  "login": true
+}

@@ -1,0 +1,879 @@
+//分享有礼___主页面
+.notice-main {
+  &.share-notice-main {
+    position: fixed;
+    top: $header-height;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    padding: 3px 0px;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 199;
+    border: 0;
+    .notice-wrapper {
+      width: 100%;
+      height: 100%;
+      line-height: 24px;
+      font-size: $font-size-large;
+      margin: 0px;
+      color: $white;
+      .notice-text {
+        width: 18px;
+        line-height: 24px;
+        padding: 1px 10px 0 0;
+        border-right: 0;
+        img {
+          width: 12px;
+          height: 12px;
+        }
+      }
+      .notice-list {
+        font-size: 12px;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+.task-share-container {
+  position: absolute;
+  top: $header-height;
+  bottom: $nav-height;
+  left: 0;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #ff87a3;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .llq-sys-notice-wrapper {
+     
+    span {
+      white-space: normal;
+    }
+  }
+
+  img {
+    display: inline-block;
+  }
+
+  .task-share-banner {
+    width: 100%;
+    position: relative;
+    img {
+      width: 100%;
+      top: 0;
+    }
+    .share-content {
+      width: 96%;
+      height: 50%;
+      position: absolute;
+      bottom: 4%;
+      left: 0;
+      .content-title {
+        width: 100%;
+        padding: 0 16%;
+        //height:48px;
+        margin-top: 8px;
+        //text-align: center;
+        .tittle1 {
+          width: 100%;
+        }
+      }
+      .money-count {
+        width: 100%;
+        height: auto;
+        //background-color: white;
+        margin-top: 5px;
+        margin-bottom: 10px;
+        .money-count-img {
+          width: 10%;
+          margin: 0 45%;
+        }
+        .money-count-centent {
+          height: 20px;
+          text-align: center;
+          i {
+            font-size: $font-size-base;
+            font-style: normal;
+            color: #f45a7e;
+            vertical-align: top;
+            display: inline-block;
+            padding-top: 3px;
+          }
+          span {
+            &:nth-of-type(1) {
+              font-size: 20px;
+              font-weight: 700;
+              color: #f45a7e;
+              padding-right: 5px;
+            }
+            &:nth-of-type(2) {
+              font-size: $font-size-base;
+              color: #466cd7;
+            }
+          }
+        }
+      }
+      .award-detail {
+        @include flexBox();
+        color: #666;
+        margin-top: 3px;
+        .detail-left {
+          @include flex(1);
+          text-align: center;
+          border-right: solid 1px #d8d8d8;
+          .friendIcon {
+            width: 20%;
+            margin: 0 40%;
+          }
+          .friend-number {
+            color: #f45a7e;
+            font-size: $font-size-xl;
+            font-weight: 500;
+            padding: 2px;
+          }
+        }
+        .detail-right {
+          @include flex(1);
+          text-align: center;
+          .noticeIcon {
+            width: 20%;
+            margin: 0 40%;
+          }
+          .registerNum {
+            font-size: $font-size-xl;
+            color: #f45a7e;
+            font-weight: 500;
+            padding: 2px;
+          }
+        }
+      }
+      .detail-bottom {
+        width: 100%;
+        @include flexBox();
+        text-align: center;
+        .lottery-button {
+          width: 24%;
+          margin: 5px 13% 8px;
+          height: 24px;
+        }
+        .totalCash {
+          width: 50%;
+          height: 24px;
+          line-height: 24px;
+          color: #666;
+          font-size: $font-size-base;
+          margin-top: 2px;
+          .cashNum {
+            font-size: $font-size-xl;
+            color: #f45a7e;
+            font-weight: 500;
+            padding: 2px;
+          }
+        }
+      }
+
+    }
+  }
+
+  .share-picture {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .share-award {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    .share-award-bg {
+      width: 100%;
+    }
+    .share-award-box {
+      width: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      .award-tittle {
+        width: 100%;
+        padding: 0 16%;
+        padding-top: 10px;
+        .tittle3 {
+          width: 100%;
+          margin-top: 2%;
+        }
+      }
+      .award-content {
+        width: 100%;
+        @include flexBox();
+        margin-top: 18px;
+        .award-left {
+          width: 50%;
+          text-align: center;
+          .icon_iphone {
+            width: 30%;
+            margin: 10px 10% 5px 10%;
+          }
+          .newUser {
+            font-size: $font-size-large;
+            color: #333;
+            margin: 5px 10px 0px 10px;
+          }
+          .purchaseIphone {
+            font-size: 13px;
+            color: #666666;
+            margin-bottom: 5px;
+          }
+          .button_enterZone {
+            width: 50%;
+            margin: 3px 25% 6px;
+          }
+        }
+        .middle-line {
+          width: 1px;
+          height: auto;
+          margin-bottom: 7px;
+          border-right: solid 1px #d8d8d8;
+        }
+        .award-right {
+          width: 50%;
+          text-align: center;
+          .icon_wait {
+            width: 30%;
+            margin: 10px 10% 5px 10%;
+          }
+          .checkAuth {
+            font-size: $font-size-large;
+            color: #333;
+            margin: 5px 10px 0px 10px;
+          }
+          .speedUp {
+            font-size: 13px;
+            color: #666666;
+            margin-bottom: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .share-rank {
+    position: relative;
+    width: 100%;
+    height: 75%;
+    margin: 20px 0;
+    .share-rank-bg {
+      width: 100%;
+    }
+    .share-rank-box {
+      width: 100%;
+      position: absolute;
+      padding-right: 4%;
+      left: 0;
+      top: 0;
+      .rank-tittle {
+        width: 100%;
+        padding-top: 5%;
+        text-align: center;
+        .tittle5 {
+          width: 75%;
+        }
+      }
+
+      .rank-head {
+        position: relative;
+        width: 84%;
+        margin: 0 auto;
+        .rank-image {
+          width: 100%;
+        }
+        .hed-wrapper {
+          width: 100%;
+          position: absolute;
+          top: 23%;
+          height: 24px;
+          left: 0;
+          @include flexBox();
+          @include flexDirectionRow();
+          .rankItem {
+            @include flex(1);
+          }
+        }
+      }
+
+      .rank-content {
+        position: relative;
+        width: 84%;
+        margin: 10px auto 0px;
+        .rank-image {
+          width: 100%;
+          margin-top: 10px;
+        }
+        .rank_list_head {
+          width: 100%;
+          height: 25px;
+          line-height: 25px;
+          background: #fddde5;
+          @include flexBox();
+          @include flexDirectionRow();
+          .head-item {
+            @include flex(1);
+            text-align: center;
+            font-size: $font-size-large;
+            color: #333333;
+          }
+        }
+      }
+      .rank-list {
+        width: 100%;
+        //background-color: red;
+        .rank-list-item {
+          @include flexBox();
+          width: 100%;
+          height: 24px;
+          line-height: 24px;
+          font-size: $font-size-large;
+          color: $base-text-color;
+          font-weight: 300;
+          &:nth-child(2n) {
+            background-color: #fddde5;
+          }
+          &:nth-child(2n+1) {
+            background-color: transparent;
+          }
+          &:first-child {
+            height: 41px;
+            line-height: 41px;
+            font-size: $font-size-xl;
+            color: #fa688c;
+            font-weight: 400;
+            .list-item-left {
+              .rank-first {
+                width: 24px;
+                height: 35px;
+                padding-top: 3px;
+              }
+            }
+          }
+          div {
+            @include flex(1);
+            text-align: center;
+          }
+        }
+      }
+    }
+
+  }
+
+}
+
+.share-enroll-page {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #fb6e90;
+  z-index: 200;
+  .erroll-img {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+  .erroll-table {
+    width: 74%;
+    margin: 0 auto;
+    .erroll-table-cell {
+      width: 100%;
+      height: 40px;
+      margin-top: 15px;
+      font-size: $font-size-large;
+      @include flexBox();
+      @include flexDirectionRow();
+      .cell-left {
+        @include flex(1);
+        @include flexBox();
+        @include flexDirectionRow();
+        height: 40px;
+        line-height: 30px;
+        border-radius: 25px;
+        background-color: $white;
+        padding: 5px 15px;
+        .cell-icon {
+          width: 20px;
+          height: 20px;
+          margin-top: 5px;
+          img {
+            width: 20px;
+          }
+        }
+        .cell-input {
+          @include flex(1);
+          input {
+            width: 100%;
+            padding-left: 5px;
+            font-size: $font-size-base;
+            border: none;
+          }
+        }
+      }
+      .cell-right {
+        height: 40px;
+        margin-left: 10px;
+        position: relative;
+        img {
+          width: 85px;
+          height: 40px;
+          border-radius: 25px;
+        }
+        .cell-right-btn {
+          position: absolute;
+          width: 100%;
+          top: 0;
+          left: 0;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          color: $white;
+          font-size: $font-size-base;
+        }
+      }
+    }
+  }
+
+  .erroll-hint-btn {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    color: $white;
+    font-size: $font-size-large;
+    text-align: center;
+    margin: 5px 0;
+    @include flexBox ();
+    @include flexDirectionRow();
+    @include flexJustify(center);
+    .erroll-icon {
+      width: 40px;
+      height: 40px;
+      //padding: 0 12px;
+      padding: 0 20px 0 6px;
+      img {
+        width: 100%;
+      }
+    }
+  }
+  .erroll-btn {
+    width: 74%;
+    height: auto;
+    text-align: center;
+    margin: 0 13%;
+    img {
+      width: 100%;
+      height: 40px;
+    }
+  }
+  .erroll-agreement {
+    width: 74%;
+    height: 50px;
+    line-height: 25px;
+    margin: 6px auto;
+    color: $white;
+    text-align: center;
+    @include flexBox();
+    @include flexDirectionRow();
+    @include flexJustify(center);
+    .agreement-img {
+      width: 25px;
+      height: 25px;
+      padding: 2px;
+      img {
+        width: 100%;
+      }
+    }
+    .agreement-text {
+      height: 50px;
+      line-height: 25px;
+    }
+  }
+}
+
+//規則按鈕
+.rule-img {
+  position: fixed;
+  right: 0;
+  top: 18%;
+  width: 65px;
+  height: 33px;
+}
+
+#invite-bottom-button {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 49px;
+  line-height: 49px;
+  background-color: $white;
+  border-top: solid 1px $brand-disabled;
+  .invite-share-bottom-button {
+    width: 96%;
+    height: 36px;
+    line-height: 36px;
+    margin-top: 6px;
+    text-align: center;
+    border-radius: 5px;
+    background: #586fd2;
+    font-size: $font-size-xxl;
+    color: $white;
+    font-weight: normal;
+  }
+}
+
+.ui-dialog {
+  &.share-enroll-dialog {
+    width: 80%;
+    margin-left: -40%;
+    top: 38%;
+    background-color: transparent;
+    div {
+      background-color: transparent !important;
+    }
+    .active-content {
+      width: 100%;
+      .rule-bg {
+        width: 100%;
+      }
+      .cancel-button {
+        position: absolute;
+        top: -22px;
+        right: 2%;
+        width: 20px;
+        height: 30px;
+      }
+      .content {
+        width: 100%;
+        height: 90%;
+        position: absolute;
+        left: 0;
+        top: 50%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        .title {
+          text-align: center;
+          font-size: 22px;
+          padding: 10px 0;
+        }
+        .tips {
+          width: 100%;
+          padding: 0 5%;
+          text-align: center;
+          font-size: $font-size-large;
+          color: $base-text-color2;
+          span {
+            color: #ff0000;
+          }
+        }
+        .download {
+          //width: 90%;
+          margin: 16px 5% 0;
+          height: 44px;
+          line-height: 44px;
+          text-align: center;
+          font-size: 18px;
+          background-color: #ff9600 !important;
+          color: #fff;
+          border-radius: 5px;
+        }
+      }
+    }
+  }
+}
+
+.ui-dialog {
+  &.share-active-dialog {
+    width: 80%;
+    margin-left: -40%;
+    top: 38%;
+    background-color: transparent;
+    div {
+      background-color: transparent !important;
+    }
+    .active-content {
+      width: 100%;
+      .rule-bg {
+        width: 100%;
+      }
+      .cancel-button {
+        position: absolute;
+        top: -22px;
+        right: 2%;
+        width: 20px;
+        height: 30px;
+      }
+      .rule-text {
+        width: 100%;
+        height: 90%;
+        position: absolute;
+        left: 0;
+        top: 5%;
+        overflow-x: hidden;
+        overflow-y: auto;
+        .rule-title {
+          text-align: center;
+          font-size: $font-size-xxxl;
+          padding: 10px 0 5px 0;
+        }
+        .llq-sys-notice-wrapper {
+          margin-top: 0;
+          margin-left: 5%;
+        }
+      }
+    }
+  }
+}
+
+.ui-dialog {
+  &.share-qrcode-dialog {
+    width: 260px;
+    margin-left: -130px;
+    top: 30%;
+    background-color: transparent;
+    .qr-background {
+      width: 100%;
+    }
+    .cancel-button {
+      position: absolute;
+      top: 15%;
+      right: 2%;
+      width: 20px;
+      height: 30px;
+    }
+    .share-qrcode-content {
+      position: absolute;
+      top: 22%;
+      //left: 7%;
+      width: 100%;
+      padding: 5%;
+      text-align: center;
+      background: transparent;
+      .userName {
+        font-size: $font-size-xxxl;
+        font-weight: 500;
+        color: #fc668b;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        //padding-right: 7%;
+        margin-bottom: 6px;
+      }
+    }
+  }
+}
+
+.ui-dialog {
+  &.share-guide-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    min-height: 200px;
+    margin-left: 0;
+    margin-top: 0;
+    background-color: transparent;
+    img {
+      display: block;
+      &.share_guide02 {
+        width: 52%;
+        position: absolute;
+        top: 5%;
+        right: 10%;
+      }
+      &.share_guide01 {
+        width: 34%;
+        position: absolute;
+        top: 56%;
+        left: 33%;
+      }
+      &.share_guide03 {
+        width: 24%;
+        position: absolute;
+        top: 40%;
+        left: 38%;
+      }
+    }
+  }
+}
+
+//好友列表
+.friendslist-container {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 200;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $base-background-color;
+  article {
+    top: 0;
+    bottom: 0;
+  }
+  .listTitle {
+    width: 100%;
+    padding-left: 15px;
+    height: 45px;
+    line-height: 45px;
+    font-size: $font-size-xl;
+  }
+
+  .friendslistTab {
+    @include flexBox();
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: $white;
+    .tabItem {
+      @include flex(1);
+      text-align: center;
+      font-size: 13px;
+      color: $gray;
+      border-right: solid 1px #d8d8d8;
+      &:last-child {
+        border-right: 0;
+      }
+      .friendsNum {
+        color: #f99639;
+        font-size: $font-size-xxl;
+      }
+    }
+  }
+
+  .friends-table {
+    width: 100%;
+    padding-left: 15px;
+    top: 115px;
+    background-color: $white;
+    .friends-table-cell {
+      height: 60px;
+      line-height: 60px;
+      padding-right: 10px;
+      @include flexBox();
+      border-bottom: solid 1px #e1e1e1;
+      &.no-border {
+        border-bottom: 0;
+      }
+      .icon-head {
+        width: 35px;
+        height: 35px;
+        margin: 12px 10px 13px 0;
+      }
+      .name {
+        font-size: $font-size-large;
+        color: #333333;
+      }
+      .dateView {
+        font-size: 13px;
+        color: $base-text-color2;
+        @include flex(1);
+        text-align: right;
+        span {
+          margin-right: 5px;
+        }
+      }
+    }
+
+  }
+}
+
+article.financial-article {
+  top: 80px;
+  bottom: 0;
+  z-index: 200;
+}
+
+//分享有礼_资金明细
+.financial-container {
+  width: 100%;
+  //margin-top: 40px;
+  bottom: 0;
+  .financial-title {
+    width: 100%;
+    padding-left: 10px;
+    height: 35px;
+    line-height: 35px;
+    background-color: $base-background-color;
+    font-size: $font-size-xxl;
+    color: $base-text-color;
+    &.top-financial-title {
+      margin-top: $nav-height;
+    }
+  }
+  .financial-list {
+    width: 100%;
+    padding-left: 10px;
+    //padding-right: 10px;
+    height: auto;
+    background-color: $white;
+    .financial-item {
+      @include flexBox();
+      @include flexDirectionRow();
+      width: 100%;
+      height: 75px;
+      border-bottom: solid 1px $base-border-color;
+      padding-top: 12px;
+      padding-right: 10px;
+      //&:last-child {
+      //  border: 0;
+      //}
+      .financial-picture {
+        width: 37px;
+        height: 37px;
+        margin-right: 7px;
+        margin-top: 8px;
+      }
+      .financial-middle-text {
+        @include flex(2);
+        .name {
+          font-size: $font-size-large;
+          color: $base-text-color;
+          height: 28px;
+          line-height: 28px;
+        }
+        .time {
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          height: 24px;
+          line-height: 24px;
+        }
+      }
+      .financial-right-text {
+        @include flex(3);
+        text-align: right;
+        .amount {
+          font-size: $font-size-large;
+          color: $base-text-color;
+          line-height: 28px;
+        }
+        .count {
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+  .warningUp {
+    width: 100%;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    background-color: $white;
+  }
+}
+

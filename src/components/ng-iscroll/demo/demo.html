@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+  <title data-ng-bind="screenTitle">Scroll Loader Simple Demo</title>
+  <meta name="description" content="零零期" />
+  <meta name="keywords" content="零零期" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="yes" name="apple-touch-fullscreen"/>
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no, email=no" name="format-detection"/>
+  <link rel="stylesheet" type="text/css" href="./module.css" />
+
+  <script src="../../../../bower_components/requirejs/require.js"></script>
+  <script src="../../../../bower_components/iscroll/build/iscroll.js"></script>
+  <script type="text/javascript">
+    require(['require', '../../../app.config'], function (require, config) {
+
+      // set cache beater
+      config.urlArgs = 'bust=v0.4.0';
+
+      // update global require config
+      config.baseUrl = '../../../';
+      window.require.config(config);
+
+      require(['angular', 'components/ng-iscroll/directives/ng-iscroll'], function(angular) {
+        var app = angular.module('Demo', ['ng-iscroll']);
+
+        app.controller('Controller', function ($scope) {
+
+          $scope.message = 'scroll start';
+          $scope.myScrollOptions = {
+            snap: "li",
+            onScrollEnd: function ()
+            {
+              //alert('finshed scrolling');
+              console.log("scroll end.")
+              $scope.message = 'scroll end';
+            }
+          };
+
+          // expose refreshiScroll() function for ng-onclick or other meth
+          $scope.refreshiScroll = function ()
+          {
+            $scope.myScroll['wrapper'].refresh();
+          };
+        });
+
+        angular.element(document).ready(function() {
+          angular.bootstrap(document, ['Demo']);
+        });
+      });
+
+    });
+  </script>
+  <style type="text/css">
+    .scroll-loader {
+      background: #f7f7f7;
+      height: 300px;
+      border: 3px solid #d2d2d2;
+      margin-bottom: 20px;
+      overflow: auto;
+      padding: 10px 0;
+      border-radius: .5rem 0 0 .5rem;
+    }
+
+    .scroll-loader li {
+      list-style: none;
+      border-bottom: 1px solid #aaa;
+      padding: 5px;
+      margin-bottom: 3px;
+    }
+  </style>
+</head>
+<div class="container">
+  <div id="header">iScroll</div>
+  <div ng-controller='Controller'>
+
+    <div id="wrapper" ng-iscroll='wrapper' ng-iscroll-delay='50'>
+      <div id="scroller">
+        <ul id="thelist">
+          <li>Pretty row 1</li>
+          <li id="aaa">Pretty row 2</li>
+          <li>Pretty row 3  <button ng-click="refreshiScroll()">Refresh</button></li>
+          <li data-ng-bind="message"></li>
+          <li>Pretty row 5</li>
+          <li>Pretty row 6</li>
+          <li>Pretty row 7</li>
+          <li>Pretty row 8</li>
+          <li>Pretty row 9</li>
+          <li>Pretty row 10</li>
+          <li>Pretty row 11</li>
+          <li>Pretty row 12</li>
+          <li>Pretty row 13</li>
+          <li>Pretty row 14</li>
+          <li>Pretty row 15</li>
+          <li>Pretty row 16</li>
+          <li>Pretty row 17</li>
+          <li>Pretty row 18</li>
+          <li>Pretty row 19</li>
+          <li>Pretty row 20</li>
+          <li>Pretty row 21</li>
+          <li>Pretty row 22</li>
+          <li>Pretty row 23</li>
+          <li>Pretty row 24</li>
+          <li>Pretty row 25</li>
+          <li>Pretty row 26</li>
+          <li>Pretty row 27</li>
+          <li>Pretty row 28</li>
+          <li>Pretty row 29</li>
+          <li>Pretty row 30</li>
+          <li>Pretty row 31</li>
+          <li>Pretty row 32</li>
+          <li>Pretty row 33</li>
+          <li>Pretty row 34</li>
+          <li>Pretty row 35</li>
+          <li>Pretty row 36</li>
+          <li>Pretty row 37</li>
+          <li>Pretty row 38</li>
+          <li>Pretty row 39</li>
+          <li>Pretty row 40</li>
+          <li>Pretty row 38</li>
+          <li>Pretty row 39</li>
+          <li>Pretty row 40</li>
+          <li>Pretty row 38</li>
+          <li>Pretty row 39</li>
+          <li>Pretty row 40</li>
+          <li>Pretty row 38</li>
+          <li>Pretty row 39</li>
+          <li>Pretty row 40</li>
+          <li>Pretty row 38</li>
+          <li>Pretty row 39</li>
+          <li>Pretty row 40</li>
+          <li>Pretty row 38</li>
+          <li>Pretty row 39</li>
+          <li>Pretty row 40</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="footer"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "jaVUmGZk",
+  "data": {
+    "id": 2,
+    "accNo": "13512345678",
+    "type": "person_alipay",
+    "userAccountId": 1,
+    "memo": null,
+    "createTime": 1437801215153,
+    "updateTime": 1437801215143,
+    "status": "normal"
+  },
+  "fieldErrMsg": null,
+  "login": false
+}

@@ -1,0 +1,140 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "FNpBbgWK",
+  "data": {
+    "id": 1,
+    "title": "苹果手手机CW",
+    "memo": null,
+    "type": "aging",
+    "refId": 0,
+    "refType": null,
+    "originPrice": 5288.000,
+    "totalAmount": 5288.000,
+    "payAmount": 12.300,
+    "status": "wait_confirmed",
+    "userId": 1,
+    "orderNo": "201507251406390000000001FQ108265",
+    "createTime": 1437804400000,
+    "updateTime": 1438691937000,
+    "parentId": null,
+    "productSkuId": 1,
+    "productId": 1,
+    "productCount": 1,
+    "deliveryAddressId": 1,
+    "deliveryType": "visit",
+    "deliveryFee": null,
+    "deliveryStatus": "prepare_delivery",
+    "receiveTime": null,
+    "promotionIds": null,
+    "schoolCode": null,
+    "source": "web",
+    "productSku": {
+      "productDTO": {
+        "productId": 1,
+        "categoryId": 1,
+        "marketPrice": null,
+        "basePrice": 5050.0,
+        "contents": "iphone12",
+        "status": "online",
+        "storeId": 1,
+        "proSkuId": 1,
+        "brandName": "苹果",
+        "name": "苹果手手机CW",
+        "categoryName": "手手机",
+        "selectedSkuAttrItemIds": "1,3",
+        "nonSkuStock": null,
+        "proSkuPrice": 5288.0,
+        "proMainImgUrl": "http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1Niq6GXXXXXbCXXXXXXXXXXXX.jpg_360x360Q90.jpg",
+        "proImgList": [
+          {
+            "id": 1,
+            "createTime": 1436948667000,
+            "updateTime": 1436948667000,
+            "imgUrl": "http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1Niq6GXXXXXbCXXXXXXXXXXXX.jpg_360x360Q90.jpg",
+            "indexId": 0,
+            "type": "main",
+            "productId": 1
+          },
+          {
+            "id": 2,
+            "createTime": 1437038484000,
+            "updateTime": 1437038486000,
+            "imgUrl": "http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1Niq6GXXXXXbCXXXXXXXXXXXX.jpg_360x360Q90.jpg",
+            "indexId": 1,
+            "type": "sub",
+            "productId": 1
+          }
+        ]
+      },
+      "proSkuList": [
+        {
+          "shareSkuAttr": {
+            "id": 1,
+            "categoryId": 1,
+            "name": "颜色色",
+            "description": "颜色色",
+            "createTime": 1436943730000,
+            "updateTime": 1436943730000
+          },
+          "shareSkuAttrItemList": [
+            {
+              "id": 1,
+              "shareSkuAttrId": 1,
+              "value": "土土豪金金",
+              "selected": true
+            }
+          ]
+        },
+        {
+          "shareSkuAttr": {
+            "id": 2,
+            "categoryId": 1,
+            "name": "尺寸寸",
+            "description": "尺寸寸e",
+            "createTime": 1438754317000,
+            "updateTime": 1438562606000
+          },
+          "shareSkuAttrItemList": [
+            {
+              "id": 3,
+              "shareSkuAttrId": 2,
+              "value": "4.7寸寸",
+              "selected": true
+            }
+          ]
+        }
+      ],
+      "productStockDTO": null,
+      "promotionDTO": {
+        "agingPeriods": "1,3,6,9,12",
+        "initialPaymentType": "rate",
+        "initialPayment": 0,
+        "initialPaymentRates": "0,0.1,0.2,0.3",
+        "repaymentWay": "ACPI",
+        "interestType": "monthly",
+        "interest": 0.06,
+        "discount": 100,
+        "promotionId": 1,
+        "lastCharge": 0.03,
+        "subscription": 50,
+        "limitedStartTime": null,
+        "limitedEndTime": null
+      },
+      "validProSku": false
+    },
+    "applyId": 1000000,
+    "applyNo": "201507251406390000000001AP783795",
+    "applyAmount": 5275.700,
+    "period": 12,
+    "periodType": "per_month",
+    "appleyStatus": "wait_confirme",
+    "applyCreateTime": null,
+    "applyBeginTime": null,
+    "applyEndTime": null,
+    "attachAgingInfo": true,
+    "attachProdcutInfo": true
+  },
+  "fieldErrMsg": null,
+  "login": true
+}

@@ -1,0 +1,19 @@
+<div class="line-dropdown" data-dropdown>
+    <div class="button-wrapper">
+        <a class="dropdown-button" href="" data-target="#" role="button"
+           data-dropdown-toggle>
+            <span data-ng-bind="selectedItem"></span>
+            <span class="iconfont icon-drop-arrow"></span>
+        </a>
+    </div>
+    <ul class="dropdown-menu" role="menu">
+        <li class="dropdown-option"
+            data-ng-class="{'selected': selectedIndex === $index}"
+            data-ng-repeat="dropdownOption in dropdownOptionsArray"
+            data-ng-click="selectItem($index)">
+            <span data-ng-bind="(null === filter) ? dropdownOption.name + ' ' + dropdownOption.explaination : griddle(dropdownOption.name) + dropdownOption.explanation "></span>
+            <span data-ng-if="selectedIndex === $index"
+                  class="iconfont icon-right"></span>
+        </li>
+    </ul>
+</div>

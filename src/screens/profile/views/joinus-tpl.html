@@ -1,0 +1,9 @@
+<div class="profile-main profile-main-show-header" data-ng-cloak>
+
+    <sys-notice type="join_us"></sys-notice>
+
+    <button class="nav-hint single-row submit-btn" ng-if="!hasJoin" ng-click="joinus()">加入我们</button>
+
+    <button class="nav-hint single-row submit-btn" ng-disabled="true" ng-if="hasJoin" ng-click=""><span data-ng-bind="btnMsg"></span></button>
+
+</div>

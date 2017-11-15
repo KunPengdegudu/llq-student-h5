@@ -1,0 +1,8 @@
+<div class="carousel-page">
+    <ul data-ng-style="item.styles" rn-carousel rn-carousel-index="item.carouselIndex" rn-carousel-auto-slide="5" rn-carousel-pause-on-hover rn-carousel-buffered class="carousel2">
+        <li ng-repeat="slide in item.slides track by slide.id" ng-class="'id-' + slide.id" data-ng-click="carouseClick(slide.url)">
+            <img data-ng-src="{{slide.img}}" class="bg-image">
+        </li>
+    </ul>
+    <div class="carousel-indicator-wrapper" rn-carousel-indicators ng-if="item.slides.length > 1" slides="item.slides" rn-carousel-index="item.carouselIndex"></div>
+</div>

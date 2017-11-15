@@ -1,0 +1,8 @@
+<article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" threshold="200"
+         trigger-on-event="reload"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/works/views/bill-abnormal-tpl.html' : 'screens/works/views/bill-normal-tpl.html'">
+    </div>
+
+</article>

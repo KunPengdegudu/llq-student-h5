@@ -1,0 +1,155 @@
+<!--工作页面-->
+
+<div ng-if="pageType=='partTime'" class="experience-goods-container">
+
+    <ol class="goods-list" data-ng-cloak>
+        <li class="goods-item" data-ng-repeat="item in items">
+
+            <div class="goods-brief">
+                <a ng-click="getMoreInformation(item.requirementId,item.corpBaseInfo.corpId)">
+                    <img class="works-goods-img-thumbnail" data-ng-src="{{item.corpBaseInfo.logoUrl.url}}"
+                         data-ng-if="item.corpBaseInfo.logoUrl.url">
+                    <img class="works-goods-img-thumbnail" src="../../../app/assets/imgs/works_nav/company_logo.png"
+                         data-ng-if="!item.corpBaseInfo.logoUrl.url">
+
+                    <div class="goods-desc">
+                        <div class="goods-text-large" data-ng-bind="item.fRequirementSnapshot.title"></div>
+                        <div class="goods-subtitle">
+                            <div class="goods-text-gray">
+                                <span class="iconfont icon-work-money"></span>
+                                <span class="goods-text-highlight" data-ng-bind="item.totalAmount"></span>
+                                <span>元</span>
+                                <span class="iconfont icon-seckill"></span>
+                                <span data-ng-bind="item.createTime.substr(5,5)"></span>
+                                <span>~</span>
+                                <span data-ng-bind="item.updateTime.substr(5,5)"></span>
+                            </div>
+                        </div>
+                        <div class="goods-subtitle">
+                            <span class="goods-text-highlight" data-ng-bind="item.customTitle | delTag"></span>
+                        </div>
+                        <div class="goods-subtitle goods-text-gray">
+                            <span class="iconfont icon-setting-phone"></span>
+                            <span class="goods-text-gray" data-ng-bind="item.corpBaseInfo.contactName"></span>
+                            <span class="goods-text-gray" data-ng-bind="item.corpBaseInfo.contactTel"></span>
+                        </div>
+
+                    </div>
+
+                </a>
+
+                <div class="goods-btn">
+                    <div class="goods-subtitle">
+                        <div class="goods-left-btn">状态：<span>{{item.status | workStatus}}</span></div>
+                        <div class="goods-right-btn">
+                            <a class="nav-hint"
+                               ng-if="item.status == 'signed' || item.status == 'tasking'"
+                               ng-click="clock(item.id)">
+                                <span>打卡签到</span>
+                            </a>
+                            <a class="nav-hint"
+                               ng-click="showOrder($index)">
+                                <span>查看订单</span>
+                            </a>
+                            <a class="nav-hint"
+                               data-ng-href="tel:{{item.corpBaseInfo.contactTel}}" data-ng-if="item.corpBaseInfo.contactTel">
+                                <span>联系商家</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+    </ol>
+
+</div>
+
+<!--申请页面-->
+
+<div ng-if="pageType=='intern'" class="experience-goods-container">
+
+    <ol class="goods-list" data-ng-cloak>
+        <li class="goods-item" data-ng-repeat="item in items">
+
+            <div class="goods-brief">
+                <a ng-click="getMoreInformation(item.requirementId,item.corpId)">
+                    <img class="works-goods-img-thumbnail" data-ng-src="{{item.requirement.logo.smallImage}}"
+                         data-ng-if="item.requirement.logo.smallImage">
+                    <img class="works-goods-img-thumbnail" data-ng-src="{{item.requirement.logo.compressUrl}}"
+                         data-ng-if="item.requirement.logo.compressUrl">
+                    <img class="works-goods-img-thumbnail" data-ng-src="{{item.requirement.logo.url}}"
+                         data-ng-if="item.requirement.logo.url&&!item.requirement.logo.compressUrl">
+                    <img class="works-goods-img-thumbnail" src="../../../app/assets/imgs/works_nav/company_logo.png"
+                         data-ng-if="!item.requirement.logo">
+
+                    <div class="goods-desc">
+                        <div class="goods-text-large" data-ng-bind="item.requirement.title"></div>
+                        <span class="qts-tag" data-ng-if="item.requirement.source=='qtshe'">青</span>
+                        <div class="goods-subtitle">
+                            <div class="goods-text-gray">
+                                <span class="iconfont icon-work-money"></span>
+                                <span class="goods-text-highlight" data-ng-bind="item.requirement.oncePayment"></span>
+                                <span>{{item.requirement.salaryTimeUnitDesc}}</span>
+                                <span ng-if="!item.requirement.salaryTimeUnitDesc||item.requirement.salaryTimeUnitDesc=='其他'">元</span>
+                                <span class="iconfont icon-seckill"></span>
+                                <span data-ng-if="item.requirement.beginTime">
+                                    <span data-ng-bind="item.requirement.beginTime.substr(5,5)"></span>
+                                    <span>~</span>
+                                    <span data-ng-bind="item.requirement.endTime.substr(5,5)"></span>
+                                </span>
+                                <span data-ng-if="!item.requirement.beginTime">
+                                    <span data-ng-bind="item.requirement.jobTimeStandard | toTrusted"></span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="goods-subtitle">
+                            <span class="goods-text-highlight" data-ng-bind="item.customTitle | delTag"></span>
+                        </div>
+                        <div class="goods-subtitle goods-text-gray" data-ng-if="item.requirement.contactName">
+                            <span class="iconfont icon-setting-phone"></span>
+                            <span class="goods-text-gray" data-ng-bind="item.requirement.contactName"></span>
+                            <span class="goods-text-gray"
+                                  data-ng-bind="item.requirement.contactPhone"></span>
+                        </div>
+                    </div>
+
+                </a>
+
+                <div class="goods-btn">
+                    <div class="goods-subtitle">
+                        <div class="goods-left-btn">状态：{{item.status | workStatus}}</div>
+                        <div class="goods-right-btn">
+                            <a class="nav-hint"
+                               ng-if="item.status=='applying' || item.status=='markread' || item.status=='accept'"
+                               ng-click="showCancel(item.id,item.requirement.source)">
+                                <span>取消报名</span>
+                            </a>
+                            <a class="nav-hint"
+                               ng-if="item.status=='accept'"
+                               ng-click="confirmOrder(item.userId,item.requirement.id,item.id,item.source)">
+                                <span>确认申请</span>
+                            </a>
+                            <a class="nav-hint"
+                               data-ng-href="tel:{{item.requirement.contactPhone}}" data-ng-if="item.requirement.source!='qtshe'&&item.requirement.contactPhone">
+                                <span>联系商家</span>
+                            </a>
+                            <a class="nav-hint"
+                               data-ng-if="item.requirement.source=='qtshe'" ng-click="gotoQtshe()">
+                                <span>联系商家</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+
+    </ol>
+
+</div>
+
+
+

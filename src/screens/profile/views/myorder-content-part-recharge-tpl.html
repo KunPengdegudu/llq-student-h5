@@ -1,0 +1,28 @@
+<img class="goods-img-thumbnail" data-ng-src="{{item.productPic | filterImg:'@!200x200'}}" alt="">
+
+<div class="goods-desc">
+    <div class="goods-title">
+        <span data-ng-bind="item.title"></span>
+        <span data-ng-if="item.virtualOrderDTO.chargeAccount">，账号：</span>
+        <span data-ng-if="item.virtualOrderDTO.chargeAccount" data-ng-bind="item.virtualOrderDTO.chargeAccount"></span>
+    </div>
+    <div class="goods-subtitle">
+        <div class="goods-text-left">
+            <span data-ng-bind="item.productSkuName"></span>
+        </div>
+    </div>
+    <div class="goods-subtitle">
+        <div class="goods-text-all">
+            <span>售价：</span>
+            <span data-ng-bind="item.totalAmount | moneyFixed"></span>
+        </div>
+    </div>
+    <div class="goods-subtitle">
+        <div class="goods-text-all">
+            <span>实付：</span>
+            <span data-ng-bind="item.payAmount | moneyFixed"></span>
+            <span>数量：</span>
+            <span data-ng-bind="item.productCount"></span>
+        </div>
+    </div>
+</div>

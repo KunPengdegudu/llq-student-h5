@@ -1,0 +1,69 @@
+<div class="blanknote-main" data-ng-cloak>
+
+    <img class="blanknote-banner" data-ng-src="{{bannerSrc}}"/>
+
+
+    <div class="blanknote-money">
+        <div class="title">取现用途</div>
+        <div class="money-item-wrapper">
+            <div class="money-row">
+                <div class="use-wrapper" data-ng-repeat="purpose in cashApplyPurposeVOList"
+                     data-ng-click="selectBlankNotePurpose(purpose)">
+                    <div class="use-item" ng-class="{selected:isSelectPurpose(purpose)}">{{purpose}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="blanknote-money">
+        <div class="title">取现金额</div>
+        <div class="money-item-wrapper">
+            <div class="money-row">
+                <div class="money-wrapper" data-ng-repeat="amount in blankNoteAmountList"
+                     data-ng-click="selectBlankNoteAmount(amount)">
+                    <div class="money-item" ng-class="{selected:isSelectAmount(amount)}">{{amount}}元</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="blanknote-money">
+
+        <div class="title">选择分期数</div>
+
+        <div class="money-item-wrapper">
+            <div class="money-row">
+                <div class="money-wrapper" data-ng-repeat="myPeriod in cashInterestRuleList"
+                     data-ng-click="selectCashInterestRule(myPeriod)">
+                    <div class="money-item" ng-class="{selected:isSelectPeriod(myPeriod)}">{{myPeriod}}个月</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="blanknote-aging">
+        <div class="title">
+            <span>每期还款：</span>
+            <span class="repay" data-ng-bind="firstRepay.amountOutstanding | moneyFixed"></span>
+            <span class="detail">(本金:</span>
+            <span class="detail" data-ng-bind="firstRepay.amountPrinciple | moneyFixed"></span>
+            <span class="detail">, 服务费:</span>
+            <span class="detail" data-ng-bind="firstRepay.amountInterest | moneyFixed"></span>
+            <span class="detail">)</span>
+        </div>
+    </div>
+    <sys-notice type="qts_reg_tip"></sys-notice>
+</div>
+
+
+<div class="dialog-bottom-btn-wrapper">
+    <button class="nav-hint single-row submit-btn" ng-click="doApply()">
+        立即申请
+    </button>
+</div>
+
+
+
+
+

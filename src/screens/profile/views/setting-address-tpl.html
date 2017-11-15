@@ -1,0 +1,39 @@
+<div class="profile-main profile-main-show-header" data-ng-cloak>
+
+    <ul class="setting-table dialog-content" ng-if="addressListEmpty">
+        <li class="setting-table-cell">
+            <div class="second-column add-column" data-ng-click="addAddressDialog.openDialog(true)">
+                +
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table dialog-content" ng-if="!addressListEmpty">
+        <li class="setting-table-cell" data-ng-repeat="item in addressDialog.items">
+            <a data-ng-click="addAddressDialog.modify(item)">
+                <div class="second-column">
+                    <div class="setting-row-with-right-arrow">
+                        <div class="product-receiver-title">
+                            <span>收货人：</span>
+                            <span>{{item.name}}</span>
+                            <span style="margin-left: 10px;">{{item.phone}}</span>
+                        </div>
+                        <div class="product-receiver-subtitle">
+                            <span>收货地址：</span>
+                            <span>{{getFullAddress(item)}}</span>
+                        </div>
+                    </div>
+
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+<div class="dialog-bottom-btn-wrapper">
+    <button class="nav-hint single-row submit-btn" ng-click="addAddressDialog.openDialog(true)">
+        新增地址
+    </button>
+</div>
+
+<address-info></address-info>

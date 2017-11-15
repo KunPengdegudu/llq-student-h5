@@ -1,0 +1,44 @@
+{
+  "name": "llq-student-h5",
+  "version": "1.1.10",
+  "description": "llq student h5 version phone app",
+  "license": "MIT",
+  "homepage": "https://115.236.45.10/svn/andromeda/llq-h5-phone.git",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "watch"
+  ],
+  "dependencies": {
+    "requirejs": "~2.1.15",
+    "angular": "1.4.7",
+    "angular-sanitize": "1.4.7",
+    "angular-animate": "1.4.7",
+    "angular-aria": "1.4.7",
+    "angular-material": "1.0.0-rc3",
+    "ui-router-extras": "0.1.0",
+    "angular-ui-router": "0.2.15",
+    "oclazyload": "0.5.1",
+    "lodash": "3.10.1",
+    "moment": "2.10.6",
+    "fastclick": "git://github.com/homezhan/fastclick.git#master",
+    "angular-vs-repeat": "https://github.com/kamilkp/angular-vs-repeat.git#master",
+    "angular-carousel": "https://github.com/revolunet/angular-carousel.git#master",
+    "ng-loading-overlay": "https://github.com/KillerCodeMonkey/ng-loading-overlay.git#master",
+    "iscroll": "5.1.3",
+    "requirejs-text": "2.0.14",
+    "hammerjs": "2.0.4",
+    "Chart.js": "~1.0.1",
+    "ng-chart": "https://github.com/jtblin/angular-chart.js.git#master",
+    "echarts": "~2.2.7",
+    "ng-echarts": "https://github.com/wangshijun/angular-echarts.git#master"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.4.7"
+  },
+  "resolutions": {
+    "angular": "1.4.7"
+  }
+}

@@ -1,0 +1,19 @@
+<div class="ui-scroll-loader-header">
+  <div class="loading-tip">
+    <i class="iconfont icon-green-arrow"></i>
+    <span class="text">下拉刷新</span>
+  </div>
+  <div class="loading hide">
+    <span class="dot dot1"></span>
+    <span class="dot dot2"></span>
+    <span class="dot dot3"></span>
+  </div>
+</div>
+<div class="ui-scroll-loader-content" data-ng-transclude></div>
+<div class="ui-scroll-loader-footer">
+  <div class="loading hide">加载中...</div>
+  <div class="load-error hide">
+    网络有问题？点击 <span class="btn-retry" data-ng-click="scrollLoaderRetry();">重试</span>
+  </div>
+  <div class="load-done hide">亲，没有更多了！</div>
+</div>

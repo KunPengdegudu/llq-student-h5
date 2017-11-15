@@ -1,0 +1,200 @@
+<div class="login-main" data-ng-cloak>
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text ui-tabs ui-top-menu-tab">
+            <a class="ui-tab-item" data-ng-class="{active: isActive('login')}" ng-click="switchTab('login')">
+                <p class="ui-tab-content">登录</p>
+                <div class="ui-landmark"></div>
+            </a>
+            <a class="ui-tab-item" data-ng-class="{active: isActive('enroll')}" ng-click="switchTab('enroll')">
+                <p class="ui-tab-content">注册</p>
+                <div class="ui-landmark"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="login-main-content">
+        <ng-include src="'screens/login/views/login-login-tpl.html'" ng-if="pageType=='login'"></ng-include>
+        <ng-include src="'screens/login/views/login-enroll-tpl.html'" ng-if="pageType=='enroll'"></ng-include>
+    </div>
+
+
+</div>
+
+
+<!--忘记密码-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="forgetDialog.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="forgetDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>找回密码</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+
+        <ul class="setting-table">
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">手机号码</div>
+                    <div class="setting-left contact-input">
+                        <input class="setting-input" type="tel" placeholder="请填写手机号码"
+                               data-ng-model="forget.data.phone"/>
+                    </div>
+                    <span ng-if="enroll.data.authSuccess"
+                          class="iconfont icon-right icon-checked with-right-arrow"></span>
+                </div>
+            </li>
+            <li class="setting-table-cell" ng-if="!forget.data.authSuccess">
+                <div class="second-column">
+                    <div class="setting-left title">图片验证码</div>
+                    <div class="setting-left img-code-text">
+                        <input class="setting-input" type="text" placeholder="请输入图中字符"
+                               data-ng-model="forget.data.imgCode"/>
+                    </div>
+                    <img class="setting-right img-code-img" data-ng-src="{{forget.data.imgCodeSrc}}"
+                         data-ng-click="forget.changeImgCode()">
+                </div>
+            </li>
+
+            <li class="setting-table-cell" ng-if="!forget.data.authSuccess">
+                <div class="second-column">
+                    <div class="setting-left title">验证码</div>
+                    <div class="setting-left auth-code">
+                        <input class="setting-input" type="tel" placeholder="请填写验证码"
+                               data-ng-model="forget.data.authCode" ng-disabled="forget.btn.enable"/>
+                    </div>
+                    <div class="setting-right auth-code-btn">
+                        <a class="nav-hint button-primary" ng-click="forget.getAuthCode()"
+                           ng-disabled="!forget.btn.enable">
+                            <span data-ng-bind="forget.btn.text"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="setting-table">
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">新密码</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" type="password" placeholder="8到20位数字或字母"
+                               data-ng-model="forget.data.password"/>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">确认密码</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" type="password" placeholder="请再次输入密码"
+                               data-ng-model="forget.data.confirmPassword"/>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <button class="nav-hint single-row submit-btn" ng-click="forget.dialogSubmit()">
+            确认
+        </button>
+
+    </div>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="agreementDialog.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="agreementDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>用户注册协议</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="agreement-content dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <sys-notice type="register"></sys-notice>
+    </div>
+
+</div>
+
+<div ui-dialog class="login-check-dialog dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="loginCheckDialog.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="loginCheckDialog.goBack()"></div>
+        </div>
+    </div>
+
+    <div class="login-check dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <div class="check-title">您正在登陆零零期</div>
+        <div class="check-content">
+            <div class="content-title">
+                <div>已发送验证码到</div>
+                <div data-ng-bind="showUsername"></div>
+            </div>
+            <div class="content-auth-wrapper">
+                <div class="show-wrapper">
+                    <div class="show-item">
+                        <span data-ng-bind="index01"></span>
+                    </div>
+                    <div class="show-item">
+                        <span data-ng-bind="index02"></span>
+                    </div>
+                    <div class="show-item">
+                        <span data-ng-bind="index03"></span>
+                    </div>
+                    <div class="show-item">
+                        <span data-ng-bind="index04"></span>
+                    </div>
+                </div>
+                <div class="content-auth-input">
+                    <input type="text" class="check-input" data-ng-model="authCode"/>
+                </div>
+            </div>
+
+        </div>
+        <div class="check-time" data-ng-class="timeIndex <= 0?'canClick':''"
+             data-ng-click="loginCheckDialog.sendAuthCode()">
+            重新发送 <span class="auth-time" data-ng-if="timeIndex<=60 && timeIndex>0">( {{timeText}} )</span>
+        </div>
+        <div class="check-auth-msg" data-ng-bind="loginCheckDialog.authMsg"></div>
+    </div>
+</div>
+
+
+<div ui-dialog class="loginImgCode-dialog" overlay="true" close-by-overlay="true"
+     is-visible="loginImgCode.isVisible" z-index="570">
+
+    <div class="loginImgCode-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <div class="loginImgCode-hint">请填写图形验证码</div>
+        <div class="imgCode-column">
+            <div class="imgCode-input">
+                <input class="input" type="text" placeholder="请输入图中字符"
+                       data-ng-model="loginImgCode.imgCode"/>
+            </div>
+            <img class="imgcode-right img-code-img" data-ng-src="{{loginImgCode.imgUrl}}"
+                 data-ng-click="loginImgCode.getImgCode()">
+        </div>
+        <button class="nav-hint single-row submit-btn" ng-click="loginImgCode.submit()"
+                ng-disabled="loginImgCode.disableBtn">
+            登录
+        </button>
+    </div>
+
+</div>

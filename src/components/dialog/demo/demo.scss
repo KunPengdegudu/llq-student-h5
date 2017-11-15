@@ -1,0 +1,14 @@
+@import "core/variables";
+@import "core/mixins";
+@import "layout/layout";
+@import "utils/utilities";
+@import "../styles/dialog";
+
+
+
+.ui-dialog {
+  .ui-dialog-content {
+   /* width: 400px;*/
+
+  }
+}

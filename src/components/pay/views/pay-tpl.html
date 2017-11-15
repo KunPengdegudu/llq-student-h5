@@ -1,0 +1,404 @@
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="payInfo.isVisible" z-index="572">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="payInfo.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>付款</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-content ios-overflow-scrolling-bug-fix car-confirm-main pay-dialog-container"
+         style="{{overflowBugFix}}">
+
+        <div class="promotion-wrapper" data-ng-if="getPayType()==='order' || getPayType()==='cart'">
+            <div class="promotion-type" data-ng-click="promotionObject.chooseType('sale')">
+                <div class="item" data-ng-class="{'selected':(promotionObject.type==='sale')}">全额付</div>
+            </div>
+            <div class="promotion-type" data-ng-click="promotionObject.chooseType('aging')">
+                <div class="item" data-ng-class="{'selected':(promotionObject.type==='aging')}">分期付</div>
+            </div>
+        </div>
+
+        <ul class="setting-table" data-ng-if="getPayType()==='order'">
+            <li class="setting-table-cell" data-ng-if="payInfo.title">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>商品名称</span>
+                    </div>
+                    <div class="setting-left">
+                        <span data-ng-bind="payInfo.title | omitStr : 16"></span>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>订单金额</span>
+                    </div>
+                    <div class="setting-right">
+                        <span>{{payInfo.amount | moneyFixed}}</span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="setting-table-cell" data-ng-if="couponObject.showCoupon && !isZeroFirstPay">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>支付有礼</span>
+                    </div>
+                    <div class="setting-right">
+                        <span>-{{couponObject.activity.discountCash | moneyFixed}}</span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>支付金额</span>
+                    </div>
+                    <div class="setting-right">
+                        <span class="llq-text-highlight">{{getPayAmount() | moneyFixed}}</span>
+                        <span class="setting-aging-text" data-ng-if="couponObject.showCoupon">已优惠{{couponObject.activity.discountCash | moneyFixed}}</span>
+                        <span class="setting-aging-text" data-ng-if="promotionObject.type=='aging'">({{rateObject.getSelectText()}})</span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="setting-table-cell" data-ng-if="promotionObject.type=='aging'">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>每期还款</span>
+                    </div>
+                    <div class="setting-right">
+                        <span class="setting-aging-text">{{periodsObject.getSelectAccount() | moneyFixed}}x{{periodsObject.selected}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="setting-table" data-ng-if="getPayType()==='repay'">
+            <li class="setting-table-cell" data-ng-if="payInfo.title">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>商品名称</span>
+                    </div>
+                    <div class="setting-left">
+                        <span data-ng-bind="payInfo.title | omitStr : 16"></span>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>支付金额</span>
+                    </div>
+                    <div class="setting-left">
+                        <span ng-if="!partRepay.active">{{payInfo.amount | moneyFixed}}</span>
+                        <span class="setting-aging-text" ng-if="!partRepay.active">(含服务费{{payInfo.payParams.amountInterest | moneyFixed}})</span>
+                        <span ng-if="partRepay.active">
+                            <input type="text" class="setting-input pay-type-input" placeholder="请输入自定义金额"
+                                   data-ng-model="partRepay.partAmount">
+                        </span>
+                    </div>
+                    <div class="setting-right button-container partPay-container" ng-if="canPartRepay()">
+                        <span class="payTypeButton" ng-click="partRepay.changePartRepayType()">{{partRepay.active?'全额还款':'部分还款'}}</span>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell" data-ng-if="couponRepayObject.showCoupon && !partRepay.active"
+                data-ng-click="couponRepayObject.openDialog()">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>服务费抵扣</span>
+                    </div>
+                    <div class="setting-right with-arrow">
+                        <span>-{{couponRepayObject.activity.amount | moneyFixed}}</span>
+                    </div>
+                    <div class="iconfont icon-right-arrow">
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell" data-ng-if="couponRepayObject.showCoupon && !partRepay.active">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>实际金额</span>
+                    </div>
+                    <div class="setting-right">
+                        <span>{{payInfo.amount-couponRepayObject.activity.amount | moneyFixed}}</span>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell" ng-if="ifShowLimit()">
+                <div class="second-column">
+                    <div class="setting-left part-limit">
+                        <span>亲，本期部分还款每次最低需还<span class="part-warn">{{payLimit.minPartPayAmount}}</span>元,最多可分<span
+                                class="part-warn">{{payLimit.maxPartPayTimes+1}}</span>次,您已还款<span class="part-warn">{{payLimit.currentPayTimes}}</span>次</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <ul class="setting-table" data-ng-if="getPayType()==='cart'">
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>订单金额</span>
+                    </div>
+                    <div class="setting-right">
+                        <span>{{payInfo.amount | moneyFixed}}</span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="setting-table-cell" data-ng-if="couponObject.showCoupon && !isZeroFirstPay">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>支付有礼</span>
+                    </div>
+                    <div class="setting-right">
+                        <span>-{{couponObject.activity.discountCash | moneyFixed}}</span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>支付金额</span>
+                    </div>
+                    <div class="setting-right">
+                        <span class="llq-text-highlight">{{getPayAmount() | moneyFixed}}</span>
+                        <span class="setting-aging-text" data-ng-if="couponObject.showCoupon">已优惠{{couponObject.activity.discountCash | moneyFixed}}</span>
+                        <span class="setting-aging-text" data-ng-if="promotionObject.type=='aging'">({{rateObject.getSelectText()}})</span>
+                    </div>
+                </div>
+            </li>
+
+            <li class="setting-table-cell" data-ng-if="promotionObject.type=='aging'">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>每期还款</span>
+                    </div>
+                    <div class="setting-right">
+                        <span class="setting-aging-text">{{periodsObject.getSelectAccount() | moneyFixed}}x{{periodsObject.selected}}</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="setting-label" data-ng-if="showPayType()">
+            选择支付方式
+        </div>
+
+        <ul class="setting-table" data-ng-if="showPayType()">
+            <li class="setting-table-cell">
+                <a ng-click="useJD()">
+                    <div class="second-column">
+                        <img class="setting-left setting-img" width="30px" height="30px"
+                             src="../../assets/imgs/pay/jd.png"/>
+
+                        <div class="setting-left no-margin-left">
+                            <span>京东支付</span>
+                        </div>
+                        <span class="iconfont icon-right-arrow"></span>
+                    </div>
+                </a>
+            </li>
+            <li class="setting-table-cell" ng-if="canUse">
+                <a ng-click="useWeixin()">
+                    <div class="second-column">
+                        <img class="setting-left setting-img" width="30px" height="30px"
+                             src="../../assets/imgs/pay/weixin.png"/>
+
+                        <div class="setting-left no-margin-left">
+                            <span>微信支付</span>
+                        </div>
+                        <span class="iconfont icon-right-arrow"></span>
+                    </div>
+                </a>
+            </li>
+            <li class="setting-table-cell" ng-if="canUse">
+                <a ng-click="useAlipay()">
+                    <div class="second-column">
+                        <img class="setting-left setting-img" width="30px" height="30px"
+                             src="../../assets/imgs/pay/alipay.png"/>
+
+                        <div class="setting-left no-margin-left">
+                            <span>支付宝支付</span>
+                        </div>
+                        <span class="iconfont icon-right-arrow"></span>
+                    </div>
+                </a>
+            </li>
+            <!--
+            <li class="setting-table-cell" ng-if="getPayType()==='repay'">
+                <a ng-click="useCard()">
+                    <div class="second-column">
+                        <img class="setting-left setting-img" width="30px" height="30px"
+                             src="../../assets/imgs/pay/card.png"/>
+
+                        <div class="setting-left no-margin-left">
+                            <span>银行卡支付</span>
+                        </div>
+                        <span class="iconfont icon-right-arrow"></span>
+                    </div>
+                </a>
+            </li>
+            -->
+        </ul>
+
+        <button class="nav-hint single-row submit-btn" ng-if="!showPayType()" ng-click="useAlipay('正在完成支付...')">确认订单
+        </button>
+
+        <sys-notice type="pay_hint"></sys-notice>
+    </div>
+
+</div>
+
+<div ui-dialog class="pay-password-dialog" overlay="true" close-by-overlay="true"
+     is-visible="payPassword.isVisible" z-index="590">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <span>支付密码验证</span>
+        </div>
+        <div class="ui-header-bar-right-icon">
+            <div class="iconfont header-bar-icon icon-close" ng-click="payPassword.closeDialog()"></div>
+        </div>
+    </div>
+
+    <div class="pay-password-content">
+        <div class="pay-password-content-left">支付密码</div>
+        <input class="pay-password-input" type="password" placeholder="请输入6位支付密码"
+               data-ng-model="payPassword.password"/>
+
+    </div>
+    <div class="pay-password-content">
+        <a class="forget-pay-password" ng-click="payPassword.gotoForgetPayPassword()">忘记支付密码？</a>
+    </div>
+
+    <button class="nav-hint single-row submit-btn" ng-click="payPassword.dialogSubmit()">
+        确认
+    </button>
+</div>
+
+<div ui-dialog class="cart-aging-dialog reverse" overlay="true" close-by-overlay="true"
+     is-visible="agingObject.isVisible" z-index="600">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>分期付</span>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon">
+            <div class="iconfont header-bar-icon icon-close" ng-click="agingObject.closeDialog()"></div>
+        </div>
+    </div>
+
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+
+
+        <div class="select-wrapper" data-ng-if="promotionObject.type==='aging'">
+            <div class="title">选择首付比例</div>
+            <div class="select-item">
+                <div class="item-row">
+                    <div class="item-wrapper" data-ng-repeat="pr in rateObject.rate"
+                         data-ng-click="rateObject.select(pr)">
+                        <div class="item" ng-class="{selected:rateObject.isSelect(pr)}">{{pr | payRadio}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="select-wrapper" data-ng-if="promotionObject.type==='aging'">
+            <div class="title">选择分期月数</div>
+            <div class="select-item">
+                <div class="item-row">
+                    <div class="item-wrapper" style="width:33.3333333%" data-ng-repeat="ap in periodsObject.period"
+                         data-ng-click="periodsObject.select(ap)">
+                        <div class="item periodItem" ng-class="{selected:periodsObject.isSelect(ap)}">
+                            <div>{{periodsObject.payAccount[$index] | moneyFixed}}x{{ap}}</div>
+                            <div>(包含服务费)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="bottom-btn-wrapper">
+        <div class="dialog-bottom-btn-wrapper car-order-btn-wrapper">
+            <div class="btn-text" data-ng-if="promotionObject.type==='sale'">
+                <div class="text-wrapper">
+                    <span class="text">合计：</span>
+                    <span class="money">{{payInfo.amount | moneyFixed : '--'}}</span>
+                    <span class="text">(包含运费)</span>
+                </div>
+            </div>
+            <div class="btn-text" data-ng-if="promotionObject.type==='aging'">
+                <div class="text-wrapper aging" style="margin-top: 5px;">
+                    <span class="text">首付：</span>
+                    <span class="money">{{getPayAmount() | moneyFixed : '--'}}</span>
+                    <span class="text">(包含运费)</span>
+                </div>
+                <div class="text-wrapper" style="line-height: 16px;">
+                    <span class="other-text">(每期还款：{{periodsObject.getSelectAccount() | moneyFixed}}x{{periodsObject.selected}})</span>
+                </div>
+            </div>
+            <div class="btn-wrapper">
+                <button class="nav-hint single-row submit-btn" ng-click="agingObject.closeDialog()">
+                    确定
+                </button>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="couponRepayObject.isVisible" z-index="572">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="couponRepayObject.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>请选择还款券</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-repeat="item in couponRepayObject.couponList">
+            <a data-ng-click="couponRepayObject.useCoupon(item)">
+                <div class="second-column">
+                    <div class="setting-left select-icon">
+                        <span class="iconfont icon-collection"
+                              data-ng-if="couponRepayObject.checkSelected(item)"></span>
+                    </div>
+                    <div class="setting-left">
+                        <span>{{item.name}}</span>
+                    </div>
+                    <div class="setting-right">
+                        <span>{{item.amount | moneyFixed}}</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<pay-password/>

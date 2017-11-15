@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html ng-app="Demo">
+<head>
+  <meta charset="utf-8" />
+  <title data-ng-bind="screenTitle">Scroll Loader Simple Demo</title>
+  <meta name="description" content="零零期" />
+  <meta name="keywords" content="零零期" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="yes" name="apple-touch-fullscreen"/>
+  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+  <meta content="telephone=no, email=no" name="format-detection"/>
+  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="./demo.css" />
+
+  <script src="../../../../bower_components/requirejs/require.js"></script>
+  <script type="text/javascript">
+    requirejs.config({
+      baseUrl: '../../../'
+    });
+    require(['require', 'app.config'], function (require) {
+      require(['angular', 'components/scroll-loader/directives/scroll-loader'], function(angular) {
+        var app = angular.module('Demo', ['components.scrollLoader']);
+
+        app.controller('VerticleDemo', ['$q','$scope', '$timeout', function ($q, $scope, $timeout) {
+
+            $scope.items = [];
+            $scope.canLoad= true;
+            $scope.maxItems = 30;
+
+            $scope.addItems = function () {
+              var dtd = $q.defer();
+              $timeout(function() {
+                for (var i = 0; i < 10; i++) {
+                  $scope.items.push({name:'item ' + ($scope.items.length + 1)});
+
+                  if ($scope.items.length >= $scope.maxItems) {
+                      $scope.canLoad = false;
+                      break;
+                  }
+                }
+
+                dtd.resolve();
+              }, 2000);
+              return dtd.promise;
+            };
+
+            $scope.beforeReload = function() {
+              $scope.items= [];
+              $scope.canLoad = true;
+            }
+
+
+        }]);
+      });
+
+    });
+    </script>
+    <style type="text/css">
+        .scroll-loader {
+            background: #f7f7f7;
+            height: 300px;
+            border: 3px solid #d2d2d2;
+            margin-bottom: 20px;
+            overflow: auto;
+            padding: 10px 0;
+            border-radius: .5rem 0 0 .5rem;
+        }
+
+        .scroll-loader li {
+            list-style: none;
+            border-bottom: 1px solid #aaa;
+            padding: 5px;
+            margin-bottom: 3px;
+        }
+    </style>
+</head>
+<body ng-controller="VerticleDemo" attach-to-window="true">
+<div class="container">
+    <div>
+        <h1>Angular Scroll Loader Demo</h1>
+
+        <p>适合页面没有过滤条件或者过滤条件不会变化的情况</p>
+
+        <div scroll-loader="addItems()" can-load="canLoad" type="both" before-pull-to-refresh="beforeReload();" class="scroll-loader">
+            <ul>
+                <li ng-repeat="item in items">{{item.name}}</li>
+            </ul>
+        </div>
+        <p>Maximum {{maxItems}} items
+            <small>({{items.length}} added)</small>
+        </p>
+          <p>
+              It is up to you to add server requests and loading indicators.
+          </p>
+    </div>
+</div>
+</body>
+</html>

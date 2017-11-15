@@ -1,0 +1,574 @@
+.works-main {
+  width: 100%;
+  position: absolute;
+  overflow: auto;
+  top: $header-height;
+  bottom: $nav-height;
+  left: 0;
+  right: 0;
+  // z-index: $zindex-login;
+  background: $base-background-color;
+  -webkit-overflow-scrolling: touch;
+
+  .myTask-banner {
+    width: 100%;
+  }
+
+  .works-wallet {
+    width: 100%;
+    background: #00b9ff;
+    color: $white;
+    padding: 15px 10px 0;
+    text-align: center;
+    .works-wallet-content {
+      .works-wallet-title {
+        height: 30px;
+        line-height: 30px;
+        font-size: 18px;
+      }
+      .works-wallet-amount {
+        height: 60px;
+        line-height: 50px;
+        font-size: 30px;
+        font-weight: $bolder-font-weight;
+
+        &.no-login {
+          font-size: 18px;
+          text-decoration: underline;
+        }
+      }
+      .works-wallet-history {
+        height: 30px;
+        line-height: 30px;
+      }
+    }
+  }
+  .works-offices {
+    width: 100%;
+    text-align: center;
+    font-size: $font-size-small;
+    background: $white;
+    padding-top: 10px;
+    padding-bottom: 1px;
+
+    .works-offices-floor {
+      width: 100%;
+      margin-bottom: 10px;
+      @include flexBox;
+      @include flexDirectionRow(false);
+      @include flexJustify(space-around);
+      .works-office-item {
+        width: 25%;
+        text-align: center;
+        img {
+          width: 40%;
+          margin-bottom: 5px;
+        }
+        .works-office-item-text {
+          display: block;
+        }
+      }
+    }
+  }
+  .works-goods-img-thumbnail {
+    height: auto;
+    width: 20%;
+    max-width: 60px;
+    max-height: 60px;
+  }
+  .experience-goods-container {
+    .goods-brief {
+      padding: 6px 10px !important;
+
+      .goods-desc {
+        width: 80%;
+
+      }
+      .goods-text-gray {
+        span {
+          color: $base-text-color2;
+        }
+      }
+    }
+  }
+
+  .new-works-title {
+    font-size: $font-size-xl;
+  }
+
+  &.find-main {
+    .find-banner {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .find-wrapper {
+      margin: 10px;
+      padding: 10px 0;
+      background-color: $white;
+      border-radius: 5px;
+      @include flexBox();
+      @include flexDirectionRow();
+      @include flexJustify(space-between);
+      .find-item {
+        @include flex(1);
+        @include flexBox();
+        @include flexDirectionRow();
+        padding: 0 10px;
+        &:last-child {
+          border-left: 1px solid $base-border-color;
+        }
+        .item-text {
+          @include flex(1);
+          padding-left: 10px;
+          .item-title {
+            font-size: $font-size-xl;
+            color: $base-text-color;
+          }
+          .item-hint {
+            font-size: $font-size-base;
+            color: $base-text-color2;
+          }
+        }
+        .item-img {
+          padding-right: 10px;
+          img {
+            width: 45px;
+          }
+        }
+      }
+    }
+    .find-topic {
+      width: 100%;
+      background-color: $white;
+      position: relative;
+      margin-bottom: 10px;
+      .topic-title {
+        height: 45px;
+        line-height: 45px;
+        padding: 0 15px;
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify(space-between);
+        font-size: $font-size-xl;
+        color: $base-text-color;
+        border-bottom: 1px solid $base-border-color;
+        .topic-left {
+          .title-hint {
+            width: 2px;
+            height: 21px;
+            background-color: red;
+            float: left;
+            margin: 12px 10px 0 0;
+          }
+          .title-text {
+            float: left;
+          }
+        }
+        .title-more {
+          color: $base-text-color2;
+          font-size: $font-size-large;
+          .icon-right-arrow {
+            font-size: $font-size-large;
+          }
+        }
+      }
+      .iframe-mb {
+        width: 100%;
+        height: 210px;
+        position: absolute;
+        top: 45px;
+      }
+      .topic-content {
+        width: 100%;
+        .topic-item {
+          width: 100%;
+          .template-img {
+            width: 100%;
+          }
+          .product-wrapper {
+            padding: 10px;
+            @include flexBox();
+            @include flexDirectionRow();
+            @include flexJustify(space-between);
+            .item-product {
+              width: 30%;
+              .product-img {
+                width: 100%;
+                text-align: center;
+                .node-img {
+                  width: 90%;
+                }
+              }
+              .product-desc {
+                width: 100%;
+                text-align: center;
+                .product-name {
+                  font-size: $font-size-base;
+                  color: $black;
+                  height: 36px;
+                  line-height: 18px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+                .product-price {
+                  font-size: $font-size-large;
+                  color: red;
+                  line-height: 35px;
+                  .base-price {
+                    font-size: $font-size-xl;
+                  }
+                  .market-price {
+                    color: $base-text-color2;
+                    text-decoration: line-through;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
+.right-part {
+  float: right;
+}
+
+.changeCity-dialog {
+  .setting-table {
+    .setting-table-cell {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      padding: 0 10px;
+      font-size: $font-size-xl;
+      position: relative;
+      @include flexBox();
+      @include flexDirectionRow();
+      .city-title {
+        width: 30%;
+        font-size: $font-size-large;
+        color: $base-text-color2;
+      }
+      .cityPosition {
+        width: 70%;
+      }
+      .second-column {
+        width: 100%;
+        &.sign-text {
+          @include flexBox;
+          @include flexDirectionRow(false);
+          @include flexAlign(center);
+        }
+        .setting-left {
+          @include flex(3);
+          .sign-icon {
+            font-size: 22px;
+            margin-right: 5px;
+          }
+          .sign-prompt {
+            color: $base-text-color2;
+            font-size: $font-size-base;
+          }
+        }
+        .text-button {
+          font-size: $font-size-large;
+          @include flex(1);
+          height: 30px;
+          line-height: 30px;
+          margin-right: 20px;
+          text-align: center;
+          background: $base-color;
+          border-radius: 3px;
+          color: $white;
+        }
+      }
+    }
+    .second-column {
+      .setting-left {
+
+      }
+    }
+  }
+
+  .icon-right {
+    &.icon-checked {
+      color: $brand-primary;
+    }
+  }
+}
+
+//提现
+.transfer-main {
+  position: absolute;
+  top: $header-height;
+  bottom: $nav-height;
+  left: 0;
+  width: 100%;
+  mmin-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: $base-background-color;
+
+  .setting-table {
+    &.transfer-setting-table {
+      font-size: 14px;
+
+      .setting-table-cell {
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0px;
+        }
+        .second-column {
+          height: 44px;
+          line-height: 44px;
+          .setting-left {
+            float: left;
+            padding-left: 15px;
+            &.desc {
+              .setting-input {
+                border-bottom: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .top-banner {
+    position: relative;
+    width: 100%;
+    height: 173px;
+    .top-banner-img {
+      width: 100%;
+      height: 100%;
+    }
+    .top-banner-text {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      color: $white;
+      .task-count {
+        margin: 20px 0 0 10px;
+        font-size: 13px;
+        .task-count-text {
+          margin-right: 0;
+        }
+        .icon-bottom {
+          font-size: $font-size-large;
+        }
+      }
+      .center-text {
+        margin-top: 10px;
+        text-align: center;
+        font-size: $font-size-large;
+        .withdraw-count {
+          font-weight: 400;
+          font-size: 30px;
+          height: 36px;
+          //background-color: red;
+          margin-top: 5px;
+          text-align: center;
+          span {
+            display: inline-block;
+            &:first-child {
+              font-size: $font-size-large;
+              vertical-align: top;
+              padding-top: 4px;
+            }
+            &.details {
+              font-size: 13px;
+              display: inline-block;
+              vertical-align: bottom;
+              padding-bottom: 6px;
+              .icon-right-arrow {
+                margin-left: 2px;
+                font-style: normal;
+              }
+            }
+          }
+
+        }
+        .total-cash {
+          font-size: $font-size-large;
+          margin-top: 16px;
+          .amount {
+            font-size: $font-size-xl;
+            font-weight: 500;
+            margin-left: 4px;
+          }
+        }
+        .checkDetail {
+          font-size: 13px;
+          margin-top: 3px;
+        }
+      }
+    }
+  }
+
+  .withdraw-cash {
+    width: 100%;
+    padding-left: 15px;
+    //padding-right: 15px;
+    background: $white;
+    margin-bottom: 5px;
+    font-size: $font-size-large;
+    color: $base-text-color;
+    padding-bottom: 15px;
+    .withdrawTo {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    .withdraw-button {
+      width: 100%;
+      display: flex;
+      button {
+        @include flex(1);
+        margin-right: 15px;
+        height: 32px;
+        //line-height: 32px;
+        border: solid 1px #d8d8d8;
+        border-radius: 5px;
+        background-color: $white;
+        &.selected {
+          background-color: $base-color;
+          line-height: 30px;
+          border: 0;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  //.transfer-alipay {
+  //  .transform-title {
+  //    width: 25%;
+  //    float: left;
+  //    color: $base-text-color2;
+  //    //text-align: center;
+  //    border: 0;
+  //    padding-left: 15px;
+  //
+  //  }
+  //
+  //  .count-item-wrapper {
+  //    .count-wrapper {
+  //      width: 38%;
+  //      float: left;
+  //      margin-left: 28px;
+  //      border: 1px solid $base-border-color;
+  //      border-radius: 2px;
+  //      text-align: center;
+  //      padding: 10px;
+  //      margin-bottom: 10px;
+  //
+  //      &.selected {
+  //        border: 1px solid $base-color;
+  //        color: $base-color;
+  //
+  //      }
+  //      .count-item {
+  //        margin-bottom: 5px;
+  //      }
+  //    }
+  //  }
+  //
+  //  .money-item-wrapper {
+  //    width: 70%;
+  //    overflow: hidden;
+  //    float: right;
+  //    padding: 10px;
+  //
+  //    .money-row {
+  //      width: 100%;
+  //      margin: 0;
+  //
+  //    }
+  //
+  //    .use-wrapper {
+  //      width: 40%;
+  //      margin-right: 5%;
+  //      float: left;
+  //    }
+  //    .use-item {
+  //      height: 30px;
+  //      line-height: 30px;
+  //      text-align: center;
+  //      border: 1px solid $base-border-color;
+  //      border-radius: 2px;
+  //
+  //      &.selected {
+  //        border: 1px solid $base-color;
+  //        background-color: $base-color;
+  //        color: $white;
+  //      }
+  //    }
+  //
+  //    .money-wrapper {
+  //      width: 40%;
+  //      margin-right: 10%;
+  //      float: left;
+  //    }
+  //    .money-over {
+  //      background: $base-background-color;
+  //      color: $base-text-color2;
+  //    }
+  //
+  //    .money-item {
+  //      height: 30px;
+  //      line-height: 30px;
+  //      text-align: center;
+  //      border: 1px solid $base-border-color;
+  //      border-radius: 5px;
+  //
+  //      &.selected {
+  //        border: 1px solid $base-color;
+  //        color: $base-color;
+  //      }
+  //    }
+  //
+  //  }
+  //}
+  .tip {
+    margin: 10px 0 10px 15px;
+    font-size: 12px;
+    color: $base-text-color2;
+  }
+}
+
+//账户类型（弹框）
+.ui-dialog {
+  &.account-type-dialog {
+    top: 40%;
+    left: 50%;
+    margin-left: -40%;
+    width: 80%;
+    height: auto;
+    margin-top: 0;
+    background-color: transparent;
+    .account-type-list {
+      height: 100%;
+      font-size: $font-size-xl;
+      .account-type-item {
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background-color: #fff;
+        color: $base-text-color;
+        border-bottom: 1px solid #e6e6e6;
+        overflow: hidden;
+      }
+    }
+  }
+}
+
+.no-padding {
+  padding: 0 !important;
+}

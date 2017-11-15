@@ -1,0 +1,28 @@
+.cut-scenes {
+  position: absolute;
+  top: 45px;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  background: #000;
+  z-index: 900;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  perspective: 1000px;
+  transition: opacity .6s, visibility 0s .6s;
+  &.cut-scenes-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .1s;
+    .cut-scenes-inner {
+      transform: translate3d(0,0,0);
+   }
+  }
+  .cut-scenes-inner {
+    width: 100%;
+    height: 100%;
+    .cut-scenes-content {
+    }
+  }
+}

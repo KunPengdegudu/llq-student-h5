@@ -1,0 +1,31 @@
+<div class="template-main sale-main" data-ng-cloak>
+    <div class="template-stage">
+        <div class="template-content">
+            <div class="template-items ng-scope" data-ng-repeat="item in items">
+                <div class="template-item images">
+                    <img data-ng-src="{{item.mainProImgUrl | filterImg : '@!300x300'}}"/>
+                    <!--
+                    <div class="block-discount">
+                        <img src="../../../app/assets/imgs/base/sale-discount.png"/>
+
+                        <div class="discount-price" data-ng-bind="item.basePrice * item.discount /100 | moneyFixed"></div>
+                    </div>
+                    -->
+                </div>
+
+                <div class="template-item information">
+                    <div class="item-title" data-ng-bind="item.name"></div>
+                    <div class="product-item">
+
+                        <span class="item-price">原价：<span data-ng-bind="item.marketPrice | moneyFixed"></span></span>
+                        <span class="item-count">仅剩<span data-ng-bind="item.stock | numShortHand"></span>件</span>
+                    </div>
+                    <div class="item-button"
+                         ng-click="gotoProductDetail(item.productId, item.promotionId,item.promotionType)">
+                        特惠价：<span data-ng-bind="item.basePrice * item.discount /100 | moneyFixed"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

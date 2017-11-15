@@ -1,0 +1,177 @@
+.recharge-game {
+  top: $header-height * 2;
+  width: 100%;
+  position: absolute;
+
+  .setting-table-cell {
+    .title-color {
+      color: $base-text-color2;
+    }
+  }
+  .total-color {
+    font-weight: $bolder-font-weight;
+    color: $base-color;
+  }
+
+  .second-column {
+    &.alert-text {
+      line-height: 30px;
+
+      .setting-left {
+        font-size: $font-size-base;
+        color: $base-color;
+      }
+    }
+
+    &.no-bottom-border {
+      border-bottom: 0 none;
+    }
+  }
+}
+
+//手机充值样式-姚辉
+.recharge-mobile {
+  top: $header-height * 2;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  position: absolute;
+
+  .recharge-mobile-cell {
+    width: 100%;
+
+    .recharge-mobile-desc {
+      width: 70%;
+      float: left;
+      .setting-input {
+        font-size: $font-size-xxxl;
+        height: 45px;
+        padding: 5px 0;
+
+        input {
+          border: 0 none;
+          height: 45px;
+          margin: 0;
+          padding: 0;
+          line-height: 45px;
+        }
+      }
+
+    }
+  }
+
+  .contact {
+    .mobile-list {
+      font-size: 45px;
+      color: #ff9600;
+      height: 80px;
+      line-height: 80px;
+      display: inline-block;
+    }
+  }
+
+  .route-container {
+    height: 30px;
+    line-height: 30px;
+
+    .recharge-mobile-desc-text {
+      color: gray;
+    }
+  }
+}
+
+.dialog-recharge-account {
+  position: absolute;
+  padding: 8px;
+  margin: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  .setting-table-cell {
+
+    .title-color {
+      color: $base-color;
+      font-size: $font-size-large;
+    }
+  }
+  .total-color {
+    font-weight: $bolder-font-weight;
+    color: $base-color;
+  }
+}
+
+.telephone-fare-container {
+  //margin-top:30px;
+  background-color: white;
+  width: 100%;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+
+
+
+.recharge-money {
+  // margin-top: 25px;
+  background: $white;
+  overflow: hidden;
+  .money-item-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 5px 10px 10px;
+
+    .money-row {
+      width: 100%;
+      @include clearfix();
+    }
+
+    .title-color {
+      line-height: 40px;
+      padding: 0 5px;
+      color: $base-text-color2;
+      font-size: $font-size-xxl;
+    }
+
+    .money-color {
+      line-height: 40px;
+      padding: 0 5px;
+      font-size: $font-size-xxl;
+      font-weight: $bolder-font-weight;
+      color: $base-color;
+    }
+
+    .money-wrapper {
+      width: 33.33333333%;
+      padding: 0 5px;
+      float: left;
+    }
+
+    .money-item {
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      border: 1px solid $base-border-color;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .fare-container {
+      height: 40px;
+      font-size: 16px;
+      line-height: 40px;
+    }
+    .money-item.selected {
+      border: 1px solid $base-color;
+      color: $base-color;
+    }
+  }
+}
+
+.telephone-fare-buy {
+  position: fixed !important
+}
+
+.total-color {
+  font-weight: $bolder-font-weight;
+  color: $base-color;
+}

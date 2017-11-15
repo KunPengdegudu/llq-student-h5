@@ -1,0 +1,18 @@
+<div class="recharge-category">
+    <div class="category-item" data-ng-repeat="category in item.category">
+        <div class="item-title">
+            <div class="title-name" data-ng-bind="category.name"></div>
+            <div class="title-more" data-ng-click="gotoWidget(category)">更多 ></div>
+        </div>
+        <div class="item-theme" data-ng-click="gotoWidget(category)">
+            <img data-ng-src="{{category.imageUrl}}"/>
+        </div>
+        <div class="item-content">
+            <div class="item-product" data-ng-repeat="product in category.productDesc"
+                 data-ng-click="gotoDetail(product)">
+                <img ng-src="{{product.imgUrl}}" class="product-img"/>
+                <div class="product-name" ng-bind="product.name"></div>
+            </div>
+        </div>
+    </div>
+</div>

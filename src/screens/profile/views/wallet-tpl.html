@@ -1,0 +1,118 @@
+<div class="wallet-main works-main">
+    <div class="wallet-head">
+        <div class="wallet-amount" data-ng-bind="wallet.amount"></div>
+        <div class="wallet-head-title">账户余额（元）</div>
+        <div class="wallet-head-content">
+            <div class="wallet-head-content-item">
+                <div class="wallet-item-amount" data-ng-bind="wallet.partJobAmount"></div>
+                <div class="wallet-item-name">兼职账户</div>
+            </div>
+            <div class="wallet-head-content-item item-right">
+                <div class="wallet-item-amount" data-ng-bind="wallet.llqAmount"></div>
+                <div class="wallet-item-name">任务账户</div>
+            </div>
+            <div class="wallet-head-content-item item-right">
+                <div class="wallet-item-amount" data-ng-bind="wallet.freezeAmount"></div>
+                <div class="wallet-item-name">冻结金额</div>
+            </div>
+        </div>
+    </div>
+    <ul class="setting-table">
+        <li class="setting-table-cell" data-ng-click="gotoBill()">
+            <i class="iconfont setting-icon icon-wallet-bill wallet-icon" style="color: #4dcfff"></i>
+
+            <div class="second-column">
+                <div class="setting-text">资金明细</div>
+                <i class="iconfont icon-right-arrow"></i>
+            </div>
+        </li>
+    </ul>
+    <ul class="setting-table">
+        <li class="setting-table-cell" data-ng-click="gotoResCard()">
+            <i class="iconfont setting-icon icon-wallet-card wallet-icon" style="color: #ffb54d"></i>
+
+            <div class="second-column">
+                <div class="setting-text">我的银行卡</div>
+
+                <div class="text-right">
+                    <span data-ng-bind="bankCardAccount" data-ng-if="hasBindCard = 'normal'"></span>
+                </div>
+                <i class="iconfont icon-right-arrow"></i>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <i class="iconfont setting-icon icon-wallet-alipay wallet-icon" style="color: #4dcfff"></i>
+
+            <div class="second-column" ng-click="alipay.dialogOpen()">
+                <div class="setting-text">支付宝账号</div>
+
+
+                <div class="text-right">
+                    <span data-ng-bind="alipayAccount"></span>
+                </div>
+                <i class="iconfont icon-right-arrow"></i>
+            </div>
+        </li>
+    </ul>
+    <!--
+    <ul class="setting-table">
+        <li class="setting-table-cell" data-ng-click="gotoMyred()">
+            <i class="iconfont setting-icon icon-wallet-red wallet-icon" style="color: #ff7398"></i>
+
+            <div class="second-column">
+                <div class="setting-text">我的红包</div>
+                <i class="iconfont icon-right-arrow"></i>
+            </div>
+        </li>
+    </ul>
+    -->
+</div>
+
+<div class="dialog-bottom-btn-wrapper ng-scope">
+    <button class="nav-hint single-row submit-btn" data-ng-click="gotoTransfer()">
+        提现
+    </button>
+</div>
+
+
+<div ui-dialog class="alipay-dialog" overlay="true" close-by-overlay="true" is-visible="alipay.isVisible"
+     before-hide="alipay.dialogBeforeHide();" z-index="560">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="alipay.dialogClose()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>修改绑定支付宝账号</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">旧支付宝账号</div>
+                <div class="setting-left desc">
+                    <span data-ng-bind="data.alipayAccount || '未绑定支付宝账号'"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">新支付宝账号</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" data-ng-model="alipay.newAlipayAccount"
+                           placeholder="请输入新支付宝账号"/>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="alipay.dialogSubmit()">
+        确认修改
+    </button>
+
+</div>
+
+<pay-password/>
+

@@ -1,0 +1,61 @@
+<div class="works-main find-main">
+    <div class="find-banner">
+        <img data-ng-src="{{worksBanner.imgUrl}}" class="bg-image" data-ng-click="gotoUrl(worksBanner.href)"/>
+    </div>
+    <!--
+    <div class="find-wrapper">
+        <div class="find-item" data-ng-click="gotoWorks()">
+            <div class="item-text">
+                <div class="item-title">我要兼职</div>
+                <div class="item-hint">靠谱的兼职</div>
+            </div>
+            <div class="item-img">
+                <img src="../../../app/assets/imgs/find/myjob.png"/>
+            </div>
+        </div>
+        <div class="find-item" data-ng-click="gotoShare()">
+            <div class="item-img">
+                <img src="../../../app/assets/imgs/find/invit.png"/>
+            </div>
+            <div class="item-text">
+                <div class="item-title">邀请好友</div>
+                <div class="item-hint">邀请好友赢红包</div>
+            </div>
+        </div>
+    </div>
+    -->
+    <div class="find-topic" data-ng-if="topicList.length>0">
+        <div class="topic-title">
+            <div class="topic-left">
+                <div class="title-hint"></div>
+                <div class="title-text">好物推荐</div>
+            </div>
+        </div>
+        <div class="topic-content">
+            <div class="topic-item" data-ng-repeat="item in topicList">
+                <div class="item-main-img" data-ng-click="gotoTemplate(item.nodeName,item.nodeId)">
+                    <img data-ng-src="{{item.nodeImgUrl}}" class="template-img"/>
+                </div>
+                <div class="product-wrapper">
+                    <div class="item-product" data-ng-repeat="itemProduct in item.nodeList"
+                         data-ng-click="gotoProduct(itemProduct.productId,itemProduct.promotionId,itemProduct.promotionType)">
+                        <div class="product-img">
+                            <img data-ng-src="{{itemProduct.mainProImgUrl}}" class="node-img">
+                        </div>
+                        <div class="product-desc">
+                            <div class="product-name" data-ng-bind="itemProduct.name"></div>
+                            <div class="product-price" data-ng-if="itemProduct.defaultEveryAmount">
+                                ¥<span data-ng-bind="itemProduct.defaultEveryAmount"></span>x<span
+                                    data-ng-bind="itemProduct.defaultPeriod"></span>
+                            </div>
+                            <div class="product-price" data-ng-if="!itemProduct.defaultEveryAmount">
+                                <span class="base-price">¥{{itemProduct.basePrice}}</span>
+                                <span class="market-price">¥{{itemProduct.marketPrice}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

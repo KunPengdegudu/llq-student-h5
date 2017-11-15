@@ -1,0 +1,11 @@
+<div class="shop-main">
+    <article class="search-article" data-scroll-loader="loadItems();" type="both" data-can-load="canLoad"
+             threshold="200"
+             trigger-on-event="reload" data-finish-msg="getMsg();" style="bottom: 0;z-index: 200">
+
+        <div data-ng-include="isAbnormal ? 'screens/shop/views/search-abnormal-tpl.html' : 'screens/shop/views/search-normal-tpl.html'">
+        </div>
+
+    </article>
+</div>
+<shop-search-dialog/>

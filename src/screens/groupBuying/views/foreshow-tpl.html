@@ -1,0 +1,63 @@
+<div class="groupon-foreshow">
+    <article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" threshold="200"
+             trigger-on-event="reload" data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();"
+             data-ng-if="isShow">
+        <ul>
+            <li class="foreshow-item" data-ng-repeat="product in nextPtProductList" >
+                <div class="item-img-container">
+                    <img data-ng-src="{{product.mainProImgUrl}}" class="foreshow-item-img">
+                    <div class="groupon-time">
+                        <span class="time-text"><span data-ng-bind="product.beginTime | ptDateStyle"></span>开抢</span>
+                    </div>
+                </div>
+                <div class="foreshow-item-detail">
+                    <div class="postage-name">
+                        <div class="postage" data-ng-if="product.exemptionPostage" data-ng-bind="product.exemptionPostageText"></div>
+                        <div class="name" data-ng-bind="product.productName"></div>
+                    </div>
+                    <div class="instruction">
+                        <span class="tag" data-ng-bind="product.memo"></span>
+                        <span class="limit">每人限购<span data-ng-bind="product.limitBuyQuantity"></span>份</span>
+                    </div>
+                    <div class="price-buttons">
+                        <div class="prices">
+                            <span class="price"><i>￥</i><span data-ng-bind="product.itemPrice"></span></span>
+                            <del class="old-price"><i>￥</i><span data-ng-bind="product.basePrice"></span></del>
+                        </div>
+                        <div class="buttons">
+                            <div class="button-left">
+                                <span class="iconfont icon-selected"></span>
+                                <span class="number"><span data-ng-bind="product.joinNum"></span>人团</span>
+                            </div>
+                            <div class="button-right">即将开抢</div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </article>
+    <div class="foreshow-nothing" data-ng-if="!isShow">
+        <div class="nothing-img">
+            <img src="../../../app/assets/imgs/groupon/foreshow-nothing.png"/>
+        </div>
+        <div class="nothing-text">
+            暂无商品
+        </div>
+    </div>
+    <!--轮播-->
+    <div class="notice-main share-notice-main" data-ng-if="isDialogShow && isShow">
+        <div class="notice-wrapper">
+            <ul class="notice-list" data-ng-style="noticeAnimate.style">
+                <li class="notice-item" data-ng-repeat="notice in noticeLists track by $index"
+                    data-ng-click="gotoGrouponDetails(notice)">
+                    <div class="notice-img">
+                        <img data-ng-src="{{notice.imgUrl}}"/>
+                    </div>
+                    <div class="notice-tip">
+                        拼友<span data-ng-bind="notice.phoneNumber"></span>邀您拼团，{{notice.dropDown}}前
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

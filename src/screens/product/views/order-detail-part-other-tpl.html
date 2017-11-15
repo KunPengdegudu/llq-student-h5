@@ -1,0 +1,215 @@
+<li class="setting-table-cell" data-ng-if="!data.orderDetails" data-ng-click="gotoProduct(data)">
+    <div class="second-column">
+        <div class="setting-row goods-brief">
+            <img class="goods-img-thumbnail" data-ng-src="{{data.productPic | filterImg : '@!200x200'}}"/>
+
+            <div class="goods-desc">
+                <div class="goods-title" data-ng-bind="data.title"></div>
+                <div class="goods-subtitle">
+                    <span class="goods-text-gray" data-ng-bind="data.productSkuName"></span>
+                </div>
+                <div class="goods-subtitle">
+                    <div class="goods-text-left">
+                        <span>单价：</span>
+                        <span data-ng-bind="data.productPrice | moneyFixed"></span>
+                    </div>
+                    <div class="goods-text-right">
+                        <span>数量：</span>
+                        <span data-ng-bind="data.productCount"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</li>
+
+<li class="setting-table-cell" data-ng-repeat="product in data.orderDetails" data-ng-if="data.orderDetails">
+    <div class="second-column" data-ng-click="gotoProduct(product)">
+        <div class="setting-row goods-brief">
+            <img class="goods-img-thumbnail" data-ng-src="{{product.productPic | filterImg : '@!200x200'}}"/>
+
+            <div class="goods-desc">
+                <div class="goods-title" data-ng-bind="product.title"></div>
+                <div class="goods-subtitle">
+                    <span class="goods-text-gray" data-ng-bind="product.productSkuName"></span>
+                </div>
+                <div class="goods-subtitle">
+                    <div class="goods-text-left">
+                        <span>单价：</span>
+                        <span data-ng-bind="product.productPrice | moneyFixed"></span>
+                    </div>
+                    <div class="goods-text-right">
+                        <span>数量：</span>
+                        <span data-ng-bind="product.productCount"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="second-column" ng-if="data.canPickEntityCard">
+        <div class="setting-left">
+            <span class="other-text"></span>
+        </div>
+        <div class="text-right card-warn-text" ng-click="cardContent.openDialog(product)">
+            <span class="">查看卡密 > </span>
+        </div>
+    </div>
+</li>
+<li class="setting-table-cell amount-wrapper" ng-if="data.canPickEntityCard&&!data.orderDetails">
+    <div class="second-column" ng-repeat="item in cardJson.cardList">
+        <div class="setting-left card-copy-container">{{$index+1}}.卡号：
+            <div class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="item.cardNo"></div>
+            <div class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                 data-ng-click="clipboard.setClipboard(item.cardNo)" data-ng-if="clipboard.canCopy"
+                 data-ng-bind="item.cardNo"></div>
+
+            卡密：
+            <div class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="item.cardPws"></div>
+            <div class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                 data-ng-click="clipboard.setClipboard(item.cardPws)" data-ng-if="clipboard.canCopy"
+                 data-ng-bind="item.cardPws"></div>
+        </div>
+
+    </div>
+</li>
+<li class="setting-table-cell amount-wrapper" ng-if="data.canPickEntityCard&&!data.entityCardInfo&&!data.orderDetails">
+    <div class="second-column">
+        <div class="setting-left">
+            <span class="other-text"></span>
+        </div>
+        <div class="text-right card-warn-text" ng-click="cardContent.openDialog(data)">
+            <span class="">查看所有卡密 > </span>
+        </div>
+    </div>
+</li>
+
+<li class="setting-table-cell amount-wrapper">
+    <div class="second-column">
+        <div class="setting-left">
+            <span class="other-text">商品总价：</span>
+        </div>
+        <div class="text-right">
+            <span class="other-text">{{data.productTotalAmount | moneyFixed}}</span>
+        </div>
+    </div>
+    <div class="second-column" data-ng-if="data.deliveryType">
+        <div class="setting-left">
+            <span class="other-text">运费(</span>
+            <span class="other-text" data-ng-bind="data.deliveryType | deliveryTypeName"></span>
+            <span class="other-text">)：</span>
+        </div>
+        <div class="text-right">
+            <span class="other-text" data-ng-bind="data.deliveryFee | moneyFixed"></span>
+        </div>
+    </div>
+    <div class="second-column" data-ng-if="data.totalTaxFee || data.totalTaxFee == 0">
+        <div class="setting-left">
+            <span class="other-text">税费</span>
+        </div>
+        <div class="text-right">
+            <span class="other-text" data-ng-bind="data.totalTaxFee | moneyFixed"></span>
+        </div>
+    </div>
+    <div class="second-column" data-ng-if="data.shopPromotionDiscountFee && data.shopPromotionDiscountFee > 0">
+        <div class="setting-left">
+            <span class="other-text">满就送抵扣：</span>
+        </div>
+        <div class="text-right">
+            <span class="other-text">-{{data.shopPromotionDiscountFee | moneyFixed}}</span>
+        </div>
+    </div>
+    <div class="second-column" data-ng-if="data.shopCouponDiscountFee && data.shopCouponDiscountFee > 0">
+        <div class="setting-left">
+            <span class="other-text">店铺优惠券抵扣：</span>
+        </div>
+        <div class="text-right">
+            <span class="other-text">-{{data.shopCouponDiscountFee | moneyFixed}}</span>
+        </div>
+    </div>
+    <div class="second-column">
+        <div class="setting-left">
+            <span>订单总价：</span>
+        </div>
+        <div class="text-right">
+            <span>{{data.orderAmount | moneyFixed}}</span>
+        </div>
+    </div>
+</li>
+
+<li class="setting-table-cell amount-wrapper">
+    <div class="second-column" data-ng-if="data.redEnvelopeDiscountFee && data.redEnvelopeDiscountFee > 0">
+        <div class="setting-left">
+            <span class="other-text">红包抵扣：</span>
+        </div>
+        <div class="text-right">
+            <span class="other-text">-{{data.redEnvelopeDiscountFee | moneyFixed}}</span>
+        </div>
+    </div>
+    <div class="second-column" data-ng-if="data.paidPromotionDiscountFee && data.paidPromotionDiscountFee > 0">
+        <div class="setting-left">
+            <span class="other-text">支付有礼抵扣：</span>
+        </div>
+        <div class="text-right">
+            <span class="other-text">-{{data.paidPromotionDiscountFee | moneyFixed}}</span>
+        </div>
+    </div>
+    <div class="second-column">
+        <div class="setting-left">
+            <span>实付款：</span>
+        </div>
+        <div class="text-right">
+            <span class="order-all-price">{{data.actualPayAmount | moneyFixed}}</span>
+        </div>
+    </div>
+</li>
+
+<li class="setting-table-cell setting-table-remark">
+    <div class="second-column">
+        <div class="setting-left">
+            <span>买家留言：</span>
+        </div>
+
+    </div>
+</li>
+<li class="setting-table-cell setting-table-remark">
+    <div class="second-column">
+        <div class="setting-left">
+            <span class='order-remark' ng-bind="data.remark" ng-if="data.remark"></span>
+            <span class='order-remark' ng-if="!data.remark">无</span>
+        </div>
+
+    </div>
+</li>
+<div ui-dialog class="pay-password-dialog order-detail-dialog" overlay="true" close-by-overlay="true"
+     is-visible="cardContent.isVisible" z-index="590">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <span>卡密内容{{clipboard.canCopy?'（点击复制）':'（长按复制）'}}</span>
+        </div>
+        <div class="ui-header-bar-right-icon">
+            <div class="iconfont header-bar-icon icon-close" ng-click="cardContent.closeDialog()"></div>
+        </div>
+    </div>
+    <div class="order-content-container">
+        <ul>
+            <li ng-repeat="cardItem in cardContent.cardJsonList">
+                <div class="card-copy-container">{{$index+1}}.卡号：
+                    <div class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="cardItem.cardNo"></div>
+                    <div class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                         data-ng-click="clipboard.setClipboard(cardItem.cardNo)" data-ng-if="clipboard.canCopy"
+                         data-ng-bind="cardItem.cardNo"></div>
+
+                    卡密：
+                    <div class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="cardItem.cardPws"></div>
+                    <div class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                         data-ng-click="clipboard.setClipboard(cardItem.cardPws)" data-ng-if="clipboard.canCopy"
+                         data-ng-bind="cardItem.cardPws"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <button class="nav-hint single-row submit-btn" ng-click="cardContent.closeDialog()">
+        确认
+    </button>
+</div>

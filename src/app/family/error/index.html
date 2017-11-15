@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>学生用手机就上零零期，欢迎来到零零期！！</title>
+    <meta name="description" content="零零期分期是深受中国大学生喜爱的分期购物平台,凭学生证、身份证即可办理,支持0元首付,轻松还款无压力。">
+    <meta name="keywords" content="大学生分期付款,大学生分期购物,分期付款,iphone6s分期付款,手机分期付款,0元首付,大学生购物,大学生商城">
+    <meta content="m.007fenqi.com" name="author"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no, email=no" name="format-detection"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <meta name="microdata" content='{"hasPermission":true, "signIn":true}'/>
+    <link rel="stylesheet" href="../../../screens/base/styles/screen-main.css" type="text/css"/>
+    <link rel="stylesheet" href="../../app.css" type="text/css"/>
+</head>
+<body>
+<data-ui-view></data-ui-view>
+
+<script src="../../../vendors/requirejs/2.1.15/require.js"></script>
+
+<script type="text/javascript">
+    requirejs.config({
+        baseUrl: '../../../'
+    });
+    require(['require', 'app.config'], function (require) {
+        // load app
+        require(['angular', 'app/family/error/app'], function (angular) {
+            angular.element(document).ready(function () {
+                angular.bootstrap(document, ['error-webApp']);
+            });
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.multi-select-picker{
+  width: 100%;
+
+
+  .multi-select-group {
+    background-color: #FFFFFF;
+    min-height: 100px;
+  }
+
+  .select-picker-title{
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: $font-size-xl;
+    font-weight: bold;
+    height: 30px;
+    line-height: 30px;
+  }
+
+  .select-picker-item{
+    display: inline-block;
+    font-size: $font-size-large;
+    min-width: 75px;
+    margin: 8px;
+    padding: 0 10px;
+    background-color: $white;
+    text-align: center;
+    border: 1px solid $base-border-color;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+  }
+  .select-picker-item.selected {
+    color: $base-color;
+    border: 1px solid $base-color;
+  }
+
+
+  .select-footer{
+    width: 100%;
+    text-align: center;
+    background-color: $white;
+  }
+
+}

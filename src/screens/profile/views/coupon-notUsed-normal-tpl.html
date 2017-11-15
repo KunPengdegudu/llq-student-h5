@@ -1,0 +1,32 @@
+<ol class="goods-list mybill-main myCoupon-main" data-ng-cloak>
+    <li class="myCoupon-item" data-ng-repeat="item in items">
+        <!--
+        <img src="../../../app/assets/imgs/profile/myCoupon-bg1.png">
+        -->
+        <div data-ng-click="gotoShop(item.shopName,item.shopId)">
+            <div class="item-left not-used" data-ng-style="item.style">
+                <div class="item-typeText" data-ng-bind="item.shopName"></div>
+                ¥<span class="item-amount">{{item.amount | numShortHand}}</span>
+            </div>
+            <div class="item-right">
+                <div class="item-name" data-ng-bind="item.name"></div>
+                <div class="item-rules">
+                    <div class="rule-amount" data-ng-if="item.rule">
+                        <div>*<span data-ng-bind="item.rule"></span></div>
+                    </div>
+                    <div class="rule-amount" data-ng-if="item.description">
+                        <div>*<span data-ng-bind="item.description"></span></div>
+                    </div>
+                </div>
+                <div class="item-date">
+                    *有效期：<span data-ng-bind="item.beginTime | dateFormat:'yyyy-MM-dd'"></span>
+                    ～
+                    <span data-ng-bind="item.endTime | dateFormat:'yyyy-MM-dd'"></span>
+                </div>
+                <div class="item-button">
+                    立即使用&nbsp;>>
+                </div>
+            </div>
+        </div>
+    </li>
+</ol>

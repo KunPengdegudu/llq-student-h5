@@ -1,0 +1,97 @@
+<article class="profile-main-show-header-content profile-bill-content" threshold="200"
+         data-scroll-loader="loadItems();" type="both" data-can-load="canLoad"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/profile/views/myorder-content-abnormal-tpl.html' : 'screens/profile/views/myorder-content-normal-tpl.html'">
+    </div>
+
+</article>
+
+<pay data-pay-type="'order'" data-pay-title="payDialog.item.title"
+     data-pay-amount="payDialog.item.actualPayAmount" data-pay-params="payDialog.params">
+</pay>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="traceDialog.isVisible" z-index="560">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="traceDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <span>物流跟踪</span>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-if="!hasTraceItems">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span class="trace-title">物流信息：</span>
+                    <span>{{traceDialog.traceInfo.expressCompanyName}} {{traceDialog.traceInfo.deliveryNo}}</span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-repeat="item in traceDialog.traceInfo.trace.traces"
+            data-ng-if="traceDialog.hasTraceItems">
+            <div class="second-column">
+                <div class="trace-text" data-ng-class="{'with-first': $index==0}">
+                    <span data-ng-bind="item.acceptStation"></span>
+                </div>
+                <div class="trace-time" data-ng-class="{'with-first': $index==0}">
+                    <span data-ng-bind="item.acceptTime"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-if="!hasTraceItems">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span>暂无物流信息，请登录物流公司官网查询。</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<!--取消订单原因-->
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="reasonDialog.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="reasonDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>取消原因</span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="order-cancel">
+        <div class="iconfont icon-help2 cancelIcon"></div>
+        <p>订单取消原因</p>
+    </div>
+
+    <p class="cancel-reason">选择取消订单原因，帮助我们改进</p>
+
+    <div>
+        <ul class="reasonList">
+            <li ng-repeat="rs in reasonList" ng-click="reasonDialog.chooseReason(rs.reasonKey)">{{rs.reason}}<span
+                    class="iconfont icon-selected" ng-class="{'selected':reasonDialog.reasonKey==rs.reasonKey}"></span>
+            </li>
+
+            <!--<li ng-click="reasonDialog.isChoose2()">取消订单原因2<span class="iconfont icon-selected" ng-class={'selected':reasonDialog.isSelected2}></span></li>-->
+
+            <!--<li ng-repeat="reason in reasonList" ng-click="reasonDialog. isChoose($index,reason.reasonKey)">{{reason.reason}}<span class="iconfont icon-selected" ng-class={'selected':reasonDialog.isSelecteds[$index]}></span></li>-->
+
+        </ul>
+    </div>
+
+    <button class="submitBtn" ng-click="reasonDialog.submitReason()">提交</button>
+
+</div>
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" type="text/css" href="./demo.css" />
+
+  <script src="../../../../bower_components/requirejs/require.js"></script>
+  <script type="text/javascript">
+    requirejs.config({
+      baseUrl: '../../../'
+    });
+    require(['require', 'app.config'], function (require, config) {
+        require(['angular', 'components/ngtoast/directives/ngtoast', 'services/utils/constant'], function(angular) {
+            var app = angular.module('app', ['components.ngToast', 'services.constant']);
+            app.controller('Demo', ['$scope', 'ngToast', 'CONSTANT_TIPS', function ($scope, ngToast, CONSTANT_TIPS) {
+
+              ngToast.create({
+                content: CONSTANT_TIPS.NETWORK_ERROR
+              });
+                
+            }]);
+        });
+
+    });
+    </script>
+    <style type="text/css">
+    </style>
+</head>
+<body ng-controller="Demo">
+  <toast></toast>
+</body>
+</html>

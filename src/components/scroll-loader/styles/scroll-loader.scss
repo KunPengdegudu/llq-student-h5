@@ -1,0 +1,110 @@
+@import 'mixins/animation';
+@import 'mixins/clearfix';
+
+@include keyframes(fadeIn) {
+  0% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+@include keyframes(dotFlash) {
+  0% {
+    transform: translateY(0) scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.ui-scroll-loader {
+  overflow: auto;
+  -webkit-overflow-scrolling:touch;
+
+  .ui-scroll-loader-header {
+    position: relative;
+    z-index: 200;
+    height: 0;
+    overflow: hidden;
+    color: #fff;
+    background-color: #01579b;
+    .loading-tip {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -45px;
+      line-height: 40px;
+      height: 40px;
+      @include clearfix();
+      > .icon-green-arrow {
+        display: inline-block;
+        float: left;
+      }
+      .rotate {
+        transform: rotate(180deg);
+      }
+      .text {
+        display: inline-block;
+        float: left;
+        padding-left: 15px;
+        white-space:nowrap;
+      }
+    }
+    .loading {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      margin-left: -15px;
+      padding-top: 17px;
+      height: 40px;
+      opacity: .4;
+      @include clearfix();
+      .dot {
+        display: block;
+        background-color: #fff;
+        float: left;
+        width: 5px;
+        height: 5px;
+        margin-right: 7px;
+        transform: scale(0.3);
+        border-radius: 50%;
+        @include animation("dotFlash 0.4s infinite alternate");
+
+        &.dot1 {
+          animation-delay: 0;
+        }
+        &.dot2 {
+          animation-delay: 0.1s;
+        }
+        &.dot3 {
+          animation-delay: 0.2s;
+        }
+      }
+    }
+  }
+
+  .ui-scroll-loader-footer {
+    height: 50px;
+    line-height: 26px;
+    padding-top: 12px;
+    text-align: center;
+    color: #666;
+    overflow: hidden;
+
+    .fade-in {
+      @include animation('fadeIn 1s');
+    }
+
+    .btn-retry {
+      display: inline-block;
+      padding: 0 8px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+
+      &:active {
+        background-color: #f0f0f0;
+      }
+    }
+  }
+}
+

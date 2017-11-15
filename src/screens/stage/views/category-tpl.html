@@ -1,0 +1,80 @@
+<div class="class-wrapper" data-ng-if="flashFlag">
+    <div class="class-container">
+        <div class="class-content-left">
+            <ul class="class-name-container">
+                <li class="class-name-item" data-ng-repeat="item in categoryList"
+                    data-ng-bind="item.name" data-ng-class="{selected:isSelectCategory(item)}"
+                    data-ng-click="selectCategory(item)"></li>
+            </ul>
+        </div>
+
+        <div class="class-content-right">
+            <div class="class-content-right-banner" data-ng-click="gotoUrl(topBannerHref)" data-ng-if="topBannerSrc">
+                <img src="" data-ng-src="{{topBannerSrc | fixImage}}">
+            </div>
+            <div class="second-category">
+                <div class="second-name">热门品牌</div>
+                <url class="third-category">
+                    <li class="third-item" data-ng-repeat="item in brandList"
+                        data-ng-click="clickBrand(item.id)">
+                        <div class="brand-img"><img src="{{item.iconUrl | fixImage : '@!200x200'}}"></div>
+                        <p data-ng-bind="item.name | htmlDecode" class="brand-title"></p>
+                    </li>
+                </url>
+            </div>
+            <div class="second-category" data-ng-repeat="secondCategory in secondCategoryList"
+                 data-ng-if="secondCategory.subList.length>0">
+                <div class="second-name" data-ng-bind="secondCategory.name | htmlDecode"></div>
+                <url class="third-category">
+                    <li class="third-item" data-ng-repeat="item in secondCategory.subList"
+                        data-ng-click="clickCategoryId(item.id)">
+                        <div class="brand-img"><img src="{{item.iconUrl | fixImage : '@!200x200'}}"></div>
+                        <p data-ng-bind="item.name | htmlDecode" class="brand-title"></p>
+                    </li>
+                </url>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="class-wrapper" data-ng-if="!flashFlag">
+    <div class="class-container">
+        <div class="class-content-left">
+            <ul class="class-name-container">
+                <li class="class-name-item" data-ng-repeat="item in categoryList"
+                    data-ng-bind="item.name" data-ng-class="{selected:isSelectCategory(item)}"
+                    data-ng-click="selectCategory(item)"></li>
+            </ul>
+        </div>
+
+        <div class="class-content-right">
+            <div class="class-content-right-banner" data-ng-click="gotoUrl(topBannerHref)" data-ng-if="topBannerSrc">
+                <img src="" data-ng-src="{{topBannerSrc | fixImage}}">
+            </div>
+            <div class="second-category">
+                <div class="second-name">热门品牌</div>
+                <url class="third-category">
+                    <li class="third-item" data-ng-repeat="item in brandList"
+                        data-ng-click="clickBrand(item.id)">
+                        <div class="brand-img"><img src="{{item.iconUrl | fixImage : '@!200x200'}}"></div>
+                        <p data-ng-bind="item.name | htmlDecode" class="brand-title"></p>
+                    </li>
+                </url>
+            </div>
+            <div class="second-category" data-ng-repeat="secondCategory in secondCategoryList"
+                 data-ng-if="secondCategory.subList.length>0">
+                <div class="second-name" data-ng-bind="secondCategory.name | htmlDecode"></div>
+                <url class="third-category">
+                    <li class="third-item" data-ng-repeat="item in secondCategory.subList"
+                        data-ng-click="clickCategoryId(item.id)">
+                        <div class="brand-img"><img src="{{item.iconUrl | fixImage : '@!200x200'}}"></div>
+                        <p data-ng-bind="item.name | htmlDecode" class="brand-title"></p>
+                    </li>
+                </url>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<search-dialog/>

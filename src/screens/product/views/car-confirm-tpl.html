@@ -1,0 +1,258 @@
+<div class="product-main product-main-show-header car-confirm-main car-shop-wrapper">
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <a data-ng-click="addressDialog.openDialog()">
+                <div class="second-column">
+                    <div class="setting-row-with-right-arrow" ng-if="selectItem!=null">
+                        <div class="product-receiver-title">
+                            <span>收货人：</span>
+                            <span>{{selectItem.name}}</span>
+                            <span style="margin-left: 10px;">{{selectItem.phone}}</span>
+                        </div>
+                        <div class="product-receiver-subtitle">
+                            <span>收货地址：</span>
+                            <span>{{getFullAddress(selectItem)}}</span>
+                        </div>
+                    </div>
+                    <div class="setting-left" ng-if="selectItem==null">
+                        <span>请选择收货地址</span>
+                    </div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <div class="bottom-border"></div>
+
+    <ul class="setting-table"
+        data-ng-repeat="group in cartGroups">
+        <li class="setting-table-cell car-shop-title-wrapper">
+            <div class="second-column">
+                <div class="setting-row car-shop-title-row">
+                    <span class="car-shop-title-text"
+                          data-ng-bind="group.shop.shopName"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-repeat="product in group.carts" data-ng-click="gotoProduct(product)">
+            <div class="second-column" data-ng-class="{'unsupport':!checkProductSupport(product)}">
+                <div class="setting-row goods-brief">
+                    <img class="goods-img-thumbnail"
+                         data-ng-src="{{product.productPic | filterImg:'@!300x300'}}"/>
+
+                    <div class="goods-desc">
+                        <div class="goods-title" data-ng-bind="product.productTitle"></div>
+                        <div class="goods-subtitle">
+                            <span class="goods-text-gray" data-ng-bind="product.skus"></span>
+                        </div>
+                        <div class="goods-subtitle">
+                            <span data-ng-bind="product.currPrice | moneyFixed"></span>
+                        </div>
+                    </div>
+
+                    <div class="car-product-num-wrapper">
+                        <span>x{{product.quantity}}</span>
+                    </div>
+
+                    <div data-ng-if="!checkProductSupport(product)" class="unsupport-btn">无法送达</div>
+
+                    <div data-ng-if="!checkProductSupport(product)" class="unsupport-remove-btn"
+                         data-ng-click="removeProduct(product,$event)">
+                        <span class="iconfont icon-close"></span>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell car-shop-title-wrapper" data-ng-if="group.deliveryFee">
+            <div class="second-column car-express">
+                <div class="left-text">
+                    快递费
+                </div>
+                <div class="right-text">
+                    {{group.deliveryFee | moneyFixed}}
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell car-shop-title-wrapper" data-ng-if="group.totalTaxFee">
+            <div class="second-column car-express">
+                <div class="left-text">
+                    税费
+                </div>
+                <div class="right-text">
+                    {{group.totalTaxFee | moneyFixed}}
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell car-shop-title-wrapper"
+            data-ng-if="group.shopPromotionDiscountFee && group.shopPromotionDiscountFee>0">
+            <div class="second-column car-express">
+                <div class="left-text">
+                    满就送
+                </div>
+                <div class="right-text">
+                    -{{group.shopPromotionDiscountFee | moneyFixed}}
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell car-shop-title-wrapper" data-ng-if="group.userShopCouponId!==null"
+            data-ng-click="couponDialog.openDialog(group.userCoupons, group.userShopCouponId, 'shop', group.shop.id)">
+            <div class="second-column car-express">
+                <div class="left-text">
+                    {{getUserCoupon(group).couponType | couponType}}：{{getUserCoupon(group).name}}
+                </div>
+                <div class="right-text with-arrow">
+                    -{{getUserCoupon(group).amount | moneyFixed}}
+                </div>
+                <div class="iconfont icon-right-arrow">
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell car-shop-title-wrapper" data-ng-if="group.deliveryFee!==null">
+            <div class="second-column car-express">
+                <div class="left-text" style="width:25%">
+                    买家留言
+                </div>
+                <div class="left-text" style="width:75%">
+                    <input class="setting-input" type="text" placeholder="亲,有什么想对小二说的呢" maxlength="100"
+                           data-ng-model="group.remark"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell car-shop-bottom-wrapper">
+            <div class="second-column">
+                <div class="setting-row car-shop-bottom-row">
+                    <span>共{{group.quantity}}件商品  合计</span>
+                    <span class="money">{{group.totalAmount | moneyFixed}}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table" data-ng-if="userRedEnvelope">
+        <li class="setting-table-cell car-shop-title-wrapper"
+            data-ng-click="couponDialog.openDialog(cartData.userRedEnvelopes, cartData.userRedEnvelopeId, 'all')">
+            <div class="second-column car-express">
+                <div class="left-text">
+                    {{userRedEnvelope.couponType | couponType}}：{{userRedEnvelope.name}}
+                </div>
+                <div class="right-text with-arrow">
+                    -{{userRedEnvelope.amount | moneyFixed}}
+                </div>
+                <div class="iconfont icon-right-arrow">
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<div class="dialog-bottom-btn-wrapper car-order-btn-wrapper">
+    <div class="btn-text" data-ng-if="promotionObject.type==='sale'">
+        <div class="text-wrapper">
+            <span class="text">合计：</span>
+            <span class="money">{{cartData.totalAmount | moneyFixed : '--'}}</span>
+            <span class="text">(包含运费)</span>
+        </div>
+    </div>
+    <div class="btn-text" data-ng-if="promotionObject.type==='aging'">
+        <div class="text-wrapper aging" style="margin-top: 5px;">
+            <span class="text">首付：</span>
+            <span class="money">{{(periodsObject.data.firstPayAmount+cartData.deliveryFee) | moneyFixed : '--'}}</span>
+            <span class="text">(包含运费)</span>
+        </div>
+        <div class="text-wrapper" style="line-height: 16px;">
+            <span class="other-text">(每期还款：{{periodsObject.getSelectAccount() | moneyFixed}}x{{periodsObject.selected}})</span>
+        </div>
+    </div>
+    <div class="btn-wrapper">
+        <button class="nav-hint single-row submit-btn" ng-click="checkRealAuth()" data-ng-disabled="!checkCanOrder()"
+                data-ng-if="selectItem.complete">
+            立即下单
+        </button>
+        <button class="nav-hint single-row submit-btn" ng-click="throwError()" data-ng-disabled="!checkCanOrder()"
+                data-ng-if="!selectItem.complete">
+            立即下单
+        </button>
+    </div>
+</div>
+
+<!--选择优惠券-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="couponDialog.isVisible" z-index="572">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="couponDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>请选择优惠券</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-repeat="item in couponDialog.items">
+            <a data-ng-click="couponDialog.useCoupon(item)">
+                <div class="second-column">
+                    <div class="setting-left select-icon">
+                        <span class="iconfont icon-collection" data-ng-if="couponDialog.checkSelected(item)"></span>
+                    </div>
+                    <div class="setting-left">
+                        <span>{{item.name}}</span>
+                    </div>
+                    <div class="setting-right">
+                        <span>{{item.amount | moneyFixed}}</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<!--海外购商品补充身份证号-->
+<div ui-dialog class="outsourcing-dialog" overlay="true" close-by-overlay="true"
+     is-visible="outsourcingDialog.isVisible" z-index="572">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>补充身份证号码</span>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon">
+            <div class="iconfont header-bar-icon icon-close" ng-click="outsourcingDialog.closeDialog()"></div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">身份证号码</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" placeholder="请输入收货人的身份证号码"
+                           data-ng-model="outsourcingDialog.identityNo"/>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="outsourcing-hint">
+        注：您购买的商品为海外购商品，因涉及入境清关，根据海关规定，需要您完善当前地址收货人身份证号码。
+    </div>
+    <div class="outsourcing-btn" data-ng-click="outsourcingDialog.submit()">
+        保存并确认下单
+    </div>
+
+</div>
+
+<address-info data-choose-address-fn="chooseAddressFn"></address-info>
+
+
+<pay data-pay-type="'cart'"
+     data-pay-amount="payDialog.amount"
+     data-pay-params="payDialog.params">
+</pay>

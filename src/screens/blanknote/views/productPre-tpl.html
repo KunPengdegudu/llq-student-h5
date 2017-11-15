@@ -1,0 +1,89 @@
+<div class="blanknote-main blanknote-productPre" data-ng-if="userType != 'passed'" data-ng-init="loanAmountbtn()">
+    <div class="blanknote-banner">
+        <img src="../../../app/assets/imgs/blacknote/blanknote-banner.jpg" class="banner-img"/>
+        <div class="blanknote-top">
+            <div class="blanknote-quotas">
+                可用额度:¥10000 总额度:20000
+            </div>
+            <div class="blanknote-loan">
+                <div class="loan-name">借款金额</div>
+                <div class="loan-amount">
+                    ¥<span class="amount" id="title" data-ng-bind="loanAmount"></span>
+                </div>
+            </div>
+            <div class="loan-operation">
+                <div class="amount-roll" id="bar">
+                    <div class="roll-loan" id="loan"></div>
+                    <span class="roll-img" id="btn"></span>
+                </div>
+                <div class="roll-amountList">
+                    <span class="item.amount" data-ng-style="item.style" data-ng-repeat="item in loanList">
+                        <span data-ng-bind="item.amount"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--分期期限-->
+    <div class="blanknote-block">
+        <div class="block-name">分期月数</div>
+        <div class="instalment-month">
+            <div data-ng-repeat="item in instalmentMonths track by $index" class="item-month"
+                 data-ng-bind="item.name" data-ng-class="item.selected?'active':''" data-ng-click="selectMonth(item)">
+            </div>
+        </div>
+    </div>
+
+    <!--账户
+    <ul class="setting-table">
+        <div class="blanknote-block">
+            <div class="block-name">转账账户类型</div>
+            <div class="instalment-month">
+                <div data-ng-repeat="item in accountList track by $index" class="item-month"
+                     data-ng-bind="item.name" data-ng-class="item.selected?'active':''"
+                     data-ng-click="selectAmount(item)">
+                </div>
+            </div>
+        </div>
+        <li class="setting-table-cell" data-ng-if="accountList[0].selected">
+            <div class="second-column">
+                <div class="setting-left title">银行卡账号</div>
+                <div class="setting-right amount">
+                    <span data-ng-bind="bankCardAmount"></span>
+                </div>
+                <div class="iconfont icon-right-arrow"></div>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-if="accountList[1].selected">
+            <div class="second-column">
+                <div class="setting-left title">支付宝账号</div>
+                <div class="setting-right amount">
+                    <span data-ng-bind="AlipayAmount"></span>
+                </div>
+                <div class="iconfont icon-right-arrow"></div>
+            </div>
+        </li>
+    </ul>
+    -->
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">月供</div>
+                <div class="setting-right">
+                    <span data-ng-bind="amountByMonth|keepFixed:2" id="amountByMonth"></span>元
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">服务费</div>
+                <div class="setting-right">
+                    <span data-ng-bind="serviceCharge|keepFixed:2" id="serviceCharge"></span>元
+                </div>
+            </div>
+        </li>
+    </ul>
+    <button class="nav-hint single-row submit-btn" data-ng-click="gotoAuth()">
+        申请开户
+    </button>
+</div>

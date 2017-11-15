@@ -1,0 +1,32 @@
+<div class="logo">
+    <span class="iconfont icon-logo"></span>
+</div>
+
+<div class="input-group">
+
+    <div class="input-wrapper first username">
+        <input type="tel" class="login-input" placeholder="请输入手机号"
+               data-ng-model="login.username">
+        <div class="iconfont icon-username"></div>
+        <div class="iconfont icon-clean" ng-click="clearUsername()"></div>
+    </div>
+
+    <div class="input-wrapper last">
+        <input type="password" class="login-input" placeholder="请输入密码"
+               data-ng-model="login.password">
+        <div class="iconfont icon-password"></div>
+    </div>
+
+</div>
+
+
+<div class="login-forget">
+   <div data-ng-click="forgetDialog.openDialog()">忘记密码</div>
+</div>
+
+<div class="login-btn">
+    <button class="nav-hint single-row submit-btn" ng-click="getLoginErrorAccount()" ng-disabled="disableBtn">
+        登录
+    </button>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="active-main a1111-kaola">
+    <div class="kaola-banner">
+        <img src="../../../app/assets/imgs/active/a1111/kaola/kaola-banner.jpg"/>
+    </div>
+    <div class="kaola-quota">
+        <div class="quota-btn" data-ng-click="changeQuota()">
+            <img src="../../../app/assets/imgs/active/a1111/kaola/kaola-quota.png"/>
+        </div>
+        <div class="active-coupon-area" data-ng-if="showQuota">
+            <div class="active-coupons main" data-ng-repeat="itemWrapper in couponWrappers track by $index">
+                <div class="item-coupon-wrapper">
+                    <div class="item-bg">
+                        <img data-ng-src="{{itemWrapper.imgBg}}"/>
+                    </div>
+                    <div class="item-content">
+                        <div class="item-name"></div>
+                        <div class="item-coupon" data-ng-repeat="itemCoupon in itemWrapper.list track by $index"
+                             data-ng-click="getRed(itemCoupon)"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="coupon-btn" data-ng-click="changeQuota()">
+                <span class="iconfont icon-reserve"></span>
+            </div>
+        </div>
+    </div>
+    <div class="active-enter-area">
+        <div class="first-area" data-ng-click="gotoProductList(firstNode,'WX085')">
+            <img data-ng-src="{{firstNode.nodeImgUrl}}"/>
+        </div>
+        <div class="enter-rows" data-ng-repeat="itemRow in ActiveNodes track by $index">
+            <div class="item-enter" data-ng-repeat="itemNode in itemRow track by $index"
+                 data-ng-click="gotoProductList(itemNode,'WX085')">
+                <img data-ng-src="{{itemNode.nodeImgUrl}}"/>
+            </div>
+        </div>
+    </div>
+    <div class="active-goods-area">
+        <div class="enters-title">
+            <div class="title">好物推荐</div>
+            <div class="line"></div>
+        </div>
+        <div class="area-wrapper" data-ng-repeat="itemArea in ActiveNodeList track by $index">
+            <div class="item-area-title" data-ng-click="gotoProductList(itemArea,'WX086')">
+                <img data-ng-src="{{itemArea.nodeImgUrl}}"/>
+            </div>
+            <div class="item-area-goods-wrapper">
+                <div class="goods-wrapper">
+                    <div class="item-goods" data-ng-repeat="itemProduct in itemArea.goodsList track by $index"
+                         data-ng-click="gotoProduct(itemProduct)">
+                        <div class="product-img">
+                            <img data-ng-src="{{itemProduct.mainProImgUrl}}"/>
+                        </div>
+                        <div class="product-name" data-ng-bind="itemProduct.name"></div>
+                        <div class="product-price">
+                            <div class="product-basePrice">
+                                ¥<span data-ng-bind="itemProduct.proSkuPrice"></span>
+                            </div>
+                            <div class="product-marketPrice" data-ng-if="itemProduct.defaultEveryAmount">
+                                月供:<span data-ng-bind="itemProduct.defaultEveryAmount"></span>x<span
+                                    data-ng-bind="itemProduct.defaultPeriod"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="area-more" data-ng-click="gotoProductList(itemArea,'WX086')">
+                        <div class="more-top">M O R E</div>
+                        <div class="more-bottom">查 看 更 多</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="position: fixed;width: 40px;height: 40px;  z-index: 300;  bottom: 10%;  right: 0;"
+     data-ng-click="backToTop()">
+    <img src="../../../app/assets/imgs/active-center/main/active-back-top.png" style="width: 100%"/>
+</div>

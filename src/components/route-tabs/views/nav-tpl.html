@@ -1,0 +1,8 @@
+<div class="ui-tabs ui-tabs-icon-top ui-main-nav">
+    <a class="ui-tab-item" data-ng-repeat="nav in navs" data-ng-class="{active: isActive('{{nav.activeReg}}')}"
+       ng-click="gotoUrlWithCheck(nav.entryUrl, nav.checkLoginStatus)">
+        <span class="ui-tab-icon iconfont {{nav.iconClass}}"></span>
+        <p class="ui-tab-content" data-ng-bind="nav.text"></p>
+        <span class="ui-tab-brand" data-ng-bind="nav.brand" data-ng-if="nav.brand"></span>
+    </a>
+</div>

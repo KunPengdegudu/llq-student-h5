@@ -1,0 +1,123 @@
+<div class="profile-main profile-main-show-header profile-bill-content" data-ng-cloak>
+
+    <!--<div class="bill-top-title">-->
+    <!--<div class="main-res-pie">-->
+    <!--<canvas width="100" height="100"-->
+    <!--class="chart chart-doughnut" chart-data="resData" chart-legend="false"-->
+    <!--chart-colours="detail.colours"-->
+    <!--chart-options="resOptions"></canvas>-->
+
+    <!--<div class="chart-inner-container ">-->
+    <!--<div class="bill-name">分期总金额(元)</div>-->
+    <!--<div class="bill-money-total">{{moneyAmount | moneyFixed}}</div>-->
+    <!--<div class="bill-name">每期还款(元)</div>-->
+    <!--<div class="bill-money-period">{{moneyAmount/data.period | moneyFixed}}</div>-->
+    <!--<div class="bill-money-times">第{{currentPeriod}}/{{data.period}}期</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--</div>-->
+    <div class="bill-top-repay">
+        <!--<div class="task-carousel-part task-do-line">-->
+        <!--<span class="task-do-title">账单号{{clipboard.canCopy?'（点击复制）':'（长按复制）'}}</span>-->
+
+        <!--<span class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="billNo"></span>-->
+        <!--<span class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"-->
+        <!--data-ng-click="clipboard.setClipboard(billNo)" data-ng-if="clipboard.canCopy"-->
+        <!--data-ng-bind="billNo"></span>-->
+        <!--<div>-->
+
+        <!--</div>-->
+        <!--</div>-->
+        <div class="bill-detail-cc">
+            <div class="billDetailM">
+                <div class="billDetailM-left">分期总额</div>
+                <div class="billDetailM-center">¥{{moneyAmount | moneyFixed}}</div>
+            </div>
+            <div class="billDetailM">
+                <div class="billDetailM-left">每期还款</div>
+                <div class="billDetailM-center">¥{{moneyAmount/data.period | moneyFixed}}</div>
+            </div>
+            <div class="billDetailM">
+                <div class="billDetailM-left">商品名称</div>
+                <div data-ng-bind='data.title' class="billDetailM-center"></div>
+            </div>
+            <div class="billDetailM" style="border-top: 1px solid #eeeeee">
+                <div class="billDetailM-left">账单号</div>
+                <span class="copy-textarea billDetailM-center" data-ng-if="!clipboard.canCopy"
+                      data-ng-bind="billNo"></span>
+                <span class="copy-textarea-none billDetailM-center" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                      data-ng-click="clipboard.setClipboard(billNo)" data-ng-if="clipboard.canCopy"
+                      data-ng-bind="billNo">
+                </span>
+            </div>
+            <div class="billDetailM">
+                <div class="billDetailM-left">创建时间</div>
+                <div data-ng-bind="createTimer" class="billDetailM-center"></div>
+            </div>
+        </div>
+    </div>
+    <ul class="setting-table mybill-detail bill-detail">
+        <li class="setting-table-cell" data-ng-repeat="item in data.repaymentScheduleList"
+            data-ng-if="item.status=='success' || item.status=='finished'">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span>[第{{item.currentPeriod}}/{{data.period}}期]&nbsp;&nbsp;</span>
+                    <span data-ng-bind="item.dueTime | dateFormat:'yyyy-MM-dd'"></span>&nbsp;&nbsp;
+                    <span>{{item.repaidTotalAmount | moneyFixed}}</span>
+                </div>
+                <div class="setting-right" style="padding-left: 0">
+                    <a class="nav-hint submit-btn"
+                       ng-disabled="item.status!='wait_pay'&&item.status!='overdue'&&item.status!='failed'">
+                        {{item.status | scheduleStatus}}
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-repeat="item in data.repaymentScheduleList"
+            data-ng-if="item.status!='success' && item.status!='finished'">
+            <div class="bill-content" class="success-color">
+                <div class="bill-title total">
+                    <span>[第{{item.currentPeriod}}/{{data.period}}期]&nbsp;&nbsp;</span>
+                    <span data-ng-bind="item.dueTime | dateFormat:'yyyy-MM-dd'"></span>&nbsp;&nbsp;
+                    <span data-ng-class="success-color"
+                          data-ng-bind="item.shouldPayAmount | moneyFixed"></span>
+                </div>
+                <div class="bill-detail">
+                    <div class="bill-corpus" data-ng-class="success-color">
+                        <div class="bill-corpus-title">本金</div>
+                        <div class="base-color" data-ng-class="success-color"
+                             data-ng-bind="item.amountPrinciple | moneyFixed"></div>
+                    </div>
+                    <div class="bill-corpus">
+                        <div class="bill-corpus-title">服务费</div>
+                        <div class="base-color" data-ng-class="success-color"
+                             data-ng-bind="item.amountInterest | moneyFixed"></div>
+                    </div>
+                    <div class="bill-corpus">
+                        <div class="bill-corpus-title">违约金</div>
+                        <div class="base-color" data-ng-class="success-color"
+                             data-ng-bind="item.penalSum | moneyFixed"></div>
+                    </div>
+                    <div class="bill-corpus">
+                        <span class="nav-hint submit-btn"
+                              ng-disabled="item.status!='wait_pay'&&item.status!='overdue'&&item.status!='failed'"
+                              ng-click="repay(data, item)">
+                            {{item.status | scheduleStatus}}
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+
+<pay data-pay-type="'repay'" data-pay-title="payDialog.item.title"
+     data-pay-amount="payDialog.schedule.shouldPayAmount"
+     data-pay-params="payDialog.params"
+     data-pay-success-fn="payDialog.successFn"
+     data-pay-fail-fn="payDialog.successFn">
+</pay>
+
+<!--选择银行卡列表-->
+<!--<card-manager data-selected-fn="selectedCardFn">-->
+<!--</card-manager>-->

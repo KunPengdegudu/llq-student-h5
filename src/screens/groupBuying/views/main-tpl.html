@@ -1,0 +1,133 @@
+<div class="groupon-main" id="activeMain">
+    <div class="active-goods-area" id="goodsArea">
+        <div class="active-title-list" id="goodsTitles">
+            <div class="title-wrapper" data-ng-style="goodsAreaTitle">
+                <div class="item-title" data-ng-repeat="item in ActiveGoodsTitles track by $index"
+                     data-ng-click="selectGoodsNodeId(item)">
+                    <span data-ng-bind="item.name" class="item-title-text"
+                          data-ng-class="item.isActive?'active':''"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="main-wrapper">
+            <div class="choiceness" data-ng-if="showBanner">
+                <!--<img src="../../../app/assets/imgs/groupon/image_indexptg_banner.jpg" class="choiceness-banner">-->
+                <div class="carousel-page choiceness-banner">
+                    <ul data-ng-style="pageInfo.styles" rn-carousel rn-carousel-index="pageInfo.carouselIndex"
+                        rn-carousel-auto-slide="5" rn-carousel-pause-on-hover rn-carousel-buffered class="carousel2">
+                        <li ng-repeat="slide in pageInfo.slides track by slide.id" ng-class="'id-' + slide.id"
+                            data-ng-click="carouseClick(slide.url)">
+                            <img data-ng-src="{{slide.img}}" class="bg-image">
+                        </li>
+                    </ul>
+                    <div class="carousel-indicator-wrapper" rn-carousel-indicators ng-if="pageInfo.slides.length > 1"
+                         slides="pageInfo.slides"
+                         rn-carousel-index="pageInfo.carouselIndex"></div>
+                </div>
+                <!--==========轮播===============-->
+                <div class="notice-main share-notice-main" data-ng-if="isDialogShow && selectedNode.id==null">
+                    <div class="notice-wrapper">
+                        <ul class="notice-list" data-ng-style="noticeAnimate.style">
+                            <li class="notice-item" data-ng-repeat="notice in noticeLists track by $index"
+                                data-ng-click="gotoGrouponDetails(notice)">
+                                <div class="notice-img">
+                                    <img data-ng-src="{{notice.imgUrl}}"/>
+                                </div>
+                                <div class="notice-tip">拼友<span data-ng-bind="notice.phoneNumber"></span>邀您拼团，{{notice.dropDown}}前
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="choiceness-foreshow">
+                    <div class="foreshow-item" data-ng-click="gotoUrl('/groupBuying/foreshow')">
+                        <img src="../../../app/assets/imgs/groupon/icon_indexptg_nextday.png" class="foreshow-item-img">
+                        <span class="foreshow-item-text">明日上新</span>
+                    </div>
+                    <div class="foreshow-item" data-ng-click="gotoUrl('/groupBuying/rule')">
+                        <img src="../../../app/assets/imgs/groupon/icon_indexptg_rules.png" class="foreshow-item-img">
+                        <span class="foreshow-item-text">拼团玩法</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="active-goods" id="goodsContent" data-ng-if="goodsList.length>0">
+                <div class="goods-rows">
+                    <div class="foreshow-item" data-ng-repeat="goods in goodsList">
+                        <div class="item-img-container">
+                            <img data-ng-src="{{goods.mainProImgUrl}}" class="foreshow-item-img">
+                            <div class="groupon-time">
+                                <span class="time-text">{{goods.salesQuantity}}人已拼</span>
+                            </div>
+                        </div>
+                        <div class="foreshow-item-detail">
+                            <div class="postage-name">
+                                <div class="postage" data-ng-if="goods.exemptionPostage">
+                                    {{goods.exemptionPostageText}}
+                                </div>
+                                <div class="name" data-ng-bind="goods.productName"></div>
+                            </div>
+                            <div class="instruction">
+                                <span class="tag" data-ng-bind="goods.memo"></span>
+                                <span class="limit">每人限购{{goods.limitBuyQuantity}}份</span>
+                            </div>
+                            <div class="price-buttons">
+                                <div class="prices">
+                                    <span class="price"><i>￥</i>{{goods.itemPrice}}</span>
+                                    <del class="old-price"><i>￥</i>{{goods.basePrice}}</del>
+                                </div>
+                                <div class="buttons" data-ng-class="goods.isBtnActive?'active':''">
+                                    <div class="button-left" data-ng-class="goods.isBtnActive?'active':''">
+                                        <span class="iconfont icon-pt-people"></span>
+                                        <span class="number">{{goods.joinNum}}人团</span>
+                                    </div>
+                                    <div class="button-right" data-ng-bind="goods.tuanStatus"
+                                         data-ng-class="goods.isBtnActive?'active':''"
+                                         data-ng-click="gotoProductDetails(goods.id,goods.productId)"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="add-goods-btn" data-ng-if="showBtn"
+                     data-ng-click="getChoicenessList(selectedNode.id,'add')">
+                    加载更多
+                </div>
+                <div class="no-more" data-ng-if="!showBtn">
+                    没有更多了...
+                </div>
+            </div>
+
+            <div class="active-goods" data-ng-if="goodsList.length==0">
+                <div class="no-goods">
+                    <div class="nothing-img">
+                        <img src="../../../app/assets/imgs/groupon/foreshow-nothing.png"/>
+                    </div>
+                    <div class="nothing-text">
+                        暂无商品
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="button-bottom">
+    <div class="home-page" style="color:#ff9600" data-ng-click="backToTop()">
+        <span class="iconfont icon-enter-active"></span>
+        <span class="button-text">拼团首页</span>
+    </div>
+    <div class="groupon-user" data-ng-click="gotoUrl('/groupBuying/myOrder/all')">
+        <span class="iconfont icon-order-before"></span>
+        <span class="button-text">我的拼团</span>
+    </div>
+</div>
+
+
+
+
+

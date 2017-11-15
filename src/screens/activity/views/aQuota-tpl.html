@@ -1,0 +1,72 @@
+<div class="active-quota">
+    <div class="quota-topBanner">
+        <img src="../../../app/assets/imgs/active_quota/activity_banner.png" class="banner-img">
+    </div>
+    <div class="quota-wrappers">
+        <div class="quota-item" data-ng-repeat="product in productList">
+            <img src="../../../app/assets/imgs/active_quota/activity_bg.png" class="quota-itemBg"/>
+            <div class="quota-content-item">
+                <div class="quota-item-title">
+                    <div class="title-left">
+                        <img data-ng-src="{{product.productTitleSrc}}" class="left-bg"/>
+                        <div class="left-content">
+                            <img data-ng-src="{{product.productTitleIcon}}" class="title-icon"/>
+                            <div class="title-text" data-ng-bind="product.name | htmlDecode"></div>
+                        </div>
+                    </div>
+                    <div class="title-right">
+                        价值:<span class="class-price">¥ <b>{{product.basePrice}}</b></span>
+                    </div>
+                </div>
+                <div class="quota-item-content">
+                    <div class="content-left">
+                        <div class="left-hint" ng-style="product.productStyle">立<br/>享</div>
+                    </div>
+                    <div class="content-right">
+                        <div class="right-product">
+                            <div class="item-product" data-ng-repeat="itemImg in product.imgList">
+                                <img data-ng-src="{{itemImg.imgUrl}}" class="product-img"/>
+                            </div>
+                        </div>
+                        <div class="right-hint"><span data-ng-bind="product.contents | htmlDecode"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="quota-item-btn">
+                <img src="../../../app/assets/imgs/active_quota/activity_buy.png" data-ng-click="gotoProduct(product)"
+                     class="btn-buy"/>
+            </div>
+        </div>
+    </div>
+    <div class="active-title">
+        <img src="../../../app/assets/imgs/active_quota/activity_title1.png"/>
+    </div>
+    <div class="quota-userShow-hint">
+        累计<span class="count" data-ng-bind="userShowCount"></span>人次参与活动
+    </div>
+    <div class="quota-user-show">
+        <img src="../../../app/assets/imgs/active_quota/activity_bg.png" class="userShow-bg"/>
+        <div class="userShow-wrapper">
+            <div class="userShow-title">
+                <div class="title-name">用户名</div>
+                <div class="title-product">商品名称</div>
+                <div class="title-date">日期</div>
+            </div>
+            <div class="userShow-content" data-ng-style="contentWrapper">
+                <ul class="userShow-ul" data-ng-style="noticeAnimate.style">
+                    <li class="userShow-li" data-ng-repeat="item in userShowList">
+                        <div class="li-name" data-ng-bind="item.userName | hidePhone"></div>
+                        <div class="li-product" data-ng-bind="item.productName"></div>
+                        <div class="li-date" data-ng-bind="item.createTime | dateFormat:'yyyy-MM-dd hh:mm'"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="active-title">
+        <img src="../../../app/assets/imgs/active_quota/activity_title2.png"/>
+    </div>
+    <div class="active-rule-img">
+        <img src="../../../app/assets/imgs/active_quota/activity_rule.png"/>
+    </div>
+</div>

@@ -1,0 +1,208 @@
+<div id="productSlides" class="carousel-page task-carousel">
+    <div class="goods-text-large task-doing-stepNumber">
+        <span>{{carouselIndex+1}}</span>
+        <span>/</span>
+        <span>{{slides.length}}</span>
+    </div>
+    <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-buffered class="carousel2" data-ng-style="item.styles"
+        style="overflow-y: auto">
+        <li ng-repeat="slide in slides track by slide.id" ng-class="'id-' + slide.id">
+
+            <div data-ng-repeat="item in slide.userTaskStepDescDTOList" class="task-doing-detail">
+                <div ng-if="item.type=='description'" class="task-carousel-part task-do-textLeft">
+                    <span class="task-do-title" data-ng-bind="item.title"></span>
+
+                    <div ng-bind-html="item.content | toTrusted" class="goods-text-gray task-description-content"></div>
+                </div>
+
+                <div ng-if="item.type=='textbox'" class="task-carousel-part resume-content-table task-text-container">
+                    <span class="task-do-title">根据相关要求输入相关信息</span>
+
+                    <div class="resume-content-sell"
+                         data-ng-click="text.openDialog(item.promotionUserResults[0].content,carouselIndex,$index,slide.id,item.id,item.promotionUserResults[0].id)">
+                        <div class="resume-content-sell-add" data-ng-if="!item.promotionUserResults[0].content"
+                             data-ng-bind="item.tip"></div>
+                        <div class="resume-content-sell-substance task-do-textLeft"
+                             data-ng-bind="item.promotionUserResults[0].content"
+                             data-ng-if="item.promotionUserResults[0].content"></div>
+                    </div>
+                </div>
+
+
+                <div ng-if="item.type=='picture_up'" class="task-carousel-part task-picture-up">
+                    <span class="task-do-title">请按照要求上传相关图片</span>
+
+                    <div class="works-resume">
+                        <ul class="taskInformation-showImg-container">
+
+                            <li data-ng-repeat="pic in item.promotionUserResults track by $index">
+                                <a data-ng-click="deletePicObj.openDialog(pic,$index,carouselIndex,$parent.$index)">
+                                    <img src="{{pic.userUpPicturesDTO.smallPicUrl}}"
+                                         ng-if="pic.userUpPicturesDTO">
+                                    <img src="{{pic.compressUrl}}" ng-if="!pic.userUpPicturesDTO">
+                                </a>
+                            </li>
+
+
+                            <li class="img-add-wrapper"
+                                ng-click="openPhotoDialog(carouselIndex,$index,slide.id,item.id)">
+                                <div class="img-add">+</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div ng-if="item.type=='picture_show'" class="task-carousel-part task-do-textLeft">
+                    <span class="task-do-title">示例图片(点击可放大)</span>
+                    <ul class='taskInformation-showImg-container'>
+                        <li ng-repeat="imgItem in item.showPicDTOs track by $index">
+                            <a data-ng-click="picPreShow(item.showPicDTOs,$index)">
+                                <img src="{{imgItem.url}}"></a>
+                        </li>
+                    </ul>
+                </div>
+
+
+                <div ng-if="item.type=='invitation_code'" class="task-carousel-part task-do-line">
+                    <span class="task-do-title">{{item.title}}{{clipboard.canCopy?'（点击复制）':'（长按复制）'}}</span>
+
+                    <div class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="item.content"></div>
+                    <div class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                         data-ng-click="clipboard.setClipboard(item.content)" data-ng-if="clipboard.canCopy"
+                         data-ng-bind="item.content"></div>
+                    <div></div>
+                </div>
+
+
+                <div ng-if="item.type=='link'" class="task-carousel-part task-do-line">
+                    <span class="task-do-title">{{item.title}}(点击跳转)</span>
+
+                    <div class="copy-textarea" data-ng-click="goOut(item.content)" data-ng-bind="item.content"></div>
+                </div>
+            </div>
+
+        </li>
+    </ul>
+    <div class="carousel-indicator-wrapper" rn-carousel-indicators
+         ng-if="slides.length > 1" slides="slides"
+         rn-carousel-index="carouselIndex">
+    </div>
+</div>
+
+
+<div class="dialog-bottom-btn-wrapper">
+    <button class="nav-hint single-row submit-btn" ng-click="commitTask()">
+        提交任务
+    </button>
+</div>
+<!--填写任务信息-->
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="text.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="text.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>输入信息</span>
+            </div>
+        </div>
+
+        <div class="ui-header-bar-right-icon">
+            <div class="iconfont header-bar-icon icon-info" style="font-weight: 700"
+                 ng-click="text.updateTextContent()"></div>
+        </div>
+    </div>
+
+    <div class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ul>
+            <li class="resume-text">
+                <textarea cols="40" rows="40" class="textarea" maxlength="500" data-ng-model="text.content"
+                          placeholder="请输入..."></textarea>
+
+                <div class="textarea_number">
+                    <span>{{text.content.length || 0 }}</span>
+                    /
+                    <span>500</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--图片预览-->
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="picPre.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="picPre.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>图片预览</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content pic-show-content">
+        <div class="carousel-page task-carousel">
+
+            <ul rn-carousel rn-carousel-index="picCarouselIndex" rn-carousel-buffered class="carousel2"
+                data-ng-style="item.styles"
+                style="overflow-y: auto">
+                <li ng-repeat="item in picPre.item track by $index">
+                    <a ng-if="item.flag=='qr_code'" ng-click="recognitionImg(item)">
+                        <img src="{{item.url}}" class="pic-middle">
+                    </a>
+                    <a ng-if="!item.flag || item.flag!='qr_code'" data-ng-click="picPre.closeDialog()">
+                        <img src="{{item.url}}" class="pic-middle">
+                    </a>
+                </li>
+            </ul>
+            <div class="carousel-indicator-wrapper" rn-carousel-indicators
+                 ng-if="picPre.item.length > 1" slides="picPre.item"
+                 rn-carousel-index="picCarouselIndex">
+            </div>
+        </div>
+    </div>
+
+</div>
+<photo-upload on-success-fn="onPhotoUploadSuccessFn" get-url-fn="getPhotoUploadUrl"></photo-upload>
+
+<!--删除图片-->
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="deletePicObj.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="deletePicObj.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>图片预览</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content pic-show-content">
+        <div class="carousel-page task-carousel">
+            <ul data-ng-style="item.styles">
+                <li>
+                    <img src="{{picPre.item.userUpPicturesDTO.smallPicUrl}}"
+                         ng-if="picPre.item.userUpPicturesDTO" class="pic-middle">
+                    <img src="{{picPre.item.compressUrl}}" ng-if="!picPre.item.userUpPicturesDTO"
+                         class="pic-middle">
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn" ng-click="deletePic()">
+            删除图片
+        </button>
+    </div>
+</div>

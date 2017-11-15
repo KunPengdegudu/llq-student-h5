@@ -1,0 +1,127 @@
+.setting-table {
+  .icon-setting-phone {
+    font-size: 25px;
+    color: #0eae12;
+  }
+}
+
+.setting-table {
+  .address-column {
+    line-height: 30px;
+
+    .address-default {
+      color: #EC1246;
+    }
+  }
+}
+
+.setting-table {
+  .setting-table-cell {
+    .second-column {
+      .product-receiver-title {
+        line-height: 30px;
+      }
+      .product-receiver-subtitle {
+        line-height: 20px;
+      }
+
+    }
+  }
+
+  .update-version {
+    margin-right: 30px;
+    margin-top: 15px;
+    float: right;
+  }
+
+  .new-version {
+    margin-right: 15px;
+    margin-top: 15px;
+    float: right;
+  }
+}
+
+.outSourcing-main {
+  bottom: 0;
+  z-index: 200;
+  .setting-table {
+    .setting-table-cell {
+      padding: 10px;
+      margin: 10px;
+      box-shadow: 0 0 2px $base-border-color;
+      .real-content {
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify(space-between);
+        .real-info {
+          .real-name {
+            font-size: $font-size-xl;
+            color: $black;
+            font-weight: $bold-font-weight;
+            line-height: 30px;
+          }
+          .real-No {
+            font-size: $font-size-base;
+            color: $base-text-color2;
+          }
+        }
+        .real-remove {
+          line-height: 47px;
+          .iconfont {
+            &.icon-delete {
+              font-size: $font-size-xxl;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.ui-dialog {
+  &.outsourcing-dialog {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+    bottom: 0;
+    top: inherit;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+    .setting-table {
+      .second-column {
+        .setting-left {
+          padding-left: 10px;
+          &.title {
+            width: 30%;
+          }
+          &.desc {
+            width: 70%;
+          }
+        }
+      }
+    }
+    .outsourcing-hint {
+      margin: 10px;
+      padding: 10px;
+      font-size: 12px;
+      line-height: 15px;
+      background-color: $base-background-color;
+      border-radius: 3px;
+      color: $base-text-color2;
+    }
+    .outsourcing-btn {
+      width: 120px;
+      margin: 15px auto;
+      text-align: center;
+      height: 40px;
+      line-height: 40px;
+      border: 1px solid $base-color;
+      border-radius: 5px;
+      color: $base-color;
+      font-size: $font-size-large;
+    }
+  }
+}
+
+
+

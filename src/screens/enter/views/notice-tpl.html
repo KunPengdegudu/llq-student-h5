@@ -1,0 +1,15 @@
+<div class="notice-main" data-ng-if="item.isShow">
+
+    <div class="notice-wrapper">
+        <div class="notice-text">
+            <img src="/app/assets/imgs/base/notice.png" />
+        </div>
+
+        <ul class="notice-list" data-ng-style="noticeAnimate.style">
+            <li data-ng-repeat="notice in item.noticeList" data-ng-click="noticeDialog.onClick(notice)">
+                <a class="notice-news">{{notice.content | delTag}}</a>
+            </li>
+        </ul>
+    </div>
+
+</div>

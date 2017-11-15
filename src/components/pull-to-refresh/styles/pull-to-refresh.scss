@@ -1,0 +1,120 @@
+/**
+* pull to refresh style for sycm-c-phone
+ * @create 2014/12/16
+ * @author zhaxi
+*/
+@import "mixins/animation";
+
+@include keyframes(dotFlash) {
+  0% {
+    transform: translateY(0) scale(0.3);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #fff;
+    opacity: 1;
+  }
+}
+.pull-to-refresh {
+  #ptr {
+    position: absolute;
+    top: -300px;
+    width: 100%;
+    color: #fff;
+    background-color: #01579b;
+    z-index: 200;
+    text-align: center;
+    height: 300px;
+
+    .genericon {
+      position: absolute;
+      opacity: .6;
+      display: inline-block;
+      top: 280px;
+      left: 154px;
+      font-size: 12px;
+      width: 12px;
+      height: 12px;
+      line-height: 12px;
+      transition: all .30s ease;
+    }
+    .loading {
+      position: absolute;
+      top: 280px;
+      text-align: center;
+      opacity: .4;
+      padding-top: 20px;
+      width: 100%;
+      display: none;
+      span {
+        position: absolute;
+        top: 5px;
+        vertical-align: middle;
+        width: 5px;
+        height: 5px;
+        line-height: 5px;
+        -webkit-transform: scale(0.3);
+        transform: scale(0.3);
+        border-radius: 50%;
+        @include animation("dotFlash 0.4s infinite alternate");
+      }
+      #l1 {
+        animation-delay: 0;
+        left: 148px;
+      }
+      #l2 {
+        animation-delay: 0.1s;
+        left: 158px;
+      }
+      #l3 {
+        animation-delay: 0.2s;
+        left: 168px;
+      }
+    }
+  }
+  #content {
+    background: #fff;
+    min-height: 100%;
+    z-index: 20;
+    -webkit-backface-visibility: hidden;
+    -webkit-perspective: 1000;
+  }
+  &.ptr-refresh {
+    #ptr {
+      .genericon {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &.ptr-reset {
+    #ptr {
+      transition: all .20s ease;
+      .genericon {
+        display: none;
+      }
+    }
+    #content {
+      transition: all .20s ease;
+      transform: translate3d( 0, 0, 0 );
+    }
+  }
+  &.ptr-loading {
+    #ptr {
+      transition: all .20s ease;
+      transform: translate3d( 0, 30px, 0 );
+      .genericon {
+        display: none;
+      }
+      .loading {
+        display: block;
+      }
+    }
+    #content {
+      transition: all .20s ease;
+      transform: translate3d( 0, 30px, 0 );
+    }
+  }
+}
+

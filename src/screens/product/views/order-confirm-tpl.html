@@ -1,0 +1,461 @@
+<div class="product-main product-main-show-header" data-ng-cloak>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-row goods-brief">
+                    <img class="goods-img-thumbnail" data-ng-src="{{productDTO.proMainImgUrl | htmlDecode}}"/>
+
+                    <div class="goods-desc">
+                        <div class="goods-title" data-ng-bind="productDTO.name"></div>
+                        <div class="goods-subtitle">
+                            <span data-ng-bind="product.productSku"></span>
+                        </div>
+                        <div class="goods-subtitle">
+                            <span>售价：</span>
+                            <span data-ng-bind="product.realPrice | moneyFixed"></span>
+                            <span class="order-sku-price" ng-if="promotionDTO.discount<100">&nbsp;&nbsp;原价：<s>{{product.skuPrice
+                                | moneyFixed}}</s></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <a data-ng-click="deliveryTypeDialog.openDialog()">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>配送方式：</span><span data-ng-bind="product.deliveryLabel.text()"></span>
+                    </div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+        <li class="setting-table-cell" ng-if="showFlag.bySelf">
+            <a data-ng-click="deliveryDialog.openDialog()">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>附近自提点</span>
+                    </div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+        <li class="setting-table-cell" ng-if="showFlag.bySelf">
+            <div class="second-column">
+                <div class="setting-left title">身份证</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" placeholder="请填写取货验证身份证号码"
+                           data-ng-model="idNo.id_no"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-if="showFlag.byAddr">
+            <a data-ng-click="addressDialog.openDialog()">
+                <div class="second-column">
+                    <div class="setting-row-with-right-arrow" ng-if="addressDialog.selectItem!=null">
+                        <div class="product-receiver-title">
+                            <span>收货人：</span>
+                            <span>{{addressDialog.selectItem.name}}</span>
+                            <span style="margin-left: 10px;">{{addressDialog.selectItem.phone}}</span>
+                        </div>
+                        <div class="product-receiver-subtitle">
+                            <span>收货地址：</span>
+                            <span>{{addressDialog.selectItem.province + addressDialog.selectItem.city + addressDialog.selectItem.address}}</span>
+                        </div>
+                    </div>
+                    <div class="setting-left" ng-if="addressDialog.selectItem==null">
+                        <span>请选择收货地址</span>
+                    </div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+    <div class="select-wrapper" ng-if="showFlag.aging">
+        <div class="title">选择首付比例</div>
+        <div class="select-item">
+            <div class="item-row">
+                <div class="item-wrapper" data-ng-repeat="pr in rateObject.rate"
+                     data-ng-click="rateObject.select(pr)">
+                    <div class="item" ng-class="{selected:rateObject.isSelect(pr)}">{{pr.text}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="select-wrapper" ng-if="showFlag.aging && rate!=1">
+        <div class="title">选择分期月数</div>
+        <div class="select-item">
+            <div class="item-row">
+                <div class="item-wrapper" data-ng-repeat="ap in periodsObject.period"
+                     data-ng-click="periodsObject.select(ap)">
+                    <div class="item" ng-class="{selected:periodsObject.isSelect(ap)}">{{ap.text}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell" ng-if="showFlag.deposit">
+            <div class="second-column">
+                <div class="setting-left">定金</div>
+                <span class="text-right">
+                    {{product.firstPrice | moneyFixed}}
+                </span>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-if="showFlag.aging">
+            <div class="second-column">
+                <div class="setting-left">首付金额</div>
+                <span class="text-right">
+                    {{product.firstPrice*count | moneyFixed}}
+                </span>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-if="showFlag.sale">
+            <div class="second-column">
+                <div class="setting-left">商品金额</div>
+                <span class="text-right">
+                    {{product.firstPrice | moneyFixed}}
+                </span>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-if="showFlag.aging && rate!=1">
+            <div class="second-column">
+                <div class="setting-left">月供</div>
+                <span class="text-right">
+                    <span>{{payment.everyAmount*count | moneyFixed}}</span>
+                    <span class="order-period">
+                        x{{payment.period}}
+                    </span>
+                </span>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span>配送方式：</span><span data-ng-bind="product.deliveryLabel.name"></span>
+                </div>
+                <span class="text-right">
+                    {{product.deliveryLabel.price() | moneyFixed}}
+                </span>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span>数量：</span>
+                </div>
+                <div class="text-right">
+                    <div class="detail-count-wrapper">
+                        <span class="detail-minus" data-ng-class="{'countDisabled':countFn.isMin}" data-ng-click="countFn.minusCount()">-</span>
+                        <span data-ng-bind="count" class="detail-count"></span>
+                        <span class="detail-add" data-ng-class='{"countDisabled":countFn.isMax}' data-ng-click="countFn.addCount()">+</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span>实付款：</span>
+                </div>
+                <span class="text-right order-all-price">
+                    {{product.lastPrice+product.deliveryLabel.price() | moneyFixed}}
+                </span>
+            </div>
+        </li>
+        <li class="resume-content-sell setting-table-cell">
+            <div class="second-column">
+                <div class="goods-top-bar">买家留言:</div>
+                <div class="desc">
+                    <div class="feedback-content">
+                        <textarea class="textarea ng-pristine ng-untouched ng-valid ng-valid-maxlength" maxlength="500" data-ng-model="remark" placeholder="亲,有什么想对小二说的呢"></textarea>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<div class="dialog-bottom-btn-wrapper product-btn-wrapper">
+    <div class="btn-text">
+        <div class="text-wrapper">
+            <span>实付：</span>
+            <span class="money">{{product.lastPrice+product.deliveryLabel.price() | moneyFixed}}</span>
+        </div>
+    </div>
+    <button class="nav-hint single-row submit-btn" ng-click="submitOrder()">
+        提交订单
+    </button>
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="deliveryTypeDialog.isVisible" z-index="560">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="deliveryTypeDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <span>配送方式</span>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-repeat="item in deliveryTypeDialog.items"
+            data-ng-if="deliveryTypeDialog.checkDeliveryType(item)">
+            <a data-ng-click="deliveryTypeDialog.setValue(item.key)">
+                <div class="second-column">
+                    <div class="setting-left select-icon">
+                        <span class="iconfont icon-collection" ng-if="deliveryTypeDialog.getValue()==item.key"></span>
+                    </div>
+                    <div class="setting-left">
+                        <span data-ng-bind="item.text()"></span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="deliveryDialog.isVisible" z-index="560">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="deliveryDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <span>附近自提点</span>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-repeat="item in deliveryDialog.items">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span data-ng-bind="item.name"></span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="addressDialog.isVisible" z-index="560">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="addressDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>收货地址</span>
+            </div>
+        </div>
+        <div class="ui-header-bar-right-icon">
+            <div class="ui-header-btn" ng-click="editAddressDialog.openDialog()">编辑</div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}"
+        ng-if="addressDialog.isAddressListEmpty()">
+        <li class="setting-table-cell">
+            <div class="second-column add-column" data-ng-click="addAddressDialog.openDialog(true)">
+                +
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table dialog-content" ng-if="!addressDialog.isAddressListEmpty()">
+        <li class="setting-table-cell" data-ng-repeat="item in addressDialog.items">
+            <a data-ng-click="addressDialog.chooseAddress($index)">
+                <div class="second-column">
+                    <div class="setting-row-with-right-arrow">
+                        <div class="product-receiver-title">
+                            <span>收货人：</span>
+                            <span>{{item.name}}</span>
+                            <span style="margin-left: 10px;">{{item.phone}}</span>
+                        </div>
+                        <div class="product-receiver-subtitle">
+                            <span>收货地址：</span>
+                            <span>{{item.province + item.city + item.address}}</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="editAddressDialog.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="editAddressDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>编辑收货地址</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}"
+        ng-if="addressDialog.isAddressListEmpty()">
+        <li class="setting-table-cell">
+            <div class="second-column add-column" data-ng-click="addAddressDialog.openDialog(true)">
+                +
+            </div>
+        </li>
+    </ul>
+
+    <div class="dialog-content fix-bottom-btn setting-table ios-overflow-scrolling-bug-fix"
+         ng-if="!addressDialog.isAddressListEmpty()"
+         style="{{overflowBugFix}}">
+        <ul>
+            <li class="setting-table-cell" data-ng-repeat="item in addressDialog.items">
+                <a data-ng-click="addAddressDialog.modify(item)">
+                    <div class="second-column">
+                        <div class="setting-row-with-right-arrow">
+                            <div class="product-receiver-title">
+                                <span>收货人：</span>
+                                <span>{{item.name}}</span>
+                                <span style="margin-left: 10px;">{{item.phone}}</span>
+                            </div>
+                            <div class="product-receiver-subtitle">
+                                <span>收货地址：</span>
+                                <span>{{item.province + item.city + item.address}}</span>
+                            </div>
+                        </div>
+
+                        <span class="iconfont icon-right-arrow"></span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn" ng-click="addAddressDialog.openDialog(true)">
+            新增地址
+        </button>
+    </div>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="addAddressDialog.isVisible" z-index="571">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="addAddressDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span data-ng-bind="addAddressDialog.getTitleText()"></span>
+            </div>
+        </div>
+
+        <div class="ui-header-bar-right-icon">
+            <div class="ui-header-btn" ng-click="addAddressDialog.save()">保存</div>
+        </div>
+    </div>
+
+    <div class="dialog-content fix-bottom-btn setting-table ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ul>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">收货人姓名</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" type="text" placeholder="请填写收货人姓名"
+                               data-ng-model="addAddressDialog.item.name"/>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">联系电话</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" type="tel" placeholder="请填写联系电话"
+                               data-ng-model="addAddressDialog.item.phone"/>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">省市区</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" type="text" readonly="readonly" placeholder="请选择省市区"
+                               data-ng-click="pcaDialog.openDialog()"
+                               data-ng-model="addAddressDialog.item.pca"/>
+                    </div>
+                </div>
+            </li>
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-left title">详细地址</div>
+                    <div class="setting-left desc">
+                        <input class="setting-input" type="text" placeholder="请填写详细地址"
+                               data-ng-model="addAddressDialog.item.address"/>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="dialog-bottom-btn-wrapper" ng-if="!isEmpty(addAddressDialog.item.addressId)">
+        <button class="nav-hint single-row submit-btn" ng-click="addAddressDialog.del()">
+            删除地址
+        </button>
+    </div>
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="pcaDialog.isVisible" z-index="572">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="pcaDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>请选择{{pcaDialog.getItemsTitle()}}</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-repeat="item in pcaDialog.items">
+            <a data-ng-click="pcaDialog.setValue(item)">
+                <div class="second-column">
+                    <div class="setting-left select-icon">
+                        <span class="iconfont icon-collection" data-ng-if="pcaDialog.checkSelected(item)"></span>
+                    </div>
+                    <div class="setting-left">
+                        <span>{{pcaDialog.getItemName(item)}}</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+
+<pay data-pay-type="'order'" data-pay-title="product.productName"
+     data-pay-amount="product.lastPrice+product.deliveryLabel.price()"
+     data-pay-params="payDialog.params">
+</pay>

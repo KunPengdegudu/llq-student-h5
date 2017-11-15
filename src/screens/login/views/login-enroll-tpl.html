@@ -1,0 +1,86 @@
+<ul class="setting-table">
+    <!--<div class="enroll-userType">-->
+        <!--<div class="item-userType" data-ng-repeat="sexItem in userType track by $index"-->
+             <!--data-ng-click="selectItemUserType(sexItem)">-->
+            <!--<div class="select-item" data-ng-bind="sexItem.value"-->
+                 <!--ng-class="{'selected':isSelectItemUserType(sexItem)}"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="enroll-userType-hint">-->
+        <!--<b>温馨提示:</b>&nbsp;如您已经毕业，注册时请选择<b>社会人士</b>-->
+    <!--</div>-->
+    <li class="setting-table-cell">
+        <div class="second-column">
+            <div class="setting-left title">手机号码</div>
+            <div class="setting-left contact-input">
+                <input class="setting-input" type="tel" placeholder="请填写手机号码" data-ng-model="enroll.data.phone"/>
+            </div>
+            <span ng-if="enroll.data.authSuccess" class="iconfont icon-right icon-checked with-right-arrow"></span>
+        </div>
+    </li>
+    <li class="setting-table-cell" ng-if="!enroll.data.authSuccess">
+        <div class="second-column">
+            <div class="setting-left title">图片验证码</div>
+            <div class="setting-left img-code-text">
+                <input class="setting-input" type="text" placeholder="请输入图中字符" data-ng-model="enroll.data.imgCode"/>
+            </div>
+            <img class="setting-right img-code-img" data-ng-src="{{enroll.data.imgCodeSrc}}"
+                 data-ng-click="enroll.changeImgCode()">
+        </div>
+    </li>
+    <li class="setting-table-cell" ng-if="!enroll.data.authSuccess">
+        <div class="second-column">
+            <div class="setting-left title">验证码</div>
+            <div class="setting-left auth-code">
+                <input class="setting-input" type="tel" placeholder="请填写验证码" data-ng-model="enroll.data.authCode"
+                       ng-disabled="enroll.btn.enable"/>
+            </div>
+            <div class="setting-right auth-code-btn">
+                <a class="nav-hint button-primary" ng-click="enroll.getAuthCode()" ng-disabled="!enroll.btn.enable">
+                    <span data-ng-bind="enroll.btn.text"></span>
+                </a>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<ul class="setting-table">
+    <li class="setting-table-cell">
+        <div class="second-column">
+            <div class="setting-left title">创建密码</div>
+            <div class="setting-left desc">
+                <input class="setting-input" type="password" placeholder="8到20位数字或字母"
+                       data-ng-model="enroll.data.password"/>
+            </div>
+        </div>
+    </li>
+    <li class="setting-table-cell">
+        <div class="second-column">
+            <div class="setting-left title">确认密码</div>
+            <div class="setting-left desc">
+                <input class="setting-input" type="password" placeholder="请再次输入密码"
+                       data-ng-model="enroll.data.confirmPassword"/>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<ul class="setting-table">
+    <li class="setting-table-cell">
+        <div class="second-column">
+            <div class="setting-left title"><span>邀请码</span><span style="font-size:10px;">(可选)</span></div>
+            <div class="setting-left desc">
+                <input class="setting-input" type="text" placeholder="邀请人手机号码" data-ng-model="enroll.data.spreadCode"/>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<button class="nav-hint single-row submit-btn" ng-click="enroll.dialogSubmit()">
+    注册
+</button>
+
+<div class="agreement-row">
+    注册并同意
+    <span class="llq-text-highlight llq-text-underline" ng-click="agreementDialog.openDialog()">《零零期用户注册协议》、《零零期兼职用户使用协议》及《隐私权政策及授权协议》</span>
+</div>

@@ -1,0 +1,47 @@
+<div class="profile-main aging-main" style="bottom: 0;" data-ng-cloak>
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <span data-ng-bind="liftingDialog.title"></span>
+        </div>
+    </div>
+    <div class="aging-content" id="liftingDialogContent"></div>
+
+
+    <ul class="setting-table" data-ng-if="liftingDialog.showInput">
+        <li class="feedback-content">
+            <div class="feedback-content-title">
+                报名信息
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-repeat="item in liftingDialog.activityDefinitionList track by $index">
+            <div class="second-column">
+                <div class="setting-left title" data-ng-bind="item.showName"></div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" data-ng-model="item.defValue"
+                           ng-readonly="item.canWright"/>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="setting-table" data-ng-if="!liftingDialog.showInput">
+        <li class="feedback-content">
+            <div class="feedback-content-title">
+                报名理由
+            </div>
+            <div class="feedback-content-textarea">
+                <textarea cols="40" rows="40" class="textarea" maxlength="100" data-ng-model="liftingDialog.content"
+                          placeholder="{{liftingDialog.memo}}"></textarea>
+            </div>
+            <div class="textarea_number">
+                <span>{{ liftingDialog.content.length || 0 }}</span>
+                /
+                <span>100</span>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="liftingDialog.doApply()">
+        立即报名
+    </button>
+
+</div>

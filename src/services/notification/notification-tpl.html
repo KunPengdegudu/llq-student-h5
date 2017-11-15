@@ -1,0 +1,20 @@
+<div class="ez-confirm modal" data-ng-class="{'fade hide':!notificationConf.isShow,'in show':notificationConf.isShow}">
+    <div class="modal-dialog" data-ng-style="notificationConf.style">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{{ notificationConf.title }}</h3>
+            </div>
+            <div class="modal-body">
+                <p class="lead">
+                    {{ !notificationConf.html ? notificationConf.msg : '' }}
+                    <span ng-bind-html="notificationConf.html" ng-if="notificationConf.html"></span>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button ng-click="notificationConf.cbWrapper(btn.idx)" style="margin-left:10px;" class="nav-hint" data-ng-class="btn.styleClass" data-ng-repeat="btn in notificationConf.btns">
+                    {{ btn.name }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

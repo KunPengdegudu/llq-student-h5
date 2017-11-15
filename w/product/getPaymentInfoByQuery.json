@@ -1,0 +1,18 @@
+{
+
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "jrAzouWm",
+  "data":
+  {
+    "period": 12,
+    "initialPayment": 1057.6,
+    "everyAmount": 242.28,
+    "totalRePayment": 4230.400000000001,
+    "productSkuId": 1,
+    "everyFeeAmount": -142.29
+  },
+  "fieldErrMsg": null,
+  "login": false
+
+}

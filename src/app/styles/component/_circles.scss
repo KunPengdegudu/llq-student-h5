@@ -1,0 +1,22 @@
+@mixin icon-circle($width, $background:transparent, $borderWidth:0px, $borderColor:transparent) {
+  width: $width;
+  height: $width;
+  line-height: $width;
+  @if $borderWidth > 0 {
+    border-width: $borderWidth;
+    border-color: $borderColor;
+  }
+  border-radius: ceil(($width - 2 * $borderWidth) / 2);
+  text-align: center;
+  background-color: $background;
+}
+
+.ui-icon-circle {
+  @include icon-circle(80px);
+}
+.ui-icon-circle-small {
+  @include icon-circle(60px)
+}
+.ui-icon-circle-large {
+  @include icon-circle(100px);
+}

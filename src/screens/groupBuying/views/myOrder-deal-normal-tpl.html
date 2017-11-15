@@ -1,0 +1,45 @@
+<div class="active-goods my-groupon-waitdeal" data-ng-cloak>
+    <div class="goods-rows">
+        <div class="my-groupon-item" data-ng-repeat="item in items">
+            <div class="my-groupon-item-shop">
+                <div class="merchant">
+                    <span class="iconfont icon-sale"></span>
+                    <span class="shop-name" data-ng-bind="item.sellerName"></span>
+                </div>
+                <div class="order">
+                    <span class="order-stutas">{{item.status | ptStatus}} <span data-ng-bind="item.refundStatus | ptOrderStatus" data-ng-if=""></span></span>
+                    <span class="time" data-ng-if="item.status == 'wait_pay'">{{item.dropDown}}</span>
+                </div>
+            </div>
+            <div class="my-groupon-item-goods">
+                <img data-ng-src="{{item.productPic}}" class="goods-img">
+                <div class="goods-desc">
+                    <div class="goods-name">{{item.title}}</div>
+                    <div class="label">{{item.productSkuName}}</div>
+                </div>
+                <div data-ng-if="checkStatus(item.status)" class="mypt-badge">
+                    <img src="../../../app/assets/imgs/groupon/myptg_during.png" data-ng-if="item.pinTuanInfo.status==1">
+                    <img src="../../../app/assets/imgs/groupon/myptg_fail.png" data-ng-if="item.pinTuanInfo.status==4">
+                    <img src="../../../app/assets/imgs/groupon/myptg_success.png" data-ng-if="item.pinTuanInfo.status==6">
+                </div>
+            </div>
+            <div class="my-groupon-item-groupon">
+                <div class="groupon-status">
+                    <span class="text-title">参团状态：</span>
+                    <span data-ng-bind="item.pinTuanInfo.joinNum"></span>人团
+                    <!--(<span data-ng-bind="item.grouponStatus"></span>)-->
+                </div>
+                <div class="total-amount">合计：
+                    <span class="price">￥{{item.orderAmount}}
+                        (<span class="postage-status" data-ng-bind="item.deliveryFeeText"></span>)
+                    </span>
+                </div>
+            </div>
+            <ul class="order-step">
+                <li class="order-step-status" data-ng-click="gotoGrouponDetails(item)"
+                    data-ng-if="checkStatus(item.status)">拼团详情
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

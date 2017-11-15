@@ -1,0 +1,315 @@
+<div data-ng-if="!isSharePage">
+    <!--===============邀请有礼主页面======================-->
+    <div class="notice-main share-notice-main" data-ng-if="isShow">
+        <div class="notice-wrapper">
+            <div class="notice-text">
+                <img src="../../../app/assets/imgs/works-share/icon_notice.png"/>
+            </div>
+
+            <ul class="notice-list" data-ng-style="noticeAnimate.style">
+                <li data-ng-repeat="notice in noticeLists track by $index">{{notice}}</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="task-share-container">
+        <div class="task-share-banner">
+            <img src="../../../app/assets/imgs/works-share/bottom1.png"/>
+            <div class="share-content">
+                <div class="content-title">
+                    <img src="../../../app/assets/imgs/works-share/tittle01.png" class="tittle1"/>
+                </div>
+                <div class="money-count">
+                    <img src="../../../app/assets/imgs/works-share/icon_money.png" class="money-count-img"/>
+                    <div class="money-count-centent">
+                        <i>￥</i>
+                        <span>{{userCanWithdrawAmount | keepFixed:2}}</span>
+                        <span data-ng-click="gotoWithdraw()">提现&nbsp;&gt;</span>
+                    </div>
+                </div>
+                <div class="award-detail">
+                    <div class="detail-left" data-ng-click="gotoShareFriends()">
+                        <img src="../../../app/assets/imgs/works-share/icon_FriendNumber.png" class="friendIcon"/>
+                        <div>我邀请的好友数<span class="friend-number">{{activityInvite}}</span>人</div>
+                    </div>
+                    <div class="detail-right">
+                        <img src="../../../app/assets/imgs/works-share/icon_notice_yellow.png" class="noticeIcon"/>
+                        <div>累计总注册<span class="registerNum">{{totalFriends}}</span>人</div>
+                    </div>
+                </div>
+                <div class="detail-bottom">
+                    <img src="../../../app/assets/imgs/works-share/button_lottery.png" class="lottery-button"
+                         data-ng-click="getLottery()"/>
+                    <div class="totalCash">累计总返现<span class="cashNum">{{totalAmount}}</span>元</div>
+                </div>
+            </div>
+        </div>
+
+        <img src="../../../app/assets/imgs/works-share/bottom_code.png" class="share-picture"
+             ng-click="inviteFriends()"/>
+        <img src="../../../app/assets/imgs/works-share/bottom2.png" class="share-picture"/>
+
+        <div class="share-award">
+            <img src="../../../app/assets/imgs/works-share/bottom3.png" class="share-award-bg"/>
+            <div class="share-award-box">
+                <div class="award-tittle">
+                    <img src="../../../app/assets/imgs/works-share/tittle03.png" class="tittle3"/>
+                </div>
+                <div class="award-content">
+                    <div class="award-left">
+                        <img src="../../../app/assets/imgs/works-share/icon_jiaji.png" class="icon_iphone"/>
+                        <div class="newUser">认证申请加急审核</div>
+                        <div class="purchaseIphone">价值￥99极速审核</div>
+                        <!--<img src="../../../app/assets/imgs/works-share/button_enterZone.png" class="button_enterZone"/>-->
+                    </div>
+                    <div class="middle-line"></div>
+                    <div class="award-right">
+                        <img src="../../../app/assets/imgs/works-share/icon_wait.png" class="icon_wait"/>
+                        <div class="checkAuth">新人专享特价</div>
+                        <div class="speedUp">敬请期待...</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <img src="../../../app/assets/imgs/works-share/bottom4.png" class="share-picture"/>
+
+        <div class="share-rank">
+            <img src="../../../app/assets/imgs/works-share/bottom5.png" class="share-rank-bg"/>
+            <div class="share-rank-box">
+                <div class="rank-tittle">
+                    <img src="../../../app/assets/imgs/works-share/tittle05.png" class="tittle5"/>
+                </div>
+                <div data-ng-repeat="item in rankTitleList" data-ng-if="item.isSelect">
+                    <div class="rank-head">
+                        <img data-ng-src="{{item.imgUrl}}" class="rank-image"/>
+                        <div class="hed-wrapper">
+                            <div class="rankItem" data-ng-click="getRankList(rankTitleList[0])"></div>
+                            <div class="rankItem" data-ng-click="getRankList(rankTitleList[1])"></div>
+                            <div class="rankItem" data-ng-click="getRankList(rankTitleList[2])"></div>
+                        </div>
+                    </div>
+
+                    <div class="rank-content">
+                        <div class="rank_list_head">
+                            <div class="head-item" data-ng-repeat="itemTitle in item.rankContent.titleList">
+                                <span data-ng-bind="itemTitle"></span>
+                            </div>
+                        </div>
+
+                        <ul class="rank-list">
+                            <li class="rank-list-item" data-ng-if="canShow">
+                                <div class="list-item-left">
+                                    <img src="../../../app/assets/imgs/works-share/icon_gold.png" class="rank-first"/>
+                                </div>
+                                <div class="list-item-middle" data-ng-bind="item.rankContent.firstRank.phone"></div>
+                                <div class="list-item-right" data-ng-bind="item.rankContent.firstRank.count"></div>
+                            </li>
+                            <li class="rank-list-item" data-ng-repeat="itemRank in item.rankContent.rankLists">
+                                <div class="list-item-left">第{{$index+2}}名</div>
+                                <div class="list-item-middle">{{itemRank.phone}}</div>
+                                <div class="list-item-right">{{itemRank.count}}</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <img src="../../../app/assets/imgs/works-share/Button_ActivityRule_shadow.png" class="rule-img"
+         data-ng-click="rulesDialog.openDialog()"/>
+
+    <div class="dialog-bottom-btn-wrapper" id="invite-bottom-button" data-ng-click="shareGuideDialog.openDialog()">
+        <button class="nav-hint single-row submit-btn invite-share-bottom-button">
+            马上邀请赚钱
+        </button>
+    </div>
+</div>
+
+<!--==================邀请有礼注册页======================-->
+<div class="share-enroll-page" data-ng-if="isSharePage">
+    <div class="erroll-img">
+        <img src="../../../app/assets/imgs/works-share/regist_banner.jpg"/>
+    </div>
+    <ul class="erroll-table">
+        <li class="erroll-table-cell">
+            <div class="cell-left">
+                <div class="cell-icon">
+                    <img src="../../../app/assets/imgs/works-share/icon_phone.png">
+                </div>
+                <div class="cell-input">
+                    <input type="number" data-ng-model="enroll.data.phone" placeholder="请输入手机号"/>
+                </div>
+            </div>
+        </li>
+        <li class="erroll-table-cell" ng-if="!enroll.data.authSuccess">
+            <div class="cell-left">
+                <div class="cell-icon">
+                    <img src="../../../app/assets/imgs/works-share/icon_piccode.png"/>
+                </div>
+                <div class="cell-input">
+                    <input type="text" data-ng-model="enroll.data.imgCode" placeholder="请输入图中字符"/>
+                </div>
+            </div>
+            <div class="cell-right">
+                <img class="img-code-img" data-ng-src="{{enroll.data.imgCodeSrc}}"
+                     data-ng-click="enroll.changeImgCode()">
+            </div>
+        </li>
+        <li class="erroll-table-cell" ng-if="!enroll.data.authSuccess">
+            <div class="cell-left">
+                <div class="cell-icon">
+                    <img src="../../../app/assets/imgs/works-share/icon_code.png"/>
+                </div>
+                <div class="cell-input">
+                    <input type="text" data-ng-model="enroll.data.authCode" placeholder="请输入验证码"/>
+                </div>
+            </div>
+            <div class="cell-right">
+                <img src="../../../app/assets/imgs/works-share/auth-getCode.png"/>
+                <div class="cell-right-btn" data-ng-click="enroll.getAuthCode()" ng-disabled="!enroll.btn.enable">
+                    <span data-ng-bind="enroll.btn.text"></span>
+                </div>
+            </div>
+        </li>
+        <li class="erroll-table-cell">
+            <div class="cell-left">
+                <div class="cell-icon">
+                    <img src="../../../app/assets/imgs/works-share/icon_password.png"/>
+                </div>
+                <div class="cell-input">
+                    <input type="{{enroll.showPwd?'text':'password'}}" data-ng-model="enroll.data.password"
+                           placeholder="请输入密码"/>
+                </div>
+                <div class="cell-icon" data-ng-click="enroll.canclePwd()">
+                    <img src="../../../app/assets/imgs/works-share/icon_cancle.png"/>
+                </div>
+                <div class="cell-icon" data-ng-click="enroll.changePwdType()">
+                    <img data-ng-src="{{enroll.pwdShowUrl}}"/>
+                </div>
+            </div>
+        </li>
+        <li class="erroll-table-cell">
+            <div class="cell-left">
+                <div class="cell-icon">
+                    <img src="../../../app/assets/imgs/works-share/icon_password.png"/>
+                </div>
+                <div class="cell-input">
+                    <input type="{{enroll.showConfirmPwd?'text':'password'}}"
+                           data-ng-model="enroll.data.confirmPassword" placeholder="请再次输入密码"/>
+                </div>
+                <div class="cell-icon" data-ng-click="enroll.changeConfirmPwdType()">
+                    <img data-ng-src="{{enroll.confirmPwdShowUrl}}">
+                </div>
+            </div>
+        </li>
+        <li class="erroll-table-cell" data-ng-if="enroll.showSpreadCode">
+            <div class="cell-left">
+                <div class="cell-icon">
+                    <img src="../../../app/assets/imgs/works-share/icon_invite.png"/>
+                </div>
+                <div class="cell-input">
+                    <input type="text" data-ng-model="enroll.data.spreadCode" placeholder="请填写邀请码" readonly/>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="erroll-hint-btn" data-ng-click="enroll.hideSpreadCode()">
+        <div class="erroll-hint-text" data-ng-bind="enroll.spreadText"></div>
+        <div class="erroll-icon">
+            <img data-ng-src="{{enroll.spreadUrl}}"/>
+        </div>
+    </div>
+    <div class="erroll-btn">
+        <img src="../../../app/assets/imgs/works-share/button_regist.png"
+             data-ng-click="enroll.dialogSubmit()">
+    </div>
+    <div class="erroll-agreement" data-ng-click="agreementDialog.openDialog()">
+        <div class="agreement-img">
+            <img src="../../../app/assets/imgs/works-share/icon_selected.png"/>
+        </div>
+        <div class="agreement-text">
+            同意《零零期用户注册协议》、《零零期兼职用户使用协议》及《隐私权政策及授权协议》
+        </div>
+    </div>
+</div>
+
+<!--===============注册弹框===================-->
+<div ui-dialog class="share-enroll-dialog" overlay="true" close-by-overlay="true"
+     is-visible="shareEnrollDialog.isVisible" z-index="583">
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+        <img src="../../../app/assets/imgs/works-share/cancel.png" class="cancel-button"
+             data-ng-click="shareEnrollDialog.closeDialog()"/>
+        <img src="../../../app/assets/imgs/works-share/popup_window.png" class="rule-bg"/>
+        <div class="content">
+            <div class="title">恭喜您，注册成功！</div>
+            <div class="tips">
+                下载零零期，马上认证，帮助好友去赚钱，还能获得最高<span>￥50000</span>的额度
+            </div>
+            <div class="download" data-ng-click="gotoLoading()">立即下载</div>
+        </div>
+    </div>
+</div>
+
+
+<!--================== 活动规则（弹框）=============================-->
+<div ui-dialog class="share-active-dialog" overlay="true" close-by-overlay="true"
+     is-visible="rulesDialog.isVisible" z-index="583">
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+        <img src="../../../app/assets/imgs/works-share/cancel.png" class="cancel-button"
+             data-ng-click="rulesDialog.closeDialog()"/>
+        <img src="../../../app/assets/imgs/works-share/rule.png" class="rule-bg"/>
+        <div class="rule-text">
+            <div class="rule-title">活动规则</div>
+            <sys-notice type="invite_rule"></sys-notice>
+        </div>
+    </div>
+</div>
+
+
+<!--================== 二维码分享（弹框）=============================-->
+<div ui-dialog class="share-qrcode-dialog" overlay="true" close-by-overlay="true"
+     is-visible="qrCodeDialog.isVisible" z-index="583">
+    <img src="../../../app/assets/imgs/works-share/cancel.png" class="cancel-button"
+         data-ng-click="qrCodeDialog.closeDialog()"/>
+    <img src="../../../app/assets/imgs/works-share/QRCode.png" class="qr-background"/>
+
+    <div class="share-qrcode-content">
+        <div class="userName">我的二维码</div>
+        <div id="qrcode"></div>
+    </div>
+</div>
+
+<!--================== 分享引导（弹框）=============================-->
+<div ui-dialog class="share-guide-dialog" overlay="true" close-by-overlay="true"
+     is-visible="shareGuideDialog.isVisible" z-index="600">
+    <img src="../../../app/assets/imgs/works-share/share_guide02.png" class="share_guide02"/>
+    <img src="../../../app/assets/imgs/works-share/share_guide01.png" class="share_guide01"
+         data-ng-click="shareGuideDialog.closeDialog()"/>
+    <img src="../../../app/assets/imgs/works-share/share_guide03.png" class="share_guide03"/>
+</div>
+
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="agreementDialog.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="agreementDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>用户注册协议</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="agreement-content dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <sys-notice type="register"></sys-notice>
+    </div>
+
+
+</div>

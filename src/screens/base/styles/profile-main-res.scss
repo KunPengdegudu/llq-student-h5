@@ -1,0 +1,261 @@
+.profile-main-show-header {
+  top: $header-height;
+  &.feedback {
+    bottom: 0;
+    z-index: 200;
+  }
+}
+
+.profile-main-show-header-content {
+  top: $header-height*2;
+}
+
+.top {
+  top: 170px;
+}
+
+.setting-table {
+  .second-column {
+
+    &.head-photo {
+      i {
+        width: 40px;
+        height: 40px;
+        float: left;
+        display: inline-block;
+        text-align: center;
+        border-radius: 50%;
+        overflow: hidden;
+        box-sizing: content-box;
+        margin-top: 5px;
+      }
+    }
+  }
+
+  .auth-status {
+    margin-right: 35px;
+    margin-top: 15px;
+    float: right;
+  }
+}
+
+.ui-dialog.alipay-dialog,
+.ui-dialog.password-dialog {
+  width: 100%;
+  margin: 0;
+  top: 0;
+  left: 0;
+  font-size: $font-size-base;
+
+  .setting-title {
+    border-bottom: 1px solid $base-border-color;
+    background-color: $base-background-color;
+  }
+
+  .second-column {
+    border-bottom: 0 none;
+  }
+  .bank-card-list {
+    font-size: $font-size-base;
+    color: $base-color;
+    border-bottom: 1px solid $base-border-color;
+  }
+  .pay-password-input {
+    width: 58%;
+    padding: 5px;
+    border: 0 none;
+    border-bottom: 1px solid $base-border-color;
+  }
+}
+
+.ui-dialog.alipay-dialog {
+  .setting-table {
+    .second-column {
+      .setting-left {
+        &.title {
+          width: 35%;
+        }
+        &.desc {
+          width: 60%;
+        }
+      }
+    }
+  }
+}
+
+.ui-dialog.alipay-dialog {
+  height: 245px;
+}
+
+.ui-dialog.password-dialog {
+  min-height: 345px;
+}
+
+// 绑卡
+.selectBankCardImg {
+  width: 30px;
+  height: 24px;
+  margin-top: 13px;
+}
+
+.selectBankName {
+  margin-left: 20px;
+}
+
+.add-card-main {
+  .big-card-show {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    top: -20px;
+    font-size: 24px;
+    font-weight: $bolder-font-weight;
+  }
+
+  .scan-card {
+    position: absolute;
+    right: 0;
+    .iconfont {
+      font-size: 24px;
+      color: $base-color;
+    }
+  }
+}
+
+.card-main {
+  bottom: 0;
+  z-index: 200;
+  .llq-sys-notice-wrapper {
+    padding: 0 20px;
+  }
+  * {
+    color: $white;
+  }
+
+  .setting-table {
+    padding: 8px 20px;
+  }
+
+  .setting-table-cell {
+    border-radius: 5px;
+
+    &.add-card {
+      border: 1px dashed $base-border-color;
+      text-align: center;
+
+      .second-column {
+        height: 60px;
+        line-height: 55px;
+      }
+
+      * {
+        font-size: $font-size-xxxl*2;
+        color: $base-text-color2;
+        font-weight: $bolder-font-weight;
+      }
+    }
+  }
+
+  .second-column {
+    position: relative;
+  }
+
+  .cardImg {
+
+    padding: 10px;
+    float: left;
+
+    .bankCardImg {
+      width: 46px;
+      height:46px;
+      border-radius: 8px;
+    }
+    .openBankCardImg {
+      width: 46px;
+      height: 46px;
+      border-radius: 10px;
+    }
+  }
+
+  .cardText {
+    float: left;
+
+    .bankCardName {
+      line-height: 30px;
+      height: 30px;
+      margin-top: 5px;
+      font-size: $font-size-xl;
+    }
+
+    .bankCardStyle,
+    .bankCardNo {
+      line-height: 20px;
+      height: 20px;
+      font-size: $font-size-base;
+    }
+
+  }
+
+  .bankCardState {
+    position: absolute;
+    line-height: 30px;
+    height: 30px;
+    top: 5px;
+    right: 10px;
+  }
+  .bankCardType {
+    position: absolute;
+    line-height: 30px;
+    height: 30px;
+    top: 48px;
+    right: 10px;
+    span {
+      color: #ff9600;
+      padding: 2px;
+    }
+  }
+
+}
+
+.pay-dialog-container {
+
+  position: absolute;
+  left: 0;
+  top: $header-height;
+  bottom: 0 !important;
+
+  .pay-type-input {
+    padding: 0 !important;
+    width: 130px !important;
+  }
+  .partPay-container {
+    padding-right: 5px !important;
+  }
+  .button-container {
+    padding-left: 0 !important;
+    .payTypeButton {
+      height: 24px;
+      line-height: 24px;
+      text-align: center;
+      border-radius: 4px;
+      background-color: $base-color;
+      color: $white;
+      padding: 4px 5px;
+    }
+  }
+  .part-limit {
+    padding: 15px 30px 20px 30px;
+    line-height: 28px;
+    font-size: 14px;
+    color: $base-text-color2;
+    .part-warn {
+      color: $base-color
+    }
+  }
+  .setting-aging-text {
+    color: $base-text-color2;
+    font-size: $font-size-base;
+  }
+}

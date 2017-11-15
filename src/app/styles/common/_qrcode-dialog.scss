@@ -1,0 +1,88 @@
+.ui-dialog.qrcode-dialog {
+
+  width: 260px;
+  height: 320px;
+  margin-left: -130px;
+  margin-top: -160px;
+
+  .qrcode-content {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    margin-left: 55px;
+    text-align: center;
+  }
+
+  .qrcode-division {
+    width: 100%;
+    line-height: 0;
+    position: relative;
+
+    hr {
+      width: 220px;
+      height: 1px;
+      margin: 0 20px 10px;
+      display: inline-block;
+      border: none;
+      border-top: 1px solid $base-border-color;
+    }
+
+    .text {
+      width: 30px;
+      height: 20px;
+      line-height: 20px;
+      position: absolute;
+      color: $base-border-color;
+      left: 50%;
+      margin-left: -15px;
+      margin-top: -20px;
+      text-align: center;
+      background-color: $white;
+    }
+  }
+
+  .share-desc,
+  .qrcode-desc {
+    width: 100%;
+    text-align: center;
+    color: $base-color;
+  }
+
+  .qrcode-text {
+    padding: 0 20px;
+    text-align: left;
+    line-height: 16px;
+  }
+
+  .share-desc {
+
+    column-count: 2;
+    column-gap: 20px;
+    padding: 0 20px;
+    margin-bottom: 10px;
+
+    .share-wrapper {
+      .share-img {
+        height: 45px;
+        width: 45px;
+        margin: 0 auto;
+
+        &.share-weixin {
+          @include bg-image('../../../app/assets/imgs/share/weixin.png', '../../../app/assets/imgs/share/weixin.png', 100%, 100%);
+        }
+
+        &.share-timeline {
+          @include bg-image('../../../app/assets/imgs/share/timeline.png', '../../../app/assets/imgs/share/timeline.png', 100%, 100%);
+        }
+      }
+
+      .share-text {
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        color: $base-text-color;
+      }
+
+    }
+  }
+
+}

@@ -1,0 +1,50 @@
+@charset "UTF-8";
+// Image Mixins
+// - Responsive image
+// - Retina image
+
+
+// Responsive image
+//
+// Keep images from scaling beyond the width of their parents.
+@mixin img-responsive($display: block) {
+  display: $display;
+  max-width: 100%; // Part 1: Set a maximum relative to the parent
+  height: auto; // Part 2: Scale the height according to the width, otherwise you get stretching
+}
+
+
+// Retina image
+//
+// Short retina mixin for setting background-image and -size. Note that the
+// spelling of `min--moz-device-pixel-ratio` is intentional.
+@mixin img-retina($imgUrl1x, $imgUrl2x, $width1x:auto, $height1x:auto) {
+  background: url($imgUrl1x) no-repeat;
+  background-image: url($imgUrl1x);
+  background-image: -webkit-image-set(url($imgUrl1x) 1x,
+    url($imgUrl2x) 2x);
+  background-image: -moz-image-set(url($imgUrl1x) 1x,
+    url($imgUrl2x) 2x);
+  background-image: -o-image-set(url($imgUrl1x) 1x,
+    url($imgUrl2x) 2x);
+  background-image: -ms-image-set(url($imgUrl1x) 1x,
+    url($imgUrl2x) 2x);
+  background-size: $width1x $height1x;
+}
+
+
+// 背景图片设置 -- 推荐使用
+@mixin bg-image($imgUrl1x, $imgUrl2x, $width1x:auto, $height1x:auto) {
+  background-image: url($imgUrl1x);
+  background-size: $width1x $height1x;
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url($imgUrl2x);
+  }
+}

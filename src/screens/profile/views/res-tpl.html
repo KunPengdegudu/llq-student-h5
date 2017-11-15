@@ -1,0 +1,106 @@
+<div class="profile-main profile-main-show-header" data-ng-cloak>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column head-photo">
+                <div class="setting-left">头像</div>
+
+                <!--
+                <span class="iconfont icon-right-arrow"></span>
+                -->
+
+                <div class="setting-right">
+                    <i><img width="100%" src="../../assets/imgs/profile/userlogo.png"/></i>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left">绑定手机号</div>
+
+                <!--
+                <span class="iconfont icon-right-arrow"></span>
+                -->
+
+                <div class="setting-right with-right-arrow">
+                    <span data-ng-bind="data.phone"></span>
+                </div>
+            </div>
+        </li>
+
+        <li class="setting-table-cell">
+            <div class="second-column" ng-click="password.dialogOpen()">
+                <div class="setting-left">修改登录密码</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column" ng-click="resetPayPassword.openDialog()">
+                <div class="setting-left">修改支付密码</div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<div ui-dialog class="password-dialog" overlay="true" close-by-overlay="true" is-visible="password.isVisible"
+     before-hide="password.dialogBeforeHide();" z-index="560">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="password.dialogClose()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>修改登录密码</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">旧密码</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="password" data-ng-model="password.data.oraPassword"
+                           placeholder="请输入旧密码"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">新密码</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="password" data-ng-model="password.data.newPassword"
+                           placeholder="请输入新密码"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">确认密码</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="password" data-ng-model="password.data.confirmPassword"
+                           placeholder="请再次输入新密码"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left hint">注意：密码为8-20位数字和字符</div>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="password.dialogSubmit()">
+        确认修改
+    </button>
+
+</div>
+
+
+<pay-password />

@@ -1,0 +1,189 @@
+<ol class="goods-list myorder-list" data-ng-cloak>
+    <li class="goods-item" data-ng-repeat="item in items">
+        <div class="goods-brief">
+
+            <div class="goods-title-bar">
+                <div class="goods-left">{{getSellerName(item)}}</div>
+            </div>
+
+            <div class="goods-segment"></div>
+
+            <div data-ng-include="'screens/profile/views/myorder-content-part-blanknote-tpl.html'"
+                 data-ng-if="item.type=='blank_note'">
+            </div>
+            <div data-ng-include="'screens/profile/views/myorder-content-part-recharge-tpl.html'"
+                 data-ng-if="isRechargeType(item)" data-ng-click="showOrder(item)">
+            </div>
+            <div class="goods-info" data-ng-include="'screens/profile/views/myorder-content-part-other-tpl.html'"
+                 data-ng-if="isOtherType(item)" data-ng-click="showOrder(item)">
+            </div>
+            <repeat data-ng-repeat="product in item.orderDetails" data-ng-if="isCartType(item)">
+                <div class="goods-info" data-ng-include="'screens/profile/views/myorder-content-part-cart-tpl.html'"
+                     data-ng-click="showOrder(item)">
+                </div>
+                <div class="goods-total details-pick" ng-if="item.canPickEntityCard"
+                     ng-click="cardContent.openDialog(product)">
+                    <span class="card-warn-text">查看卡密 > </span>
+                </div>
+            </repeat>
+
+            <!--<div class="goods-total ofei-card-container" ng-if="item.cardJson">-->
+            <!--<ul><li ng-repeat="cardItem in item.cardJson.cardList">-->
+            <!--<div>{{$index+1}}.卡号：<span ng-bind="cardItem.cardNo"></span> 卡密：<span ng-bind="cardItem.cardPws"></span></div></li></ul>-->
+            <!--<div class="goods-btn">-->
+            <!--<div class="goods-subtitle">-->
+
+            <!--<div class="goods-right-btn">-->
+            <!--<a class=""-->
+            <!--ng-if="item.canPickEntityCard"-->
+            <!--ng-click="cardContent.openDialog(item)">-->
+            <!--<span>查看全部卡号</span>-->
+            <!--</a></div></div></div>-->
+            <!--</div>-->
+            <div class="goods-total" ng-if="item.canPickEntityCard && !item.orderDetails"
+                 ng-click="cardContent.openDialog(item)">
+
+                <span class="card-warn-text">查看所有卡密 > </span>
+            </div>
+            <div class="goods-segment" ng-if="item.canPickEntityCard"></div>
+            <div class="goods-total" data-ng-if="isOtherType(item) || isCartType(item)">
+                <span>合计：</span>
+                <span>{{item.actualPayAmount | moneyFixed}}</span>
+                <span>（包含运费{{item.deliveryFee | moneyFixed}}）</span>
+            </div>
+
+
+            <div class="goods-segment"></div>
+
+            <div class="goods-btn">
+                <div class="goods-subtitle">
+                    <div class="goods-left-btn">状态：{{item.status | orderStatus}}</div>
+                    <div class="goods-right-btn">
+                        <a class="nav-hint"
+                           ng-if="item.type != 'blank_note'"
+                           ng-click="showOrder(item)">
+                            <span>查看订单</span>
+                        </a>
+                        <a class="nav-hint"
+                           ng-if="canTrace(item)"
+                           ng-click="showTrace(item)">
+                            <span>查看物流</span>
+                        </a>
+                        <a class="nav-hint"
+                           ng-if="item.orderStatusVO.canCancel"
+                           ng-click="cancelOrder(item)">
+                            <span>取消订单</span>
+                        </a>
+                        <a class="nav-hint nav-hint-main"
+                           ng-if="item.orderStatusVO.canRepay"
+                           ng-click="repayOrder(item)">
+                            <span>我要还款</span>
+                        </a>
+                        <a class="nav-hint nav-hint-main"
+                           ng-if="item.orderStatusVO.canConfirm"
+                           ng-click="confirmOrder(item)">
+                            <span>确认申请</span>
+                        </a>
+                        <a class="nav-hint nav-hint-main"
+                           ng-if="item.orderStatusVO.canConfirmDelivery"
+                           ng-click="confirmDeliveryOrder(item)">
+                            <span>确认收货</span>
+                        </a>
+                        <a class="nav-hint nav-hint-main nav-hint-pay"
+                           ng-if="item.orderStatusVO.canPay"
+                           ng-click="payOrder(item)">
+                            <span>支付</span>
+                        </a>
+                        <!--订单评价-->
+                        <a class="nav-hint nav-hint-main nav-hint-pay"
+                           ng-if="item.canEvaluate"
+                           ng-click="gotoEvaluateDetail(item.id)">
+                            <span>评价</span>
+                        </a>
+                        <a class="nav-hint nav-hint-main nav-hint-pay"
+                           ng-if="item.canAdditionalEvaluate"
+                           ng-click="gotoAddEvaluateDetail(item.id)">
+                            <span>追加评价</span>
+                        </a>
+                        <a class="nav-hint nav-hint-main nav-hint-pay"
+                           ng-if="item.canShare&&item.type=='blank_note'&&haveRedTheme&&redBeginTime<item.createTime&&item.createTime<redEndTime"
+                           ng-click="shareBlankRed(item.id)">
+                            <span>免息红包</span>
+                        </a>
+                        <a class="nav-hint"
+                           ng-if="item.canRemindSellerSendGoods"
+                           ng-click="remindSeller(item)">
+                            <span>提醒发货</span>
+                        </a>
+                        <a class="nav-hint"
+                           ng-if="item.type == 'blank_note' && item.status == 'wait_audit' && item.cashApplyType == 'product_cash'"
+                           ng-click="gotoProductGrey()">
+                            <span>立即拍下</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </li>
+</ol>
+<div ui-dialog class="pay-password-dialog order-detail-dialog" overlay="true" close-by-overlay="true"
+     is-visible="cardContent.isVisible" z-index="590">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <span>卡密内容{{clipboard.canCopy?'（点击复制）':'（长按复制）'}}</span>
+        </div>
+        <div class="ui-header-bar-right-icon">
+            <div class="iconfont header-bar-icon icon-close" ng-click="cardContent.closeDialog()"></div>
+        </div>
+    </div>
+    <div class="order-content-container">
+        <ul>
+            <li ng-repeat="cardItem in cardContent.cardJsonList">
+                <div class="card-copy-container">{{$index+1}}.卡号：
+                    <div class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="cardItem.cardNo"></div>
+                    <div class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                         data-ng-click="clipboard.setClipboard(cardItem.cardNo)" data-ng-if="clipboard.canCopy"
+                         data-ng-bind="cardItem.cardNo"></div>
+
+                    卡密：
+                    <div class="copy-textarea" data-ng-if="!clipboard.canCopy" data-ng-bind="cardItem.cardPws"></div>
+                    <div class="copy-textarea-none" data-ng-class="{'has-copy':clipboard.hasCopy}"
+                         data-ng-click="clipboard.setClipboard(cardItem.cardPws)" data-ng-if="clipboard.canCopy"
+                         data-ng-bind="cardItem.cardPws"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <button class="nav-hint single-row submit-btn" ng-click="cardContent.closeDialog()">
+        确认
+    </button>
+</div>
+
+<div ui-dialog class="share-dialog reverse red-share-container" overlay="true" close-by-overlay="true" is-visible="share.isVisible"
+     z-index="560">
+    <div class="share-pic-container">
+        <img src="../../../app/assets/imgs/profile/red.png" class="bg-img">
+        <div class="share-title" ng-bind="share.envelopeTitle"></div>
+        <div class="share-brand-container">
+            <ul>
+                <li class="brand" style="float:right;" ng-click="shareFn('friend')">
+                    <img src="../../../app/assets/imgs/profile/friend.png" alt="">
+                </li>
+            </ul>
+            <ul>
+                <li class="brand" style="float:left" ng-click="shareFn('weixin')">
+                    <img src="../../../app/assets/imgs/profile/weixin.png" alt="">
+                </li>
+            </ul>
+        </div>
+        <button class="nav-hint single-row submit-btn" ng-click="share.closeDialog()">
+            取消
+        </button>
+    </div>
+
+</div>
+

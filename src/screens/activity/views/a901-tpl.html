@@ -1,0 +1,33 @@
+<div class="active-main">
+    <div class="active-content">
+        <div class="active-bg" data-ng-bind-html="schoolContent"></div>
+
+        <div class="active-button" data-ng-click="gotoUrl(linkUrl)" data-ng-if="linkUrl">
+        </div>
+    </div>
+</div>
+
+<div class="new-rules" data-ng-click="rulesDialog.openDialog()" data-ng-if="showRule">
+    活动详情
+</div>
+
+<div ui-dialog class="active-dialog" overlay="true" close-by-overlay="true"
+     before-hide="rulesDialog.dialogBeforeHide();"
+     is-visible="rulesDialog.isVisible" z-index="583">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>十月金秋节&nbsp;千元免息季</span>
+            </div>
+        </div>
+        <div class="iconfont icon-close" ng-click="rulesDialog.closeDialog()"></div>
+    </div>
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <sys-notice type="school_activity_rules"></sys-notice>
+
+    </div>
+    <div class="active-button" ng-click="gotoRulesUrl(ruleUrl)">
+        我知道了 >>
+    </div>
+
+</div>

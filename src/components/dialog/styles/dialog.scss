@@ -1,0 +1,154 @@
+@import "mixins/animation";
+@import "core/variables";
+
+@include keyframes(flyIn) {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@include keyframes(flyOut) {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateY(-40px);
+  }
+}
+
+@include keyframes(fallIn) {
+  0% {
+    opacity: 0;
+    transform: scale(1) translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@include keyframes(fallOut) {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateY(40px);
+  }
+}
+
+@include keyframes(rightIn) {
+  0% {
+    opacity: 0;
+    transform: scale(1) translateX(320px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@include keyframes(rightOut) {
+  0% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1) translateX(320px);
+  }
+}
+
+.ui-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: $zindex-dialog-default;
+  width: 200px;
+  max-width: 100%;
+  min-height: 200px;
+  margin-left: -100px;
+  margin-top: -100px;
+  background: #fff;
+
+  &.ui-dialog-open {
+    display: block;
+    @include animation("flyIn .5s forwards");
+
+    &.reverse {
+      @include animation("fallIn .5s forwards");
+    }
+
+    &.dialog-fullscreen {
+      @include animation("rightIn .5s forwards");
+    }
+  }
+
+  &.ui-dialog-close {
+    display: none;
+    @include animation("flyOut .5s forwards");
+
+    &.reverse {
+      @include animation("fallOut .5s forwards");
+    }
+
+    &.dialog-fullscreen {
+      @include animation("rightOut .5s forwards");
+    }
+  }
+
+  &.ui-dialog-alert {
+    width: 100%;
+    margin: 0;
+    top: 0;
+    left: 0;
+    font-size: $font-size-base;
+    height: $header-height;
+
+    .alert-content {
+      display: block;
+      height: $header-height;
+      width: 100%;
+      color: $white;
+      background-color: $base-background-color;
+      line-height: $header-height;
+
+      .alert-icon {
+        position: absolute;
+        padding: 0 $header-height/2;
+        font-size: $header-height/2;
+        margin-right: $header-height/2;
+        line-height: $header-height;
+      }
+
+      .alert-msg {
+        position: absolute;
+        width: 100%;
+        font-size: $font-size-xxxl;
+        padding-left: $header-height*3/2;
+        padding-right: $header-height/2;
+        line-height: $header-height;
+      }
+
+      &.error {
+        background-color: $brand-danger;
+      }
+
+      &.info {
+        background-color: $brand-primary;
+      }
+
+    }
+  }
+
+}
+
+

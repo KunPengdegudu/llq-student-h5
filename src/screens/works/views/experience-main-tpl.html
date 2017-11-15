@@ -1,0 +1,235 @@
+<div class="work-main" data-ng-cloak>
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text ui-tabs ui-top-menu-tab">
+            <a class="ui-tab-item" data-ng-class="{active: isActive('partTime')}" ng-click="switchTab('partTime')">
+                <p class="ui-tab-content">我的工作</p>
+
+                <div class="ui-landmark"></div>
+            </a>
+            <a class="ui-tab-item" data-ng-class="{active: isActive('intern')}" ng-click="switchTab('intern')">
+                <p class="ui-tab-content">我的申请</p>
+
+                <div class="ui-landmark"></div>
+            </a>
+        </div>
+    </div>
+
+    <div class="login-main-content">
+        <div class="work-aging-wrapper" ng-if="pageType=='partTime'"
+             data-ng-include="'screens/works/views/experience-part-time-tpl.html'"></div>
+        <div class="work-aging-wrapper" ng-if="pageType=='intern'"
+             data-ng-include="'screens/works/views/experience-intern-tpl.html'"></div>
+    </div>
+
+</div>
+
+<article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" class="aging" threshold="200"
+         trigger-on-event="reload"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <div data-ng-include="isAbnormal ? 'screens/works/views/experience-abnormal-tpl.html' : 'screens/works/views/experience-normal-tpl.html'">
+    </div>
+
+</article>
+
+<!--取消报名-->
+<div ui-dialog class="dialog-fullscreen information-goods-container" overlay="true" close-by-overlay="true"
+     is-visible="cancel.isVisible" z-index="590">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="cancel.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>取消报名</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="cancel-blanknote-money">
+
+                    <div class="title">取消原因</div>
+
+                    <div class="money-item-wrapper">
+                        <div class="money-row">
+                            <div class="money-wrapper"
+                                 data-ng-click="selectReason('personal')">
+                                <div class="money-item" ng-class="{selected:isSelectReason('personal')}">个人原因
+                                </div>
+                            </div>
+                            <div class="money-wrapper"
+                                 data-ng-click="selectReason('company')">
+                                <div class="money-item" ng-class="{selected:isSelectReason('company')}">商家原因
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="goods-top-bar">补充说明</div>
+                <div class="desc">
+                    <textarea class="textarea" maxlength="100" data-ng-model="cancel.content"
+                              placeholder="请输入取消原因"></textarea>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="service-psd-warn">
+        <span class="iconfont icon-warn"></span><span>频繁在报名截止后取消，会导致信用降低从而影响以后的报名
+        </span></div>
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn" data-ng-click="cancel.dialogSubmit()">
+            取消报名
+        </button>
+    </div>
+</div>
+
+
+<!--订单详情-->
+
+<div ui-dialog class="dialog-fullscreen information-goods-container" overlay="true" close-by-overlay="true"
+     is-visible="details.isVisible" z-index="569">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="details.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>订单详情</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ol class="goods-list">
+
+            <li class="goods-item">
+                <div class="goods-brief">
+                    <div>
+                        <div class="goods-desc">
+                            <div class="goods-text-large">
+                                <span class="ng-binding" data-ng-bind="detailsItems.fRequirementSnapshot.title"></span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li class="goods-item">
+                <a ng-click="getMoreInformation(detailsItems.requirementId,detailsItems.corpBaseInfo.corpId)">
+                    <div class="goods-brief">
+                        <div class="goods-desc">
+                            <div class="goods-text-large">
+                                <span class="ng-binding">工作信息</span>
+                            </div>
+                            <div class="goods-subtitle">
+
+                                <span class="goods-text-gray">工作内容: </span>
+                                    <span class="ng-binding"
+                                          data-ng-bind="detailsItems.fRequirementSnapshot.title"></span>
+
+                            </div>
+                            <div class="goods-subtitle">
+
+                                <span class="goods-text-gray">工作时间: </span>
+                                    <span class="ng-binding"
+                                          data-ng-bind="detailsItems.fRequirementSnapshot.beginTime.substr(5,5)"></span>
+                                <span>~</span>
+                                    <span class="ng-binding"
+                                          data-ng-bind="detailsItems.fRequirementSnapshot.endTime.substr(5,5)"></span>
+                            </div>
+                            <div class="goods-subtitle">
+
+                                <span class="goods-text-gray">薪酬工资: </span>
+                                <span class="ng-binding" data-ng-bind="detailsItems.totalAmount"></span>
+
+                            </div>
+                            <div class="goods-subtitle">
+
+                                <span class="goods-text-gray">结算方式: </span>
+                                <span class="ng-binding">{{detailsItems.paymentType | workStatus}}</span>
+                                <span ng-if="!detailsItems.paymentType">— —</span>
+
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </li>
+
+            <li class="goods-item">
+                <div class="goods-brief">
+
+                    <div class="goods-desc">
+                        <div class="goods-subtitle">
+
+                            <span class="goods-text-gray">联系人: </span>
+                            <span class="ng-binding" data-ng-bind='detailsItems.corpBaseInfo.contactName'></span>
+
+                        </div>
+                        <div class="goods-subtitle">
+
+                            <span class="goods-text-gray">电话号码: </span>
+                            <span class="ng-binding" data-ng-bind='detailsItems.corpBaseInfo.contactTel'></span>
+
+                        </div>
+
+                        <div class="goods-subtitle">
+
+                            <span class="goods-text-gray">详细地址: </span>
+                                <span class="ng-binding"
+                                      data-ng-bind='detailsItems.fRequirementSnapshot.address'></span>
+
+                        </div>
+
+                    </div>
+                </div>
+            </li>
+            <li class="goods-item">
+                <div class="goods-brief">
+                    <div class="goods-btn">
+                        <div class="goods-subtitle">
+                            <div class="goods-left-btn">状态：{{detailsItems.status | workStatus}}</div>
+                            <div class="goods-right-btn">
+                                <a class="nav-hint"
+                                   ng-if="item.status=='pending'"
+                                   ng-click="cancelOrder()">
+                                    <span>取消报名</span>
+                                </a>
+                                <a class="nav-hint"
+                                   ng-if="item.status=='signed'"
+                                   ng-click="payOrder(item)">
+                                    <span>打卡上班</span>
+                                </a>
+                                <a class="nav-hint"
+                                   data-ng-href="tel:{{detailsItems.corpBaseInfo.contactTel}}">
+                                    <span>联系商家</span>
+                                </a>
+                                <a class="nav-hint"
+                                   ng-click="getMoreInformation(detailsItems.requirementId,detailsItems.corpBaseInfo.corpId)">
+                                    <span>工作详情</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+
+</div>
+
+

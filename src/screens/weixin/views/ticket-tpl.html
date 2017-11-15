@@ -1,0 +1,131 @@
+<div class="ticket-main" data-ng-cloak>
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <span>零零期</span>
+        </div>
+    </div>
+
+    <div class="ticket-wrappers">
+        <div class="ticket-wrapper">
+            <div class="ticket-title">
+                <img src="../../../app/assets/imgs/weixin/ticket-title.png"/>
+            </div>
+            <div class="img-upload">
+                <img src="../../../app/assets/imgs/weixin/ticket-photo.png" data-ng-if="noHeadPhoto"
+                     ng-click="photo.dialogOpen()"/>
+                <a href="{{aHref}}">
+                    <img data-ng-src="{{ticketInfo.candidatePhoto}}" data-ng-if='!noHeadPhoto'
+                         data-ng-click="showPhotoDialog.openDialog()"/>
+                </a>
+            </div>
+            <ul class="user-info">
+                <li class="user-item">
+                    <div class="item-left">
+                        <img src="../../../app/assets/imgs/weixin/ticket-user.png"/>
+                    </div>
+                    <div class="item-right">
+                        <input type="text" placeholder="姓名" class="item-input" maxlength="10"
+                               data-ng-model="ticketInfo.candidateName"/>
+                    </div>
+                </li>
+                <li class="user-item">
+                    <div class="item-left">
+                        <img src="../../../app/assets/imgs/weixin/ticket-sex.png"/>
+                    </div>
+                    <div class="item-right">
+                        <input type="text" placeholder="性别" class="item-input" readonly
+                               data-ng-model="ticketInfo.candidateSex" data-ng-click="sexDialog.openDialog()"/>
+                    </div>
+                </li>
+                <li class="user-item">
+                    <div class="item-left">
+                        <img src="../../../app/assets/imgs/weixin/ticket-address.png"/>
+                    </div>
+                    <div class="item-right">
+                        <input type="text" placeholder="考点" maxlength="20" class="item-input"
+                               data-ng-model="ticketInfo.admissionAddress"/>
+                    </div>
+                    <div class="item-left">
+                        <img src="../../../app/assets/imgs/weixin/ticket-random.png" data-ng-click="randomSelect()"/>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="ticket-btn" data-ng-click="submit()">
+            <img src="../../../app/assets/imgs/weixin/ticket-btn.png"/>
+        </div>
+    </div>
+</div>
+<div style="width: 100%;height: 20px;overflow: hidden">
+    <img src="../../../app/assets/imgs/weixin/QR-code.png" id="QR_code"/>
+    <img data-ng-src="{{ticketInfo.candidatePhoto}}" id="userHeadImg"/>
+    <canvas width='640' height='884' style="background-color: white;border: 2px solid #b5b5b5;"
+            id="ticket_canvas"></canvas>
+</div>
+<!--选择性别-->
+<div ui-dialog class="sex-dialog" overlay="true" close-by-overlay="true"
+     is-visible="sexDialog.isVisible" z-index="570">
+
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-repeat="item in sexDialog.items">
+            <a data-ng-click="sexDialog.setValue(item)">
+                <div class="second-column">
+                    <div class="setting-left select-icon">
+                        <span class="iconfont icon-collection" data-ng-if="sexDialog.checkSelected(item)"></span>
+                    </div>
+                    <div class="setting-left">
+                        <span>{{sexDialog.getItemName(item)}}</span>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ul>
+
+</div>
+
+<!--用户下载页面-->
+<div ui-dialog class="dialog-fullscreen ticket-show-dialog" overlay="true" close-by-overlay="true"
+     is-visible="ticketShowDialog.isVisible" z-index="590">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>零零期</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <img class="ticket-show-photo" data-ng-src="{{ticketShowImg}}">
+        <div class="ticket-show-hint">
+            <img src="../../../app/assets/imgs/weixin/ticket-show-hint.png">
+        </div>
+    </div>
+</div>
+
+</div>
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="showPhotoDialog.isVisible" z-index="560">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="showPhotoDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>{{showPhotoDialog.title}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <img class="show-photo" data-ng-src="{{ticketInfo.candidatePhoto}}">
+    </div>
+
+    <button class="nav-hint single-row submit-btn" ng-click="photo.dialogOpen()">
+        重新上传
+    </button>
+
+</div>
+
+<photo-upload data-template-url="screens/weixin/views/ticket-photo-tpl.html" mask-type="photo.maskType"
+              on-success-fn="onPhotoUploadSuccessFn" get-url-fn="getPhotoUploadUrl"></photo-upload>
+

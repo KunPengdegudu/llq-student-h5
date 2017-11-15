@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>零零期现金借款</title>
+    <meta name="description" content="零零期是大学生分期购物商城领先品牌，于2015年5月正式上线，公司持巨资开设大学生分期业务现已覆盖多个一二线城市，“鼠标轻轻一点，精品尽在眼前”的分期快乐服务。">
+    <meta name="keywords" content="大学生分期,分期,分期购物,大学生分期购物商城,分期商城,零零期">
+    <meta content="m.007fenqi.com" name="author"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no, email=no" name="format-detection"/>
+    <meta name="data-spm" content="m" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <meta name="microdata" content='{"signIn":true, "hasPermission":true}'/>
+    <link rel="stylesheet" href="../../../screens/base/styles/screen-main.css" type="text/css"/>
+    <link rel="stylesheet" href="../../app.css" type="text/css"/>
+
+    <meta http-equiv="x-dns-prefetch-control" content="on" />
+    <link rel="dns-prefetch" href="http://img001.007fenqi.com" />
+</head>
+<body data-spm="{{spmb}}" data-theme="student">
+<data-header-bar class="ui-header-bar-top" data-ng-controller="AppCtrl"
+                 data-configs="navConfig" data-history="historyUrls"
+                 data-template-url="components/header-bar/views/header-bar-tpl.html">
+</data-header-bar>
+<div ui-view ng-class="slideCls"></div>
+<data-route-tabs class="ui-tabs-bottom" data-ng-controller="AppCtrl" data-configs="configs"
+                 data-template-url="components/route-tabs/views/nav-tpl.html">
+</data-route-tabs>
+
+<div id="outerPageIframeWrapper" class="iframe-page-wrapper">
+    <div class="ui-header-bar no-bg outerPageHeader">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" onclick="window.outerPageFn.hide();"></div>
+        </div>
+        <div class="ui-header-bar-text" id="outerPageIframeTitile">页面</div>
+    </div>
+    <div class="ui-container">
+        <iframe id="outerPageIframe" name="outerPageIframe" class="iframe-page" seamless frameborder="0"></iframe>
+    </div>
+</div>
+
+<ui-notification></ui-notification>
+
+<div id="appDownloadWrapper" class="app-download-wrapper">
+
+    <div class="iconfont icon-clean left" onclick="window.downloadFn.close()"></div>
+
+    <div class="logo left">
+        <img src="../../assets/imgs/base/icon.png">
+    </div>
+
+    <div class="text left">
+        <div>万元现金秒到账</div>
+        <div>新人注册有好礼</div>
+    </div>
+
+    <div class="nav-hint" onclick="window.downloadFn.download()">
+        立即下载
+    </div>
+
+</div>
+
+<script src="../../../vendors/goldlog/0.0.1/goldlog.js"></script>
+<script src="../../../vendors/requirejs/2.1.15/require.js"></script>
+
+
+<script type="text/javascript">
+
+    window.ACCESS_SOURCE = 'm';
+
+    if (top.location.href != self.location.href) {
+        top.location.href = self.location.href;
+    }
+
+    window.downloadFn = {
+
+        close: function() {
+            var app = document.getElementById("appDownloadWrapper");
+            app.parentNode.removeChild(app);
+        },
+
+        download: function() {
+            var protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            window.location.href = protocol + 'down-cdn.007fenqi.com/app/family/homepage/index.html#/app/install';
+        }
+    };
+
+    window.outerPageFn = {
+        attr: null,
+        show: function (src, win, attr) {
+
+            window.outerPageFn.attr = attr;
+
+            var outer = document.getElementById("outerPageIframeWrapper");
+            outer.style.display = "block";
+
+            var outerTitle = document.getElementById("outerPageIframeTitile");
+            if (attr && attr.title) {
+                outerTitle.innerHTML = attr.title;
+            } else {
+                outerTitle.innerHTML = "页面";
+            }
+
+            var iframe = document.getElementById("outerPageIframe");
+            iframe.src = src;
+
+            if (win) {
+                iframe.width = win.width + "px";
+                iframe.height = win.height + "px";
+            }
+        },
+        hide: function (isSuccess, rtn) {
+            var outer = document.getElementById("outerPageIframeWrapper");
+            outer.style.display = "none";
+
+            var metaTag=document.createElement('meta');
+            metaTag.name = "viewport";
+            metaTag.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0";
+            document.getElementsByTagName('head')[0].appendChild(metaTag);
+
+            var attr = window.outerPageFn.attr;
+
+            if (attr) {
+                if (isSuccess) {
+                    if (attr.onSuccessFn) {
+                        attr.onSuccessFn(rtn);
+                    }
+                } else {
+                    if (attr.onFailureFn) {
+                        attr.onFailureFn(rtn);
+                    }
+                }
+            }
+        }
+    };
+
+</script>
+
+<script type="text/javascript">
+
+    requirejs.config({
+        baseUrl: '../../../'
+    });
+
+    require(['require', 'app.config'], function (require, config) {
+        // load app
+        require(['angular', 'app/family/m/app'], function (angular) {
+            angular.element(document).ready(function () {
+                angular.bootstrap(document, ['homepage-webApp']);
+            });
+        });
+    });
+
+
+</script>
+
+<script type="text/javascript">
+    var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+    document.write(unescape("%3Cspan id='cnzz_stat_icon_1256054518' style='display:none'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1256054518' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type='text/javascript'>
+
+    var sessionId = getCookieValue("ne_ln_jsession_id");
+
+    (function( ) {
+        _fmOpt = {
+            partner: "007fenqi" ,
+            appName: "007fenqi_web" ,
+            token: sessionId
+        };
+        var cimg = new Image(1,1);
+        cimg.onload = function( ) {
+            _fmOpt.imgLoaded = true;
+        };
+        cimg.src = 'https://fp.fraudmetrix.cn/fp/clear.png?partnerCode=007fenqi&appName=007fenqi_web&tokenId=' + _fmOpt.token;
+        var fm = document.createElement('script'); fm.type = 'text/javascript'; fm.async = true;
+        fm.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'static.fraudmetrix.cn/fm.js?ver=0.1&t=' + (new Date().getTime()/3600000).toFixed(0);
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(fm, s);
+    })( );
+
+
+    function getCookieValue(cookieName) {
+        var cookieValue = document.cookie;
+        var cookieStartAt = cookieValue.indexOf("" + cookieName + "=");
+        if (cookieStartAt == -1) {
+            cookieStartAt = cookieValue.indexOf(cookieName + "=");
+        }
+        if (cookieStartAt == -1) {
+            cookieValue = null;
+        }
+        else {
+            cookieStartAt = cookieValue.indexOf("=", cookieStartAt) + 1;
+            cookieEndAt = cookieValue.indexOf(";", cookieStartAt);
+            if (cookieEndAt == -1) {
+                cookieEndAt = cookieValue.length;
+            }
+            cookieValue = unescape(cookieValue.substring(cookieStartAt, cookieEndAt));//解码latin-1
+        }
+        return cookieValue;
+    }
+</script>
+
+<script type='text/javascript'>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?5a5e2cd9bea7c6327fccb4e00ce6a4f9";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+</body>
+</html>

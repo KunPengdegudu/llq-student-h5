@@ -1,0 +1,117 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "StuiYAuM",
+  "data": {
+    "productDTO": {
+      "productId": 1,
+      "categoryId": 1,
+      "marketPrice": null,
+      "basePrice": 5050,
+      "contents": "iphone12",
+      "status": "online",
+      "storeId": 1,
+      "proSkuId": 1,
+      "brandName": "小米",
+      "name": "苹果手机CW",
+      "categoryName": "手机",
+      "selectedSkuAttrItemIds": "1,3",
+      "nonSkuStock": null,
+      "proSkuPrice": 5288,
+      "proMainImgUrl": null,
+      "proImgList": [
+        {
+          "id": 2,
+          "createTime": 1437038484000,
+          "updateTime": 1437038486000,
+          "imgUrl": "http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1Niq6GXXXXXbCXXXXXXXXXXXX.jpg_360x360Q90.jpg",
+          "indexId": 1,
+          "type": "sub",
+          "productId": 1
+        },
+        {
+          "id": 1,
+          "createTime": 1436948667000,
+          "updateTime": 1436948667000,
+          "imgUrl": "http://g-search2.alicdn.com/img/bao/uploaded/i4/TB1Niq6GXXXXXbCXXXXXXXXXXXX.jpg_360x360Q90.jpg",
+          "indexId": 0,
+          "type”: "
+          main
+          ",
+          "productId": 1
+        }
+      ]
+    },
+    "proSkuList": [
+      {
+        "shareSkuAttr": {
+          "id": 1,
+          "categoryId": 1,
+          "name": "颜色",
+          "description": "颜色",
+          "createTime": 1436943730000,
+          "updateTime": 1436943730000
+        },
+        "shareSkuAttrItemList": [
+          {
+            "id": 1,
+            "shareSkuAttrId": 1,
+            "value": "土豪金",
+            "selected": true
+          },
+          {
+            "id": 2,
+            "shareSkuAttrId": 1,
+            "value": "银色",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "shareSkuAttr": {
+          "id": 2,
+          "categoryId": 1,
+          "name": "尺寸",
+          "description": "尺寸e",
+          "createTime": null,
+          "updateTime": 1438562606000
+        },
+        "shareSkuAttrItemList": [
+          {
+            "id": 3,
+            "shareSkuAttrId": 2,
+            "value": "4.7寸",
+            "selected": true
+          },
+          {
+            "id": 4,
+            "shareSkuAttrId": 2,
+            "value": "5.5寸",
+            "selected": false
+          }
+        ]
+      }
+    ],
+    "productStockDTO": {
+      "stock": 180,
+      "productId": 1,
+      "productSkuId": 1
+    },
+    "promotionDTO": {
+      "agingPeriods": "1,3,6,9,12",
+      "initialPaymentType": "rate",
+      "initialPayment": 0,
+      "initialPaymentRates": "0,0.1,0.2,0.3,0.4",
+      "repaymentWay": "ACPI",
+      "interestType": "monthly",
+      "interest": 0.06,
+      "discount": 99,
+      "promotionId": null,
+      "lastCharge": 0.03,
+      "subscription": null
+    }
+  },
+  "fieldErrMsg": null,
+  "login": false
+}
+

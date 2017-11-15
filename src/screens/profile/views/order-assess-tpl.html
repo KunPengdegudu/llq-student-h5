@@ -1,0 +1,137 @@
+<!--订单详情-->
+<div class="evaluationContainer absolute-container" data-ng-cloak>
+    <div ng-repeat="data in orderDetails" class="part-container" data-ng-cloak>
+        <ul class="setting-table">
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-row goods-brief">
+                        <img class="goods-img-thumbnail" data-ng-src="{{data.productPic | filterImg : '@!200x200'}}"/>
+
+                        <div class="goods-desc">
+                            <div class="goods-title" data-ng-bind="data.title">{{data.title}}</div>
+                            <div class="goods-subtitle">
+                                <span class="goods-text-gray"
+                                      data-ng-bind="data.productSkuName">{{data.productSkuName}}</span>
+                            </div>
+
+                            <div class="goods-subtitle">
+                                <div class="goods-text-left">
+                                    <span>单价：</span>
+                                    <span data-ng-bind="data.productPrice | moneyFixed">{{data.productPrice}}</span>
+                                </div>
+                                <div class="goods-text-right">
+                                    <span>数量：</span>
+                                    <span data-ng-bind="data.productCount">{{data.productCount}}</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <!--订单评价-->
+        <div class="evaluate-dialog">
+            <div class="desc">
+            <textarea class="textarea" maxlength="500" data-ng-model="assessDetails[$index].evaluate"
+                      placeholder="分享你的购买心得" style="width:100%;height:70px;padding:5px;font-size: 12px;" data-ng-disabled="isAdd"></textarea>
+            </div>
+            <div class="evaluate-img" ng-click="getIdx($index)">
+                <img src="{{img}}" data-ng-repeat="img in assessDetails[$index].picUrlList track by $index" ng-click="photoView.dialogOpen('see',img,$index)" ng-if="isAdd">
+                <img src="{{img}}" data-ng-repeat="img in assessDetails[$index].picUrls track by $index" ng-click="photoView.dialogOpen('modify',img,$index)" ng-if="!isAdd">
+                <div class="add-img" ng-click="openPhotoDialog($index)" ng-if="!isAdd"><span class="iconfont icon-camera"></span></div>
+            </div>
+            <ul class="assess product-assess" ng-if="!isAdd">
+                <li>
+                    <b>描述相符</b>
+                    <div class="stars">
+                        <span class="iconfont icon-collection"
+                              ng-click="evaluateDialog.chooseDesc(select,$parent.$index)"
+                              ng-class={'selected':evaluateDialog.isSelecteds1(select,$parent.$index)}
+                              ng-repeat="select in evaluateDialog.selects1 track by $index"></span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--订单追评-->
+        <div class="evaluate-dialog" ng-if="isAdd">
+            <div class="desc">
+            <textarea class="textarea" maxlength="500" data-ng-model="addEvaluate.details[$index].evaluate"
+                      placeholder="追加评价" style="width:100%;height:70px;padding:5px;font-size: 12px;"></textarea>
+            </div>
+            <div class="evaluate-img" ng-click="getIdx($index)">
+                <img src="{{img}}" data-ng-repeat="img in addEvaluate.details[$index].picUrls track by $index" ng-click="photoView.dialogOpen('modify',img,$index)">
+                <div class="add-img" ng-click="openPhotoDialog($index)"><span class="iconfont icon-camera"></span></div>
+            </div>
+            <ul class="assess">
+                <li>
+                    <b></b>
+                    <div class="stars">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="evaluate-dialog" ng-if="!isAdd">
+        <ul class="assess">
+            <li>
+                <b>服务态度</b>
+                <div class="stars">
+                    <span class="iconfont icon-collection" ng-click="evaluateDialog.chooseService(select)"
+                          ng-class={'selected':evaluateDialog.isSelecteds2(select)}
+                          ng-repeat="select in evaluateDialog.selects2 track by $index"></span>
+                </div>
+            </li>
+            <li>
+                <b>发货速度</b>
+                <div class="stars">
+                    <span class="iconfont icon-collection" ng-click="evaluateDialog.chooseSpeed(select)"
+                          ng-class={'selected':evaluateDialog.isSelecteds3(select)}
+                          ng-repeat="select in evaluateDialog.selects3 track by $index"></span>
+                </div>
+            </li>
+        </ul>
+
+
+    </div>
+
+</div>
+<div class="assess-button-wrapper" ng-if="isAdd">
+    <button class="submitBtn" ng-click="subEva()" style="border-radius: 0">提交评论</button>
+</div>
+<div class="blanknote-bottom-btn-wrapper" ng-if="!isAdd">
+    <div class="blanknote-bottom" style="float: left">
+        <div class="title" style="line-height: 30px;">
+            <span>匿名评价<span><input class='anonymity-box' type="checkbox" ng-model="evaluateDialog.isAnonymity"></span></span></div>
+    </div>
+    <button class="nav-hint single-row submit-btn" ng-click="subEva()" style="border-radius: 0">
+        提交评价
+    </button>
+</div>
+<!--上传相片-->
+<photo-upload on-success-fn="onPhotoUploadSuccessFn" get-url-fn="getPhotoUploadUrl"></photo-upload>
+<!--替换图片-->
+<div ui-dialog class="dialog-fullscreen resume-photo-dialog assess-resume-photo" overlay="true"
+     close-by-overlay="true" is-visible="photoView.isVisible"
+     before-hide="photoView.dialogBeforeHide();" z-index="555">
+    <div class="ui-header-bar">
+
+        <div class="ui-header-bar-left-icon">
+            <span class="iconfont header-bar-icon icon-back"
+                  ng-click="photoView.dialogClose()"></span>
+        </div>
+    </div>
+
+    <div class="resume-photo-change" style="width: 100%;">
+        <img class="header-photo" data-ng-src="{{photoView.rightImg}}"/>
+    </div>
+
+
+    <button class="nav-hint single-row submit-btn" ng-click="deleteImg()" ng-if="photoView.power=='modify'">
+        删除
+    </button>
+    <!--<button class="nav-hint single-row submit-btn" ng-click="deleteImg()" ng-if="photoView.power=='modify'">-->
+        <!--删除-->
+    <!--</button>-->
+
+</div>

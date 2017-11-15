@@ -1,0 +1,295 @@
+.bindPhone-hint {
+  color: $brand-danger;
+  font-size: $font-size-base;
+  padding: 10px;
+}
+
+.security-hint {
+  padding: 0 10px 10px;
+  font-size: $font-size-base;
+  color: $base-text-color2;
+  .phone-number {
+    font-weight: $bolder-font-weight;
+    font-size: $font-size-large;
+    color: $black;
+  }
+  .security-skip {
+    font-weight: $bolder-font-weight;
+    font-size: $font-size-xl;
+    color: $base-color;
+  }
+}
+
+.setting-table {
+  .setting-table-cell {
+    .second-column {
+      .setting-right {
+        &.forget-password {
+          font-size: $font-size-base;
+          color: $base-color;
+        }
+      }
+      .error-hint {
+        color: $brand-danger;
+        height: 35px;
+        line-height: 35px;
+        font-size: $font-size-base;
+        padding-left: 15px;
+      }
+    }
+  }
+}
+
+.flex-icon {
+  position: fixed;
+  width: 50px;
+  bottom: 17%;
+  right: 10px;
+  z-index: 2000;
+  .icon-service {
+    width: 35px;
+    height: 35px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 35px;
+    font-size: 23px;
+    border-radius: 50%;
+    color: $brand-success;
+    background-color: $white;
+    box-shadow: -1px 1px 5px #ADA4A4;
+  }
+  .name {
+    line-height: 25px;
+  }
+}
+
+.ui-dialog {
+  &.dialog-weixin {
+    z-index: 570;
+    width: 90%;
+    margin-left: -45%;
+    border-radius: 5px;
+    overflow: hidden;
+    .setting-table {
+      .second-column {
+        .setting-left.title {
+          width: 30%;
+        }
+        .setting-left.desc {
+          width: 70%;
+        }
+      }
+    }
+  }
+}
+.bankWithhold-main{
+  .bankWithhold-top{
+    width: 100%;
+    height:55px;
+    background-color: #ffffff;
+    .bankWithhold-topLeft{
+      float: left;
+      margin-left:20px;
+      .bankWithhold-topTop-title{
+        height:30px;
+        line-height: 30px;
+        font-size: 16px;
+        padding-top:10px;
+      }
+      .bankWithhold-topTop-desc{
+        height:20px;
+        margin-top: 5px;
+        line-height: 20px;
+        font-size: 10px;
+        color:#999999;
+      }
+    }
+    .bankWithhold-topRight{
+      float: right;
+      margin-right: 20px;
+      margin-top:15px;
+      .open1{
+        width: 40px;
+        height: 25px;
+        border-radius: 15px;
+        position: relative;
+        background: rgba(0,184,0,0.8);
+      }
+      .open2{
+        width: 23px;
+        height: 23px;
+        border-radius: 13px;
+        position: absolute;
+        background: white;
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+        top: 1px;
+        right: 1px;
+      }
+      .close1{
+        width: 40px;
+        height: 25px;
+        border-radius: 15px;
+        position: relative;
+        background: rgba(255,255,255,0.4);
+        border:1px solid rgba(0,0,0,0.15);
+        border-left: transparent;
+      }
+      .close2{
+        width: 23px;
+        height: 23px;
+        border-radius: 13px;
+        position: absolute;
+        background: white;
+        box-shadow: 0px 2px 4px rgba(0,0,0,0.4);
+        right: 1px;
+        left: 0px;
+        top: 0px;
+        border:1px solid rgba(0,0,0,0.1);
+      }
+    }
+  }
+  .bankWithhold-center{
+    width: 100%;
+    height:auto;
+    margin-top:5px;
+    background-color:#ffffff;
+    .bankWithhold-center-title{
+      height:30px;
+      font-size: 14px;
+      line-height: 30px;
+      :first-child{
+        width: 4px;
+        height:14px;
+        display: inline-block;
+        background-color: #ff9600;
+        border-radius: 2px;
+        margin-right:6px;
+        margin-left:20px;
+      }
+      :last-child{
+        font-size: 10px;
+        color:#999999;
+        margin-left: 6px;
+      }
+    }
+    .bankWithhold-center-add{
+      width: 100%;
+      height:55px;
+      .addButton{
+        width: 90%;
+        height:45px;
+        margin-top: 5px;
+        margin-left: 5%;
+        border:1px solid #e1e1e1;
+        text-align: center;
+        line-height: 45px;
+        border-radius: 4px;
+        img{
+          width: 11px;
+          height:11px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+.addButton{
+   width: 90%;
+   height:45px;
+   margin-top: 20px;
+   margin-left: 5%;
+   border:1px solid #e1e1e1;
+   text-align: center;
+   line-height: 45px;
+   border-radius: 4px;
+   color:#999999;
+   font-weight: 600;
+ }
+.textColor{
+  color:#999999;
+}
+.addBankCard-main{
+  .setting-table{
+    .setting-table-cell{
+      .second-column{
+        .setting-left{
+          .setting-input{
+            border:none;
+          }
+        }
+      }
+    }
+  }
+  .addBankCard-chang{
+    width: 100%;
+    height:30px;
+    text-align: center;
+    color:#ff9600;
+  }
+  .addBankCard-btn{
+    width:100%;
+    height:45px;
+    background-color: #ff9600;
+    color:#ffffff;
+    line-height: 45px;
+    text-align: center;
+    position: fixed;
+    bottom:0;
+    left:0;
+    z-index: 200;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+.authCode-header{
+  width: 80%;
+  margin-left:10%;
+  line-height: 20px;
+  color:#999999;
+}
+.authCode-main{
+  width: 100%;
+  height:45px;
+  line-height: 45px;
+  background-color:#ffffff;
+  .authCode-main-left{
+    float: left;
+    input{
+      width:100%;
+      height:45px;
+      line-height: 45px;
+      padding-left:8px;
+      border:none;
+      outline:none;
+      font-size: 14px;
+    }
+  }
+  .authCode-main-right{
+    float: right;
+    width:43%;
+    height: 45px;
+    span{
+      width: 100%;
+      padding-right: 10px;
+      line-height: 45px;
+      height:45px;
+      color: #ff9600;
+      display: inline-block;
+      text-align: right;
+      font-size: 14px;
+    }
+  }
+}
+.authCode-footer{
+  width:90%;
+  height:45px;
+  margin-left: 5%;
+  background-color: #ff9600;
+  color:#ffffff;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-top:20px;
+}
+

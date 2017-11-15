@@ -1,0 +1,95 @@
+<div class="mytask-main">
+    <div class="mytask-banner-img">
+
+        <img class="task-img-banner"
+             src="../../../app/assets/imgs/works_nav/task-banner.png"></div>
+    <div class="work-aging-wrapper">
+        <div class="aging-item" data-ng-class="{'selected':choseType=='type'}"
+             data-ng-click="task.clickType('type')">
+            <div class="aging-order" data-ng-bind="typeDialog.typeName"></div>
+        </div>
+        <div class="aging-item" data-ng-class="{'selected':choseType=='order'}"
+             data-ng-click="task.clickType('order')">
+            <div class="aging-order" data-ng-bind="orderDialog.orderName"></div>
+        </div>
+    </div>
+    <div class="mytask-banner-img2">
+        <a data-ng-click="gotoTaskSpreed()">
+            <img class="task-img-banner"
+                 src="../../../app/assets/imgs/works_nav/shidaitu-banner.png"></a></div>
+</div>
+
+<article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" class="task-aging" threshold="200"
+         trigger-on-event="reload" data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+    <div data-ng-include="isAbnormal ? 'screens/works/views/task-abnormal-tpl.html' : 'screens/works/views/task-normal-tpl.html'">
+    </div>
+</article>
+
+
+<!--地区选框-->
+<div ui-dialog class="aging-dialog task-aging-dialog" overlay="true" close-by-overlay="true"
+     is-visible="typeDialog.isVisible"
+     before-hide="dialogBeforeHide();" z-index="570">
+
+    <div class="order-by-wrapper">
+        <div class="order-by-category one-category">
+            <div class="order-by-category-item"
+                 data-ng-click="typeDialog.choseOne(null,'全部')">
+                <div class="left">全部</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="typeDialog.choseOne('register_approve','注册认证')">
+                <div class="left">注册认证</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="typeDialog.choseOne('interact','扫码关注')">
+                <div class="left">扫码关注</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="typeDialog.choseOne('share','下载注册')">
+                <div class="left">下载注册</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="typeDialog.choseOne('experience','体验')">
+                <div class="left">体验</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="typeDialog.choseOne('other','其他')">
+                <div class="left">其他</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--职业种类选框-->
+<div ui-dialog class="aging-dialog task-aging-dialog" overlay="true" close-by-overlay="true"
+     is-visible="orderDialog.isVisible"
+     before-hide="dialogBeforeHide();" z-index="570">
+
+    <div class="order-by-wrapper">
+        <div class="order-by-category one-category">
+            <div class="order-by-category-item"
+                 data-ng-click="orderDialog.choseOne(null,'默认')">
+                <div class="left">默认</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="orderDialog.choseOne('recent','最近')">
+                <div class="left">最近</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="orderDialog.choseOne('price','价格最高')">
+                <div class="left">价格最高</div>
+            </div>
+            <div class="order-by-category-item"
+                 data-ng-click="orderDialog.choseOne('audit','审核最短')">
+                <div class="left">审核最短</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+

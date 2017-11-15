@@ -1,0 +1,92 @@
+<ul class="setting-table security-main profile-main profile-main-show-header">
+    <li class="setting-table-cell">
+        <div class="second-column">
+            <div class="setting-left title">手机号</div>
+            <div class="setting-left desc">
+                <input class="setting-input" data-ng-model="showBindPhone" readonly placeholder="请输入通讯手机号码"
+                       data-ng-click="change()">
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="bindPhone-hint">
+            <span>*</span> 如果登录手机号码丢失或更改停用，请认真填写本页面信息，方便您收到还款提醒和物流发送货提醒等，同时及时更新将有助于保护您的交易安全和信息安全！
+        </div>
+    </li>
+</ul>
+<!--绑定常用手机-->
+<div ui-dialog class="dialog-fullscreen bindPhone-dialog" overlay="true" close-by-overlay="true"
+     is-visible="bindPhone.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="bindPhone.dialogClose()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>验证手机</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="security-hint">
+            当前通讯手机为
+            <span class="phone-number" data-ng-bind="showPhone"></span>
+            ，若此号码无法接收信息，请点击下方在线客服，进行人工修改
+        </li>
+        <li class="setting-table-cell" data-ng-if="bindPhone.errorText">
+            <div class="second-column">
+                <div class="error-hint" data-ng-bind="bindPhone.errorText"></div>
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">手机号</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="tel" data-ng-model="bindPhone.phone"
+                           placeholder="请输入11位手机号码"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-if="!bindPhone.authSuccess">
+            <div class="second-column">
+                <div class="setting-left title">图片验证码</div>
+                <div class="setting-left img-code-text">
+                    <input class="setting-input" type="text" placeholder="请输入图中字符" data-ng-model="bindPhone.imgCode"/>
+                </div>
+                <img class="setting-right img-code-img" data-ng-src="{{bindPhone.imgCodeSrc}}"
+                     data-ng-click="bindPhone.changeImgCode()">
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">验证码</div>
+                <div class="setting-left auth-code">
+                    <input class="setting-input" type="tel" placeholder="请填写验证码" data-ng-model="bindPhone.authCode"
+                           ng-disabled="bindPhone.btn.enable"/>
+                </div>
+                <div class="setting-right auth-code-btn">
+                    <a class="nav-hint button-primary" ng-click="bindPhone.getAuthCode()"
+                       ng-disabled="!bindPhone.btn.enable">
+                        <span data-ng-bind="bindPhone.btn.text"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="bindPhone-hint">
+                <span>*</span> 如果登录手机号码丢失或更改停用，请认真填写本页面信息，方便您收到还款提醒和物流发送货提醒等，同时及时更新将有助于保护您的交易安全和信息安全！
+            </div>
+        </li>
+        <li>
+            <sys-notice type="safe_voice_note"></sys-notice>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="bindPhone.dialogSubmit()">
+        确认绑定
+    </button>
+
+
+</div>

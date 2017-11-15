@@ -1,0 +1,1282 @@
+.shop-activity {
+  .goods-list {
+    .goods-desc {
+      .goods-title {
+        font-size: $font-size-large;
+      }
+      .goods-subtitle {
+        .goods-text {
+          color: $base-text-color2;
+          .goods-text-warn {
+            color: $brand-danger;
+            font-size: $font-size-xl;
+          }
+          .goods-text-gray {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.active-main {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: $header-height;
+  left: 0;
+  bottom: $nav-height;
+  overflow: auto;
+  background-color: #09264b;
+  &.a719 {
+    bottom: 0;
+    z-index: 200;
+  }
+  .active-content {
+    width: 100%;
+    height: auto;
+    position: relative;
+    .active-bg {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .active-button {
+      width: 50%;
+      height: $nav-height;
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+    }
+  }
+  .active-rule {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 15px;
+    position: absolute;
+    overflow-y: auto;
+    .rule-title {
+      width: 135px;
+      height: 30px;
+      line-height: 30px;
+      font-size: $font-size-xl;
+      color: $white;
+      text-align: center;
+      background-image: url("../../../app/assets/imgs/active/active-title.png");
+      background-size: 100% 100%;
+    }
+    .rule-content {
+      font-size: $font-size-base;
+      line-height: 20px;
+      color: $black;
+      .rule-content-title {
+        line-height: 25px;
+        font-size: $font-size-large;
+        color: #008000;
+        text-decoration: underline;
+        margin-top: 10px;
+      }
+      &.rule-method {
+        margin-top: 10px;
+        padding-bottom: 35px;
+      }
+    }
+    .active-img {
+      width: 100%;
+      text-align: center;
+      img {
+        width: 90%;
+      }
+    }
+  }
+
+  .active-item {
+    width: 100%;
+    height: 80px;
+    background-color: red;
+    color: $white;
+    font-size: 25px;
+    padding-left: 15px;
+    line-height: 80px;
+    margin-bottom: 5px;
+  }
+
+  &.cash {
+    bottom: 0;
+    background-color: $base-background-color;
+    z-index: 200;
+    .activity-imgBg {
+      width: 100%;
+      position: relative;
+    }
+    .activity-imgBtn {
+      position: absolute;
+      top: 41%;
+      width: 80%;
+      left: 10%;
+    }
+  }
+
+  &.xkh {
+    bottom: 0;
+    top: 40px;
+    background-color: $base-background-color;
+    z-index: 200;
+  }
+  .active-0719-header {
+    width: 100%;
+    height: auto;
+  }
+  .active-0719-main {
+    width: 100%;
+    background-color: #09264b;
+    margin-top: -3px;
+    .active-0719-main-coupon {
+      background-image: url("../../../app/assets/imgs/active/a719-coupon-bottom.jpg");
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      width: 100%;
+      height: 60px;
+      .coupon {
+        width: 48%;
+        height: 50px;
+        background-image: url("../../../app/assets/imgs/active/a719-coupon-bg.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        float: left;
+        margin: 0 1% 0 1%;
+        color: #ffffff;
+        .coupon-left {
+          float: left;
+          padding-left: 4%;
+          line-height: 50px;
+          font-size: 30px;
+          width: 22%;
+          text-align: center;
+        }
+        .coupon-right {
+          float: left;
+          width: 73%;
+          margin-left: 2%;
+          .coupon-right-top {
+            width: 100%;
+            display: block;
+            font-size: $font-size-small;
+            -webkit-transform: scale(0.7);
+            margin-top: 6px;
+            margin-left: -13%;
+          }
+          .coupon-right-bottom {
+            width: 100%;
+            font-size: 12px;
+            line-height: 16px;
+          }
+        }
+        .coupon-left2 {
+          float: left;
+          margin-left: 6%;
+          line-height: 50px;
+          font-size: 33px;
+          width: 10%;
+          margin-right: 2%;
+          text-align: center;
+        }
+        .coupon-right2 {
+          float: left;
+          width: 71%;
+          .coupon-right-top {
+            width: 100%;
+            display: block;
+            font-size: $font-size-small;
+            -webkit-transform: scale(0.8);
+            margin-top: 6px;
+            margin-left: -8%;
+          }
+          .coupon-right-bottom {
+            width: 100%;
+            font-size: 12px;
+            line-height: 16px;
+          }
+        }
+      }
+    }
+    .active-0719-hot {
+      .header {
+        width: 100%;
+        height: 36px;
+        img {
+          width: 100%;
+          height: auto;
+          margin-top: 10px;
+        }
+      }
+      .active-0719-hot-list {
+        overflow: auto;
+        overflow-y: hidden;
+        overflow-x: auto;
+        height: 235px;
+        p {
+          margin: 0;
+        }
+        li {
+          float: left;
+          margin: 3px 6px 3px 6px;
+          width: 150px;
+          height: 225px;
+          border: 2px solid #58adde;
+          background-color: #ffffff;
+          margin-top: 3px;
+          .active-0719-hot-list-img {
+            width: 100%;
+            height: 130px;
+            overflow: hidden;
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
+          .list-name {
+            font-size: $font-size-small;
+            line-height: 25px;
+            margin-left: 3px;
+            height: 25px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+          .list-ice {
+            font-size: $font-size-small;
+            color: #fd406b;
+            margin-left: 3px;
+            line-height: 15px;
+            height: 15px;
+            span {
+              font-weight: 600;
+              font-size: 12px;
+            }
+          }
+          .list-mouth {
+            font-size: 9px;
+            color: #999999;
+            margin-left: 3px;
+            line-height: 15px;
+            height: 15px;
+          }
+          button {
+            width: 95%;
+            height: 30px;
+            background-color: #fd406b;
+            margin-left: 3%;
+            color: #ffffff;
+            font-weight: 600;
+            font-size: 12px;
+            border: none;
+          }
+        }
+      }
+    }
+    .active-0719-banner {
+      width: 100%;
+      margin: 10px 0;
+      img {
+        width: 100%;
+      }
+    }
+    .active-0719-hall {
+      width: 100%;
+      height: 700px;
+      .header {
+        width: 100%;
+        height: 36px;
+        img {
+          width: 100%;
+          height: auto;
+          margin-top: -10px;
+        }
+      }
+      .active-0719-hall-list {
+        width: 100%;
+        background-image: url("../../../app/assets/imgs/active/a719-bg-01.jpg");
+        height: 220px;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        .list-left {
+          margin-top: 40px;
+          text-align: center;
+          .right-text {
+            height: 16px;
+            line-height: 18px;
+            text-align: center;
+          }
+          .block {
+            color: #000000;
+            font-weight: 900;
+            font-size: 14px;
+          }
+          .xi {
+            font-size: 10px;
+            color: #333333;
+          }
+          .red {
+            font-size: 10px;
+            color: #dd4e4f;
+          }
+          .right-image {
+            width: 100px;
+            height: auto;
+            text-align: center;
+            margin-top: 10px;
+          }
+        }
+        .list-right {
+          margin-top: 25px;
+          text-align: center;
+          .right-text {
+            height: 17px;
+            line-height: 20px;
+            text-align: center;
+          }
+          .block {
+            color: #000000;
+            font-weight: 700;
+            font-size: 13px;
+          }
+          .xi {
+            font-size: 10px;
+            color: #333333;
+          }
+          .red {
+            font-size: 10px;
+            color: #dd4e4f;
+          }
+          .right-image {
+            width: auto;
+            height: 50px;
+            text-align: center;
+          }
+        }
+        .active-0719-threeList {
+          width: 33.3%;
+          height: 170px;
+          float: left;
+          margin-top: 30px;
+          text-align: center;
+          .right-text {
+            height: 17px;
+            line-height: 20px;
+            text-align: center;
+          }
+          .block {
+            color: #000000;
+            font-weight: 700;
+            font-size: 13px;
+            height: 20px;
+            line-height: 20px;
+          }
+          .xi {
+            font-size: 10px;
+            color: #333333;
+          }
+          .red {
+            font-size: 10px;
+            color: #dd4e4f;
+            height: 20px;
+            line-height: 20px;
+          }
+          .right-image {
+            width: auto;
+            height: 120px;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .active-0719-life {
+      width: 100%;
+      .header {
+        width: 100%;
+        height: 36px;
+        img {
+          width: 100%;
+          height: auto;
+          margin-top: -22px;
+        }
+      }
+      .life-title {
+        width: 100%;
+        height: auto;
+        position: relative;
+        margin-top: 10px;
+        .life-title-img {
+          width: 100%;
+        }
+      }
+      .life-list {
+        width: 100%;
+        height: 160px;
+        margin-top: 20px;
+        background-image: url("../../../app/assets/imgs/active/a719-bg-03.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        p {
+          margin: 0;
+        }
+        .life-list-li {
+          width: 31%;
+          height: 150px;
+          background-color: #ffffff;
+          margin: 0 1.1% 0 1.1%;
+          float: left;
+          .life-list-img {
+            width: auto;
+            height: 90px;
+            overflow: hidden;
+            text-align: center;
+            .list-img {
+              width: auto;
+              height: 90px;
+            }
+          }
+          .list-name {
+            font-size: $font-size-small;
+            line-height: 25px;
+            height: 25px;
+            margin-left: 3px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+          }
+          .list-ice {
+            font-size: $font-size-small;
+            color: #fd406b;
+            margin-left: 3px;
+            line-height: 15px;
+            height: 15px;
+            span {
+              font-weight: 600;
+              font-size: 14px;
+            }
+          }
+          .list-mouth {
+            font-size: 9px;
+            color: #999999;
+            margin-left: 3px;
+            line-height: 15px;
+            height: 15px;
+            width: 100%;
+          }
+        }
+
+      }
+    }
+  }
+
+  &.a1111-main {
+    bottom: 0;
+    z-index: 200;
+    background-color: #1b0a37;
+    .active-banner {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .active-coupon-area {
+      width: 100%;
+      background-color: #e8473e;
+      margin-top: -3px;
+      padding-bottom: 10px;
+      .active-coupons {
+        width: 100%;
+        .item-coupon-wrapper {
+          width: 100%;
+          padding: 10px 15px 0;
+          position: relative;
+          .item-bg {
+            width: 100%;
+            img {
+              width: 100%;
+            }
+          }
+          .item-content {
+            position: absolute;
+            height: 85%;
+            top: 10px;
+            left: 15px;
+            right: 15px;
+            @include flexBox();
+            @include flexDirectionRow();
+            .item-name {
+              width: 24%;
+              height: 100%;
+            }
+            .item-coupon {
+              @include flex(1);
+              height: 100%;
+            }
+          }
+        }
+      }
+    }
+
+    .active-shop-area {
+      width: 100%;
+      background-color: #1b0a37;
+      .active-game-enter {
+        width: 100%;
+        padding: 10px;
+        img {
+          width: 100%;
+        }
+      }
+      .item-goods-area {
+        width: 100%;
+        .area-name {
+          width: 100%;
+          height: 50px;
+          text-align: center;
+          img {
+            width: auto;
+            height: 50px;
+          }
+        }
+        .shop-content {
+          width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          .shop-box {
+            width: 600px;
+            padding: 10px 0;
+            @include flexBox();
+            @include flexDirectionRow();
+            @include flexJustify(space-around);
+            .item-shop {
+              height: 100px;
+              width: 190px;
+              img {
+                width: 100%;
+                height: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .item-goods-area {
+      width: 100%;
+      margin: 10px 0;
+      .area-name {
+        width: 100%;
+        margin: 10px 0;
+        text-align: center;
+        img {
+          width: auto;
+          height: 50px;
+        }
+      }
+      .goods-content {
+        width: 100%;
+        .goods-rows {
+          width: 100%;
+          overflow: inherit !important;
+          @include flexBox();
+          @include flexDirectionRow();
+          @include flexJustify(space-around);
+          margin-bottom: 20px;
+          .item-goods {
+            width: 45%;
+            padding: 5px;
+            border: 2px solid #ceb65d;
+            position: relative;
+            border-radius: 5px;
+            overflow: inherit !important;
+            &.none-product {
+              opacity: 0;
+            }
+            .goods-img {
+              width: 100%;
+              text-align: center;
+              img {
+                width: 90%;
+                background-color: $white;
+              }
+            }
+            .goods-name {
+              color: $white;
+              height: 15px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-shadow: 0 0 2px #7aa8ff;
+              text-align: center;
+              margin-bottom: 15px;
+            }
+            .goods-btn {
+              width: 70%;
+              height: 25px;
+              line-height: 21px;
+              text-align: center;
+              color: white;
+              background-color: #da2063;
+              position: absolute;
+              left: 15%;
+              bottom: -12px;
+              border: 2px solid #ceb65d;
+              border-radius: 7px;
+              .goods-price {
+                font-size: $font-size-small;
+                margin-left: 5px;
+                span {
+                  margin-left: 2px;
+                  font-size: $font-size-large;
+                  font-weight: $bolder-font-weight;
+                  text-shadow: 0 0 1px $white;
+                }
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  &.a1111-kaola {
+    bottom: 0;
+    z-index: 200;
+    background-color: #f9ded7;
+
+    .kaola-banner {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+
+    .kaola-quota {
+      width: 100%;
+      .quota-btn {
+        width: 100%;
+        padding: 10px 15px 0;
+        img {
+          width: 100%;
+        }
+      }
+      .active-coupon-area {
+        width: 100%;
+        margin-top: -3px;
+        padding-bottom: 10px;
+        .active-coupons {
+          width: 100%;
+          .item-coupon-wrapper {
+            width: 100%;
+            padding: 10px 15px 0;
+            position: relative;
+            .item-bg {
+              width: 100%;
+              img {
+                width: 100%;
+              }
+            }
+            .item-content {
+              position: absolute;
+              height: 85%;
+              top: 10px;
+              left: 15px;
+              right: 15px;
+              @include flexBox();
+              @include flexDirectionRow();
+              .item-name {
+                width: 24%;
+                height: 100%;
+              }
+              .item-coupon {
+                @include flex(1);
+                height: 100%;
+              }
+            }
+          }
+        }
+        .coupon-btn {
+          width: 100%;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          color: #fd8546;
+          .iconfont {
+            font-size: $font-size-xxxl;
+          }
+
+        }
+      }
+    }
+
+    .active-enter-area {
+      width: 100%;
+      .first-area {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+        .node-title {
+          width: 100%;
+          height: 40px;
+          line-height: 40px;
+          font-size: $font-size-xl;
+          text-align: center;
+          border-bottom: 1px solid $base-border-color;
+        }
+      }
+      .enter-rows {
+        width: 100%;
+        margin-bottom: 7px;
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify(space-between);
+        .item-enter {
+          @include flex(1);
+          &:first-child {
+            margin-right: 10px;
+          }
+          img {
+            width: 100%;
+          }
+          .item-node-title {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: green;
+          }
+        }
+      }
+    }
+
+    .active-goods-area {
+      width: 100%;
+
+      .enters-title {
+        width: 100%;
+        height: 45px;
+        margin: 15px 0 10px;
+        .title {
+          width: 100%;
+          line-height: 35px;
+          height: 35px;
+          text-align: center;
+          font-size: 22px;
+        }
+        .line {
+          width: 25px;
+          height: 2px;
+          background-color: $black;
+          margin: 0 auto;
+        }
+      }
+      .area-wrapper {
+        width: 100%;
+        .item-area-title {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+          div {
+            width: 100%;
+            height: 40px;
+            line-height: 40px;
+            font-size: $font-size-xl;
+            font-weight: $bolder-font-weight;
+            color: $base-text-color;
+            text-align: center;
+            border-bottom: 1px solid $base-border-color;
+          }
+        }
+        .item-area-goods-wrapper {
+          width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          .goods-wrapper {
+            width: 1330px;
+            @include flexBox();
+            @include flexDirectionRow();
+            @include flexJustify(space-between);
+            .item-goods {
+              @include flex(1);
+              padding-bottom: 10px;
+              .product-img {
+                width: 100%;
+                img {
+                  width: 100%;
+                }
+              }
+              .product-name {
+                width: 100%;
+                height: 15px;
+                font-size: $font-size-small;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 0 5px;
+              }
+              .product-price {
+                width: 100%;
+                padding: 0 5px;
+                font-size: $font-size-small;
+                @include flexBox();
+                @include flexDirectionRow();
+                @include flexJustify(space-around);
+                .product-basePrice {
+                  font-size: $font-size-large;
+                  color: #ca1616;
+                }
+              }
+            }
+            .area-more {
+              width: 115px;
+              text-align: center;
+              @include flexBox();
+              @include flexDirectionColumn();
+              @include flexJustify(center);
+              .more-top {
+                font-size: $font-size-xl;
+              }
+            }
+          }
+        }
+      }
+    }
+
+  }
+
+  &.a1111-yx {
+    background-color: #ed393d;
+    bottom: 0;
+    z-index: 200;
+    .yx-banner {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .yx-quota {
+      width: 100%;
+      .quota-btn {
+        width: 100%;
+        padding: 10px 15px 0;
+        img {
+          width: 100%;
+        }
+      }
+      .active-coupon-area {
+        width: 100%;
+        margin-top: -3px;
+        padding-bottom: 10px;
+        .active-coupons {
+          width: 100%;
+          .item-coupon-wrapper {
+            width: 100%;
+            padding: 10px 15px 0;
+            position: relative;
+            .item-bg {
+              width: 100%;
+              img {
+                width: 100%;
+              }
+            }
+            .item-content {
+              position: absolute;
+              height: 85%;
+              top: 10px;
+              left: 15px;
+              right: 15px;
+              @include flexBox();
+              @include flexDirectionRow();
+              .item-name {
+                width: 24%;
+                height: 100%;
+              }
+              .item-coupon {
+                @include flex(1);
+                height: 100%;
+              }
+            }
+          }
+        }
+        .coupon-btn {
+          width: 100%;
+          height: 40px;
+          line-height: 40px;
+          text-align: center;
+          color: #fd8546;
+          .iconfont {
+            font-size: $font-size-xxxl;
+          }
+        }
+      }
+    }
+    .active-goods {
+      padding: 5px;
+      .item-product {
+        width: 100%;
+        background-color: #e3ead2;
+        border-radius: 5px;
+        padding: 10px 20px;
+        margin-bottom: 10px;
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify(space-between);
+        .product-img {
+          @include flex(1);
+          margin-right: 15px;
+          img {
+            width: 100%;
+          }
+        }
+        .product-desc {
+          @include flex(2);
+          position: relative;
+
+          .product-name {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            font-size: $font-size-xl;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .product-price {
+            font-size: $font-size-small;
+            color: $base-text-color2;
+            span {
+              font-size: 20px;
+              color: #ca1616;
+            }
+          }
+          .product-btn {
+            width: 100%;
+            position: absolute;
+            bottom: 15px;
+            span {
+              padding: 5px 10px;
+              background-color: #52683a;
+              color: $white;
+              border-radius: 3px;
+            }
+          }
+        }
+      }
+    }
+
+    .active-goods-wrapper {
+      width: 100%;
+      margin-top: -3px;
+      .item-goods-area {
+        width: 100%;
+        .item-area-title {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+          .area-title {
+            width: 100%;
+            text-align: center;
+            font-size: 25px;
+            height: 45px;
+            line-height: 45px;
+          }
+        }
+
+        .item-rows {
+          width: 100%;
+          padding: 10px;
+          @include flexBox();
+          @include flexDirectionRow();
+          .item-product {
+            @include flex(1);
+            padding: 10px 5px;
+            background-color: #f7faf1;
+            &:first-child {
+              margin-right: 10px;
+            }
+            .product-img {
+              width: 100%;
+              text-align: center;
+              img {
+                width: 90%;
+              }
+            }
+            .product-name {
+              font-size: $font-size-large;
+              width: 100%;
+              line-height: 20px;
+              height: 20px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              text-align: center;
+              padding: 0 5px;
+            }
+            .product-price {
+              font-size: $font-size-large;
+              color: #ca1616;
+              text-align: center;
+              line-height: 35px;
+            }
+            .product-btn {
+              color: $white;
+              font-weight: $bolder-font-weight;
+              text-align: center;
+              span {
+                padding: 3px 10px;
+                border-radius: 3px;
+                background-color: #b11e1e;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+
+.active-list-tip {
+  width: 50px;
+  position: absolute;
+  top: 0;
+  z-index: 100000;
+  left: 15px
+}
+
+.active-quota {
+  width: 100%;
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  background-color: #4a2781;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 200;
+  * {
+    overflow: visible !important;
+  }
+  .quota-topBanner {
+    width: 100%;
+    height: auto;
+    .banner-img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  .quota-wrappers {
+    width: 100%;
+    padding: 0 20px;
+    .quota-item {
+      width: 100%;
+      margin-bottom: 45px;
+      position: relative;
+      .quota-itemBg {
+        width: 100%;
+      }
+      .quota-content-item {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        .quota-item-title {
+          width: 100%;
+          margin-top: 10px;
+          height: 30px;
+          line-height: 30px;
+          padding: 0 15px;
+          color: #222222;
+          @include flexBox();
+          @include flexDirectionRow();
+          .title-left {
+            position: relative;
+            @include flex(1);
+            .left-bg {
+              position: absolute;
+              height: 35px;
+              left: -22px;
+              top: 0;
+            }
+            .left-content {
+              position: absolute;
+              height: 30px;
+              line-height: 30px;
+              left: 0;
+              top: 0;
+              .title-icon {
+                width: 20px;
+                display: block;
+                float: left;
+                margin-top: 5px;
+                margin-right: 10px;
+              }
+              .title-text {
+                float: left;
+                width: 106px;
+                height: 30px;
+                overflow: hidden !important;
+                font-size: $font-size-xl;
+              }
+            }
+          }
+          .title-right {
+            font-size: $font-size-xl;
+            .class-price {
+              color: red;
+              b {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+        .quota-item-content {
+          width: 100%;
+          @include flexBox();
+          @include flexDirectionRow();
+          .content-left {
+            @include flex(1);
+            position: relative;
+            .left-hint {
+              position: absolute;
+              padding: 15px 5px;
+              right: 15%;
+              top: 10px;
+              border-radius: 3px;
+              font-size: $font-size-xxl;
+            }
+          }
+          .content-right {
+            @include flex(4);
+            padding-top: 5px;
+            .right-product {
+              @include flexBox();
+              @include flexDirectionRow();
+              .item-product {
+                width: 33.33%;
+                padding: 5px 10px 0;
+                .product-img {
+                  width: 100%;
+                  background-color: white;
+                }
+              }
+            }
+            .right-hint {
+              font-size: $font-size-small;
+              color: #ff3300;
+              margin: 5px;
+            }
+
+          }
+        }
+      }
+      .quota-item-btn {
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        bottom: -20px;
+        text-align: center;
+        .btn-buy {
+          height: 50px;
+        }
+      }
+    }
+  }
+  .active-title {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    img {
+      width: 55%;
+    }
+  }
+  .quota-userShow-hint {
+    width: 100%;
+    height: 45px;
+    line-height: 45px;
+    font-size: $font-size-xl;
+    text-align: center;
+    font-weight: $bold-font-weight;
+    color: $white;
+    .count {
+      color: #ff3300;
+    }
+  }
+  .quota-user-show {
+    width: 100%;
+    padding: 0 20px 20px;
+    position: relative;
+    .userShow-bg {
+      width: 100%;
+    }
+    .userShow-wrapper {
+      position: absolute;
+      top: 0;
+      width: 84%;
+      padding: 0 5px;
+      left: 8%;
+      height: 30px;
+      line-height: 30px;
+      .userShow-title {
+        width: 100%;
+        border-bottom: 1px solid #ff3300;
+        padding: 0 10px;
+        @include flexBox();
+        @include flexDirectionRow();
+        font-size: $font-size-large;
+        .title-name {
+          @include flex(1);
+        }
+        .title-product {
+          @include flex(1);
+        }
+        .title-date {
+          @include flex(1);
+        }
+      }
+      .userShow-content {
+        width: 100%;
+        overflow: hidden !important;
+        .userShow-ul {
+          width: 100%;
+          .userShow-li {
+            width: 100%;
+            font-size: $font-size-small;
+            padding: 0 5px;
+            &:nth-child(2n) {
+              background-color: rgba(243, 220, 207, 0.4);
+              border-radius: 3px;
+            }
+            @include flexBox();
+            @include flexDirectionRow();
+            .li-name {
+              @include flex(1);
+            }
+            .li-product {
+              @include flex(1);
+              overflow: hidden !important;
+              text-overflow: ellipsis;
+              height: 30px;
+            }
+            .li-date {
+              @include flex(1);
+            }
+          }
+        }
+      }
+    }
+  }
+  .active-rule-img {
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    img {
+      width: 100%;
+    }
+  }
+}

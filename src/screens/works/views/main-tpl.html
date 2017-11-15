@@ -1,0 +1,226 @@
+<div class="works-main">
+
+    <div class="works-wallet" data-ng-click="gotoNav('wallet')">
+        <div class="works-wallet-content">
+            <div class="works-wallet-title">
+                账户余额（元）
+            </div>
+            <div class="works-wallet-amount" data-ng-if="isLogin" data-ng-bind="totalAmount"></div>
+            <div class="works-wallet-amount no-login" data-ng-if="!isLogin" data-ng-click="gotoLogin()">未登录</div>
+        </div>
+    </div>
+    <div class="works-offices">
+        <div class="works-offices-floor">
+            <div class="works-office-item" data-ng-click="gotoNav('myTask')" data-ng-if="showTask">
+                <img src="../../assets/imgs/works_nav/task.png">
+                <span class="works-office-item-text">任务</span>
+            </div>
+            <div class="works-office-item" data-ng-click="gotoNav('workPartTime')" data-ng-if="!showTask">
+                <img src="../../assets/imgs/works_nav/task.png">
+                <span class="works-office-item-text">轻松赚钱</span>
+            </div>
+            <div class="works-office-item" data-ng-click="gotoNav('workPartTime')">
+                <img src="../../assets/imgs/works_nav/pluralize.png">
+                <span class="works-office-item-text">所有兼职</span>
+            </div>
+            <div class="works-office-item" data-ng-click="gotoNav('workIntern')">
+                <img src="../../assets/imgs/works_nav/internship.png">
+                <span class="works-office-item-text">所有实习</span>
+            </div>
+            <div class="works-office-item" data-ng-click="gotoNav('myWork')">
+                <img src="../../assets/imgs/works_nav/myWork.png">
+                <span class="works-office-item-text">我的工作</span>
+            </div>
+        </div>
+        <div class="works-offices-floor">
+            <div class="works-office-item" data-ng-click="gotoNav('transfer')">
+                <img src="../../assets/imgs/works_nav/cash.png">
+                <span class="works-office-item-text">我的钱包</span>
+            </div>
+            <div class="works-office-item" data-ng-click="gotoNav('bill')">
+                <img src="../../assets/imgs/works_nav/detail.png">
+                <span class="works-office-item-text">资金明细</span>
+            </div>
+            <div class="works-office-item" data-ng-click="gotoNav('resume')">
+                <img src="../../assets/imgs/works_nav/resume.png">
+                <span class="works-office-item-text">我的简历</span>
+            </div>
+            <div class="works-office-item" data-ng-click="sign.openDialog()">
+                <img src="../../assets/imgs/works_nav/punchCard.png">
+                <span class="works-office-item-text">扫码打卡</span>
+            </div>
+        </div>
+    </div>
+
+    <img class="myTask-banner" data-ng-if="showTask" data-ng-src="{{bannerSrc}}" data-ng-click="gotoNav('banner')"/>
+
+    <div class="experience-goods-container ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+
+        <div class="goods-top-bar work-more-container">
+            最新工作
+            <div class="work-text-more" ng-click="gotoNav('workPartTime')">
+                <span>更多</span><span class="iconfont icon-right more-arrow"></span>
+            </div>
+        </div>
+
+        <ol class="goods-list" data-ng-cloak>
+            <li class="goods-item" data-ng-repeat="item in items"
+                data-ng-if="item.status =='recruiting' || item.status =='tasking'">
+                <a ng-click="getMoreInformation(item.id,item.termType,item.corpId)">
+                    <div class="goods-brief">
+                        <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.smallImage}}"
+                             data-ng-if="item.logo.smallImage">
+                        <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.compressUrl}}"
+                             data-ng-if="item.logo.compressUrl">
+                        <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.url}}"
+                             data-ng-if="item.logo.url&&!item.logo.compressUrl">
+                        <img class="works-goods-img-thumbnail" src="../../../app/assets/imgs/works_nav/company_logo.png"
+                             data-ng-if="!item.logo">
+
+                        <div class="goods-desc">
+                            <div class="work-title-container">
+                                <span class="goods-text-large">{{item.title | htmlDecode}}</span>
+                                <span class="qts-tag" data-ng-if="item.source=='qtshe'">青</span>
+                                <span class="goods-text-right goods-container-right right-part">
+                                <!--<span>薪资</span>-->
+                                <span class="goods-text-warn" data-ng-bind="item.oncePayment"></span>
+                                <span ng-if="!item.salaryTimeUnitDesc||item.salaryTimeUnitDesc=='其他'">元</span>
+                                <span ng-if="item.salaryTimeUnitDesc!='其他'">{{item.salaryTimeUnitDesc}}</span>
+                            </span>
+                            </div>
+
+                            <div class="goods-subtitle second-goods-subtitle">
+                                <div data-ng-repeat="tagItem in item.tagNameList" data-ng-if="item.tagNameList"
+                                      data-ng-bind="tagItem | toTrusted" class="text-brand"></div>
+                            </div>
+
+                            <div class="goods-subtitle">
+                                <div class="time-text-left" data-ng-if="item.beginTime">
+                                    <!--时间-->
+                                    <span class="goods-text-gray icon-seckill iconfont"></span>
+                                    <span class="goods-text-gray" data-ng-bind="item.beginTime.substr(5,5)"></span><span
+                                        class="goods-text-gray">~</span><span
+                                        data-ng-bind="item.endTime.substr(5,5)" class="goods-text-gray"></span>
+                                </div>
+                                <div class="time-text-left text-overflow-ellipsis" data-ng-if="!item.beginTime">
+                                    <!--时间-->
+                                    <span class="goods-text-gray icon-seckill iconfont"></span>
+                                    <span class="goods-text-gray" data-ng-bind="item.jobTimeStandard | toTrusted"></span>
+                                </div>
+                                <div class="address-text-right  text-overflow-ellipsis goods-container-left goods-text-gray" data-ng-if="item.areaName">
+                                    <span class="iconfont icon-position"></span>
+                                    <span data-ng-bind="item.areaName | toTrusted"></span>
+                                </div>
+                                <div class="address-text-right  text-overflow-ellipsis goods-container-left goods-text-gray" data-ng-if="!item.areaName">
+                                    <span class="iconfont icon-position"></span>
+                                    <span data-ng-bind="item.address | toTrusted"></span>
+                                </div>
+                            </div>
+
+                            </div>
+
+                        </div>
+                </a>
+            </li>
+            <div class="abnormal-info" data-ng-if="items.length ==0">暂无工作</div>
+            <div class="work-search-more goods-text-large" ng-click="gotoNav('workPartTime')" data-ng-if="items.length >=6">查看更多...</div>
+        </ol>
+    </div>
+</div>
+
+
+<div ui-dialog class="dialog-fullscreen changeCity-dialog"
+     is-visible="changeCity.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="changeCity.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>{{changeCity.getItemsTitle()}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ul class="setting-table">
+            <li class="setting-table-cell">
+                <span class="city-title">当前选择城市</span>
+                <span class="cityPosition" data-ng-bind="selectCity.cityName"></span>
+            </li>
+        </ul>
+        <ul class="setting-table" data-ng-if="geography.cityName">
+            <li class="setting-table-cell" data-ng-click="changeCity.selectOpenCityContents(geography)">
+                <span class="city-title">定位城市</span>
+                <span class="iconfont icon-collection" style="margin-right:5px;"
+                      data-ng-if="changeCity.isSelectContents(geography)"></span>
+                <span class="cityPosition" data-ng-bind="geography.cityName"></span>
+            </li>
+        </ul>
+        <ul class="setting-table">
+
+            <li class="setting-table-cell city-title">
+                已开通城市
+            </li>
+            <li class="setting-table-cell" data-ng-repeat="item in openCityList"
+                data-ng-click="changeCity.selectOpenCityContents(item)">
+                <div class="second-column">
+                    <div class="setting-left select-icon">
+                        <span class="iconfont icon-collection" data-ng-if="changeCity.isSelectContents(item)"></span>
+                    </div>
+                    <div class="setting-left">
+                        <div class="gameName-wrapper">
+                            <div class="gameName-item" ng-class="{selected:changeCity.isSelectContents(item)}"
+                                 data-ng-bind="item.cityName"></div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+</div>
+
+<div ui-dialog class="dialog-fullscreen changeCity-dialog"
+     is-visible="sign.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="sign.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>{{sign.getItemsTitle()}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="setting-table fix-bottom-btn ">
+        <ul>
+            <li class="setting-table-cell" data-ng-click="scanning()">
+                <div class="second-column sign-text">
+                    <div class="setting-left">
+                        <span class="iconfont icon-scan-code sign-icon"></span>扫码上岗
+                    </div>
+                    <span class="iconfont icon-right more-arrow"></span>
+                </div>
+            </li>
+
+            <li class="setting-table-cell">
+                <div class="second-column sign-text">
+                    <div class="setting-left">
+                        <span class="iconfont icon-sign sign-icon"></span>打卡签到
+                    </div>
+                    <div class="text-button" data-ng-click="gotoSignOn()">去打卡</div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+
+
+</div>

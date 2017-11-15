@@ -1,0 +1,23 @@
+<div class="bill-content">
+    <ul class="setting-table">
+        <li class="setting-table-cell bill-table-cell" data-ng-repeat="item in items">
+            <div class="company-title">
+                <div class="task-name" data-ng-bind="item.memo"></div>
+                <div class="task-company">
+                    <span class="task-company-content">
+                        <span data-ng-bind="item.transferStr" data-ng-if="item.transferOp=='I'"></span>
+                        <span data-ng-if="item.transferOp=='O'">{{item.transferStr}}</span>
+                        <span data-ng-if="item.fromAccFundType=='sys_alpay' && item.transferOp=='O'">到 支付宝</span>
+                        <span data-ng-if="item.fromAccFundType!='sys_alpay' && item.transferOp=='O'">到 银行卡</span>
+                    </span>
+                    <span class="task-company-content" data-ng-bind="item.status | billStatus"></span>
+                </div>
+                <div class="task-company" data-ng-bind="item.createTime | msgTime"></div>
+            </div>
+            <div class="task-money bill-income-color" data-ng-bind="item.transferAmount | moneyFixed"
+                 data-ng-if="item.transferOp=='I'"></div>
+            <div class="task-money bill-pay-color" data-ng-bind="item.transferAmount | moneyFixed"
+                 data-ng-if="item.transferOp=='O'"></div>
+        </li>
+    </ul>
+</div>

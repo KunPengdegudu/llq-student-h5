@@ -1,0 +1,37 @@
+<ol class="coupon-list" data-ng-click>
+    <li class="coupon-item" data-ng-repeat="item in items" ng-click="useCoupon(item)">
+        <div class="coupon-brief-quota">
+            <div class="coupon-left">
+                <img ng-if="item.status =='waiting_fetch' && item.accountType == 'blank_note'"
+                     src="../../../app/assets/imgs/profile/coupon-bg1.png"
+                     class="coupon-img">
+                <img ng-if="item.status =='fetched' && item.accountType == 'blank_note'"
+                     src="../../../app/assets/imgs/profile/coupon-fetched.png"
+                     class="coupon-img">
+                <img ng-if="item.status =='expired'"
+                     src="../../../app/assets/imgs/profile/coupon-expired.png"
+                     class="coupon-img">
+                <img ng-if="item.status =='waiting_fetch' && item.accountType == 'main'"
+                     src="../../../app/assets/imgs/profile/coupon-bg2.png"
+                     class="coupon-img">
+                <img ng-if="item.status =='fetched' && item.accountType == 'main'"
+                     src="../../../app/assets/imgs/profile/coupon-fetched1.png"
+                     class="coupon-img">
+                <div class="coupon-money"
+                     data-ng-if="item.status =='waiting_fetch' && item.accountType == 'blank_note'">
+                    {{item.amount | numShortHand}}<span
+                        class="coupon-money-sign">元</span></div>
+                <div class="coupon-money sale-money"
+                     data-ng-if="item.status =='waiting_fetch' && item.accountType == 'main'">
+                    {{item.amount | numShortHand}}<span
+                        class="coupon-money-sign">元</span></div>
+                <div class="coupon-money-gotten"
+                     data-ng-if="item.status !='waiting_fetch'">
+                    {{item.amount | numShortHand}}<span class="coupon-money-sign">元</span></div>
+            </div>
+        </div>
+    </li>
+</ol>
+
+
+

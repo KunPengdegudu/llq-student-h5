@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>零零期现金借款</title>
+    <meta name="description" content="零零期是大学生分期购物商城领先品牌，于2015年5月正式上线，公司持巨资开设大学生分期业务现已覆盖多个一二线城市，“鼠标轻轻一点，精品尽在眼前”的分期快乐服务。">
+    <meta name="keywords" content="大学生分期,分期,分期购物,大学生分期购物商城,分期商城,零零期">
+    <meta content="m.007fenqi.com" name="author"/>
+    <meta content="yes" name="apple-mobile-web-app-capable"/>
+    <meta content="yes" name="apple-touch-fullscreen"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style"/>
+    <meta content="telephone=no, email=no" name="format-detection"/>
+    <meta name="data-spm" content="homepage" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+
+    <meta name="microdata" content='{"signIn":true, "hasPermission":true}'/>
+    <link rel="stylesheet" href="../../../screens/base/styles/screen-main.css" type="text/css"/>
+    <link rel="stylesheet" href="../../app.css" type="text/css"/>
+</head>
+<body data-spm="{{spmb}}" data-theme="student">
+<data-header-bar class="ui-header-bar-top" data-ng-controller="AppCtrl"
+                 data-configs="navConfig" data-history="historyUrls"
+                 data-template-url="components/header-bar/views/header-bar-tpl.html">
+</data-header-bar>
+<div ui-view ng-class="slideCls"></div>
+<data-route-tabs class="ui-tabs-bottom" data-ng-controller="AppCtrl" data-configs="configs"
+                 data-template-url="components/route-tabs/views/nav-tpl.html">
+</data-route-tabs>
+
+<div id="outerPageIframeWrapper" class="iframe-page-wrapper">
+    <div class="ui-header-bar no-bg outerPageHeader">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" onclick="window.outerPageFn.hide();"></div>
+        </div>
+        <div class="ui-header-bar-text" id="outerPageIframeTitile">页面</div>
+    </div>
+    <div class="ui-container">
+        <iframe id="outerPageIframe" name="outerPageIframe" class="iframe-page"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-forms" seamless frameborder="0"></iframe>
+    </div>
+</div>
+
+<ui-notification></ui-notification>
+
+<script src="../../../vendors/goldlog/0.0.1/goldlog.js"></script>
+<script src="../../../vendors/requirejs/2.1.15/require.js"></script>
+
+<script src="../../../cordova.js"></script>
+
+<script type="text/javascript">
+
+    window.ACCESS_SOURCE = 'app';
+
+    if (top.location.href != self.location.href) {
+        top.location.href = self.location.href;
+    }
+
+    window.outerPageFn = {
+        attr: null,
+        show: function (src, win, attr) {
+
+            window.outerPageFn.attr = attr;
+
+            var outer = document.getElementById("outerPageIframeWrapper");
+            outer.style.display = "block";
+
+            var outerTitle = document.getElementById("outerPageIframeTitile");
+            if (attr && attr.title) {
+                outerTitle.innerHTML = attr.title;
+            } else {
+                outerTitle.innerHTML = "页面";
+            }
+
+            var iframe = document.getElementById("outerPageIframe");
+            iframe.src = src;
+
+            if (win) {
+                iframe.width = win.width + "px";
+                iframe.height = win.height + "px";
+            }
+        },
+        hide: function (isSuccess, rtn) {
+            var outer = document.getElementById("outerPageIframeWrapper");
+            outer.style.display = "none";
+
+            var metaTag = document.createElement('meta');
+            metaTag.name = "viewport";
+            metaTag.content = "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0";
+            document.getElementsByTagName('head')[0].appendChild(metaTag);
+
+            var attr = window.outerPageFn.attr;
+
+            if (attr) {
+                if (isSuccess) {
+                    if (attr.onSuccessFn) {
+                        attr.onSuccessFn(rtn);
+                    }
+                } else {
+                    if (attr.onFailureFn) {
+                        attr.onFailureFn(rtn);
+                    }
+                }
+            }
+        }
+    };
+
+</script>
+
+<script type="text/javascript">
+
+    requirejs.config({
+        baseUrl: '../../../'
+    });
+
+    require(['require', 'app.config'], function (require, config) {
+        // load app
+        require(['angular', 'app/family/homepage/app'], function (angular) {
+            angular.element(document).ready(function () {
+                if (window.cordova) {
+                    document.addEventListener("deviceready", function () {
+                        angular.bootstrap(document, ['homepage-webApp']);
+                    }, false);
+                } else {
+                    angular.bootstrap(document, ['homepage-webApp']);
+                }
+            });
+        });
+    });
+
+
+</script>
+</body>
+</html>

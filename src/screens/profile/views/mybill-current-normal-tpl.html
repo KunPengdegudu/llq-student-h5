@@ -1,0 +1,64 @@
+<ol class="goods-list mybill-main" data-ng-cloak>
+    <li class="goods-item" data-ng-repeat="item in items" ng-hide="item.schedule.length == '0'">
+
+
+            <schedule class="bill-detail-main" data-ng-repeat="schedule in item.schedule">
+                <div class="bill-detail-main">
+                    <div class="bill-detail-top">
+                        <span class="bill-text noBorder">{{item.title}}</span>
+                        <span class="bill-span" ng-show="schedule.status == 'wait_pay'">待还款</span>
+                        <span class="bill-span" style="background-color: #ff5c33"
+                              ng-show="schedule.status == 'overdue'">已逾期</span>
+                        <span class="bill-span" style="background-color: #ff9600"
+                              ng-show="schedule.status == 'success'">已还款</span>
+                        <span class="bill-span" style="background-color: #ff9600"
+                              ng-show="schedule.status == 'close'">已关闭</span>
+                    </div>
+                    <div class="bill-detail-center"
+                         data-ng-if="schedule.status=='wait_pay'||schedule.status=='overdue'||schedule.status=='failed'">
+                        <div class="bill-detail-left">
+                            <div>待还金额</div>
+                            <div>{{(schedule.dueTime<0)?'已经逾期':'距离还款日期还有'}}</div>
+                        </div>
+                        <div class="bill-detail-right">
+                            <div>¥{{schedule.shouldPayAmount | moneyFixed}}</div>
+                            <div>{{schedule.dueTime | abs}}天</div>
+                        </div>
+                    </div>
+                    <div class="bill-detail-center centerEd" data-ng-if="schedule.status == 'success'||schedule.status == 'close'">
+                        <div class="bill-detail-left">
+                            <div>已还金额</div>
+                        </div>
+                        <div class="bill-detail-right">
+                            <div>¥{{schedule.lateCharge | moneyFixed}}</div>
+                        </div>
+                    </div>
+                    <div class="bill-detail-bottom">
+                        <div class="bottom-left">[第<span>{{schedule.currentPeriod}}</span>/<span>{{item.period}}</span>期]
+                        </div>
+                        <div class="bottom-right">
+                            <button class="chakan" ng-click="more(item.item)" ng-if="item.item.status=='aging_ing'">查看账单
+                            </button>
+                            <button class="huankuan" ng-hide="schedule.status!='wait_pay'&&schedule.status!='overdue'"
+                                    ng-if="item.item.status=='aging_ing'"
+                                    ng-click="repay(item, schedule)">立即还款
+                            </button>
+
+                        </div>
+                    </div>
+                </div>
+            </schedule>
+
+    </li>
+    <!--<li class="goods-item" data-ng-repeat="item in items" ng-show="item.schedule.length > '1'">-->
+    <!---->
+    <!--</li>-->
+</ol>
+
+
+<pay data-pay-type="'repay'" data-pay-title="payDialog.item.title"
+     data-pay-amount="payDialog.schedule.shouldPayAmount"
+     data-pay-params="payDialog.params"
+     data-pay-success-fn="payDialog.successFn"
+     data-pay-fail-fn="payDialog.successFn">
+</pay>

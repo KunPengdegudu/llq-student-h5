@@ -1,0 +1,13 @@
+<article class="recharge-article" id="enterPage" data-scroll-loader="loadItems();" data-loader-complete="loaderComplete();" type="both"
+         data-can-load="canLoad"
+         data-hide-done-msg="true" threshold="100"
+         class="enter-page recharge-page"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <ol class="page-list" data-ng-cloak>
+        <li class="page-item {{item.cls?item.cls:''}}" data-ng-repeat="item in items">
+            <ng-include src="getTemplate(item.type)"></ng-include>
+        </li>
+    </ol>
+
+</article>

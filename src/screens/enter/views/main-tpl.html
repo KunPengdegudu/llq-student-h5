@@ -1,0 +1,75 @@
+<article id="enterPage" data-scroll-loader="loadItems();" data-loader-complete="loaderComplete();" type="both"
+         data-can-load="canLoad"
+         data-hide-done-msg="true" threshold="100"
+         class="enter-page"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+
+    <ol class="page-list" data-ng-cloak>
+        <li class="page-item {{item.cls?item.cls:''}}" data-ng-repeat="item in items">
+            <ng-include src="getTemplate(item.type)"></ng-include>
+        </li>
+    </ol>
+
+</article>
+
+<div id="bottom-to-top" class="bottom-to-top" data-ng-click="scrollToTop()">
+    <img src="../../assets/imgs/base/scroll-to-top-icon.png" style="width: 100%;"/>
+</div>
+
+<!--<div class="a1111-enter" data-ng-click="gotoOperation()">-->
+<!--<img src="../../../app/assets/imgs/active/active-cash.png"/>-->
+<!--</div>-->
+
+<div ui-dialog class="qrcode-dialog" overlay="true" close-by-overlay="true"
+     is-visible="qrCodeDialog.isVisible" z-index="570">
+    <div class="qrcode-content" id="qrcode"></div>
+    <div class="qrcode-division">
+        <hr/>
+        <div class="text">or</div>
+    </div>
+    <div class="share-desc clearfix">
+        <div class="share-wrapper clearfix" data-ng-click="share('weixin')">
+            <div class="share-img share-weixin"></div>
+            <div class="share-text">微信</div>
+        </div>
+        <div class="share-wrapper clearfix" data-ng-click="share('timeline')">
+            <div class="share-img share-timeline"></div>
+            <div class="share-text">朋友圈</div>
+        </div>
+    </div>
+    <div class="qrcode-desc qrcode-text clearfix">扫描二维码或者分享朋友圈，有机会获得百元话费，还有更多好礼相送</div>
+
+</div>
+
+<div ui-dialog class="cash-dialog" overlay="true" close-by-overlay="true"
+     is-visible="cashDialog.isVisible" z-index="570">
+    <div class="dialog-close" data-ng-click="cashDialog.closeDialog()">
+        <img src="../../../app/assets/imgs/active/active-close.png"/>
+    </div>
+    <img src="../../../app/assets/imgs/active/active-cash.png"/>
+    <div class="cash-button" ng-click="gotoNav('/activity/cash')">活动详情</div>
+</div>
+
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="noticeDialog.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="noticeDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>{{noticeDialog.title | delTag}}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="agreement-content dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <h1>{{noticeDialog.title | delTag}}</h1>
+        <sys-notice content="noticeDialog.content"></sys-notice>
+    </div>
+
+</div>
+
+<search-dialog/>

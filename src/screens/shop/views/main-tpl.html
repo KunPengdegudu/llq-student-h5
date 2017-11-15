@@ -1,0 +1,41 @@
+<div class="shop-main">
+    <article class="shop-article" data-scroll-loader="loadItems();" type="both" data-can-load="canLoad"
+             threshold="200"
+             trigger-on-event="reload" data-finish-msg="getMsg();" style="bottom: 0;z-index: 200">
+        <div class="shop-infos">
+            <img data-ng-src="{{shop.backgroundImgUrl || '../../../app/assets/imgs/shop/bgimg.png'}}" class="info-bg"/>
+            <div class="info-wrapper">
+                <div class="info-content">
+                    <div class="shop-img">
+                        <img data-ng-src="{{shop.logoUrl || '../../../app/assets/imgs/shop/logo_default.png'}}"
+                             class="shop-head"/>
+                    </div>
+                    <div class="shop-info">
+                        <div class="shop-name" data-ng-bind="shop.shopName"></div>
+                        <div class="shop-flags">
+                            <div class="item-flag" data-ng-repeat="itemLabel in labelList track by $index">
+                                <span data-ng-bind="itemLabel"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-page" data-ng-if="pageInfo.slides.length>0">
+            <ul data-ng-style="pageInfo.styles" rn-carousel rn-carousel-index="pageInfo.carouselIndex"
+                rn-carousel-auto-slide="5" rn-carousel-pause-on-hover rn-carousel-buffered class="carousel2">
+                <li ng-repeat="slide in pageInfo.slides track by slide.id" ng-class="'id-' + slide.id"
+                    data-ng-click="carouseClick(slide.url)">
+                    <img data-ng-src="{{slide.img}}" class="bg-image">
+                </li>
+            </ul>
+            <div class="carousel-indicator-wrapper" rn-carousel-indicators ng-if="pageInfo.slides.length > 1"
+                 slides="pageInfo.slides" rn-carousel-index="pageInfo.carouselIndex"></div>
+        </div>
+        <div data-ng-include="isAbnormal ? 'screens/shop/views/main-abnormal-tpl.html' : 'screens/shop/views/main-normal-tpl.html'">
+        </div>
+
+    </article>
+</div>
+
+<shop-search-dialog/>

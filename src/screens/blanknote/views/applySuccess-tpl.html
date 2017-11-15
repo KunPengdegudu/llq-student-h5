@@ -1,0 +1,35 @@
+<div class="blanknote-main successApply" data-ng-cloak>
+    <div class="blanknote-applyTop">
+        <div class="applyTop-icon">
+            <img src="../../../app/assets/imgs/blacknote/submit-success.png"></span>
+        </div>
+        <div class="applyTop-text">
+            <div>您的借款申请已提交成功!</div>
+            <div style="color: #999999;">借款金额稍后打入您的账户中，请耐心等待......</div>
+        </div>
+        <div class="blanknote-applyBot">
+            <div class="title">借款金额</div>
+            <div class="icon">
+                <span class="textColor">¥{{money}}</span>
+            </div>
+        </div>
+        <div class="blanknote-applyBot">
+            <div class="title">借款时间</div>
+            <div class="icon">
+                <span class="textColor">{{time}}个月</span>
+            </div>
+        </div>
+        <div class="blanknote-applyBot" ng-click="doApply('/security/main/bankWithhold?goBack=/blanknote/applySuccess')">
+            <div class="title">自动代扣</div>
+            <div class="icon">
+                <span class="textColor" data-ng-if="!applyBotInfo">未开启</span>
+                <span class="textColor" data-ng-if="applyBotInfo">已开启</span>
+                <i class="iconfont icon-right-arrow"></i>
+            </div>
+        </div>
+    </div>
+    <div class="applyTop-btn">
+        <button class="btn-jilu" ng-click="doApply('/profile/myorder/ordercash')">查看申请记录</button>
+        <button class="btn-backshou" ng-click="doApply('/enter/main')">返回首页</button>
+    </div>
+</div>

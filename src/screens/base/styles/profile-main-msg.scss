@@ -1,0 +1,80 @@
+.msg-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+  .msg-item {
+    @include clearfix();
+    background: $white;
+    border-bottom: 1px solid $base-border-color;
+    .msg-brief {
+      position: relative;
+      display: block;
+      width: 100%;
+      float: left;
+      @include clearfix();
+
+      .msg-icon {
+        float: left;
+        margin: 0 17px;
+        width: 40px;
+        height: 40px;
+        line-height: 60px;
+        font-size: 40px;
+        color: #25c9fb;
+        position: relative;
+
+        &.msg-icon-read {
+          color: $base-text-color2;
+        }
+
+        .msg-icon-active {
+          position: absolute;
+          top: 9px;
+          right: 0;
+          color: $base-color;
+          font-size: $font-size-base;
+          line-height: $font-size-base;
+        }
+      }
+
+      .msg-desc {
+        float: left;
+        width: 74%;
+        padding: 10px 0;
+        .msg-title {
+          color: $base-text-color;
+          min-height: 20px;
+          font-size: $font-size-large;
+          line-height: 20px;
+        }
+        .msg-subtitle {
+          min-height: 20px;
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          line-height: 20px;
+          margin-top: 5px;
+          @include clearfix();
+        }
+      }
+
+      .msg-time {
+        position: absolute;
+        right: 0;
+        top: 0;
+        min-width: 65px;
+        height: 20px;
+        line-height: 20px;
+        margin: 10px;
+        color: $base-text-color2;
+        font-size: $font-size-base;
+      }
+
+    }
+  }
+}
+
+article.msg-page {
+  bottom: 0;
+  z-index: 200;
+}

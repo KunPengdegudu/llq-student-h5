@@ -1,0 +1,300 @@
+<div class="groupon-product-details product-main product-main-show-header">
+    <div id="productSlides" class="carousel-page">
+        <ul rn-carousel rn-carousel-index="productImgs.carouselIndex" rn-carousel-buffered class="carousel2">
+            <li ng-repeat="slide in productImgs.slides track by slide.id" ng-class="'id-' + slide.id">
+                <img data-ng-src="{{slide.img | fixImage}}" class="bg-image">
+            </li>
+        </ul>
+        <div class="carousel-indicator-wrapper" rn-carousel-indicators
+             ng-if="productImgs.slides.length > 1" slides="productImgs.slides"
+             rn-carousel-index="productImgs.carouselIndex"></div>
+    </div>
+
+
+    <div class="product-instruction">
+        <div class="name" data-ng-bind="name"></div>
+        <div class="desc" data-ng-bind="data.memo"></div>
+        <div class="goods-detail">
+            <div class="prices-label">
+                <span class="price"><i>￥</i><span data-ng-bind="productPrice"></span></span>
+                <del class="old-price">￥<span data-ng-bind="oldPrice"></span></del>
+                <span class="label">拼团</span>
+                <span class="label" data-ng-if="postageStatus">包邮</span>
+            </div>
+            <div class="amount">已拼<span data-ng-bind="hasSale"></span>件</div>
+        </div>
+    </div>
+    <div class="groupon-container">
+        <div class="groupon-top" data-ng-click="gotoRule()">
+            <div class="title-rules">
+                <div class="title">拼团玩法</div>
+                <div class="rules">
+                    规则说明
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </div>
+            <div class="warn">支付成功开团并邀请<span>{{joinNum - 1}}</span>人参团，24小时人数不足自动退款</div>
+        </div>
+        <ul class="label-list" data-ng-if="showTag">
+            <li class="label-item" data-ng-repeat="item in tagStrs">
+                <span class="iconfont icon-select-right"></span><span data-ng-bind="item"></span>
+            </li>
+        </ul>
+        <div class="groupon-wraming" data-ng-if="isShowPtList">
+            <div class="wram">直接参与，可与以下小伙伴快速成团</div>
+            <div class="groupon-advice-list">
+                <div class="groupon-advice" data-ng-repeat="item in tuanInfoList"
+                     data-ng-click="gotoGrouponDetails(item)">
+                    <div class="avatar">
+                        <img src="../../../app/assets/imgs/groupon/image_default_avatar.png">
+                    </div>
+                    <div class="group-item">
+                        <div class="group-text">
+                            <div class="group-member" data-ng-bind="item.phone"></div>
+                            <div class="deadline">距结束<span data-ng-bind="item.dropDown"></span></div>
+                        </div>
+                        <div class="member-amount">
+                            差<span class="">{{item.joinNum - item.currJoinNum}}</span>人成团
+                        </div>
+                    </div>
+                    <div class="join-groupon">
+                        立即参团<span class="iconfont icon-right-arrow"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="address" data-ng-click="toSelectAddress()">
+        <div data-ng-if="hasAddress" class="address-content">
+            <div class="address-left">送至</div>
+            <div class="address">{{getFullAddress(selectItem)}}</div>
+            <div class="iconfont icon-right-arrow"></div>
+        </div>
+        <div data-ng-if="!hasAddress" class="address-content-blank">
+            <div class="address">请选择地址</div>
+            <div class="iconfont icon-right-arrow"></div>
+        </div>
+    </div>
+
+    <div class="product-evalution" data-ng-if="productEvaluateNo == 0">
+        <div class="text">暂无商品评价</div>
+    </div>
+    <div class="product-evalution" data-ng-if="productEvaluateNo != 0"
+         data-ng-click="assess.openDialog()">
+        <div class="text">商品评价（<span data-ng-bind="productEvaluateNo"></span>）</div>
+        <div class="iconfont icon-right-arrow"></div>
+    </div>
+
+    <div class="product-info">
+        <ul class="product-nav">
+            <li class="nav-item" data-ng-repeat="item in navtations" data-ng-class="item.isActive?'active':''"
+                data-ng-click="selectNav(item)" data-ng-bind="item.name"></li>
+        </ul>
+    </div>
+
+    <div class="product-info-container" id="productInfContainer">
+
+    </div>
+</div>
+
+<!--================产品详情弹框===============-->
+<div ui-dialog class="join-groupon-dialog" overlay="true" close-by-overlay="true"
+     is-visible="joinGrouponDialog.isVisible" z-index="583">
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <div class="content">
+            <div class="groupon-product">
+                <div class="product-details">
+                    <img src="../../../app/assets/imgs/groupon/icon_tuxedodetails_close.png" class="close-img"
+                         data-ng-click="joinGrouponDialog.closeDialog()">
+                    <div class="product-instruction">
+                        <div class="price" data-ng-bind="productPrice"></div>
+                        <div class="desc">{{desc}}</div>
+                    </div>
+                    <img data-ng-src="{{productImg}}" class="product-img">
+                </div>
+                <div class="user-choise" id="userDialog">
+                    <div class="size-choice first-choice" data-ng-repeat="categoryItem in data.shareSkuAttrVOList">
+                        <div class="color-title" data-ng-bind="categoryItem.name"></div>
+                        <ul class="color-map">
+                            <li class="color-item" data-ng-repeat="attr in categoryItem.shareSkuAttrItemDTOList"
+                                data-ng-class="attr.isSelect == true?'active':''"
+                                data-ng-click="select(categoryItem,attr)">
+                                <span data-ng-bind="attr.value"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-button active" data-ng-click="gotoOrderConfirm()" data-ng-if="hasStock">
+                去拼团
+            </div>
+            <div class="bottom-button" data-ng-if="!hasStock">拼光了</div>
+        </div>
+    </div>
+</div>
+
+<address-info data-choose-address-fn="chooseAddressFn"></address-info>
+
+<!--=======================按鈕===========================-->
+<div class="pt-product-bottom-buttons" data-ng-if="ptProductStatus=='canBuy'">
+    <div class="homepage" data-ng-click="gotoMain()">
+        <div class="iconfont icon-enter-before"></div>
+        <div class="text">首页</div>
+    </div>
+    <div class="normal-purches" data-ng-click="gotoProductDetail()">
+        <div class="price">￥<span data-ng-bind="normalPrice"></span></div>
+        <div class="text">单独购买</div>
+    </div>
+    <div class="pintu-button" data-ng-click="doOrder()">
+        <div class="price">￥<span data-ng-bind="productPrice"></span></div>
+        <div class="text"><span data-ng-bind="joinNum"></span>人团</div>
+    </div>
+</div>
+
+<div class="pt-product-bottom-buttons" data-ng-if="ptProductStatus=='spellLight'">
+    <div class="homepage" data-ng-click="gotoMain()">
+        <div class="iconfont icon-enter-before"></div>
+        <div class="text">首页</div>
+    </div>
+    <div class="normal-purches" data-ng-click="gotoProductDetail()">
+        <div class="price">￥<span data-ng-bind="normalPrice"></span></div>
+        <div class="text">单独购买</div>
+    </div>
+    <div class="pintu-button pintu-button-start">
+        <div class="price">拼光了</div>
+        <div class="text"><span data-ng-bind="joinNum"></span>人团</div>
+    </div>
+</div>
+
+<div class="pt-product-bottom-buttons" data-ng-if="ptProductStatus=='robGoHold'">
+    <div class="homepage" data-ng-click="gotoMain()">
+        <div class="iconfont icon-enter-before"></div>
+        <div class="text">首页</div>
+    </div>
+    <div class="normal-purches" data-ng-click="gotoProductDetail()">
+        <div class="price">￥<span data-ng-bind="normalPrice"></span></div>
+        <div class="text">单独购买</div>
+    </div>
+    <div class="pintu-button pintu-button-start">
+        <div class="price">即将开抢</div>
+        <div class="text"><span data-ng-bind="joinNum"></span>人团</div>
+    </div>
+</div>
+
+<div class="pt-product-bottom-buttons" data-ng-if="ptProductStatus=='reachedLimit'">
+    <div class="homepage" data-ng-click="gotoMain()">
+        <div class="iconfont icon-enter-before"></div>
+        <div class="text">首页</div>
+    </div>
+    <div class="normal-purches" data-ng-click="gotoProductDetail()">
+        <div class="price">￥<span data-ng-bind="normalPrice"></span></div>
+        <div class="text">单独购买</div>
+    </div>
+    <div class="pintu-button pintu-button-limit">
+        <div class="limit">开团已达上限</div>
+    </div>
+</div>
+
+<div class="pt-product-bottom-buttons" data-ng-if="ptProductStatus=='outDate'">
+    <div class="homepage" data-ng-click="gotoMain()">
+        <div class="iconfont icon-enter-before"></div>
+        <div class="text">首页</div>
+    </div>
+    <div class="normal-purches" data-ng-click="gotoProductDetail()">
+        <div class="price">￥<span data-ng-bind="normalPrice"></span></div>
+        <div class="text">单独购买</div>
+    </div>
+
+    <div class="pintu-button pintu-button-limit">
+        <div class="limit">过期</div>
+    </div>
+</div>
+
+<div class="pt-product-bottom-buttons" data-ng-if="ptProductStatus=='nullity'">
+    <div class="homepage" data-ng-click="gotoMain()">
+        <div class="iconfont icon-enter-before"></div>
+        <div class="text">首页</div>
+    </div>
+    <div class="normal-purches" data-ng-click="gotoProductDetail()">
+        <div class="price">￥<span data-ng-bind="normalPrice"></span></div>
+        <div class="text">单独购买</div>
+    </div>
+    <div class="pintu-button pintu-button-limit">
+        <div class="limit">失效</div>
+    </div>
+</div>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="assess.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="assess.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>所有评论</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ol class="goods-list" data-ng-cloak>
+            <li class="goods-item detail-content" data-ng-repeat="item in assessItems">
+
+                <div class="detail-content">
+
+                    <div class="name-container">
+                        <span>{{item.buyerNick}}</span>
+                    </div>
+                    <div class="detail-container">
+                        <span>{{item.createTime | dateFormat:'yyyy-MM-dd'}}</span>
+                        <span>{{item.productSkuTag}}</span>
+                    </div>
+                    <div class="desc-container">
+                        <span>{{item.evaluate}}</span>
+                        <span ng-if="!item.evaluate">没有填写评论！</span>
+                    </div>
+                    <div class="img-container" ng-if="item.picUrls">
+                        <ul>
+                            <li class="img-item" ng-repeat="imgItem in item.picUrlList track by $index"><img
+                                    src="{{imgItem}}" ng-click="photoView.dialogOpen('see',imgItem)"></li>
+                        </ul>
+                    </div>
+                    <div class="seller-desc" ng-if="item.reply">
+                        <div class="triangle-up"></div>
+                        <div class="content-container">
+                            <span>商家回复：</span>
+                            <span>{{item.reply}}</span>
+                        </div>
+                    </div>
+                    <div class="next-desc" ng-if="item.addEvaluate">
+                        <div class="time">用户 {{item.addEvaluateTime | dateFormat:'yyyy-MM-dd'}} 追评</div>
+                        <span>{{item.addEvaluate}}</span>
+                    </div>
+                    <div class="img-container" ng-if="item.picUrls">
+                        <ul>
+                            <li class="img-item" ng-repeat="imgItem in item.additionalPicUrlList track by $index">
+                                <img src="{{imgItem}}" ng-click="photoView.dialogOpen('see',imgItem)"></li>
+                        </ul>
+                    </div>
+                    <div class="seller-desc" ng-if="item.additionalReply&&item.addEvaluate">
+                        <div class="triangle-up"></div>
+                        <div class="content-container">
+                            <span>商家回复：</span>
+                            <span>{{item.additionalReply}}</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </li>
+        </ol>
+        <div class="assess-btn" data-ng-click="getAssessItems()" data-ng-if="isAbnormal">
+            加载更多
+        </div>
+        <div class="assess-btn" data-ng-if="isAbnormal">
+            没有更多评价
+        </div>
+    </div>
+
+</div>

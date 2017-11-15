@@ -1,0 +1,2158 @@
+.active-center {
+  width: 100%;
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 200;
+
+  .active-top-banner {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+  }
+
+  .active-goods-area {
+    width: 100%;
+    min-height: 100%;
+    .active-title-list {
+      width: 100%;
+      background-color: white;
+      overflow: auto;
+      box-shadow: 0 2px 5px #8a8a8a;
+      .title-wrapper {
+        height: 40px;
+        line-height: 40px;
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-title {
+          @include flex(1);
+          text-align: center;
+          font-size: $font-size-large;
+          .icon-address-isActive {
+            font-size: $font-size-large;
+            &.active {
+              color: #5a2eca;
+
+            }
+          }
+        }
+      }
+    }
+    .active-title {
+      width: 100%;
+      position: relative;
+      height: 40px;
+      text-align: center;
+      margin: 15px 0;
+      .title-img {
+        width: 200px;
+        margin-top: 17px;
+        &.goods-title {
+          margin-top: 7px;
+        }
+      }
+      .title-content {
+        position: absolute;
+        color: $white;
+        width: 100%;
+        text-align: center;
+        top: 0;
+        height: 40px;
+        line-height: 40px;
+        font-size: 22px;
+
+      }
+    }
+    .active-goods {
+      width: 100%;
+      .item-row {
+        width: 100%;
+        margin-bottom: 10px;
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify(space-between);
+        .item-goods {
+          @include flex(1);
+          background-color: $white;
+          padding-bottom: 10px;
+          &:first-child {
+            margin-right: 5px;
+          }
+          &:last-child {
+            margin-left: 5px;
+          }
+          .goods-img {
+            width: 100%;
+            img {
+              width: 100%;
+              border-bottom: 1px solid $base-border-color;
+            }
+          }
+          .goods-name {
+            width: 100%;
+            font-size: $font-size-xl;
+            height: 30px;
+            line-height: 30px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 5px;
+            padding: 0 5px;
+          }
+          .goods-marketPrice {
+            font-size: $font-size-base;
+            color: $base-text-color2;
+            text-decoration: line-through;
+            padding: 0 5px;
+          }
+          .good-price {
+            width: 100%;
+            font-size: $font-size-base;
+            color: $base-text-color2;
+            padding: 0 5px;
+            @include flexBox();
+            @include flexDirectionRow();
+            line-height: 25px;
+            height: 25px;
+            .goods-base-price {
+              @include flex(1);
+              color: #e32423;
+              text-align: left;
+              font-weight: 500;
+              span {
+                font-size: 20px;
+              }
+            }
+            .goods-discount-info {
+              text-align: right;
+              line-height: 30px;
+              font-size: $font-size-small;
+            }
+          }
+        }
+      }
+    }
+
+    .add-goods-btn {
+      font-size: $font-size-xl;
+      color: $white;
+      width: 100%;
+      height: $nav-height;
+      line-height: $nav-height;
+      text-align: center;
+      text-decoration: underline;
+    }
+    .no-more {
+      font-size: $font-size-xl;
+      color: $white;
+      width: 100%;
+      height: $nav-height;
+      line-height: $nav-height;
+      text-align: center;
+    }
+
+    .active-stage {
+      width: 100%;
+      padding: 5px;
+      position: relative;
+      .active-items {
+        width: 100%;
+        padding: 2px 5px;
+        margin-bottom: 5px;
+        background-color: $white;
+        .item-product {
+          width: 100%;
+          border: 1px solid $base-border-color;
+          padding: 5px 2px;
+          @include flexBox();
+          @include flexDirectionRow();
+          .product-desc {
+            @include flex(1.5);
+            padding: 0 3px;
+            .item-title {
+              width: 100%;
+              font-size: $font-size-large;
+              font-weight: $bolder-font-weight;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              height: 36px;
+              line-height: 18px;
+            }
+            .item-price {
+              font-size: $font-size-base;
+              color: $base-text-color2;
+              margin: 10px 0 5px;
+              .price-amount {
+                color: #7326d4;
+                height: 25px;
+                line-height: 25px;
+                span {
+                  margin-right: 5px;
+                  font-size: $font-size-xxxl;
+                }
+              }
+            }
+            .item-btn {
+              height: 30px;
+              width: 100%;
+              img {
+                height: 30px;
+                width: auto;
+              }
+            }
+          }
+        }
+        .product-img {
+          @include flex(1);
+          padding-left: 5%;
+          text-align: center;
+          img {
+            width: 90%;
+          }
+        }
+      }
+    }
+  }
+
+  &.center-main {
+    background-color: #9433db;
+    .center-main-top {
+      position: relative;
+      height: 60%;
+      width: 100%;
+      .main-banner-top {
+        width: 100%;
+      }
+      .active-time-mode {
+        position: absolute;
+        bottom: 7%;
+        left: 0;
+        width: 100%;
+        .time-node-top {
+          width: 100%;
+          text-align: center;
+          color: $white;
+          @include flexBox();
+          @include flexDirectionRow();
+          font-size: 11px;
+          .node-item {
+            @include flex(1);
+            .item-title {
+              font-size: 9px;
+              line-height: 15px;
+            }
+            .item-btn {
+              padding: 3px;
+              .active {
+                color: #5a2eca;
+                padding: 3px 15px;
+                background-color: #fcf004;
+                border-radius: 20px;
+              }
+            }
+          }
+          &.two {
+            padding: 0 15%;
+          }
+          &.three {
+            padding: 0;
+          }
+        }
+        .node-time-line {
+          width: 100%;
+          height: 27px;
+          position: relative;
+          @include flexBox();
+          @include flexDirectionColumn();
+          @include flexJustify(center);
+          .line-img {
+            width: 100%;
+          }
+          .time-nodes {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            padding: 0 7.5%;
+            @include flexBox();
+            @include flexDirectionRow();
+            .item-node {
+              @include flex(1);
+              text-align: center;
+              img {
+                width: auto;
+                height: 27px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .active-coupon-main {
+      width: 100%;
+      position: relative;
+      .coupon-main-top {
+        width: 100%;
+        position: relative;
+        .active-enter-bg {
+          width: 100%;
+        }
+        .coupon-main-title {
+          width: 100%;
+          line-height: 35px;
+          text-align: center;
+          color: $white;
+          font-size: $font-size-xl;
+          font-weight: $bolder-font-weight;
+          position: absolute;
+          top: 0;
+        }
+        .coupon-enter-wrapper {
+          width: 100%;
+          height: 95%;
+          padding: 0 4%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          .coupon-hint {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            padding: 0 10px;
+            margin-top: 17%;
+            @include flexBox();
+            @include flexDirectionRow();
+            @include flexJustify(space-between);
+            .mint-title {
+              font-size: $font-size-xl;
+              color: $white;
+            }
+            .title-btn {
+              width: 95px;
+              color: $white;
+              border: 1px solid $white;
+              height: 30px;
+              line-height: 30px;
+              border-radius: 3px;
+              text-align: center;
+              font-size: $font-size-large;
+            }
+          }
+          .coupon-enters {
+            width: 92%;
+            position: absolute;
+            bottom: 10%;
+            img {
+              width: 100%;
+            }
+          }
+          .carousel-page {
+            position: absolute;
+            width: 92%;
+            bottom: 7%;
+            border-radius: 4px;
+            overflow: hidden;
+          }
+          .coupon-enter-banner {
+            position: absolute;
+            width: 92%;
+            bottom: 7%;
+            border-radius: 4px;
+            overflow: hidden;
+            img {
+              width: 100%;
+            }
+          }
+        }
+
+      }
+      .coupon-main-bottom {
+        width: 100%;
+        padding: 0 10px;
+        margin-top: -3px;
+        position: relative;
+        .coupon-bottom-bg {
+          width: 100%;
+        }
+        .coupon-bottom-wrapper {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          .goods-and-coupon {
+            width: 100%;
+            height: 57%;
+            @include flexBox();
+            @include flexDirectionRow();
+            .item-enter {
+              @include flex(1);
+            }
+          }
+          .wangyi-and-jd {
+            width: 100%;
+            height: 43%;
+            @include flexBox();
+            @include flexDirectionRow();
+            .item-enter {
+              @include flex(1);
+            }
+          }
+        }
+      }
+    }
+
+    .active-product-hot {
+      width: 100%;
+      overflow-x: auto;
+      margin-top: 30px;
+      .product-wrapper {
+        width: 1000px;
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify(start);
+        .item-product {
+          width: 150px;
+          text-align: center;
+          background-color: $white;
+          .product-img {
+            width: 100%;
+            padding: 10px;
+            img {
+              width: 100%;
+            }
+          }
+          .product-price {
+            font-size: 20px;
+            color: red;
+          }
+          .product-discount {
+            font-size: $font-size-base;
+            color: $base-text-color2;
+            line-height: 30px;
+          }
+        }
+      }
+    }
+    .active-phone-hot {
+      width: 100%;
+      padding: 5px;
+      .phone-img {
+        width: 100%;
+        .top-bar {
+          width: 100%;
+        }
+      }
+      .phone-wrappers {
+        width: 100%;
+        margin-top: -5px;
+        padding: 0 10px 10px;
+        background-color: #5f00ee;
+        border-bottom-left-radius: 5px;
+        border-bottom-right-radius: 5px;
+        .phone-content {
+          width: 100%;
+          padding: 20px 0;
+          background-color: #5a0bd1;
+          border-radius: 5px;
+          .item-product {
+            width: 100%;
+            .item-hot-flag {
+              width: 100%;
+              height: 30px;
+              &.left-img {
+                text-align: left;
+                img {
+                  margin-left: -8px;
+                }
+              }
+              &.right-img {
+                text-align: right;
+                img {
+                  margin-right: -8px;
+                }
+              }
+              img {
+                width: auto;
+                height: 30px;
+              }
+            }
+            .hot-product-info {
+              width: 100%;
+              padding: 5px;
+              @include flexBox();
+              &.theOne {
+                @include flexDirectionRow();
+              }
+              &.theTwo {
+                @include flexDirectionRow($reverse: true);
+              }
+              .item-img {
+                @include flex(1);
+                width: 40%;
+                padding: 5px;
+                img {
+                  width: 100%;
+                  height: auto;
+                }
+              }
+              .item-desc {
+                @include flex(1.5);
+                color: $white;
+                text-align: center;
+                .item-name {
+                  font-size: 20px;
+                  height: 25px;
+                  line-height: 25px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                }
+                .item-sku {
+                  line-height: 30px;
+                  font-size: $font-size-base;
+                }
+                .item-btn {
+                  width: 100%;
+                  height: 45px;
+                  margin: 30px 0 20px;
+                  img {
+                    width: auto;
+                    height: 45px;
+                  }
+                }
+                .item-price {
+                  width: 100%;
+                  @include flexBox();
+                  @include flexDirectionRow();
+                  .base-price {
+                    @include flex(1);
+                    color: #00fbce;
+                    span {
+                      font-size: 30px;
+                    }
+                  }
+                  .aging-price {
+                    text-align: left;
+                    font-size: $font-size-base;
+                    @include flex(1);
+                  }
+                }
+
+              }
+            }
+
+            .item-bottom-img {
+              width: 100%;
+              img {
+                width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .active-enters {
+      width: 100%;
+      margin-top: 25px;
+      .active-title {
+        width: 100%;
+        position: relative;
+        height: 40px;
+        text-align: center;
+        margin-bottom: 15px;
+        .title-img {
+          width: 200px;
+          margin-top: 17px;
+        }
+        .title-content {
+          position: absolute;
+          color: $white;
+          width: 100%;
+          text-align: center;
+          top: 0;
+          .main-title {
+            font-size: $font-size-xxl;
+          }
+          .sub-title {
+            font-size: $font-size-small;
+          }
+        }
+      }
+      .enters-wrapper {
+        width: 100%;
+        .enter-items {
+          width: 100%;
+          @include flexBox();
+          @include flexDirectionRow();
+          .item-enter {
+            @include flex(1);
+            border: 1px solid $base-border-color;;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.center-goods {
+    background-color: #9433db;
+    .goods-banner {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .goods-show-area {
+      margin: -3px 0 5px;
+      width: 100%;
+      background-color: $white;
+      .first-goods {
+        width: 100%;
+        .first-img {
+          width: 100%;
+          padding: 20px 0;
+          img {
+            width: 100%;
+          }
+        }
+        .first-name {
+          width: 100%;
+          text-align: right;
+          font-size: 18px;
+          height: 40px;
+          line-height: 40px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          padding: 0 10px 0 15%;
+        }
+        .first-price {
+          width: 100%;
+          font-size: $font-size-base;
+          text-align: right;
+          padding: 0 10px;
+          span {
+            color: #7326d4;
+            font-size: 25px;
+            margin-left: 5px;
+          }
+        }
+      }
+      .goods-wrapper {
+        width: 100%;
+        padding: 0 10px;
+        overflow: inherit !important;
+        margin-top: 10px;
+        @include flexBox();
+        @include flexDirectionRow();
+        .goods-list {
+          @include flex(1);
+          .goods-item {
+            width: 100%;
+            margin-bottom: 10px;
+            .item-img {
+              width: 100%;
+              padding: 10px;
+              img {
+                width: 100%;
+              }
+            }
+            .item-price {
+              width: 100%;
+              font-size: $font-size-base;
+              text-align: center;
+              span {
+                font-size: 25px;
+                color: #7326d4;
+              }
+            }
+            .item-btn {
+              width: 100%;
+              text-align: center;
+              color: #7326d4;
+              margin-top: 10px;
+              span {
+                display: inline-block;
+                width: 80%;
+                border: 2px solid #7326d4;
+                height: 30px;
+                line-height: 30px;
+                font-size: $font-size-large;
+                font-weight: $bolder-font-weight;
+              }
+            }
+          }
+          &.left-item {
+            margin-top: -40px;
+          }
+        }
+      }
+    }
+  }
+
+  &.active-jd {
+    background-image: url("../../../app/assets/imgs/active-center/jd/jd-bg.jpg");
+    background-repeat: no-repeat;
+    background-color: $black;
+    background-size: 100%;
+    .jd-banner {
+      width: 100%;
+      position: relative;
+      .banner-img {
+        width: 100%;
+      }
+      .active-flag {
+        width: 66px;
+        height: auto;
+        position: absolute;
+        top: 0;
+        right: 50px;
+      }
+    }
+    .jd-hot-area1 {
+      width: 100%;
+      overflow-x: auto;
+      .jd-hot-product-wrapper {
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-product {
+          @include flex(1);
+          background-image: url("../../../app/assets/imgs/active-center/jd/hot-goods-bg1.png");
+          background-size: 100% 100%;
+          background-repeat: no-repeat;
+          .product-img {
+            width: 100%;
+            text-align: center;
+            padding: 20% 15% 0 30%;
+            img {
+              width: 100%;
+            }
+          }
+          .product-name {
+            font-size: $font-size-small;
+            color: $white;
+            padding: 0 10% 0 20%;
+            height: 26px;
+            line-height: 13px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          .product-price {
+            padding: 0 10% 0 20%;
+            color: #ff1e50;
+            font-size: $font-size-small;
+            .price-amount {
+              font-size: $font-size-xl;
+            }
+          }
+          .product-btn {
+            width: 100%;
+            padding: 0 10% 0 20%;
+            img {
+              width: 100%;
+            }
+          }
+
+        }
+      }
+
+    }
+    .active-enter {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .jd-hot-area2 {
+      width: 100%;
+      padding: 0 10px;
+      .item-product {
+        width: 100%;
+        background-image: url("../../../app/assets/imgs/active-center/jd/hot-goods-bg2.jpg");
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        padding: 5px;
+        margin-bottom: 15px;
+        @include flexBox();
+        @include flexDirectionRow();
+        &:nth-child(2n+1) {
+          @include flexDirectionRow();
+        }
+        &:nth-child(2n) {
+          @include flexDirectionRow($reverse: true);
+        }
+        .product-img {
+          @include flex(1);
+          padding: 5px;
+          img {
+            width: 100%;
+          }
+        }
+        .product-desc {
+          @include flex(1.5);
+          padding: 5px 15px;
+          .product-name {
+            font-size: $font-size-xl;
+            height: 50px;
+            line-height: 25px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: #ff1e50;
+          }
+          .product-btn {
+            width: 100%;
+            margin: 10px 0;
+            .btn-content {
+              width: 150px;
+              text-align: center;
+              height: 40px;
+              line-height: 40px;
+              font-size: $font-size-xxl;
+              color: $white;
+              background-color: #f21a32;
+              border-radius: 40px;
+              margin: 0 auto;
+            }
+          }
+          .product-price {
+            width: 100%;
+            @include flexBox();
+            @include flexDirectionRow();
+            font-size: $font-size-base;
+            .price-amount {
+              @include flex(1);
+              color: #ff1e50;
+              line-height: 30px;
+              span {
+                font-size: 25px;
+              }
+            }
+            .product-discount {
+              @include flex(1);
+              @include clearfix();
+              color: $white;
+              line-height: 15px;
+            }
+          }
+        }
+      }
+    }
+    .jd-active-enters {
+      .enters-title {
+        width: 100%;
+        position: relative;
+        height: 40px;
+        text-align: center;
+        margin-bottom: 15px;
+        .title-img {
+          width: 200px;
+        }
+        .title-content {
+          position: absolute;
+          color: $white;
+          width: 100%;
+          text-align: center;
+          top: 0;
+          .main-title {
+            color: #ff1e50;
+            font-size: 25px;
+          }
+          .sub-title {
+            font-size: $font-size-base;
+          }
+        }
+      }
+      .enters-wrapper {
+        width: 100%;
+        .enters-rows {
+          width: 100%;
+          @include flexBox();
+          @include flexDirectionRow();
+          .item-enter {
+            @include flex(1);
+            margin: 2px;
+            padding: 5px;
+            border: 1px solid #f21a32;
+            img {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.active-yx {
+    background-image: url("../../../app/assets/imgs/active-center/yx/yx-bg.jpg");
+    background-size: 100% 100%;
+    background-repeat: repeat-x;
+    .yx-banner {
+      width: 100%;
+      position: relative;
+      img {
+        width: 100%;
+      }
+      .banner-wrapper {
+        width: 100%;
+        height: 40%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-btn {
+          @include flex(1);
+        }
+      }
+    }
+    .yx-hot-area1 {
+      width: 100%;
+      .area-title {
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        font-size: 18px;
+        text-align: center;
+        background-color: $white;
+      }
+      .product-wrapper {
+        width: 100%;
+        padding: 10px;
+        background-color: $white;
+        margin-bottom: 10px;
+        position: relative;
+        .item-product {
+          width: 100%;
+          @include flexBox();
+          @include flexDirectionRow();
+          border: 1px solid $base-border-color;
+          box-shadow: 0 0 5px $base-border-color;
+          .product-img {
+            @include flex(1);
+            img {
+              width: 100%;
+            }
+          }
+          .product-desc {
+            @include flex(1.5);
+            padding-top: 20px;
+            .product-name {
+              width: 100%;
+              height: 50px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              line-height: 25px;
+              font-size: $font-size-xxl;
+            }
+            .product-price {
+              width: 100%;
+              color: #f63435;
+              font-size: $font-size-base;
+              span {
+                font-size: 30px;
+              }
+            }
+          }
+        }
+        .hot-product-flg {
+          position: absolute;
+          width: 80px;
+          text-align: center;
+          height: 20px;
+          line-height: 20px;
+          font-size: $font-size-base;
+          top: 0;
+          left: 0;
+          background-color: #b1f3ff;
+        }
+      }
+    }
+    .yx-goods-area {
+      width: 100%;
+      .item-goods-area {
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.4);
+        border-top: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: 0 -1px 1px rgba(255, 255, 255, 0.3);
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+        .area-title {
+          width: 100%;
+          text-align: center;
+          .title-content {
+            height: 50px;
+            line-height: 50px;
+          }
+          img {
+            width: 100%;
+            height: auto;
+          }
+        }
+        .area-content {
+          width: 100%;
+          .content-rows {
+            width: 100%;
+            @include flexBox();
+            @include flexDirectionRow();
+            .item-product {
+              margin: 3px;
+              padding: 3px;
+              @include flex(1);
+              background-color: $white;
+              .product-img {
+                width: 100%;
+                img {
+                  width: 100%;
+                }
+              }
+              .product-name {
+                width: 100%;
+                height: 30px;
+                line-height: 15px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              .product-discount {
+                color: $base-text-color2;
+                font-size: $font-size-small;
+              }
+              .product-price {
+                width: 100%;
+                font-size: $font-size-base;
+                line-height: 24px;
+                @include flexBox();
+                @include flexDirectionRow();
+                .proSku-price {
+                  @include flex(1);
+                  color: #f63435;
+                  span {
+                    font-size: 20px;
+                  }
+                }
+                .market-price {
+                  @include flex(1);
+                  color: $base-text-color2;
+                  text-decoration: line-through;
+                }
+              }
+            }
+          }
+        }
+        .area-btn {
+          width: 100%;
+          text-align: center;
+          font-size: $font-size-xl;
+          font-weight: $bolder-font-weight;
+          margin-top: 10px;
+          .btn-text {
+            color: $white;
+            text-shadow: 1px 1px 1px $black;
+            font-style: italic;
+          }
+          .icon-right-arrow {
+            padding: 4px;
+            background-color: $white;
+            border-radius: 50%;
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  &.active-kaola {
+    background-color: $white;
+    .kaola-banner {
+      width: 100%;
+      img {
+        width: 100%;
+        &.active-enter {
+          margin-top: -3px;
+        }
+      }
+    }
+
+    .kaola-hot-areas {
+      width: 100%;
+      margin-top: -3px;
+      .item-area {
+        width: 100%;
+        .kaola-area-title {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+          .area-title {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            font-size: 20px;
+            text-align: center;
+            border-bottom: 1px solid $base-border-color;
+          }
+        }
+        .kaola-product {
+          padding: 10px;
+          width: 100%;
+          @include flexBox();
+          @include flexDirectionRow();
+          &:nth-child(2n+1) {
+            @include flexDirectionRow($reverse: true);
+          }
+          &:nth-child(2n) {
+            @include flexDirectionRow($reverse: false);
+          }
+          .product-line {
+            width: 10px;
+            background-color: $white;
+          }
+          .product-desc {
+            @include flex(1);
+            @include flexBox();
+            @include flexDirectionColumn();
+            @include flexJustify(space-between);
+            .product-name {
+              @include flex(1);
+              width: 100%;
+              height: auto;
+              background-image: url("../../../app/assets/imgs/active-center/kaola/kaola-product-name.jpg");
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              padding: 10px;
+              .name-content {
+                width: 100%;
+                height: 100%;
+                border: 1px solid $white;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding: 5px;
+                line-height: 20px;
+                font-size: 16px;
+                text-align: center;
+                min-height: 70px;
+                max-height: 135px;
+              }
+            }
+            .product-price {
+              width: 100%;
+              height: auto;
+              background-image: url("../../../app/assets/imgs/active-center/kaola/kaola-product-price.jpg");
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              padding: 10px;
+              margin-top: 10px;
+              .price-content {
+                width: 100%;
+                padding: 5px;
+                background-color: $white;
+                text-align: center;
+                .item-price {
+                  width: 100%;
+                  font-size: $font-size-base;
+                  color: #4c1022;
+                  .priceForInt {
+                    font-size: 25px;
+                  }
+                }
+                .item-btn {
+                  width: 100%;
+                  .btn-content {
+                    padding: 3px 10px;
+                    border-radius: 5px;
+                    margin: 5px;
+                    font-size: $font-size-large;
+                    color: $white;
+                    background-color: #4c1022;
+                  }
+                }
+              }
+
+            }
+          }
+          .product-img {
+            @include flex(1);
+            position: relative;
+            img {
+              width: 100%;
+              height: 100%;
+            }
+            .img-box {
+              border: 1px solid $white;
+              position: absolute;
+              top: 10px;
+              left: 10px;
+              right: 10px;
+              bottom: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    .kaola--product-more {
+      width: 100%;
+      position: relative;
+      img {
+        width: 100%;
+      }
+      .more-enter {
+        width: 100%;
+        height: 45%;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+
+    .kaola-product-areas {
+      width: 100%;
+      margin-top: -3px;
+      .item-product-area {
+        width: 100%;
+        .item-area-title {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+          .area-title {
+            width: 100%;
+            text-align: center;
+            font-size: 25px;
+            height: 45px;
+            line-height: 45px;
+          }
+        }
+
+        .item-rows {
+          width: 100%;
+          padding: 10px;
+          @include flexBox();
+          @include flexDirectionRow();
+          .item-product {
+            @include flex(1);
+            padding: 5px;
+            &:first-child {
+              margin-right: 10px;
+            }
+            .product-top {
+              width: 100%;
+              background-image: url("../../../app/assets/imgs/active-center/kaola/kaola-product-img.png");
+              background-size: 100% 100%;
+              background-repeat: no-repeat;
+              .product-img {
+                padding: 2px;
+                img {
+                  width: 100%;
+                  border: 1px solid $base-border-color;
+                }
+              }
+              .product-name {
+                font-size: $font-size-large;
+                color: $white;
+                font-weight: $bolder-font-weight;
+                width: 100%;
+                line-height: 20px;
+                height: 20px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                text-align: center;
+                padding: 0 5px;
+              }
+            }
+            .product-bottom {
+              width: 100%;
+              height: 35px;
+              padding: 0 5px;
+              @include flexBox();
+              @include flexDirectionRow();
+              .product-price {
+                @include flex(1);
+                font-size: $font-size-small;
+                color: #4c1022;
+                text-align: left;
+                line-height: 35px;
+                span {
+                  font-size: 18px;
+                }
+              }
+              .product-btn {
+                font-size: $font-size-xl;
+                color: $white;
+                background-color: #4c1022;
+                width: 75px;
+                height: 25px;
+                text-align: center;
+                line-height: 25px;
+                margin: 5px 0;
+                border-radius: 2px;
+              }
+            }
+          }
+        }
+
+      }
+    }
+  }
+
+  &.center-coupon {
+    width: 100%;
+    background-color: #2a0054;
+    .coupon-banner {
+      width: 100%;
+      img {
+        width: 100%;
+      }
+    }
+    .coupon-time-down {
+      width: 300px;
+      position: absolute;
+      top: 23%;
+      left: 50%;
+      margin-left: -150px;
+      .time-title {
+        text-align: center;
+        color: $white;
+        font-size: $font-size-xxxl;
+        font-weight: $bolder-font-weight;
+        text-shadow: -1px 1px 2px #757575;
+      }
+      .time-wrapper {
+        width: 100%;
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-time {
+          @include flex(1);
+          @include flexBox();
+          @include flexDirectionRow();
+          .show-time {
+            width: 80%;
+            position: relative;
+            img {
+              width: 100%;
+            }
+            .time-number {
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              line-height: 100%;
+              top: 0;
+              left: 0;
+              text-align: center;
+              font-size: 35px;
+              padding-top: 35%;
+              font-weight: $bolder-font-weight;
+            }
+          }
+          .show-unit {
+            width: 20%;
+            color: $white;
+            font-size: $font-size-xl;
+            position: relative;
+            text-align: center;
+            span {
+              position: absolute;
+              left: 50%;
+              margin-left: -10px;
+              bottom: 5px;
+              font-weight: $bolder-font-weight;
+            }
+          }
+        }
+      }
+    }
+    .coupon-wrappers {
+      width: 100%;
+      padding: 15% 10px 0;
+      .coupon-wrapper {
+        width: 100%;
+        margin-bottom: 15px;
+        position: relative;
+        .coupon-wrapper-bg {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+        }
+        .coupon-contents {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          .coupon-title {
+            width: 100%;
+            height: 16%;
+            @include flexBox();
+            @include flexDirectionRow();
+            .title-time {
+              @include flex(1);
+              padding-left: 5px;
+              padding-top: 3%;
+            }
+            .title-name {
+              font-size: $font-size-xxxl;
+              color: $white;
+              @include flex(1.6);
+              padding-top: 2%;
+              text-shadow: 0 1px 2px wheat;
+            }
+          }
+          .coupon-content {
+            width: 100%;
+            padding: 0 5%;
+            @include flexBox();
+            @include flexDirectionRow();
+            .coupon-rows {
+              @include flex(1);
+              .itemRow-title {
+                width: 100%;
+                height: 20px;
+                color: #21ccfa;
+                text-align: center;
+                line-height: 20px;
+                font-size: $font-size-large;
+                font-weight: $bolder-font-weight;
+              }
+              .item-coupon {
+                width: 100%;
+                padding: 0 2%;
+                position: relative;
+                .item-coupon-bg {
+                  width: 100%;
+                  img {
+                    width: 100%;
+                  }
+                }
+                .item-coupon-content {
+                  width: 100%;
+                  height: 100%;
+                  position: absolute;
+                  top: 0;
+                  left: 0;
+                  padding: 0 2%;
+                  text-align: center;
+                  @include flexBox();
+                  @include flexDirectionRow();
+                  .content-left {
+                    width: 61%;
+                    position: relative;
+                    .coupon-number {
+                      font-size: $font-size-xxl;
+                      color: #db2317;
+                      font-weight: $bolder-font-weight;
+                      position: absolute;
+                      width: 56px;
+                      top: 8%;
+                      left: 50%;
+                      margin-left: -28px;
+                    }
+                    .coupon-rule {
+                      font-size: 9px;
+                      width: 100%;
+                      line-height: 10px;
+                      color: #db2317;
+                      position: absolute;
+                      bottom: 15%;
+                    }
+                  }
+                  .content-right {
+                    width: 40%;
+                    position: relative;
+                    .right-top {
+                      width: 26px;
+                      color: #fef085;
+                      line-height: 13px;
+                      display: inline-block;
+                      position: absolute;
+                      left: 50%;
+                      margin-left: -13px;
+                      top: 5%;
+                      font-size: 11px;
+                      font-weight: $bolder-font-weight;
+                    }
+                    .right-bottom {
+                      font-size: 10px;
+                      line-height: 12px;
+                      position: absolute;
+                      bottom: 5px;
+                      color: $white;
+                      border: 1px solid $white;
+                      width: 40px;
+                      text-align: center;
+                      left: 50%;
+                      margin-left: -20px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          .coupon-btn {
+            width: 95%;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            position: absolute;
+            bottom: 4%;
+          }
+        }
+      }
+    }
+    .coupon-goods-area {
+      .goods-wrapper {
+        width: 100%;
+        .goods-title {
+          width: 100%;
+          height: 35px;
+          text-align: center;
+          position: relative;
+          margin: 15px 0;
+          img {
+            height: 35px;
+            width: auto;
+          }
+          .title-content {
+            width: 100%;
+            line-height: 35px;
+            height: 35px;
+            color: $white;
+            font-size: 20px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-weight: $bolder-font-weight;
+          }
+        }
+        .item-goods {
+          width: 100%;
+          padding: 0 10px;
+          margin: 10px 0;
+          .goods-content {
+            width: 100%;
+            background-color: $white;
+            border-radius: 3px;
+            padding: 5px;
+            @include flexBox();
+            @include flexDirectionRow();
+            .goods-img {
+              @include flex(1);
+              img {
+                width: 100%;
+                background-color: gold;
+              }
+            }
+            .goods-desc {
+              @include flex(1.5);
+              margin-left: 10px;
+              padding: 0 10px;
+              .goods-name {
+                width: 100%;
+                font-size: $font-size-xxl;
+                line-height: 30px;
+                height: 30px;
+                text-align: center;
+                overflow: hidden;
+                text-overflow: ellipsis;
+              }
+              .goods-price {
+                width: 100%;
+                @include flexBox();
+                @include flexDirectionRow();
+                color: $base-text-color2;
+                line-height: 15px;
+                margin: 6% 0;
+                height: 30px;
+                .market-price {
+                  @include flex(1);
+                  padding-right: 5px;
+                  text-align: right;
+                  .price-amount {
+                    color: red;
+                    span {
+                      color: $base-text-color2;
+                      margin-right: 5px;
+                    }
+                  }
+                }
+                .base-price {
+                  @include flex(1);
+                  text-align: left;
+                  font-size: 25px;
+                  line-height: 30px;
+                  height: 30px;
+                  color: red;
+                  padding-left: 5px;
+                }
+              }
+              .goods-btn {
+                width: 100%;
+                height: 35px;
+                text-align: center;
+                img {
+                  height: 35px;
+                  width: auto;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.a828 {
+    background-image: url("../../../app/assets/imgs/active/a828/a828-bg.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat repeat;
+
+    .active-coupon-area {
+      width: 100%;
+      position: relative;
+      img {
+        width: 100%;
+      }
+      .coupon-wrapper {
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        @include flexBox();
+        @include flexDirectionColumn();
+        .item-rows {
+          width: 100%;
+          height: 50%;
+          @include flexBox();
+          @include flexDirectionRow();
+          .item-coupon {
+            @include flex(1);
+          }
+        }
+      }
+    }
+
+    .active-content {
+      width: 100%;
+      .content-title {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      .hot-product-rows {
+        width: 100%;
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-product {
+          @include flex(1);
+          .product-img {
+            width: 100%;
+            text-align: center;
+            img {
+              width: 80%;
+              height: auto;
+            }
+          }
+          .product-price {
+            width: 100%;
+            margin-top: 15px;
+            .price-content {
+              width: 135px;
+              height: 30px;
+              margin: 0 auto;
+              border: 2px solid $black;
+              border-radius: 2px;
+              @include flexBox();
+              @include flexDirectionRow();
+              text-align: center;
+              .content-flg {
+                @include flex(1.3);
+                font-size: $font-size-small;
+                font-weight: $bolder-font-weight;
+                color: $white;
+                background-color: $black;
+              }
+              .content-amount {
+                @include flex(2);
+                font-size: $font-size-small;
+                color: $white;
+                text-shadow: 0 0 1px $black;
+                line-height: 26px;
+                span {
+                  font-size: 20px;
+                }
+              }
+              .content-btn {
+                @include flex(2);
+                line-height: 26px;
+                background-color: #78daf3;
+                color: $black;
+                border-left: 2px solid $black;
+                border-radius: 2px;
+                font-weight: $bolder-font-weight;
+              }
+            }
+          }
+
+          .more-goods {
+            width: 100%;
+            text-align: center;
+            margin: 15px auto;
+            color: black;
+            .more-text {
+              font-size: $font-size-large;
+            }
+            .more-icon {
+              margin: 5px 0;
+              .iconfont {
+                font-size: $font-size-xxxl;
+                color: $white;
+                padding: 0 1px;
+                background-color: $black;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .active-area-01 {
+      width: 100%;
+      padding: 10px 0;
+      background-image: url("../../../app/assets/imgs/active/a828/a828-area-bg.png");
+      background-repeat: repeat-y;
+      background-size: 100% 100%;
+      .item-rows {
+        width: 100%;
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-enter {
+          @include flex(1);
+          padding: 5px 10px;
+          img {
+            width: 100%;
+            border: 1px solid $base-border-color;
+            border-radius: 4px;
+          }
+        }
+      }
+    }
+
+    .active-goods-areas {
+      width: 100%;
+      .goods-area-title {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      .item-goods-area {
+        width: 100%;
+        .item-area-title {
+          width: 100%;
+          height: 40px;
+          text-align: center;
+          margin-top: 10px;
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .item-goods-wrappers {
+        width: 100%;
+        @include flexBox();
+        @include flexDirectionRow();
+        .item-goods-wrapper {
+          @include flex(1);
+          padding: 0 10px;
+          .item-product {
+            width: 100%;
+            margin: 10px 0 20px;
+            .product-img {
+              width: 100%;
+              img {
+                width: 100%;
+              }
+            }
+            .product-name {
+              width: 100%;
+              height: 35px;
+              line-height: 35px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-size: $font-size-large;
+            }
+            .product-price {
+              width: 100%;
+              margin: 10px auto;
+              .price-content {
+                width: 135px;
+                height: 30px;
+                margin: 0 auto;
+                border: 2px solid $black;
+                border-radius: 2px;
+                @include flexBox();
+                @include flexDirectionRow();
+                text-align: center;
+                .content-flg {
+                  @include flex(1.2);
+                  font-size: $font-size-small;
+                  font-weight: $bolder-font-weight;
+                  color: $white;
+                  background-color: $black;
+                }
+                .content-amount {
+                  @include flex(2);
+                  font-size: $font-size-small;
+                  color: $white;
+                  text-shadow: 0 0 1px $black;
+                  line-height: 26px;
+                  span {
+                    font-size: 20px;
+                  }
+                }
+                .content-btn {
+                  @include flex(2);
+                  line-height: 30px;
+                  background-color: cadetblue;
+                  color: $black;
+                  border-left: 2px solid $black;
+                  border-radius: 2px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .active-area-wrapper {
+      width: 100%;
+      .area-row {
+        @include flexBox();
+        @include flexDirectionRow();
+        margin-top: -3px;
+        &:first-child {
+          :first-child {
+            border-left: 1px solid $base-border-color;
+          }
+        }
+        &:last-child {
+          border-top: 1px solid $base-border-color;
+        }
+        .item-area {
+          @include flex(1);
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .active-goods-area {
+      padding-top: 5px;
+      margin-top: -3px;
+      &.a828-goods-area {
+        background-color: $base-background-color;
+        .active-title {
+          margin: 0;
+          .title-content {
+            color: $base-text-color;
+            font-size: $font-size-xxl;
+            font-weight: $bolder-font-weight;
+          }
+
+        }
+        .add-goods-btn, .no-more {
+          color: $base-text-color;
+        }
+      }
+    }
+  }
+
+  &.a171001-main {
+    background-image: url("../../../app/assets/imgs/active/a171001/product-bg.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat repeat;
+    .active--top-wrapper {
+      width: 100%;
+      position: relative;
+      .active-banner {
+        width: 100%;
+      }
+      .active-coupon-area {
+        width: 100%;
+        position: absolute;
+        bottom: 3%;
+        height: 100px;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+      .active-coupons {
+        padding: 10px;
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexJustify(space-between);
+        .item-coupon {
+          width: 227px;
+          height: 74px;
+          background-color: $white;
+          font-size: $black;
+          text-align: center;
+          @include flexBox();
+          @include flexDirectionRow();
+          .item-left {
+            @include flex(1.8);
+            padding: 10px 0;
+            border-right: 1.5px dashed $base-color;
+            position: relative;
+            .coupon-content {
+              font-size: $font-size-large;
+              span {
+                font-size: 30px;
+                font-weight: $bolder-font-weight;
+              }
+            }
+            .coupon-rule {
+              font-size: $font-size-small;
+              width: 100%;
+              height: 15px;
+              line-height: 15px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              padding: 0 3px;
+            }
+            .coupon-flag {
+              position: absolute;
+              top: 0;
+              left: 0;
+              color: $white;
+              background-color: $black;
+              width: 35px;
+              height: 20px;
+              line-height: 20px;
+              border-bottom-right-radius: 5px;
+            }
+          }
+          .item-right {
+            @include flex(1);
+            padding: 10px 0;
+            .coupon-title {
+              font-size: $font-size-small;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              padding: 0 5px;
+              height: 15px;
+            }
+            .coupon-btn {
+              width: 80%;
+              height: 25px;
+              line-height: 25px;
+              background-color: #e32423;
+              color: $white;
+              font-weight: $bold-font-weight;
+              border-radius: 5px;
+              margin: 10px auto;
+            }
+          }
+        }
+      }
+    }
+    .goods-wrapper {
+      width: 100%;
+      .goods-iphone {
+        width: 100%;
+        .iphone-title {
+          width: 100%;
+          img {
+            width: 100%;
+          }
+        }
+        .item-iphone {
+          width: 100%;
+          margin: 15px 0;
+          img {
+            width: 100%;
+          }
+        }
+        .more-active-area {
+          width: 100%;
+          padding: 10px;
+          @include flexBox();
+          @include flexDirectionRow();
+          .more-left {
+            @include flex(1);
+            margin-right: 10px;
+            img {
+              width: 100%;
+            }
+          }
+          .more-right {
+            @include flex(1);
+            @include flexBox();
+            @include flexDirectionColumn();
+            .right-item {
+              @include flex(1);
+              height: 120px;
+              img {
+                width: 100%;
+              }
+              &:first-child {
+                margin-bottom: 10px;
+              }
+            }
+
+          }
+        }
+
+      }
+
+    }
+    .active-goods-areas {
+      width: 100%;
+      .goods-area-title {
+        width: 100%;
+        img {
+          width: 100%;
+        }
+      }
+      .item-goods-area {
+        width: 100%;
+        .item-area-title {
+          width: 100%;
+          height: 40px;
+          text-align: center;
+          margin-top: 10px;
+          img {
+            width: 100%;
+          }
+        }
+      }
+      .item-goods-wrappers {
+        width: 100%;
+        .item-goods-wrapper {
+          @include flexBox();
+          @include flexDirectionRow();
+          padding: 0 10px;
+          .item-product {
+            @include flex(1);
+            margin-top: 0;
+            &:first-child {
+              margin-right: 10px;
+            }
+            .product-img {
+              width: 100%;
+              img {
+                width: 100%;
+                border: 10px solid #bea371;
+              }
+            }
+            .product-name {
+              width: 100%;
+              height: 30px;
+              line-height: 15px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-size: $font-size-base;
+              margin: 8px 0;
+            }
+            .product-price {
+              width: 100%;
+              margin: 10px auto;
+              @include flexBox();
+              @include flexDirectionRow();
+              .product-basePrice {
+                color: #e32423;
+                span {
+                  font-size: $font-size-xl;
+                }
+              }
+              .product-marketPrice {
+                color: $base-text-color2;
+                line-height: 23px;
+                margin-left: 10px;
+                text-decoration: line-through;
+              }
+              .product-btn {
+                @include flex(1);
+                line-height: 25px;
+                text-align: right;
+                span {
+                  padding: 5px 10px;
+                  background-color: #e32423;
+                  color: $white;
+                  font-weight: $bold-font-weight;
+                }
+              }
+            }
+          }
+        }
+      }
+
+    }
+    .active-goods-area {
+      &.a171001 {
+        .active-title-list {
+          .title-wrapper {
+            .item-title {
+              .icon-address-isActive {
+                &.active {
+                  color: #bea371;
+
+                }
+              }
+            }
+          }
+        }
+        .active-goods {
+          margin-top: 10px;
+          .goods-rows {
+            .item-row {
+              .item-goods {
+                .good-price {
+                  .goods-basePrice {
+                    color: #e32423;
+                    text-align: left;
+                    font-weight: 500;
+                    span {
+                      font-size: 20px;
+                    }
+                  }
+                  .goods-marketPrice {
+                    margin-left: 10px;
+                    padding: 5px;
+                  }
+                  .goods-discount-info {
+                    @include flex(1);
+                    text-align: right;
+                    font-size: $font-size-base;
+                    span {
+                      padding: 3px 8px;
+                      background: #e32423;
+                      color: $white;
+                      font-weight: $bold-font-weight;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+        .add-goods-btn {
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
+.coupon-hint {
+  &.coupon {
+    position: fixed;
+    top: 40%;
+    right: 0;
+    z-index: 200;
+  }
+}

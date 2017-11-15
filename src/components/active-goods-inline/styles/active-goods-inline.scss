@@ -1,0 +1,212 @@
+.active-goods-inline-area {
+  width: 100%;
+  margin-top: 5px;
+  min-height: 100%;
+  .active-title-list {
+    width: 100%;
+    background-color: white;
+    overflow: auto;
+    box-shadow: 0 2px 5px #8a8a8a;
+    .title-wrapper {
+      height: 40px;
+      line-height: 40px;
+      @include flexBox();
+      @include flexDirectionRow();
+      .item-title {
+        @include flex(1);
+        text-align: center;
+        font-size: $font-size-large;
+        .icon-address-isActive {
+          font-size: $font-size-large;
+          &.active {
+            color: $base-color;
+          }
+        }
+      }
+    }
+  }
+  .active-title {
+    width: 100%;
+    position: relative;
+    height: 40px;
+    text-align: center;
+    margin: 15px 0;
+    .title-img {
+      width: 200px;
+      margin-top: 17px;
+      &.goods-title {
+        margin-top: 7px;
+      }
+    }
+    .title-content {
+      position: absolute;
+      color: $white;
+      width: 100%;
+      text-align: center;
+      top: 0;
+      height: 40px;
+      line-height: 40px;
+      font-size: 22px;
+
+    }
+  }
+  .active-goods {
+    width: 100%;
+    .item-row {
+      width: 100%;
+      margin-bottom: 10px;
+      @include flexBox();
+      @include flexDirectionRow();
+      @include flexJustify(space-between);
+      .item-goods {
+        @include flex(1);
+        background-color: $white;
+        padding-bottom: 10px;
+        &:first-child {
+          margin-right: 5px;
+        }
+        &:last-child {
+          margin-left: 5px;
+        }
+        .goods-img {
+          width: 100%;
+          img {
+            width: 100%;
+            border-bottom: 1px solid $base-border-color;
+          }
+        }
+        .goods-name {
+          width: 100%;
+          font-size: $font-size-xl;
+          height: 30px;
+          line-height: 30px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          margin-bottom: 5px;
+          padding: 0 5px;
+        }
+        .goods-marketPrice {
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          text-decoration: line-through;
+          padding: 0 5px;
+        }
+        .good-price {
+          width: 100%;
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          padding: 0 5px;
+          @include flexBox();
+          @include flexDirectionRow();
+          line-height: 25px;
+          height: 25px;
+          .goods-base-price {
+            @include flex(1);
+            color: red;
+            text-align: left;
+            font-weight: 500;
+            span {
+              font-size: 20px;
+            }
+          }
+          .goods-discount-info {
+            text-align: right;
+            line-height: 30px;
+            font-size: $font-size-small;
+          }
+        }
+      }
+    }
+  }
+
+  .add-goods-btn {
+    font-size: $font-size-xl;
+    color: $white;
+    width: 100%;
+    height: $nav-height;
+    line-height: $nav-height;
+    text-align: center;
+    text-decoration: underline;
+  }
+  .no-more {
+    font-size: $font-size-xl;
+    color: $white;
+    width: 100%;
+    height: $nav-height;
+    line-height: $nav-height;
+    text-align: center;
+  }
+
+  .active-stage {
+    width: 100%;
+    padding: 5px;
+    position: relative;
+    .active-items {
+      width: 100%;
+      padding: 2px 5px;
+      margin-bottom: 5px;
+      background-color: $white;
+      .item-product {
+        width: 100%;
+        border: 1px solid $base-border-color;
+        padding: 5px 2px;
+        @include flexBox();
+        @include flexDirectionRow();
+        @include flexAlign(center);
+        &.end {
+          @include flexDirectionRow($reverse: end);
+        }
+        .product-desc {
+          @include flex(1.5);
+          padding: 0 3px;
+          .item-title {
+            width: 100%;
+            font-size: $font-size-large;
+            font-weight: $bolder-font-weight;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 36px;
+            line-height: 18px;
+          }
+          .item-price {
+            font-size: $font-size-base;
+            color: $base-text-color2;
+            margin: 10px 0 5px;
+            .price-amount {
+              color: $base-color;
+              height: 25px;
+              line-height: 25px;
+              span {
+                margin-right: 5px;
+                font-size: $font-size-xxxl;
+              }
+            }
+          }
+          .item-btn {
+            height: 30px;
+            width: 110px;
+            background-color: $base-color;
+            text-align: center;
+            line-height: 30px;
+            color: $white;
+            font-size: $font-size-xl;
+            font-weight: $bold-font-weight;
+            box-shadow: 2px 2px 5px #888888;
+          }
+        }
+      }
+      .product-img {
+        @include flex(1);
+        padding-left: 5%;
+        text-align: center;
+        img {
+          width: 90%;
+          box-shadow: 1px 1px 2px $brand-disabled;
+          &.end {
+            box-shadow: -1px 1px 2px $brand-disabled;
+          }
+        }
+      }
+    }
+  }
+}

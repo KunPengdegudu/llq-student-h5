@@ -1,0 +1,171 @@
+<div class="works-resume" data-ng-cloak>
+    <ul class="setting-table resume-table">
+        <li class="resume-table-cell">
+            <div class="resume-table-left">
+                <div class="head-img" ng-click="openPhotoDialog('headImg',porsonInfo.headImg)">
+                    <img src="../../../app/assets/imgs/works_nav/girl_head.png"
+                         data-ng-if="data.sex==0 && !porsonInfo.headImg"
+                         style="width: 100%;">
+                    <img src="../../../app/assets/imgs/works_nav/boy_head.png"
+                         data-ng-if="data.sex==1 && !porsonInfo.headImg"
+                         style="width: 100%;">
+                    <img data-ng-src={{porsonInfo.headImg}} style="width: 100%;" ng-if="porsonInfo.headImg">
+                </div>
+            </div>
+            <div class="resume-table-right">
+                <div class="resume-name">
+                    <span data-ng-bind="data.name"></span>
+                    <span class="iconfont icon-boy m-icon" data-ng-if="data.sex==1"></span>
+                    <span class="iconfont icon-girl w-icon" data-ng-if="data.sex==0"></span>
+                </div>
+                <div class="resume-info">
+                    <div class="resume-info-content">
+                        <span class="iconfont icon-seckill resume-icon"></span>
+                        <span data-ng-bind="data.birthday"></span>
+                    </div>
+                    <div class="resume-info-content">
+                        <span class="iconfont icon-education resume-icon"></span>
+                        <span data-ng-bind="data.eduInfo.schoolInfo.fullSchoolName"></span>
+                    </div>
+                </div>
+                <div class="resume-info">
+                    <div class="resume-info-content">
+                        <span class="iconfont icon-setting-phone resume-icon"></span>
+                        <span data-ng-bind="data.phone"></span>
+                    </div>
+                    <div class="resume-info-content">
+                        <span class="iconfont icon-emil resume-icon"></span>
+                        <span data-ng-bind="data.email"></span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <ul class="resume-content-table">
+        <li class="resume-content-sell" data-ng-click="resumeInfo.openDialog('work_ex')">
+            <div class="resume-content-sell-title">工作经历</div>
+            <div class="resume-content-sell-add" data-ng-if="personResume.work_ex.content | isEmpty">+
+            </div>
+            <div class="resume-content-sell-substance" data-ng-bind="personResume.work_ex.content"
+                 data-ng-if="personResume.work_ex.content | isNotEmpty"></div>
+        </li>
+        <li class="resume-content-sell" data-ng-click="resumeInfo.openDialog('edu_bak')">
+            <div class="resume-content-sell-title">校内经历</div>
+            <div class="resume-content-sell-add" data-ng-if="personResume.edu_bak.content | isEmpty">+
+            </div>
+            <div class="resume-content-sell-substance" data-ng-bind="personResume.edu_bak.content"
+                 data-ng-if="personResume.edu_bak.content | isNotEmpty"></div>
+        </li>
+        <li class="resume-content-sell" data-ng-click="resumeInfo.openDialog('skill')">
+            <div class="resume-content-sell-title">证书技能</div>
+            <div class="resume-content-sell-add" data-ng-if="personResume.skill.content | isEmpty">+
+            </div>
+            <div class="resume-content-sell-substance" data-ng-bind="personResume.skill.content"
+                 data-ng-if="personResume.skill.content | isNotEmpty"></div>
+        </li>
+        <li class="resume-content-sell" data-ng-click="resumeInfo.openDialog('self_intro')">
+            <div class="resume-content-sell-title">自我评价</div>
+            <div class="resume-content-sell-add" data-ng-if="personResume.self_intro.content | isEmpty">+
+            </div>
+            <div class="resume-content-sell-substance" data-ng-bind="personResume.self_intro.content"
+                 data-ng-if="personResume.self_intro.content | isNotEmpty"></div>
+        </li>
+        <li class="resume-content-sell">
+            <div class="resume-content-sell-title">个人风采</div>
+            <ul class="resume-content-person">
+                <li class="resume-person-img" ng-click="openPhotoDialog('0',personPhotoItems[0])">
+                    <div class="resume-person-img-add" data-ng-if="!personPhoto[0]">+</div>
+                    <img id="info_photo_0" data-ng-if="personPhoto[0]"
+                         data-ng-src="{{personPhotoItems[0].compressUrl || personPhotoItems[0].url}}"
+                         class="resume-person-photo-img" width="100%" height="100%"/>
+                </li>
+                <li class="resume-person-img" ng-click="openPhotoDialog('1',personPhotoItems[1])">
+                    <div class="resume-person-img-add" data-ng-if="!personPhoto[1]">+</div>
+                    <img id="info_photo_1" data-ng-if="personPhoto[1]"
+                         data-ng-src="{{personPhotoItems[1].compressUrl || personPhotoItems[1].url}}"
+                         class="resume-person-photo-img" width="100%" height="100%"/>
+
+                </li>
+                <li class="resume-person-img" ng-click="openPhotoDialog('2',personPhotoItems[2])">
+                    <div class="resume-person-img-add" data-ng-if="!personPhoto[2]">+</div>
+                    <img id="info_photo_2" data-ng-if="personPhoto[2]"
+                         data-ng-src="{{personPhotoItems[2].compressUrl || personPhotoItems[2].url}}"
+                         class="resume-person-photo-img" width="100%" height="100%"/>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+<div class="dialog-bottom-btn-wrapper">
+    <button class="nav-hint single-row submit-btn"
+            data-ng-click="confirm()">
+        保存
+    </button>
+</div>
+
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="resumeInfo.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="resumeInfo.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span data-ng-bind="resumeInfo.itemTitle"></span>
+            </div>
+        </div>
+
+        <div class="ui-header-bar-right-icon">
+            <div class="iconfont header-bar-icon icon-info" style="font-weight: 700"
+                 ng-click="resumeInfo.updateResume()"></div>
+        </div>
+    </div>
+
+    <div class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <ul>
+            <li class="resume-text">
+                <textarea cols="40" rows="40" class="textarea" maxlength="500" data-ng-model="resumeInfo.resume.content"
+                          placeholder="请输入..."></textarea>
+
+                <div class="textarea_number">
+                    <span>{{resumeInfo.resume.content.length || 0 }}</span>
+                    /
+                    <span>500</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!--上传相片-->
+<photo-upload on-success-fn="onPhotoUploadSuccessFn" get-url-fn="getPhotoUploadUrl"></photo-upload>
+
+<!--替换图片-->
+<div ui-dialog class="dialog-fullscreen resume-photo-dialog" overlay="true"
+     close-by-overlay="true" is-visible="photoView.isVisible"
+     before-hide="photoView.dialogBeforeHide();" z-index="555">
+    <div class="ui-header-bar">
+
+        <div class="ui-header-bar-left-icon">
+            <span class="iconfont header-bar-icon icon-back"
+                  ng-click="photoView.dialogClose()"></span>
+            <span class="resume-photo-number">{{ idxNo }}/3</span>
+        </div>
+    </div>
+
+    <div class="resume-photo-change" style="width: 100%;">
+        <img data-ng-src="{{item.compressUrl || item.url}}"
+             class="resume-person-photo-img" width="100%" height="100%"/>
+    </div>
+
+
+    <button class="nav-hint single-row submit-btn" ng-click="openPhotoDialogRest(idx,item)">
+        更换
+    </button>
+
+
+</div>

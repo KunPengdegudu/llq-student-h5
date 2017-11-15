@@ -1,0 +1,19 @@
+{
+
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "StuiYAuM",
+  "data":
+  {
+    "id": 1,
+    "productId": 1,
+    "description": "苹果手机XXX",
+    "terminalType": "web",
+    "createTime": 1436948737000,
+    "detail": "&lt;html&gt;testApple&lt;/html&gt;",
+    "specParam": "&lt;html&gt;testApple&lt;/html&gt;"
+  },
+  "fieldErrMsg": null,
+  "login": false
+
+}

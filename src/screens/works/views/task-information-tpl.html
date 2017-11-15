@@ -1,0 +1,162 @@
+<div class="work-info-content work information-goods-container">
+    <div class="goods-list company-goods-list">
+        <div class="goods-details">
+
+            <div class="goods-brief">
+                <div class="goods-text-large">
+                    <span data-ng-bind="information.promotionTaskDTO.title"></span>
+                </div>
+                <div class="goods-text-large goods-text-highlight task-margin-top">
+                    <span data-ng-bind="information.promotionTaskDTO.price"></span>
+                    <span>元</span>
+                </div>
+                <div class="goods-subtitle">
+                    <div class="goods-text-gray half-goods">
+                        <span>截止时间:</span>
+                        <span data-ng-bind="information.promotionTaskDTO.deadline.substr(0,10)"></span>
+                    </div>
+                    <div class="goods-text-gray half-goods">
+                        <span>审核:</span>
+                        <span ng-if="!information.promotionTaskDTO.auditTime">- -</span>
+                        <span>{{information.promotionTaskDTO.auditTime}}小时</span>
+                    </div>
+
+                </div>
+                <div class="goods-subtitle">
+                    <div class="goods-text-gray half-goods">
+                        <span>重复执行:</span>
+                        <span>{{information.promotionTaskDTO.operateTimes}}</span>
+                    </div>
+                    <div class="goods-text-gray half-goods">
+                        <span>剩余:</span>
+                        <span>{{information.promotionTaskDTO.remainNum}}次</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="setting-table-cell">
+        <div class="second-column">
+            <div class="goods-top-bar">任务说明</div>
+        </div>
+    </div>
+    <div class="goods-list company-goods-list">
+        <div class="goods-details">
+            <div ng-repeat="item in information.promotionTaskDesc">
+                <p class="title" data-ng-if="item.title">{{item.title}}:</p>
+
+                <p ng-bind-html="item.content | toTrusted"></p>
+            </div>
+        </div>
+    </div>
+    <div class="setting-table-cell">
+        <div class="second-column">
+            <div class="goods-top-bar">实例图片</div>
+        </div>
+        <ul class="taskInformation-showImg-container">
+
+            <li ng-repeat="item in information.taskPicAtter.promotionTaskPicAttrs">
+                <a data-ng-click="picPreShow(information.taskPicAtter.promotionTaskPicAttrs,$index)">
+                    <img src="{{item.content}}">
+                </a>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="taskPreview.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="taskPreview.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>过程预览</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content pic-show-content">
+        <div id="productSlides" class="carousel-page task-carousel">
+
+            <ul rn-carousel rn-carousel-index="carouselIndex" rn-carousel-buffered class="carousel2"
+                data-ng-style="item.styles"
+                style="overflow-y: auto">
+                <li ng-repeat="slide in slides track by $index">
+                    <img src="{{slide}}" class="pic-middle">
+                </li>
+            </ul>
+            <div class="carousel-indicator-wrapper" rn-carousel-indicators
+                 ng-if="slides.length > 1" slides="slides"
+                 rn-carousel-index="carouselIndex">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--图片放大-->
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="picPre.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="picPre.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>图片预览</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content pic-show-content">
+        <div class="carousel-page task-carousel">
+
+            <ul rn-carousel rn-carousel-index="picCarouselIndex" rn-carousel-buffered class="carousel2"
+                data-ng-style="item.styles"
+                style="overflow-y: auto">
+                <li ng-repeat="item in picPre.item track by $index">
+                    <a ng-if="item.flag=='qr_code'" ng-click="recognitionImg(item)">
+                        <img src="{{item.content}}" class="pic-middle">
+                    </a>
+
+                    <a ng-if="!item.flag || item.flag!='qr_code'" data-ng-click="picPre.closeDialog()">
+                        <img src="{{item.content}}" class="pic-middle">
+                    </a>
+                </li>
+            </ul>
+            <div class="carousel-indicator-wrapper" rn-carousel-indicators
+                 ng-if="picPre.item.length > 1" slides="picPre.item"
+                 rn-carousel-index="picCarouselIndex">
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="taskInformation-btn-half">
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="submit-btn" ng-click="openPreview()">
+            预览
+        </button>
+        <button class="submit-btn" ng-click="openApply()"
+                ng-if="information.promotionUserTask.status!='processing' && information.promotionUserTask.status!='auditing' && information.promotionTaskDTO.status!='off'">
+            立即申请
+        </button>
+        <button class="submit-btn" ng-click="goOnApply()"
+                ng-if="information.promotionUserTask.status=='processing'">
+            继续任务{{remainderText}}
+        </button>
+        <button class="submit-btn" ng-disabled="true"
+                ng-if="information.promotionUserTask.status=='auditing'">
+            审核中
+        </button>
+    </div>
+</div>

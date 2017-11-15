@@ -1,0 +1,316 @@
+.product-detail {
+  width: 100%;
+  position: absolute;
+  background-color: $base-background-color;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  top: $header-height;
+  bottom: $nav-height;
+  left: 0;
+  right: 0;
+  .detail-desc {
+    width: 100%;
+    background-color: $white;
+    padding: 10px;
+    margin-top: 8px;
+    border-bottom: 1px solid $base-border-color;
+    @include flexBox();
+    @include flexDirectionRow();
+    .product-img {
+      @include flex(1);
+      img {
+        width: 100%;
+      }
+    }
+    .product-content {
+      @include flex(2.5);
+      .content-title {
+        width: 100%;
+        font-size: $font-size-large;
+        color: $base-text-color;
+      }
+      .content-desc {
+        width: 100%;
+        padding-left: 5px;
+        font-size: $font-size-base;
+        color: $base-text-color2;
+      }
+    }
+  }
+
+  .detail-sku {
+    width: 100%;
+    background-color: $white;
+    padding: 0 10px;
+    .sku-title {
+      height: 35px;
+      line-height: 35px;
+      font-size: $font-size-large;
+      color: $base-text-color2;
+    }
+    .sku-list {
+      width: 100%;
+      @include flexBox();
+      @include flexDirectionRow();
+      @include flexWrap(wrap);
+      .sku-cell {
+        width: 30%;
+        height: 50px;;
+        border-radius: 5px;
+        text-align: center;
+        padding: 5px;
+        margin: 0 1.5% 10px;
+        .sku-name {
+          font-size: $font-size-large;
+        }
+        .sku-price {
+          font-size: $font-size-base;
+        }
+        &.select-item {
+          border: 2px solid $base-color;
+          color: $base-color;
+        }
+        &.none-select {
+          border: 2px solid $base-border-color;
+          color: $base-text-color2;
+        }
+      }
+    }
+  }
+}
+
+article.recharge-article {
+  bottom: 0;
+  z-index: 200;
+  .entrance.recharge {
+    margin-top: 0;
+  }
+  .purchase-table {
+    width: 100%;
+    .purchase-cell {
+      width: 100%;
+      .purchase-type {
+        width: 100%;
+        height: 30px;
+        line-height: 40px;
+        padding-left: 15px;
+        font-size: $font-size-large;
+        color: $base-text-color;
+      }
+    }
+  }
+  &.widget-article {
+    top: 80px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .gameSearch-table {
+    width: 100%;
+    background-color: $white;
+    .gameSearch-table-cell {
+      width: 100%;
+      height: auto;
+      padding: 5px 10px;
+      border-bottom: 1px solid $base-border-color;
+      .search-wrapper {
+        width: 100%;
+        @include flexBox();
+        @include flexDirectionRow();
+        .wrapper-left {
+          width: 60px;
+          img {
+            width: 60px;
+            height: 60px;
+          }
+        }
+        .wrapper-right {
+          @include flex(1);
+          @include flexBox();
+          @include flexDirectionColumn();
+          padding-left: 10px;
+          .wrapper-name {
+            font-size: $font-size-large;
+            color: $base-text-color;
+          }
+          .wrapper-price {
+            @include flexBox();
+            @include flexDirectionRow();
+            color: $base-text-color2;
+            font-size: $font-size-base;
+            width: 100%;
+            height: 25px;
+            line-height: 25px;
+            .wrapper-proSkuPrice {
+              @include flex(1);
+              text-align: left;
+              span {
+                color: $base-color;
+              }
+            }
+            .wrapper-marketPrice {
+              @include flex(1);
+              text-align: right;
+              span {
+                text-decoration: inherit;
+              }
+            }
+          }
+          .wrapper-default {
+            width: 100%;
+            font-size: $font-size-base;
+            color: $base-text-color2;
+            .amount {
+              color: $base-color;
+            }
+            .period {
+              font-size: $font-size-small;
+            }
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.rechargeGame-main {
+  width: 100%;
+  margin-top: $header-height;
+  .widget-teb {
+    width: 100%;
+    @include flexBox();
+    @include flexDirectionRow();
+    padding: 0 5px;
+    background-color: $white;
+    .item-teb {
+      @include flex(1);
+      text-align: center;
+      font-size: $font-size-large;
+      height: 40px;
+      line-height: 40px;
+      &.selected {
+        color: $base-color;
+        border-bottom: 2px solid $base-color;
+      }
+      &.nonSelected {
+        color: $base-text-color;
+        border-bottom: 2px solid $base-border-color;
+      }
+    }
+  }
+  .widget-hot {
+    width: 100%;
+    .hot-cell {
+      width: 100%;
+      padding: 5px 10px;
+      height: 60px;
+      @include flexBox();
+      @include flexDirectionRow();
+      border-bottom: 1px solid $base-border-color;
+      background-color: $white;
+      .hot-img {
+        width: 50px;
+        img {
+          width: 100%;
+        }
+      }
+      .hot-content {
+        @include flex(1);
+        padding: 5px 0 5px 10px;
+        @include flexDirectionColumn();
+        .hot-name {
+          font-size: $font-size-large;
+          color: $base-text-color;
+          height: 25px;
+          line-height: 25px;
+        }
+        .hot-detail {
+          height: 15px;
+          line-height: 15px;
+          font-size: $font-size-base;
+          color: $base-text-color2;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+  }
+}
+
+.rechargeMobile-main {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  z-index: 200;
+  background-color: $base-background-color;
+  left: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .setting-table {
+    .second-column {
+      padding-left: 20px;
+      .setting-left {
+        &.title {
+          color: $base-text-color2;
+        }
+      }
+    }
+  }
+  .mobile-tebs {
+    width: 100%;
+    background-color: $white;
+    margin-top: 8px;
+    .item-teb {
+      width: 100%;
+      padding: 10px 0;
+      border-bottom: 1px solid $base-border-color;
+      @include flexBox();
+      @include flexDirectionRow();
+      .teb-name {
+        @include flex(1);
+        color: $base-text-color;
+        text-align: center;
+        .main-title {
+          font-size: $font-size-xl;
+        }
+        .sub-title {
+          font-size: $font-size-base;
+        }
+        &:first-child {
+          border-right: 1px solid $base-border-color;
+        }
+        &.active {
+          color: $base-color;
+        }
+      }
+    }
+  }
+  .mobile-content {
+    width: 100%;
+    background-color: $white;
+    @include flexBox();
+    @include flexDirectionRow();
+    @include flexWrap(wrap);
+    .item-content {
+      width: 30%;
+      margin: 10px 1.6%;
+      border: 1px solid $base-border-color;
+      border-radius: 3px;
+      color: $base-text-color2;
+      text-align: center;
+      padding: 6px 0;
+      .sku-name {
+        font-size: $font-size-large;
+      }
+      .sell-price {
+        font-size: $font-size-base;
+      }
+      &.active {
+        color: $base-color;
+        border: 1px solid $base-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,106 @@
+<div class="work-info-content information-company-container">
+    <ol class="goods-list company-goods-list" data-ng-cloak>
+        <li class="goods-details">
+
+            <div class="goods-brief">
+                <img class="works-goods-img-thumbnail" data-ng-src="{{corpInformation.logoUrl.url}}"
+                     data-ng-if="corpInformation.logoUrl.url">
+                <img class="works-goods-img-thumbnail" src="../../../app/assets/imgs/works_nav/company_logo.png"
+                     data-ng-if="!corpInformation.logoUrl.url">
+
+                <div class="goods-desc">
+                    <div class="goods-text-large">
+                        <span data-ng-bind="corpInformation.name"></span>
+
+                    </div>
+                    <div class="goods-subtitle">
+                        <div class="">
+                            <!--<span>状态：</span>-->
+                            <span class='goods-text-brand' data-ng-bind="corpInformation.certList[0].typeDesc"></span>
+                            <span ng-if="!corpInformation.certList[0].typeDesc">未认证</span>
+                        </div>
+
+                    </div>
+                    <div class="goods-subtitle">
+                        <div class="">
+                            <span class='goods-text-gray'>公司性质：</span>
+                            <span data-ng-bind="corpInformation.typeName | toTrusted" ng-if="corpInformation.typeName"></span>
+                            <span ng-if="!corpInformation.typeName">— —</span>
+                        </div>
+
+                    </div>
+
+                    <div class="goods-subtitle">
+                        <div class="">
+                            <span class='goods-text-gray'>公司地址：</span>
+                            <span data-ng-bind="corpInformation.address | toTrusted"></span>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </li>
+    </ol>
+
+    <div class="goods-top-bar">TA其他兼职</div>
+
+
+        <ol class="goods-list" data-ng-cloak>
+            <li class="goods-item" data-ng-repeat="item in items" data-ng-if="isSelf(item.id)">
+                <!--<a ng-click="getMoreInformation(item.id,item.termType,item.corpId)">-->
+                <a ng-click="changeWorkInformation(item)">
+                    <div class="goods-brief">
+                        <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.smallImage}}"
+                             data-ng-if="item.logo.smallImage">
+                        <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.compressUrl}}"
+                             data-ng-if="item.logo.compressUrl">
+                        <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.url}}"
+                             data-ng-if="item.logo.url&&!item.logo.compressUrl">
+                        <img class="works-goods-img-thumbnail" src="../../../app/assets/imgs/works_nav/company_logo.png"
+                             data-ng-if="!item.logo">
+
+
+                        <div class="goods-desc">
+                            <div class="goods-text-large" data-ng-bind="item.title"></div>
+
+                            <div class="goods-subtitle">
+                                <div class="time-text-left" data-ng-if="item.beginTime">
+                                    <!--时间-->
+                                    <span class="goods-text-gray icon-seckill iconfont"></span>
+                                    <span class="goods-text-gray" data-ng-bind="item.beginTime.substr(5,5)"></span>
+                                    <span class="goods-text-gray">~</span>
+                                    <span data-ng-bind="item.endTime.substr(5,5)" class="goods-text-gray"></span>
+                                </div>
+                                <div class="time-text-left text-overflow-ellipsis" data-ng-if="!item.beginTime">
+                                    <!--时间-->
+                                    <span class="goods-text-gray icon-seckill iconfont"></span>
+                                    <span class="goods-text-gray" data-ng-bind="item.jobTimeStandard | toTrusted"></span>
+                                </div>
+                                <div class="address-text-right goods-container-left goods-text-gray">
+                                    <span class="iconfont icon-position"></span>
+                                    <span data-ng-bind="item.areaName"></span>
+                                </div>
+
+                            </div>
+
+                            <div class="goods-subtitle">
+                                <div class="goods-text-right goods-container-right">
+                                    <!--<span>薪资</span>-->
+                                    <span class="goods-text-warn" data-ng-bind="item.oncePayment"></span>
+                                    <span ng-if="item.salaryTimeUnitDesc!='其他'">{{item.salaryTimeUnitDesc}}</span>
+                                    <span ng-if="!item.salaryTimeUnitDesc|| item.salaryTimeUnitDesc=='其他'">元</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li class="goods-items goods-none" ng-if="items.length==1">暂无,敬请期待！</li>
+            </li>
+        </ol>
+
+
+
+</div>

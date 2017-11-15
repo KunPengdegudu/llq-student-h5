@@ -1,0 +1,21 @@
+<div class="friendslist-container">
+    <article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" threshold="200"
+             trigger-on-event="reload" data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();"
+             data-ng-if="!isShow">
+        <div class="listTitle top-list-tittle">好友列表</div>
+        <ul class="friends-table">
+            <li class="friends-table-cell" data-ng-repeat="item in items">
+                <img data-ng-src="{{item.headSrc}}" class="icon-head"/>
+                <div class="name" data-ng-bind="item.showName"></div>
+                <div class="dateView">
+                    <span data-ng-bind="item.createTime | dateFormat:'yyyy-MM-dd'"></span>注册
+                </div>
+            </li>
+        </ul>
+    </article>
+    <ul class="friends-table" data-ng-if="isShow">
+        <li class="friends-table-cell no-border" data-ng-if="isShow">
+            暂无好友!
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,20 @@
+<img class="goods-img-thumbnail" data-ng-src="{{product.productPic | filterImg : '@!200x200'}}" alt="">
+
+<div class="goods-desc">
+    <div class="goods-title" data-ng-bind="product.title"></div>
+    <div class="goods-subtitle">
+        <div class="goods-text-all">
+            <span class="goods-text-gray" data-ng-bind="product.productSkuName"></span>
+        </div>
+    </div>
+    <div class="goods-subtitle">
+        <div class="goods-text-left">
+            <span>单价：</span>
+            <span data-ng-bind="product.productPrice | moneyFixed"></span>
+        </div>
+        <div class="goods-text-right">
+            <span>数量：</span>
+            <span data-ng-bind="product.productCount"></span>
+        </div>
+    </div>
+</div>

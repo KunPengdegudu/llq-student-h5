@@ -1,0 +1,44 @@
+<div class="profile-main aging-main" style="bottom: 0;" data-ng-cloak>
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-text">
+            <span>圆梦贷款</span>
+        </div>
+    </div>
+
+    <div class="blanknote-main" data-ng-cloak>
+
+        <img class="blanknote-banner" data-ng-src="{{bannerSrc}}"/>
+
+        <div class="blanknote-money">
+            <div class="title">借款金额</div>
+            <div class="money-item-wrapper">
+                <div class="money-row">
+                    <div class="money-wrapper" data-ng-repeat="amount in blankNoteAmountList"
+                         data-ng-click="selectBlankNoteAmount(amount)">
+                        <div class="money-item" ng-class="{selected:isSelectAmount(amount)}">{{amount}}元</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="blanknote-aging" data-ng-click="getBlanknotExplain()">
+
+            <div class="title">圆梦贷款说明</div>
+
+            <i class="iconfont icon-right-arrow" data-ng-style="iconRightArrow"></i>
+
+        </div>
+
+        <sys-notice type="blank_note_explain" class="blanknote-help" ng-if="blanknoteType"></sys-notice>
+        <sys-notice type="blank_note_tip" class="blanknote-help"></sys-notice>
+        <div class="weixin-code"></div>
+    </div>
+
+
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn" ng-click="doApply()">
+            立即申请
+        </button>
+    </div>
+</div>
+<div style="width: 100%;height: 800px;background-color: red;"></div>

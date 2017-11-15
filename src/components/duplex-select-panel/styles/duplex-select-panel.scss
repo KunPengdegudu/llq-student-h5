@@ -1,0 +1,60 @@
+/**
+ * duplex select panel component style
+ * @create 2014/12/27
+ * @author zhaxi
+ * @update 2015/01/12
+ * @author zhaxi
+ */
+.select-panel {
+  width: 100%;
+  height: 50px;
+  background-color: #fff;
+  // @include clearfix();
+  div {
+    display: block;
+    height: 30px;
+    float: left;
+  }
+  .icon-right-arrow:before {
+    position: absolute;
+    left: 9px;
+  }
+  .selected-hint {
+    font-size: 16px;
+    line-height: 50px;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+  }
+  .left-select {
+    position: relative;
+    margin: 10px 6px 10px 24px;
+    height: 30px;
+    width: 30px;
+    line-height: 28px;
+    background-color: #fafafa;
+    border-radius: 50%;
+    border: 1px solid #d9d9d9;
+    // padding-left: 2px;
+    transform: rotate(180deg);
+    font-size: 10px;
+    &.icon-right-arrow:before {
+      top: 0;
+    }
+  }
+  .right-select {
+    position: relative;
+    margin: 10px 0 10px 6px;
+    height: 30px;
+    line-height: 28px;
+    width: 30px;
+    background-color: #fafafa;
+    border-radius: 50%;
+    border: 1px solid #d9d9d9;
+    // padding-left: 2px;
+    font-size: 10px;
+    &.icon-right-arrow:before {
+      top: 0;
+    }
+  }
+}

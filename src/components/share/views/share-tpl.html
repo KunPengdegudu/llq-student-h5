@@ -1,0 +1,16 @@
+<div ui-dialog class="share-dialog reverse" overlay="true" close-by-overlay="true" is-visible="shareObject.isVisible"
+     z-index="560">
+
+
+    <div class="share-wrapper">
+        <div class="share-item" data-ng-repeat="item in shareObject.items" data-ng-click="item.fn()">
+            <img class="share-item-img" data-ng-src="{{item.img}}">
+            <div class="share-item-text">{{item.text}}</div>
+        </div>
+    </div>
+
+    <button class="nav-hint single-row submit-btn" ng-click="shareObject.dialogClose()">
+        取消
+    </button>
+
+</div>

@@ -1,0 +1,129 @@
+<div class="active-center active-jd" data-ng-style="activeCenter" id="activeMain">
+    <div class="jd-banner">
+        <img src="../../../app/assets/imgs/active-center/jd/jd-banner.jpg" class="banner-img"/>
+        <img src="../../../app/assets/imgs/active-center/jd/active-hint.jpg" class="active-flag"/>
+    </div>
+    <div class="jd-hot-area1">
+        <div class="jd-hot-product-wrapper" data-ng-style="productWrapper">
+            <div class="item-product" data-ng-style="itemProductStyle"
+                 data-ng-repeat="item in hotProductList01 track by $index"
+                 data-ng-click="gotoProductDetail(item)">
+                <div class="product-img">
+                    <img data-ng-src="{{item.mainProImgUrl}}"/>
+                </div>
+                <div class="product-name" data-ng-bind="item.name"></div>
+                <div class="product-price">
+                    <div>¥<span class="price-amount" data-ng-bind="item.marketPrice"></span></div>
+                    <div>扒光价</div>
+                </div>
+                <div class="product-btn">
+                    <img src="../../../app/assets/imgs/active-center/jd/hot-goods-btn1.png"/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="active-enter" data-ng-click="gotoGoods()">
+        <img src="../../../app/assets/imgs/active-center/jd/active-enter.jpg"/>
+    </div>
+    <div class="jd-hot-area2">
+        <div class="item-product" data-ng-repeat="item in hotProductList02 track by $index"
+             data-ng-click="gotoProductDetail(item)">
+            <div class="product-img">
+                <img data-ng-src="{{item.mainProImgUrl}}"/>
+            </div>
+            <div class="product-desc">
+                <div class="product-name" data-ng-bind="item.name"></div>
+                <div class="product-btn">
+                    <div class="btn-content">加入购物车</div>
+                </div>
+                <div class="product-price">
+                    <div class="price-amount">
+                        ¥<span data-ng-bind="item.marketPrice"></span>
+                    </div>
+                    <div class="product-discount">
+                        <div>月供</div>
+                        <div>
+                            ¥
+                            <span data-ng-bind="item.defaultEveryAmount"></span>
+                            x
+                            <span data-ng-bind="item.defaultPeriod"></span>期
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="jd-active-enters">
+        <div class="enters-title">
+            <img src="../../../app/assets/imgs/active-center/jd/active-jd-title.png" class="title-img"/>
+            <div class="title-content">
+                <div class="main-title">生活场</div>
+                <div class="sub-title">一年只有一次 手慢无</div>
+            </div>
+        </div>
+        <div class="enters-wrapper">
+            <div class="enters-rows" data-ng-repeat="itemRows in activeEnters track by $index">
+                <div class="item-enter" data-ng-repeat="item in itemRows track by $index"
+                     data-ng-click="gotoTemplate(item.widgetCode,item.name)">
+                    <img data-ng-src="{{item.imageUrl}}"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="active-goods-area" id="goodsArea">
+        <div class="active-title-list" id="goodsTitles">
+            <div class="title-wrapper" data-ng-style="goodsAreaTitle">
+                <div class="item-title" data-ng-repeat="item in ActiveGoodsTitles track by $index"
+                     data-ng-click="selectGoodsNodeId(item)">
+                    <span class="iconfont icon-address-isActive" data-ng-class="item.isActive?'active':''"
+                          data-ng-if="item.isActive"></span>
+                    <span data-ng-bind="item.nodeName"></span>
+                </div>
+            </div>
+        </div>
+        <div class="active-title">
+            <img src="../../../app/assets/imgs/active-center/goods/goods-title.png" class="title-img goods-title">
+            <div class="title-content" data-ng-bind="selectedNode.nodeName">
+
+            </div>
+        </div>
+        <div class="active-goods" id="goodsContent">
+            <div class="goods-rows">
+                <div class="item-row" data-ng-repeat="itemRows in goodsList track by $index">
+                    <div class="item-goods" data-ng-repeat="item in itemRows track by $index"
+                         data-ng-click="gotoProductDetail(item)">
+                        <div class="goods-img">
+                            <img data-ng-src="{{item.mainProImgUrl | filterImg:'@!300x300'}}"/>
+                        </div>
+                        <div class="goods-name" data-ng-bind="item.name"></div>
+                        <div class="goods-marketPrice">
+                            ¥<span data-ng-bind="item.marketPrice"></span>
+                        </div>
+                        <div class="good-price">
+                            <div class="goods-base-price">
+                                ¥<span data-ng-bind="item.proSkuPrice"></span>
+                            </div>
+                            <div class="goods-discount-info">
+                                月供:¥<span data-ng-bind="item.defaultEveryAmount"></span>
+                                x
+                                <span data-ng-bind="item.defaultPeriod"></span>期
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="add-goods-btn" data-ng-click="getActiveGoods(selectedNode.nodeId, 'add')" data-ng-if="showBtn">
+            加载更多
+        </div>
+        <div class="no-more" data-ng-if="!showBtn">
+            没有更多了...
+        </div>
+    </div>
+</div>
+
+<div style="position: fixed;width: 40px;height: 40px;  z-index: 300;  bottom: 10%;  right: 0;"
+     data-ng-click="backToTop()">
+    <img src="../../../app/assets/imgs/active-center/main/active-back-top.png" style="width: 100%"/>
+</div>

@@ -1,0 +1,615 @@
+/*
+ * @owner : penglei, wangjianguang
+ * e-mail : lei.penglei@alibaba-inc.com
+ * create date : 2014/12/06
+ * decription : iconfonts defination
+ */
+
+@font-face {
+  font-family: "iconfont";
+  src: url('assets/iconfonts/iconfont.eot'); /* IE9*/
+  src: url('assets/iconfonts/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('assets/iconfonts/iconfont.woff') format('woff'), /* chrome、firefox */
+  url('assets/iconfonts/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('assets/iconfonts/iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 12px;
+  font-style: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/** 登录 **/
+.icon-logo:before {
+  content: "\e624";
+}
+
+.icon-show:before {
+  content: '\e607';
+}
+
+.icon-username:before {
+  content: "\e61c";
+}
+
+.icon-password:before {
+  content: "\e617";
+}
+
+.icon-clean:before {
+  content: "\e625";
+}
+
+/** arrow icon */
+.icon-right-arrow:before {
+  content: "\e606";
+}
+
+.icon-green-arrow:before {
+  content: "\e62e";
+}
+
+.icon-red-arrow:before {
+  content: "\e62f";
+}
+
+.icon-drop-arrow:before {
+  content: "\e630";
+}
+
+/** common icon */
+.icon-right:before {
+  content: "\e609";
+}
+
+.icon-search:before {
+  content: "\e61e";
+}
+
+.icon-left:before {
+  content: "\e608";
+}
+
+.icon-info:before {
+  content: "\e627";
+}
+
+.icon-bottom:before {
+  content: "\e630";
+}
+
+/** nav icon */
+.icon-enter:before {
+  content: "\e637";
+}
+
+.icon-seckill:before {
+  content: "\e614";
+}
+
+.icon-sale:before {
+  content: "\e637";
+}
+
+.icon-stage:before {
+  content: "\e60f";
+}
+
+.icon-help:before {
+  content: "\e641";
+}
+
+.icon-profile:before {
+  content: "\e622";
+}
+
+.icon-blanknote:before {
+  content: "\e64b";
+}
+
+.icon-earn:before {
+  content: "\e65e";
+}
+
+.active {
+  .icon-enter:before {
+    content: "\e635";
+  }
+  .icon-seckill:before {
+    content: "\e615";
+  }
+  .icon-sale:before {
+    content: "\e635";
+  }
+  .icon-stage:before {
+    content: "\e60d";
+  }
+  .icon-help:before {
+    content: "\e642";
+  }
+  .icon-profile:before {
+    content: "\e62b";
+  }
+  .icon-earn:before {
+    content: "\e65f";
+  }
+}
+
+/*分期购买*/
+.icon-buy-bus:before {
+  content: "\e60b";
+}
+
+/** 我的 **/
+.icon-my-order:before {
+  content: "\e616";
+}
+
+.icon-my-bill:before {
+  content: "\e619";
+}
+
+.icon-my-msg:before {
+  content: "\e602";
+}
+
+.icon-help2:before {
+  content: "\e620";
+}
+
+.icon-join-us:before {
+  content: "\e610";
+}
+
+.icon-auth:before {
+  content: "\e64a";
+}
+
+.icon-res:before {
+  content: "\e63c";
+}
+
+.icon-setting:before {
+  content: "\e613";
+}
+
+.icon-setting-phone:before {
+  content: "\e618";
+}
+
+.icon-feedback:before {
+  content: "\e652";
+}
+
+.icon-quota:before {
+  content: "\e656";
+}
+
+.icon-my-wallet:before {
+  content: "\e666";
+}
+
+.icon-help-us:before {
+  content: "\e60a";
+}
+
+.icon-help-buy:before {
+  content: "\e639";
+}
+
+.icon-help-phone:before {
+  content: "\e63a";
+}
+
+.icon-help-weixin:before {
+  content: "\e63b";
+}
+
+/**产品详情**/
+.icon-collection:before {
+  content: "\e612";
+}
+
+.icon-share:before {
+  content: "\e61a";
+}
+
+.icon-scan:before {
+  content: "\e646";
+}
+
+.icon-back:before {
+  content: "\e647";
+}
+
+.icon-msg:before {
+  content: "\e645";
+}
+
+/*订单详情*/
+.icon-address:before {
+  content: "\e600";
+}
+
+.icon-address-isActive:before {
+  content: "\e601";
+}
+
+/*账单*/
+.icon-unselected:before {
+  content: "\e63f";
+}
+
+.icon-selected:before {
+  content: "\e640";
+}
+
+/*注册*/
+.icon-checked:before {
+  content: "\e640";
+}
+
+.icon-my-photo:before {
+  content: "\e634";
+}
+
+/*消息*/
+.msg-icon:before {
+  content: "\e648";
+}
+
+.icon-dot:before {
+  content: "\e64e";
+}
+
+.icon-dot-blank:before {
+  content: "\e64d";
+}
+
+/*floor*/
+.icon-mobile:before {
+  content: "\e651";
+}
+
+.icon-asset:before {
+  content: "\e64f";
+}
+
+.icon-computer:before {
+  content: "\e650";
+}
+
+.icon-camera:before {
+  content: "\e667";
+}
+
+.icon-clothes:before {
+  content: "\e668";
+}
+
+.icon-general:before {
+  content: "\e669";
+}
+
+/*开始*/
+.icon-begin1:before {
+  content: "\e653";
+}
+
+.icon-begin2:before {
+  content: "\e654";
+}
+
+/*通讯录*/
+
+.icon-addressList:before {
+  content: "\e655";
+}
+
+/*关闭*/
+.icon-close:before {
+  content: "\e628";
+}
+
+/*警告*/
+.icon-warn:before {
+  content: '\e657';
+}
+
+/*提示*/
+.icon-prompt:before {
+  content: '\e658';
+}
+
+/*定位*/
+.icon-position:before {
+  content: '\e600';
+}
+
+.icon-company:before {
+  content: '\e604';
+}
+
+/*works*/
+
+/*性别*/
+.icon-girl:before {
+  content: '\e65c';
+}
+
+.icon-boy:before {
+  content: '\e65c';
+}
+
+/*学历*/
+.icon-education:before {
+  content: '\e659';
+}
+
+/*打卡*/
+.icon-sign:before {
+  content: '\e660';
+}
+
+/*二维码*/
+.icon-scan-code:before {
+  content: '\e661';
+}
+
+/*邮件*/
+.icon-emil:before {
+  content: '\e662';
+}
+
+/*兼职*/
+
+/*金额*/
+.icon-work-money:before {
+  content: '\e626';
+}
+
+/*钱包*/
+.icon-wallet-alipay:before {
+  content: '\e633';
+}
+
+.icon-wallet-bill:before {
+  content: '\e663';
+}
+
+.icon-wallet-card:before {
+  content: '\e664';
+}
+
+.icon-wallet-red:before {
+  content: "\e665";
+}
+
+/*删除*/
+.icon-delete:before {
+  content: '\e66c';
+}
+
+/*类目*/
+.icon-rouge:before {
+  content: '\e66a';
+}
+
+.icon-hat:before {
+  content: '\e66b';
+}
+
+/*户外*/
+.icon-outside:before {
+  content: '\e66d'
+}
+
+/*订单分类*/
+.icon-wait-pay:before {
+  content: '\e66e';
+}
+
+.icon-pay-success:before {
+  content: '\e671';
+}
+
+.icon-distribution-completed:before {
+  content: '\e670';
+}
+
+.icon-aging-ing:before {
+  content: '\e66f';
+}
+
+.icon-service:before {
+  content: '\e672';
+}
+
+.icon-better:before {
+  content: '\e673';
+}
+
+.icon-graduation:before {
+  content: '\e674';
+}
+
+.icon-todaySale:before {
+  content: '\e675';
+}
+
+.icon-active:before {
+  content: '\e679';
+}
+
+/*店铺*/
+.icon-shop:before {
+  content: '\e678';
+}
+
+/*优惠券*/
+.icon-shop-coupon:before {
+  content: '\e67d';
+}
+
+.icon-shop-activity:before {
+  content: '\e67e';
+}
+
+.icon-a1111-enter:before {
+  content: '\e682';
+}
+
+.icon-eye:before {
+  content: '\e676';
+}
+
+///圣诞图标/
+.icon-christmas-aging:before {
+  content: '\e686';
+}
+
+.icon-christmas-work:before {
+  content: '\e687';
+}
+
+.icon-christmas-main:before {
+  content: '\e688';
+}
+
+.icon-christmas-mine:before {
+  content: '\e689';
+}
+
+.icon-christmas-dream:before {
+  content: '\e68a';
+}
+
+//公告
+.icon-product-notice:before {
+  content: '\e68b';
+}
+
+//过年图标
+.icon-newYear-aging:before {
+  content: '\e68c';
+}
+
+.icon-newYear-work:before {
+  content: '\e68d';
+
+}
+
+.icon-newYear-main:before {
+  content: '\e68e';
+
+}
+
+.icon-newYear-mine:before {
+  content: '\e68f';
+
+}
+
+.icon-newYear-dream:before {
+  content: '\e690';
+
+}
+
+.icon-invit-myfriends:before {
+  content: '\e621';
+}
+
+//开学图标
+.icon-school-aging:before {
+  content: '\e691';
+}
+
+.icon-school-work:before {
+  content: '\e692';
+}
+
+.icon-school-main:before {
+  content: '\e693';
+}
+
+.icon-school-mine:before {
+  content: '\e694';
+}
+
+.icon-school-dream:before {
+  content: '\e695';
+}
+
+//取现
+.icon-rate:before {
+  content: '\e696';
+}
+
+.icon-arrival:before {
+  content: '\e697';
+}
+
+.icon-examine:before {
+  content: '\e698';
+}
+
+.icon-maxTime:before {
+  content: '\e699';
+}
+
+.icon-hint:before {
+  content: '\e67f';
+}
+
+.icon-weixin-share:before {
+  content: '\e69';
+}
+
+.icon-newGoods-active:before {
+  content: '\e69c';
+}
+
+.icon-seckill-active:before {
+  content: '\e69d';
+}
+
+.icon-ring-right:before {
+  content: '\e69e';
+}
+
+//拼团
+.icon-enter-active:before {
+  content: '\e6a2';
+}
+
+.icon-enter-before:before {
+  content: '\e6a0';
+}
+
+.icon-order-before:before {
+  content: '\e6a3';
+}
+
+.icon-order-active:before {
+  content: '\e6aa';
+}
+
+.icon-pt-people:before {
+  content: '\e6a4';
+}
+
+.icon-select-right:before {
+  content: '\e69f';
+}
+
+.icon-love:before {
+  content: '\e6a7';
+}
+
+.icon-reserve:before {
+  content: '\e6ab';
+}

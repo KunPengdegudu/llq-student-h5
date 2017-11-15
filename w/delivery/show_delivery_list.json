@@ -1,0 +1,92 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "vK8ptatc",
+  "data": {
+    "items": [
+      {
+        "id": 1,
+        "provinceCode": "110000",
+        "cityCode": "110100",
+        "areaCode": "1",
+        "address": "test3dfhdfgh测试一下 试试你 慢慢来",
+        "userId": 1,
+        "tag": "home",
+        "status": "normal",
+        "memo": "4",
+        "isDefault": 0,
+        "createTime": 1437714169000,
+        "updateTime": 1438503911000,
+        "consignee": "张云",
+        "consigneePhone": "13512345678"
+      },
+      {
+        "id": 2,
+        "provinceCode": "110000",
+        "cityCode": "110100",
+        "areaCode": "2",
+        "address": "浙江省杭州市余杭区小乡村接口连接阿里斯顿分理解阿萨德附近阿里斯顿分阿萨德风景；阿里斯顿飞机离开阿萨德发时代阿萨德发生的",
+        "userId": 1,
+        "tag": "family",
+        "status": "normal",
+        "memo": "2",
+        "isDefault": 0,
+        "createTime": 1437716180000,
+        "updateTime": 1438502469000,
+        "consignee": "张云",
+        "consigneePhone": "13512345678"
+      },
+      {
+        "id": 3,
+        "provinceCode": "330000",
+        "cityCode": "330100",
+        "areaCode": "2",
+        "address": "测试地址第二个",
+        "userId": 1,
+        "tag": "family",
+        "status": "normal",
+        "memo": "2",
+        "isDefault": 0,
+        "createTime": 1437717712000,
+        "updateTime": 1438499340000,
+        "consignee": "张云",
+        "consigneePhone": "13512345678"
+      },
+      {
+        "id": 4,
+        "provinceCode": "310000",
+        "cityCode": "310100",
+        "areaCode": null,
+        "address": "测试一下地址软软看看",
+        "userId": 1,
+        "tag": null,
+        "status": "normal",
+        "memo": null,
+        "isDefault": 0,
+        "createTime": 1438431143000,
+        "updateTime": 1438507209000,
+        "consignee": "测试",
+        "consigneePhone": "13588461183"
+      },
+      {
+        "id": 8,
+        "provinceCode": "150000",
+        "cityCode": "150300",
+        "areaCode": null,
+        "address": "阿萨德发生的分大发生地方",
+        "userId": 1,
+        "tag": null,
+        "status": "normal",
+        "memo": null,
+        "isDefault": 0,
+        "createTime": 1439018052000,
+        "updateTime": 1439018052000,
+        "consignee": "测试",
+        "consigneePhone": "13512345678"
+      }
+    ]
+  },
+  "approve": null,
+  "fieldErrMsg": null,
+  "login": false
+}

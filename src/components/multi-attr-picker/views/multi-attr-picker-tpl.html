@@ -1,0 +1,11 @@
+<div class="multi-select-picker dialog-content">
+    <div class="multi-select-group" data-ng-repeat="group in groups">
+        <label class="select-picker-title">{{group.title}}</label>
+        <div ng-class="{'selected':isSelect(group.code,$index)}" class="select-picker-item"
+             type="button" data-ng-repeat="item in group.items"
+             data-ng-click="multiSelectPick(group.code, $index)"> {{item.text}} </div>
+    </div>
+    <div class="select-footer" data-ng-if="lastConfirm">
+        <button class="nav-hint single-row submit-btn" ng-click="select()">确定</button>
+    </div>
+</div>

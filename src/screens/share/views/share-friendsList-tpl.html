@@ -1,0 +1,40 @@
+<div class="friendslist-container">
+
+    <article data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" threshold="200"
+             trigger-on-event="reload" data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();"
+             data-ng-if="!isShow">
+        <div class="listTitle top-list-tittle">邀请好友</div>
+        <ul class="friendslistTab">
+            <li class="tabItem">
+                <div class="friendsNum">{{registerNum}}人</div>
+                <div>已注册好友</div>
+            </li>
+            <li class="tabItem">
+                <div class="friendsNum">{{submitAuthenticationForV2}}人</div>
+                <div>已提交认证好友</div>
+            </li>
+            <li class="tabItem">
+                <div class="friendsNum">{{loanCash}}人</div>
+                <div>已借款好友</div>
+            </li>
+        </ul>
+
+        <div class="listTitle">好友列表</div>
+
+        <ul class="friends-table">
+            <li class="friends-table-cell" data-ng-repeat="item in items">
+                <img data-ng-src="{{item.headSrc}}" class="icon-head"/>
+                <div class="name" data-ng-bind="item.showName"></div>
+                <div class="dateView">
+                    <span>{{item.createTime | dateFormat:'yyyy-MM-dd'}}</span>注册
+                </div>
+            </li>
+        </ul>
+    </article>
+
+    <ul class="friends-table">
+        <li class="friends-table-cell no-border" data-ng-if="isShow">
+            暂无好友!
+        </li>
+    </ul>
+</div>

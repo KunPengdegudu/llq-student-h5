@@ -1,0 +1,37 @@
+<div class="task-container">
+
+    <ol class="goods-list">
+        <li class="goods-item" data-ng-repeat="item in items">
+            <div class="goods-brief">
+                <a ng-click="getTaskInformation(item.id)">
+                    <img class="task-goods-img-thumbnail" data-ng-src="{{item.taskDTO.thumb}}"
+                         data-ng-if="item.taskDTO.thumb">
+                    <img class="task-goods-img-thumbnail" src="../../../app/assets/imgs/works_nav/company_logo.png"
+                         data-ng-if="!item.taskDTO.thumb">
+                    <div class="goods-desc">
+                        <div class="goods-text-large" data-ng-bind="item.taskDTO.title"></div>
+                        <div class="goods-subtitle">
+                            <div class="goods-text-gray goods-text-left">
+                                <span>剩余</span>
+                                <span data-ng-bind="item.taskDTO.remainNum"></span>
+                                <span>次</span>
+                            </div>
+                            <div class="goods-text-gray goods-text-left">
+                                <span>截止日期</span>
+                                <span data-ng-bind="item.taskDTO.deadline.substr(5,5)"></span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="task-price-container">
+                        <span class="goods-text-highlight goods-text-large">{{item.status | workStatus}}</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+
+
+    </ol>
+
+</div>

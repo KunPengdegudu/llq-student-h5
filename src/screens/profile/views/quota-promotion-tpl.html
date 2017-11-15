@@ -1,0 +1,44 @@
+<div class="profile-main profile-main-show-header profile-bill-content profile-main-center">
+    <div class="promotion-top">
+        <div class="promotion-top-first">
+            <div class="promotion-top-first-left">
+                <span class="iconfont icon-left-card"></span>
+                提额卡
+            </div>
+            <div class="promotion-top-first-right" ng-click="gotoActive()">更多 ></div>
+        </div>
+        <div class="promotion-top-second">
+            <div class="promotion-card" data-ng-click="gotoProduct(38407,273,'sale')">
+                <img src="../../../app/assets/imgs/profile/promotion-cash.png">
+            </div>
+            <div class="promotion-card" data-ng-click="gotoProduct(31055,273,'sale')">
+                <img src="../../../app/assets/imgs/profile/promotion-shopping.png">
+            </div>
+        </div>
+    </div>
+    <div class="promotion-bottom">
+        <div class="promotion-top-first">
+            <div class="promotion-top-first-left">
+                <span class="iconfont icon-left-certification"></span>
+                提额认证
+            </div>
+        </div>
+        <div class="carousel-page" style="background: none; height: 85%;">
+            <ul data-ng-style="pageInfo.styles" rn-carousel rn-carousel-index="pageInfo.carouselIndex"
+                 rn-carousel-pause-on-hover rn-carousel-buffered class="carousel2">
+                <li ng-repeat="slide in slides track by slide.id" ng-class="'id-' + slide.id"
+                     class="lun">
+                    <div class="promotion-profile">
+                        <img data-ng-src="{{slide.img}}" class="bg-image">
+                        <div class="promotion-name">{{slide.title}}</div>
+                        <div class="promotion-ti">预计提额</div>
+                        <div class="promotion-price">¥600</div>
+                        <button class="promotion-button" ng-click="gotoApp()">立即认证</button>
+                    </div>
+                </li>
+            </ul>
+            <div class="carousel-indicator-wrapper" rn-carousel-indicators ng-if="slides.length > 1"
+                 slides="slides" rn-carousel-index="pageInfo.carouselIndex"></div>
+        </div>
+    </div>
+</div>

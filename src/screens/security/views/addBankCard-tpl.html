@@ -1,0 +1,163 @@
+<div class="dialog-content profile-main profile-main-show-header">
+  <div class="addBankCard-main">
+     <ul class="setting-table" style="padding-top:20px;">
+        <li class="setting-table-cell">
+           <div class="second-column">
+              <div class="setting-left title">开户人</div>
+              <div class="setting-left desc">
+                 <input class="setting-input" readonly="readonly" type="text" placeholder="" ng-model="addBankCard.userInfo.name"/>
+              </div>
+           </div>
+        </li>
+        <li class="setting-table-cell">
+           <div class="second-column">
+              <div class="setting-left title">身份证</div>
+              <div class="setting-left desc">
+                 <input class="setting-input" readonly="readonly" type="text" placeholder="" ng-model="addBankCard.userInfo.idNo"/>
+              </div>
+           </div>
+        </li>
+        <li class="setting-table-cell">
+           <div class="second-column">
+              <div class="setting-left title">手机号码</div>
+              <div class="setting-left desc">
+                 <input class="setting-input" readonly="readonly" type="tel" placeholder="" ng-model="addBankCard.userInfo.phone"/>
+              </div>
+           </div>
+        </li>
+     </ul>
+     <ul class="setting-table" style="padding-top:20px;">
+        <li class="setting-table-cell" ng-click="addBankCard.openDialog()">
+           <div class="second-column">
+              <div class="setting-left title">开户银行</div>
+              <div class="setting-left desc">
+                 <input class="setting-input" type="text" readonly="readonly" placeholder="请选择银行"/>
+                 <i class="iconfont icon-right-arrow"></i>
+              </div>
+              <div class="setting-right desc">
+
+              </div>
+           </div>
+        </li>
+        <li class="setting-table-cell">
+           <div class="second-column">
+              <div class="setting-left title">银行卡号</div>
+              <div class="setting-left desc">
+                 <input class="setting-input" type="text" placeholder="请填写银行卡号"/>
+              </div>
+           </div>
+        </li>
+     </ul>
+     <p class="addBankCard-chang" ng-click="changeDia.openDialog()">常见问题</p>
+     <div class="addBankCard-btn" ng-click="authCode.openDialog()">
+        确认添加
+     </div>
+  </div>
+</div>
+
+
+
+<!--开户银行列表-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="addBankCard.isVisible" z-index="581">
+
+   <div class="ui-header-bar">
+      <div class="ui-header-bar-left-icon">
+         <div class="iconfont header-bar-icon icon-back" ng-click="addBankCard.closeDialog()"></div>
+      </div>
+      <div class="ui-header-bar-text">
+         <div class="setting-left">
+            <span>开户银行</span>
+         </div>
+      </div>
+      <div class="ui-header-bar-right-icon">
+      </div>
+   </div>
+
+   <div class="dialog-content fix-bottom-btn add-card-main ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+      <ul class="setting-table">
+         <li ng-click="addBankCard.closeDialog()" >321321321</li>
+         <li>321321</li>
+         <li>323232</li>
+      </ul>
+   </div>
+</div>
+<!--常见问题-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="changeDia.isVisible" z-index="581">
+
+   <div class="ui-header-bar">
+      <div class="ui-header-bar-left-icon">
+         <div class="iconfont header-bar-icon icon-back" ng-click="changeDia.closeDialog()"></div>
+      </div>
+      <div class="ui-header-bar-text">
+         <div class="setting-left">
+            <span>常见问题</span>
+         </div>
+      </div>
+      <div class="ui-header-bar-right-icon">
+      </div>
+   </div>
+
+   <div class="dialog-content fix-bottom-btn add-card-main ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+      <p>新增银行卡注意事项：</p>
+      <ul>
+         <li>1.请正确填写开户银行和银行卡号；</li>
+         <li>2.请确保开户人姓名和身份证信息与该银行卡信息一致；</li>
+         <li>3.请确保手机号码和开通银行卡时预留手机号码一致；</li>
+         <li>4.如果上述条件之一不符合，将无法绑定该银行卡。</li>
+      </ul>
+      <p>支持银行列表：</p>
+      <table style="text-align: center">
+         <tr>
+            <td>序号</td>
+            <td>银行列表</td>
+         </tr>
+         <tr>
+            <td>1</td>
+            <td>中国工商银行</td>
+         </tr>
+         <tr>
+            <td>2</td>
+            <td>中国工商银行</td>
+         </tr>
+         <tr>
+            <td>3</td>
+            <td>中国工商银行</td>
+         </tr>
+      </table>
+   </div>
+</div>
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="authCode.isVisible" z-index="581">
+
+   <div class="ui-header-bar">
+      <div class="ui-header-bar-left-icon">
+         <div class="iconfont header-bar-icon icon-back" ng-click="authCode.closeDialog()"></div>
+      </div>
+      <div class="ui-header-bar-text">
+         <div class="setting-left">
+            <span>短信验证</span>
+         </div>
+      </div>
+      <div class="ui-header-bar-right-icon">
+      </div>
+   </div>
+
+   <div class="dialog-content fix-bottom-btn add-card-main ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+      <div class="authCode-header">
+         未确认您本人操作,需短信验证.验证码已发送到手机<span>157******84</span>，请按提示操作
+      </div>
+      <div class="authCode-main">
+         <div class="authCode-main-left">
+            <input type="text" placeholder="请输入验证码">
+         </div>
+         <div class="authCode-main-right">
+            <span>重新获取(59s)</span>
+         </div>
+      </div>
+      <div class="authCode-footer">
+         提交验证
+      </div>
+   </div>
+</div>

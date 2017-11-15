@@ -1,0 +1,7 @@
+<div class="recharge-nav" data-ng-style="item.styles">
+    <div class="recharge-item" data-ng-style="item.itemStyles" data-ng-repeat="btn in item.btns"
+         data-ng-click="gotoNav(btn)">
+        <img class="entrance-item-img" data-ng-src="{{btn.img}}"/>
+        <div class="entrance-item-text" data-ng-bind="btn.text"></div>
+    </div>
+</div>

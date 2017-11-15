@@ -1,0 +1,40 @@
+<div class="evaluationContainer" data-ng-cloak>
+    <div ng-repeat="data in items" class="part-container">
+        <ul class="setting-table">
+            <li class="setting-table-cell">
+                <div class="second-column">
+                    <div class="setting-row goods-brief">
+                        <img class="goods-img-thumbnail" data-ng-src="{{data.productPic | filterImg : '@!200x200'}}" data-ng-click="gotoProduct(data)"/>
+
+                        <div class="goods-desc">
+                            <div class="goods-title" data-ng-bind="data.orderTitle"></div>
+
+                            <div class="goods-subtitle">
+                                <span>{{data.evaluate}}</span>
+                                <div class="assess-tag-container">
+                                    <span>{{data.createTime | dateFormat:'yyyy-MM-dd'}}</span>
+                                    <span>{{data.productSkuTag}}</span>
+                                </div>
+                                <div class='img-container' data-ng-repeat="imgs in data.picUrlList track by $index"><img src="{{imgs}}" alt="" ng-click="photoView.dialogOpen('see',imgs)"></div>
+                            </div>
+                            <div class="goods-subtitle add-evaluate" ng-if="data.addEvaluate">
+                                <span class="time">{{data.addEvaluateTime | dateFormat:'yyyy-MM-dd'}} 追评</span><br/>
+                                <span>{{data.addEvaluate}}</span>
+                            </div>
+                            <div class='img-container' data-ng-repeat="imgs in data.additionalPicUrlList track by $index"><img src="{{imgs}}" alt="" ng-click="photoView.dialogOpen('see',imgs)"></div>
+                        </div>
+                        <div class="goods-segment" ng-if="data.canAdditionalEvaluate" ></div>
+                    </div>
+
+                    <div class="add-btn-wrapper" ng-if="data.canAdditionalEvaluate">
+                        <div class="right-btn">
+                            <a class=""ng-click="gotoAddEvaluateDetail(data.orderId)">
+                                <span>追加评价</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

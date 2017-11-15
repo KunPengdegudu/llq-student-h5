@@ -1,0 +1,38 @@
+<article class="recharge-article" data-scroll-loader="loadItems();" type="both" data-can-load="canLoad" threshold="200"
+         data-before-pull-to-refresh="reload();" data-finish-msg="getMsg();">
+    <div class="entrance recharge">
+        <div class="recharge-title">热门网游</div>
+        <div class="entrance-item" data-ng-repeat="btn in btns"
+             data-ng-click="gotoDetail(btn)">
+            <div class="entrance-item-img-wrapper">
+                <img class="entrance-item-img" data-ng-src="{{btn.imgUrl}}"/>
+            </div>
+            <div class="recharge-name" data-ng-bind="btn.name"></div>
+        </div>
+        <div class="entrance-item" data-ng-repeat="btn in btns2"
+             data-ng-click="gotoDetail(btn)">
+            <div class="entrance-item-img-wrapper">
+                <img class="entrance-item-img" data-ng-src="{{btn.imgUrl}}"/>
+            </div>
+            <div class="recharge-name" data-ng-bind="btn.name"></div>
+        </div>
+    </div>
+    <div class="purchase-table" data-ng-if="isAbnormal">
+        <div class="purchase-cell" data-ng-repeat="itemCell in items">
+            <div class="purchase-type" ng-bind="itemCell.type"></div>
+            <ul class="setting-table">
+                <li class="setting-table-cell" data-ng-repeat="item in itemCell.productInfoDTO">
+                    <div class="second-column" data-ng-click="gotoDetail(item)">
+                        <div class="setting-left" data-ng-bind="item.name"></div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="purchase-none" data-ng-if="!isAbnormal">
+        没东西
+    </div>
+
+</article>
+
+<search-dialog/>

@@ -1,0 +1,106 @@
+<div class="product-detail">
+    <div class="detail-desc">
+        <div class="product-img">
+            <img data-ng-src="{{product.imgUrl}}"/>
+        </div>
+        <div class="product-content">
+            <div class="content-title" data-ng-bind="product.productName"></div>
+            <div class="content-desc">
+                商品说明：<span ng-bind="product.detail"></span>
+            </div>
+        </div>
+    </div>
+    <div class="detail-sku">
+        <div class="sku-title">充值面额</div>
+        <div class="sku-list">
+            <div class="sku-cell" data-ng-repeat="item in product.productSkuList"
+                 data-ng-class="item.select?'select-item':'none-select'" data-ng-style="item.style">
+                <div class="item-sku" data-ng-click="selected(item)">
+                    <div class="sku-name" data-ng-bind="item.skuName"></div>
+                    <div class="sku-price">
+                        售价:<span data-ng-bind="item.sellPrice"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="setting-table">
+        <li class="setting-table-cell" data-ng-repeat="item in accountInfo track by $index">
+            <div class="second-column"
+                 data-ng-if="item.module == 'ChargeAccount' || item.module == 'ChargeAccountAgain'">
+                <div class="setting-left title" data-ng-bind="item.name"></div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" placeholder="请输入{{item.name}}"
+                           data-ng-model="item.content"/>
+                </div>
+            </div>
+            <div class="second-column"
+                 data-ng-if="item.module != 'ChargeAccount' && item.module != 'ChargeAccountAgain'"
+                 data-ng-click="gameDialog.openDialog(firstObject,'first')">
+                <div class="setting-left title" data-ng-bind="firstObject.name"></div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" placeholder="请选择{{firstObject.name}}"
+                           data-ng-model="showFirstName" readonly/>
+                </div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-if="secondObject.values.length>0">
+            <div class="second-column" data-ng-click="gameDialog.openDialog(secondObject,'second')">
+                <div class="setting-left title" data-ng-bind="secondObject.name"></div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" placeholder="请选择{{secondObject.name}}"
+                           data-ng-model="showSecondName" readonly/>
+                </div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-if="thirdObject.values.length>0">
+            <div class="second-column" data-ng-click="gameDialog.openDialog(thirdObject,'third')">
+                <div class="setting-left title" data-ng-bind="thirdObject.name"></div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" placeholder="请选择{{thirdObject.name}}"
+                           data-ng-model="showThirdName" readonly/>
+                </div>
+                <span class="iconfont icon-right-arrow"></span>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="dialog-bottom-btn-wrapper telephone-fare-buy">
+    <button class="nav-hint single-row submit-btn" data-ng-click="submit()">
+        确认购买
+    </button>
+</div>
+
+<pay data-pay-type="'order'" data-pay-title="payDialog.name"
+     data-pay-amount="payDialog.amount"
+     data-pay-params="payDialog.params">
+</pay>
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="gameDialog.isVisible" z-index="584">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="gameDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span data-ng-bind="gameDialog.dialogTitle"></span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-repeat="item in gameDialog.dialogList">
+            <div class="second-column" data-ng-click="gameDialog.select(item)">
+                <div class="setting-left">
+                    <span>{{gameDialog.getItemName(item)}}</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+

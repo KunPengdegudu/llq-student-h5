@@ -1,0 +1,20 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "P2nv5ibv",
+  "data": {
+    "id": 1,
+    "type": "main",
+    "status": "normal",
+    "balance": 0.000,
+    "freezeAmount": 0.000,
+    "createTime": null,
+    "updateTime": null,
+    "userId": 1,
+    "totalCreditAmount": 6000.000,
+    "balanceCreditAmount": 6000.000,
+    "maxAgingCount": 24
+  },
+  "fieldErrMsg": null,
+  "login": false
+}

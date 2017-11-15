@@ -1,0 +1,135 @@
+<div class="ui-header-bar" id="commonHeader" data-ng-show="navConfig.isShow" data-ng-if="!navConfig.headerType">
+    <div class="ui-header-bar-left-icon" data-ng-show="navConfig.leftBtnType" ng-switch="navConfig.leftBtnType">
+        <div class="iconfont header-bar-icon icon-back" ng-switch-when="back" ng-click="gotoBack()"></div>
+        <div class="iconfont header-bar-icon {{navConfig.leftBtnAttrs.icon}}" ng-switch-when="icon"
+             ng-click="navConfig.leftBtnAttrs.fn()"></div>
+        <div class="ui-header-btn" ng-switch-when="text" ng-click="navConfig.leftBtnAttrs.fn()">
+            <span data-ng-bind="navConfig.leftBtnAttrs.text"></span>
+            <span class="iconfont text-icon {{navConfig.leftBtnAttrs.icon}}"
+                  ng-if="navConfig.leftBtnAttrs.hasIcon"></span>
+        </div>
+    </div>
+    <div class="ui-header-bar-text" data-ng-bind="navConfig.title | omitStr : 12" data-ng-show="navConfig.showTextTitle"></div>
+    <div class="ui-header-bar-text" data-ng-show="!navConfig.showTextTitle">
+        <div class="ui-header-search-box shop-search" data-ng-click="shopSearch()">
+            <span class="ui-header-search iconfont icon-search"></span>
+            <span class="search" data-ng-bind="RECOM_WORD || '搜索本店'"></span>
+        </div>
+    </div>
+
+    <div class="ui-header-bar-right-icon" data-ng-show="navConfig.isShowRightBtn" ng-switch="navConfig.rightBtnType">
+        <div class="iconfont header-bar-icon icon-msg" ng-switch-when="msg" ng-click="gotoMsg()">
+            <div class="iconfont icon-dot icon-msg-active" data-ng-if="FLAGS_HAS_MSG"></div>
+        </div>
+        <div class="iconfont header-bar-icon {{navConfig.rightBtnAttrs.icon}}" ng-switch-when="icon"
+             ng-click="navConfig.rightBtnAttrs.fn()"></div>
+        <div class="ui-header-btn" ng-switch-when="text" ng-click="navConfig.rightBtnAttrs.fn()"
+             data-ng-bind="navConfig.rightBtnAttrs.text"></div>
+    </div>
+</div>
+
+
+<div id="homePageHeaderBar" class="ui-header-bar no-bg" data-ng-if="navConfig.headerType=='homepage'">
+
+    <div class="ui-header-bar-left-icon with-text">
+        <div class="iconfont header-bar-icon icon-msg" ng-click="gotoMsg()">
+            <em class="effect-tip heart icon-msg-active" data-ng-if="FLAGS_HAS_MSG"></em>
+        </div>
+        <div class="icon-text">消息</div>
+    </div>
+
+    <div class="ui-header-bar-text">
+        <div class="ui-header-search-box" data-ng-click="showSearch()">
+            <div class="ui-header-search-input">
+                <input id="llq-main-search" type="text" class="search" readonly="readonly"
+                       placeholder="{{RECOM_WORD}}"/>
+            </div>
+            <div class="ui-header-search iconfont icon-search"></div>
+        </div>
+    </div>
+
+    <div class="ui-header-bar-right-icon with-text">
+        <div class="iconfont header-bar-icon icon-help-buy" ng-click="gotoCar()">
+            <span class="ui-tab-brand" data-ng-if="FLAGS_HAS_CART_COUNT" data-ng-bind="FLAGS_CART_COUNT"></span>
+        </div>
+        <div class="icon-text">购物车</div>
+    </div>
+</div>
+
+
+<div id="agingHeaderBar" class="ui-header-bar" data-ng-if="navConfig.headerType=='aging'">
+    <div class="ui-header-bar-left-icon">
+        <div class="ui-header-bar-text" style="padding:0;width:60px;" data-ng-bind="navConfig.title"
+             data-ng-if="navConfig.hasTitle"></div>
+        <div class="iconfont header-bar-icon icon-back" data-ng-if="navConfig.hasBack" ng-click="gotoBack()"></div>
+    </div>
+    <div class="ui-header-bar-text" style="padding-left: 50px">
+        <div class="ui-header-search-box search-box-border" data-ng-click="showSearch()">
+            <div class="ui-header-search-input">
+                <input id="llq-aging-search" data-ng-model="navConfig.centerAttrs.inputValue" type="text"
+                       readonly="readonly" class="search search-border" placeholder="{{RECOM_WORD}}"/>
+            </div>
+            <div class="ui-header-search iconfont icon-search"></div>
+        </div>
+    </div>
+    <div class="ui-header-bar-right-icon with-text">
+        <div class="iconfont header-bar-icon icon-help-buy" ng-click="gotoCar()">
+            <span class="ui-tab-brand" data-ng-if="FLAGS_HAS_CART_COUNT" data-ng-bind="FLAGS_CART_COUNT"></span>
+        </div>
+        <div class="icon-text">购物车</div>
+    </div>
+</div>
+
+
+<div class="ui-header-bar" data-ng-show="navConfig.isShow" data-ng-if="navConfig.headerType=='setting'">
+
+    <div class="ui-header-bar-left-icon">
+        <div class="iconfont header-bar-icon icon-service" ng-click="contactUs()">
+        </div>
+    </div>
+
+    <div class="ui-header-bar-text" data-ng-bind="navConfig.title | omitStr : 12"></div>
+
+    <div class="ui-header-bar-right-icon">
+        <div class="iconfont header-bar-icon icon-my-msg" ng-click="gotoMsg()">
+            <em class="effect-tip heart icon-msg-active" data-ng-if="FLAGS_HAS_MSG"></em>
+        </div>
+        <div class="iconfont header-bar-icon icon-setting" ng-click="gotoSetting()">
+        </div>
+    </div>
+</div>
+
+<div id="searchHeaderBar" class="ui-header-bar no-bg" data-ng-if="navConfig.headerType=='search'">
+
+    <div class="ui-header-bar-left-icon" data-ng-show="navConfig.leftBtnType" ng-switch="navConfig.leftBtnType">
+        <div class="iconfont header-bar-icon icon-back" ng-switch-when="back" ng-click="gotoBack()"></div>
+        <div class="iconfont header-bar-icon {{navConfig.leftBtnAttrs.icon}}" ng-switch-when="icon"
+             ng-click="navConfig.leftBtnAttrs.fn()"></div>
+        <div class="ui-header-btn" ng-switch-when="text" ng-click="navConfig.leftBtnAttrs.fn()">
+            <span data-ng-bind="navConfig.leftBtnAttrs.text"></span>
+            <span class="iconfont text-icon {{navConfig.leftBtnAttrs.icon}}"
+                  ng-if="navConfig.leftBtnAttrs.hasIcon"></span>
+        </div>
+    </div>
+
+    <div class="ui-header-bar-text">
+        <div class="ui-header-search-box">
+            <div class="ui-header-search-input">
+                <input id="llq-search" type="text" class="search" data-ng-model="navConfig.searchInput"
+                       placeholder="{{navConfig.placeholder}}"/>
+            </div>
+            <div class="ui-header-search iconfont icon-search"></div>
+        </div>
+    </div>
+
+
+    <div class="ui-header-bar-right-icon" data-ng-show="navConfig.isShowRightBtn" ng-switch="navConfig.rightBtnType">
+        <div class="iconfont header-bar-icon icon-msg" ng-switch-when="msg" ng-click="gotoMsg()">
+            <div class="iconfont icon-dot icon-msg-active" data-ng-if="FLAGS_HAS_MSG"></div>
+        </div>
+        <div class="iconfont header-bar-icon {{navConfig.rightBtnAttrs.icon}}" ng-switch-when="icon"
+             ng-click="navConfig.rightBtnAttrs.fn()"></div>
+        <div class="ui-header-btn" ng-switch-when="text" ng-click="navConfig.rightBtnAttrs.fn()"
+             data-ng-bind="navConfig.rightBtnAttrs.text"></div>
+    </div>
+</div>

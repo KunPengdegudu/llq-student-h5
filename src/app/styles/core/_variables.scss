@@ -1,0 +1,138 @@
+@charset "utf-8";
+// Global variables
+// ========================================================================
+
+
+// Black - White - Gray
+// ------------------------------------------------------------------------
+
+$black:           #000;
+$white:           #fff;
+
+// Brand Colors
+// ------------------------------------------------------------------------
+$gray-darker:           lighten($black, 13.5%) !default; // #222
+$gray-dark:             lighten($black, 20%)   !default; // #333
+$gray:                  lighten($black, 40%)   !default; // #666
+$gray-light:            lighten($black, 60%)   !default; // #999
+$gray-lighter:          lighten($black, 93.5%) !default; // #eee
+
+$brand-primary:         #34a0e7 !default;
+$brand-info:            #22b5bf !default;
+$brand-success:         #96cd67 !default;
+$brand-warning:         #ffa70c !default;
+$brand-danger:          #ff6a69 !default;
+$brand-disabled:        #ccc !default;
+
+$base-color:            #ff9600 !default;
+$base-border-color:     #e6e6e6 !default;
+$base-background-color: #f6f6f6 !default;
+$base-background-color2: #fdf1af !default;
+$base-text-color:       #333 !default;
+$base-text-color2:      #999 !default;
+$base-text-color3:      #f2f2f2 !default;
+
+// body
+// ------------------------------------------------------------------------
+
+$body-bg:               $white !default;
+$text-color:            $gray  !default;
+
+// Links
+// ------------------------------------------------------------------------
+
+$link-color:            darken($brand-primary, 10%) !default;
+$link-hover-color:      $brand-primary !default;
+
+// Typography
+// ========================================================================
+
+// 衬线字体：宋体，华文细黑，Hiragino Mincho ProN，文泉驿点阵宋体
+$font-family-serif:       "\5B8B\4F53", STHeiti, "Hiragino Mincho ProN", "WenQuanYi Bitmap Song", serif !default;
+
+// 无衬线字体：华文细黑，"Helvetica Neue", Helvetica
+$font-family-sans-serif:  "Helvetica Neue", Helvetica, sans-serif !default;
+
+// Default kai fonts for `<blockquote>`
+$font-family-kai:         Georgia, 'Times New Roman', Times, Kai, 'Kaiti SC', KaiTi, BiauKai, serif;
+
+// Default monospace fonts for `<code>`, `<kbd>`, and `<pre>`.
+$font-family-monospace:   Menlo, Consolas, "Liberation Mono", "Courier New", Courier, monospace !default;
+
+// Default num fonts for class="num"
+$font-family-num:         "Helvetica Neue", "Tahoma", Helvetica, Arial;
+
+// Font size
+// ------------------------------------------------------------------------
+
+$font-size-base:          12px !default;
+
+$font-size-xs:            ceil(($font-size-base * 0.75)) !default; // ~9px
+$font-size-small:         ceil(($font-size-base * 0.83)) !default; // ~10px
+$font-size-large:         ceil(($font-size-base * 1.16)) !default; // ~14px
+$font-size-xl:            ceil(($font-size-base * 1.25)) !default; // ~15px
+$font-size-xxl:           ceil(($font-size-base * 1.33)) !default; // ~16px
+$font-size-xxxl:          ceil(($font-size-base * 1.5))  !default; // ~18px
+$font-size-h1:          ceil(($font-size-base * 2))  !default; // ~24px
+
+$line-height-base:        1.33 !default; // 16/12
+$line-height-computed:    floor(($font-size-base * $line-height-base)) !default; // ~16px
+
+// Global spacing
+// ------------------------------------------------------------------------
+
+$spacing-base:            8px !default;
+
+$spacing-xs:              3px !default;
+$spacing-small:           6px !default;
+$spacing-large:           9px !default;
+$spacing-xl:              12px !default;
+
+// Margin
+// ------------------------------------------------------------------------
+
+$margin-base:             $spacing-base !default;
+
+$margin-xs:               $spacing-xs !default;
+$margin-small:            $spacing-small !default;
+$margin-large:            $spacing-large !default;
+$margin-xl:               $spacing-xl !default;
+
+
+$modal-inner-padding:         15px;
+//** Padding applied to the modal title
+$modal-title-padding:         15px;
+//** Modal title line-height
+$modal-title-line-height:     $line-height-base;
+
+$modal-backdrop-opacity:      .5;
+$modal-header-border-color:   #e5e5e5;
+
+// Z-index
+// ------------------------------------------------------------------------
+$zindex-nav:              199 !default;
+$zindex-content:          200 !default;
+$zindex-login:            300 !default;
+$backdrop-default:        500 !default; // 蒙版
+$zindex-dialog-default:   501 !default; // 对话框默认zindex
+
+$zindex-modal-default:   1000 !default;
+
+
+
+// ========================================================================
+// Components variables
+// ========================================================================
+$header-height:               40px !default;
+$nav-height:                  45px !default;
+
+// Base
+// ========================================================================
+
+$base-font-weight:          normal !default;
+$bold-font-weight:          400 !default;
+$bolder-font-weight:        700 !default;
+
+// selection
+$base-selection-background: $brand-primary !default;
+$base-selection-color:      $white !default;

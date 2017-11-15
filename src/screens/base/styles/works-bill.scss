@@ -1,0 +1,45 @@
+.bill-content {
+  .bill-table-cell {
+    @include flexBox();
+    @include flexDirectionRow(false);
+    @include flexAlign(center);
+    padding: 3px 0;
+    line-height: 50px;
+    background-color: $base-background-color;
+    border-bottom: 1px solid $base-border-color;
+
+    .company-title {
+      @include flex(4);
+      line-height: 20px;
+      padding-left: 20px;
+
+      .task-name {
+        font-size: $font-size-large;
+      }
+
+      .task-company {
+        font-size: $font-size-base;
+        color: $base-text-color2;
+
+        .task-company-content {
+          margin-right: 10px;
+        }
+      }
+    }
+    .task-money {
+
+      @include flex(2);
+      text-align: right;
+      padding-right: 20px;
+      font-size: $font-size-xxl;
+
+      &.bill-income-color {
+        color: #7def62;
+      }
+
+      &.bill-pay-color {
+        color: #ffb54d;
+      }
+    }
+  }
+}

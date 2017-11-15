@@ -1,0 +1,46 @@
+<div ui-dialog class="dialog-fullscreen"
+     is-visible="pictureShow.isVisible" z-index="570">
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back"
+                 ng-click="pictureShow.closeDialog()"></div>
+        </div>
+
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>图片预览</span>
+            </div>
+        </div>
+    </div>
+    <div class="dialog-content">
+        <div class="carousel-page task-carousel">
+
+            <ul rn-carousel rn-carousel-index="picCarouselIndex" rn-carousel-buffered class="carousel2"
+                data-ng-style="item.styles"
+                style="overflow-y: auto" ng-if="pictureShow.type=='list'">
+                <li ng-repeat="item in picShow.item.item track by $index">
+                    <a data-ng-click="pictureShow.closeDialog()">
+                        <img src="{{item.url}}" class="pic-middle">
+                    </a>
+                </li>
+            </ul>
+
+            <ul ng-if="pictureShow.type=='one'">
+                <li>
+                    <a data-ng-click="pictureShow.closeDialog()">
+                        <img src="pictureShow.item.url" class="pic-middle">
+                    </a>
+                </li>
+            </ul>
+            <div class="carousel-indicator-wrapper" rn-carousel-indicators
+                 ng-if="pictureShow.item.item.length > 1" slides="pictureShow.item.item"
+                 rn-carousel-index="picCarouselIndex">
+            </div>
+        </div>
+    </div>
+    <div class="dialog-bottom-btn-wrapper">
+        <button class="nav-hint single-row submit-btn" ng-click="deletePic()" ng-if="pictureShow.ifDelete">
+            删除图片
+        </button>
+    </div>
+</div>

@@ -1,0 +1,129 @@
+<div class="product-main order-detail product-main-show-header" data-ng-cloak>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span>订单状态：</span><span data-ng-bind="data.status | orderStatus"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-if="data.deliveryType">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span>商家：</span><span
+                        data-ng-bind="data.sellerName"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-if="showTrace">
+            <a data-ng-click="traceDialog.openDialog()">
+                <div class="second-column">
+                    <div class="setting-left">
+                        <span>物流单号：</span><span>{{traceInfo.expressCompanyName}} {{traceInfo.deliveryNo}}</span>
+                    </div>
+                    <span class="iconfont icon-right-arrow"></span>
+                </div>
+            </a>
+        </li>
+        <li class="setting-table-cell" ng-if="showFlag.byAddr">
+            <div class="second-column">
+                <div class="setting-row">
+                    <div class="product-receiver-title">
+                        <span>收货人：</span><span data-ng-bind="address.name"></span>
+                        <span>{{address.consignee}}</span>
+                        <span style="margin-left: 10px;">{{address.consigneePhone}}</span>
+                    </div>
+                    <div class="product-receiver-subtitle">
+                        <span>收货地址：</span>
+                        <span>{{getFullAddress(address)}}</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="setting-table" data-ng-include="'screens/product/views/order-detail-part-blank-note-tpl.html'"
+        data-ng-if="isBlankNote(showContentType)"></ul>
+    <ul class="setting-table" data-ng-include="'screens/product/views/order-detail-part-recharge-tpl.html'"
+        data-ng-if="isRechargeType(showContentType)"></ul>
+    <ul class="setting-table" data-ng-include="'screens/product/views/order-detail-part-other-tpl.html'"
+        data-ng-if="isOtherType(showContentType)"></ul>
+
+    <ul class="setting-table">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-row">
+                    <div class="order-detail-wrapper">
+                        <span>订单编号：{{data.orderNo}}</span>
+                    </div>
+                    <div class="order-detail-wrapper">
+                        <span>创建时间：{{data.createTime | dateFormat}}</span>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<div id="bottom-to-top" class="bottom-to-top share-red-pic" data-ng-click="shareRed()" style="display: block; opacity: 1;" ng-if="data.canShare">
+    <img src="../../assets/imgs/share/small-red-btn.png" style="width: 100%;">
+</div>
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="traceDialog.isVisible" z-index="560">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="traceDialog.closeDialog()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <span>物流跟踪</span>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell" data-ng-repeat="item in traceInfo.trace.traces" data-ng-if="hasTraceItems">
+            <div class="second-column">
+                <div class="trace-text" data-ng-class="{'with-first': $index==0}">
+                    <span data-ng-bind="item.acceptStation"></span>
+                </div>
+                <div class="trace-time" data-ng-class="{'with-first': $index==0}">
+                    <span data-ng-bind="item.acceptTime"></span>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" data-ng-if="!hasTraceItems">
+            <div class="second-column">
+                <div class="setting-left">
+                    <span>暂无物流信息，请登录物流公司官网查询。</span>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+</div>
+
+<div ui-dialog class="share-dialog reverse red-share-container" overlay="true" close-by-overlay="true" is-visible="share.isVisible"
+     z-index="560">
+    <div class="share-pic-container">
+        <img src="../../../app/assets/imgs/profile/red.png" class="bg-img">
+        <div class="share-title" ng-bind="share.envelopeTitle"></div>
+        <div class="share-brand-container">
+            <ul>
+                <li class="brand" style="float:right;" ng-click="shareFn('friend')">
+                    <img src="../../../app/assets/imgs/profile/friend.png" alt="">
+                </li>
+            </ul>
+            <ul>
+                <li class="brand" style="float:left" ng-click="shareFn('weixin')">
+                    <img src="../../../app/assets/imgs/profile/weixin.png" alt="">
+                </li>
+            </ul>
+        </div>
+        <button class="nav-hint single-row submit-btn" ng-click="share.closeDialog()">
+            取消
+        </button>
+    </div>
+
+</div>

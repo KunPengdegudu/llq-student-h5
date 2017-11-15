@@ -1,0 +1,61 @@
+.splash {
+  position: fixed;
+  background: #27abfb;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  perspective: 1000px;
+  transition: opacity .6s, visibility 0s .6s;
+  &.splash-open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity .1s;
+    .splash-inner {
+      transform: translate3d(0,0,0);
+    }
+  }
+  .splash-inner {
+    width: 100%;
+    height: 100%;
+    .splash-content {
+      .splash-icon {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        top: 20%;
+        color: #fff;
+        .icon-splash-logo {
+          margin-bottom: 11px;
+          font-size: 94px;
+          line-height: 94px;
+        }
+        .brand {
+          font-size: 28px;
+          line-height: 38px;
+          margin: 0;
+        }
+        .domain {
+          margin: 0;
+          font-size: 17px;
+          line-height: 17px;
+          color: #74c2f5;
+        }
+      }
+      .splash-moscot {
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        bottom: -151px;
+        .icon-splash-moscot {
+          color: #1a96f8;
+          font-size: 300px;
+        }
+      }
+    }
+  }
+}

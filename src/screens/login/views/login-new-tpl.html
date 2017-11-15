@@ -1,0 +1,135 @@
+<div class="login-new-out-container">
+    <div class="login-new-container">
+        <div class="bg-img-container">
+            <img src="../../../app/assets/imgs/login/login-new-bg.png">
+            <img src="../../../app/assets/imgs/login/login-new-bg-2.png" style="margin-top:-10px">
+        </div>
+        <div class="call-icon-container">
+            <a href="tel:4006288007">
+                <img src="../../../app/assets/imgs/login/call-icon.png"></a>
+        </div>
+        <div class="setting-part">
+            <ul class="setting-table">
+                <li class="setting-table-cell">
+                    <div class="second-column">
+                        <div class="setting-left-icon">
+                            <img src="../../../app/assets/imgs/login/icon_phone.png">
+                        </div>
+                        <div class="setting-left contact-input">
+                            <input class="setting-input" type="tel" placeholder="请填写手机号码"
+                                   data-ng-model="enroll.data.phone"/>
+                        </div>
+                    </div>
+                </li>
+                <li class="setting-table-cell">
+                    <div class="second-column input-part">
+                        <div class="setting-left-icon">
+                            <img src="../../../app/assets/imgs/login/icon_picCode.png">
+                        </div>
+                        <div class="setting-left">
+                            <input class="setting-input" type="text" placeholder="请输入图中字符"
+                                   data-ng-model="enroll.data.imgCode"/>
+                        </div>
+                    </div>
+                    <div class="second-column btn-part">
+                        <img class="img-code-img" data-ng-src="{{enroll.data.imgCodeSrc}}"
+                             data-ng-click="enroll.changeImgCode()">
+                    </div>
+                </li>
+                <li class="setting-table-cell">
+                    <div class="second-column input-part">
+                        <div class="setting-left-icon">
+                            <img src="../../../app/assets/imgs/login/icon_authCode.png">
+                        </div>
+                        <div class="setting-left">
+                            <input class="setting-input" type="text" placeholder="请填写验证码"
+                                   data-ng-model="enroll.data.authAuthCode"
+                                   ng-disabled="enroll.btn.enable"/>
+                        </div>
+                    </div>
+                    <div class="second-column btn-part authCode-btn-container" ng-click="enroll.getAuthCode()"
+                         ng-disabled="!enroll.btn.enable">
+                        <span data-ng-bind="enroll.btn.text"></span>
+                    </div>
+                </li>
+                <li class="setting-table-cell">
+                    <div class="second-column">
+                        <div class="setting-left-icon">
+                            <img src="../../../app/assets/imgs/login/icon_password.png">
+                        </div>
+                        <div class="setting-left pwd-setting-left">
+                            <input class="setting-input" type="password" placeholder="8到20位数字或字母"
+                                   data-ng-model="enroll.data.password" ng-if="ifShowPwd"/>
+                            <input class="setting-input" type="text" placeholder="8到20位数字或字母"
+                                   data-ng-model="enroll.data.password" ng-if="!ifShowPwd"/>
+                        </div>
+                        <div class="sign-img-container show-pwd-img">
+                            <img src="../../../app/assets/imgs/login/img_12.png" ng-if="ifShowPwd"
+                                 ng-click="changePwdStatus()">
+                            <img src="../../../app/assets/imgs/login/212_16.png" ng-if="!ifShowPwd"
+                                 ng-click="changePwdStatus()">
+                        </div>
+                    </div>
+                </li>
+                <li class="setting-table-cell" ng-if="ifShowSpreadCode">
+                    <div class="second-column">
+                        <div class="setting-left-icon">
+                            <img src="../../../app/assets/imgs/login/icon_spreed.png">
+                        </div>
+                        <div class="setting-left">
+                            <input class="setting-input" type="text" placeholder="请输入邀请码"
+                                   data-ng-model="enroll.data.spreadCode"/>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <div class="submit-btn-container">
+
+                <div class="agreement-row" style="top:0">
+            <span ng-click="showSpreadCode()" class="showSpreadText"><span ng-if="ifShowSpreadCode">收起</span>填写邀请码
+            <span class="iconfont icon-drop-arrow" ng-if="!ifShowSpreadCode"></span>
+            <span class="iconfont icon-show" ng-if="ifShowSpreadCode"></span></span>
+                </div>
+            </div>
+            <button class="nav-hint single-row submit-btn login-new-submit-btn" ng-click="enroll.dialogSubmit()">
+                注册
+            </button>
+        </div>
+    </div>
+</div>
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="agreementDialog.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="agreementDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>用户注册协议</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="agreement-content dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <sys-notice type="register"></sys-notice>
+    </div>
+
+</div>
+<div ui-dialog class="login-success-dialog" overlay="true" close-by-overlay="true"
+     before-hide="loginSuccessDialog.dialogBeforeHide();"
+     is-visible="loginSuccessDialog.isVisible" z-index="1000">
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+        <div class="img-container">
+            <img src="../../../app/assets/imgs/login/login-success.png">
+            <div class="go-download-button" onclick="window.downloadFn.download()">
+                马上领钱
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+<div class="bottom-white-mask"></div>

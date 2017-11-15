@@ -1,0 +1,22 @@
+{
+  "code": 200,
+  "msg": "成功",
+  "_csrf": "GfFq7gyj",
+  "data": {
+    "items": [
+      {
+        "id": 7,
+        "name": "江苏",
+        "city": "镇江市",
+        "province": "江苏省",
+        "director": "zhangs",
+        "directorTel": "110",
+        "addr": "天堂",
+        "cellphone": "1596662556",
+        "notes": "阿斯蒂芬"
+      }
+    ]
+  },
+  "fieldErrMsg": null,
+  "login": true
+}

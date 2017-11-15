@@ -1,0 +1,57 @@
+.wallet-main {
+  .wallet-head {
+    width: 100%;
+    height: 150px;
+    position: relative;
+    background-color: #00b9ff;
+    font-size: $font-size-xl;
+    color: $white;
+    padding-top: 10px;
+    .wallet-head-title,
+    .wallet-amount {
+      text-align: center;
+    }
+    .wallet-amount {
+      font-size: 40px;
+    }
+    .wallet-head-content {
+      width: 100%;
+      position: absolute;
+      bottom: 10px;
+      .wallet-head-content-item {
+        width: 33.33333%;
+        height: 45px;
+        padding-left: 15px;
+
+        float: left;
+        &.item-right {
+          border-left: 1px solid #43dcff;
+        }
+        .wallet-item-amount {
+          font-size: $font-size-xxxl;
+        }
+      }
+    }
+  }
+  .wallet-icon {
+    font-size: 25px !important;
+  }
+  .setting-table{
+    .setting-table-cell{
+      .text-right{
+        padding: 0;
+        line-height: 49px;
+        margin-right: 25px;
+      }
+      .icon-right-arrow{
+        line-height: 49px;
+      }
+    }
+  }
+}
+
+.select-dialog {
+  width: 300px!important;
+  height:150px!important; ;
+  margin-left: -150px!important;
+}

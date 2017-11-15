@@ -1,0 +1,35 @@
+.tongtongli-main {
+  background-color: $white;
+
+  img {
+    width: 100%;
+  }
+
+  .download-btn {
+    padding: 10px 80px;
+  }
+}
+
+.mobileTribe-main {
+  width: 100%;
+  top: $header-height;
+
+  .mobileTribe-bg {
+    width: 100%;
+  }
+
+  .download-button {
+    position: absolute;
+    height: 35px;
+    width: 90px;
+    top: 20%;
+    right: 15%;
+    line-height: 35px;
+    background-color: $base-color;
+    border-radius: 3px;
+    color: $white;
+    text-align: center;
+    font-size: $font-size-large;
+    box-shadow: -2px 2px 4px #6f6f6f;
+  }
+}

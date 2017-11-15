@@ -1,0 +1,70 @@
+<ul class="setting-table security-main profile-main profile-main-show-header">
+    <li class="setting-table-cell">
+        <div class="second-column">
+            <div class="setting-left title">个人邮箱</div>
+            <div class="setting-left desc">
+                <input class="setting-input" data-ng-model="bindEmail.email"
+                       data-ng-click="change()" readonly placeholder="请输入个人邮箱">
+            </div>
+        </div>
+    </li>
+</ul>
+
+<!--绑定常用邮箱-->
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="bindEmail.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="bindEmail.dialogClose()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>个人邮箱</span>
+            </div>
+        </div>
+    </div>
+
+    <ul class="setting-table dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">个人邮箱</div>
+                <div class="setting-left desc">
+                    <input class="setting-input" type="text" data-ng-model="bindEmail.email"
+                           placeholder="请输入邮箱"/>
+                </div>
+            </div>
+        </li>
+        <li class="setting-table-cell" ng-if="!bindEmail.authSuccess">
+            <div class="second-column">
+                <div class="setting-left title">图片验证码</div>
+                <div class="setting-left img-code-text">
+                    <input class="setting-input" type="text" placeholder="请输入图中字符" data-ng-model="bindEmail.imgCode"/>
+                </div>
+                <img class="setting-right img-code-img" data-ng-src="{{bindEmail.imgCodeSrc}}"
+                     data-ng-click="bindEmail.changeImgCode()">
+            </div>
+        </li>
+        <li class="setting-table-cell">
+            <div class="second-column">
+                <div class="setting-left title">验证码</div>
+                <div class="setting-left auth-code">
+                    <input class="setting-input" type="tel" placeholder="请填写验证码" data-ng-model="bindEmail.code"
+                           ng-disabled="bindEmail.btn.enable"/>
+                </div>
+                <div class="setting-right auth-code-btn">
+                    <a class="nav-hint button-primary" ng-click="bindEmail.getAuthCode()"
+                       ng-disabled="!bindEmail.btn.enable">
+                        <span data-ng-bind="bindEmail.btn.text"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+
+    <button class="nav-hint single-row submit-btn" ng-click="bindEmail.dialogSubmit()">
+        确认绑定
+    </button>
+
+
+</div>

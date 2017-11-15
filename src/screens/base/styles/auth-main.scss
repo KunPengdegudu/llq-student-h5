@@ -1,0 +1,142 @@
+.auth-main {
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: $base-background-color;
+  z-index: 200;
+
+  .auth-mian-banner {
+    width: 100%;
+    .banner-img {
+      width: 100%;
+    }
+  }
+  .setting-table {
+    &.auth-wrapper {
+      width: 100%;
+      .auth-product {
+        width: 100%;
+        padding: 10px;
+        @include flexBox();
+        @include flexDirectionRow();
+        .product-icon {
+          width: 45px;
+          .icon-img {
+            width: 45px;
+          }
+        }
+        .product-content {
+          width: 180px;
+          @include flexBox();
+          @include flexDirectionColumn();
+          padding-left: 10px;
+          .content-top {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            @include flexBox();
+            @include flexDirectionRow();
+            @include flexJustify(start);
+            .content-name {
+              font-size: 13px;
+              color: $base-text-color;
+            }
+            .content-status {
+              width: 55px;
+              margin-left: 10px;
+              img {
+                width: 100%;
+                margin-top: 6px;
+              }
+            }
+          }
+          .content-bottom {
+            font-size: $font-size-base;
+            color: $base-text-color2;
+            line-height: 20px;
+          }
+        }
+        .product-null {
+          @include flex(1);
+        }
+        .product-btn {
+          @include flexBox();
+          @include flexDirectionColumn();
+          @include flexJustify(center);
+          .auth-btn {
+            width: 60px;
+            height: 28px;
+            border: 1px solid $base-color;
+            text-align: center;
+            line-height: 28px;
+            color: $base-color;
+            font-size: $font-size-base;
+            border-radius: 3px;
+            margin: 5px;
+            &:first-child {
+              color: $brand-danger;
+              border: 1px solid $brand-danger;
+            }
+          }
+        }
+        .loss-btn {
+          width: 60px;
+        }
+      }
+    }
+  }
+
+  &.auth-result {
+    text-align: center;
+    .result-img {
+      width: 100%;
+      padding-top: 50px;
+      img {
+        width: 130px;
+      }
+    }
+    .result-text {
+      width: 100%;
+      padding-top: 29px;
+      .result {
+        font-size: 18px;
+        color: $base-color;
+      }
+      .content {
+        font-size: $font-size-large;
+        color: #555555;
+        margin-top: 20px;
+      }
+    }
+    .result-btns {
+      width: 100%;
+      margin-top: 40px;
+      .result-btn {
+        width: 90%;
+        height: 45px;
+        margin: 20px auto;
+        line-height: 45px;
+        border-radius: 5px;
+        color: $base-color;
+        font-size: 18px;
+        border: 1px solid $base-color;
+        &.auth-agin {
+          background-color: $base-color;
+          color: $white;
+        }
+      }
+    }
+    .result-hint {
+      width: 100%;
+      position: absolute;
+      bottom: 20px;
+      font-size: $font-size-base;
+      color: #888888;
+    }
+
+  }
+}

@@ -1,0 +1,263 @@
+<div class="groupon-details-main">
+    <div class="active-goods groupon-details-goods" data-ng-cloak>
+        <div class="goods-rows">
+            <div class="my-groupon-item">
+                <div class="my-groupon-item-shop">
+                    <div class="merchant">
+                        <span class="iconfont icon-shop"></span>
+                        <span class="shop-name" data-ng-bind="shopName"></span>
+                    </div>
+                </div>
+                <div class="my-groupon-item-goods">
+                    <img data-ng-src="{{productImg}}" class="goods-img">
+                    <div class="goods-desc">
+                        <div class="goods-name" data-ng-bind="name"></div>
+                        <div class="label" data-ng-bind="goodsDesc"></div>
+                    </div>
+
+                    <div class="mypt-badge">
+                        <img src="../../../app/assets/imgs/groupon/myptg_during.png" data-ng-if="data.status==1">
+                        <img src="../../../app/assets/imgs/groupon/myptg_fail.png" data-ng-if="data.status==4">
+                        <img src="../../../app/assets/imgs/groupon/myptg_success.png" data-ng-if="data.status==6">
+                    </div>
+
+                </div>
+                <div class="my-groupon-item-groupon">
+                    <div class="groupon-status">
+                        <span class="text-title">参团状态：</span>
+                        <span data-ng-bind="data.joinNum"></span>人团(<span data-ng-bind="groupStatus"></span>)
+                    </div>
+                    <div class="total-amount">
+                        <span class="price">￥
+                            <span class="postage-status" data-ng-bind="ptProductPrice"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="group-detail">
+            <img src="../../../app/assets/imgs/groupon/icon_tuxedodetails_line.png" class="top-line">
+            <!--================当前团详情======================-->
+            <div class="group-members" data-ng-click="grouponInfoDialog.openDialog()" data-ng-if="showTuanInfo">
+                <div data-ng-if="ptStatus == 1 || ptStatus == 6">
+                    <h2 class="title">团成员</h2>
+                    <div class="img-container">
+                        <img src="{{img}}" class="avatar" data-ng-repeat="img in imgInfo track by $index">
+                    </div>
+                </div>
+
+                <div class="time-countdown" data-ng-if="ptStatus === 1 && numberDiff != 0">
+                    <div class="countdown-left"></div>
+                    <div class="time">距结束
+                        <ul class="timeList">
+                            <li class="sqaure" data-ng-bind="hour"></li>
+                            <li class="colon">:</li>
+                            <li class="sqaure" data-ng-bind="minute"></li>
+                            <li class="colon">:</li>
+                            <li class="sqaure" data-ng-bind="second"></li>
+                        </ul>
+                    </div>
+                    <div class="countdown-right"></div>
+                </div>
+            </div>
+
+
+            <div class="button" data-ng-if="showInvitation" data-ng-click="shareGuideDialog.openDialog()">邀请好友</div>
+
+            <div class="button" data-ng-if="showJion" data-ng-click="doOrder()">一键参团</div>
+
+            <div class="button" data-ng-if="showStroll" data-ng-click="gotoUrl('/groupBuying/main')">逛逛其他团</div>
+
+            <div class="button" data-ng-if="showCreatePtAgain" data-ng-click="recreatePt()">重新开个团</div>
+
+            <div class="button button-disabled" data-ng-if="showPgBtn">拼光了</div>
+
+            <!--=====================其他团('重新开个团'时显示)=================-->
+            <div class="groupon-wraming" data-ng-if="showCreatePtAgain && showOtherPt">
+                <div class="wram">直接参与，可与以下小伙伴快速成团</div>
+                <div class="groupon-advice-list">
+                    <div class="groupon-advice" data-ng-repeat="item in tuanInfoList track by $index"
+                         data-ng-click="gotoGroupDetails(item)">
+                        <div class="avatar">
+                            <img src="../../../app/assets/imgs/groupon/image_default_avatar.png">
+                        </div>
+                        <div class="group-item">
+                            <div class="group-text">
+                                <div class="group-member" data-ng-bind="item.phone"></div>
+                                <div class="deadline">距结束<span data-ng-bind="item.dropDown"></span></div>
+                            </div>
+                            <div class="member-amount">
+                                差<span>{{item.joinNum - item.currJoinNum}}</span>人成团
+                            </div>
+                        </div>
+                        <div class="join-groupon">
+                            立即参团<span class="iconfont  icon-right-arrow"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="more-groupon">
+        <div class="title">
+            <div class="title-left"></div>
+            <div class="title-text">
+                <span class="iconfont icon-love"></span>
+                <span>更多拼团</span>
+            </div>
+            <div class="title-right"></div>
+        </div>
+
+        <div class="goods-conent">
+            <div class="goods-rows">
+
+                <div class="foreshow-item" data-ng-repeat="item in recommendList track by $index">
+                    <div class="item-img-container">
+                        <img data-ng-src="{{item.mainProImgUrl}}" class="foreshow-item-img">
+                        <div class="groupon-time">
+                            <span class="time-text">{{item.salesQuantity}}人已拼</span>
+                        </div>
+                    </div>
+                    <div class="foreshow-item-detail">
+                        <div class="postage-name">
+                            <div class="postage" data-ng-if="item.exemptionPostage"
+                                 data-ng-bind="item.exemptionPostageText"></div>
+                            <div class="name" data-ng-bind="item.productName"></div>
+                        </div>
+                        <div class="instruction">
+                            <span class="tag" data-ng-bind="item.memo"></span>
+                            <span class="limit">每人限购<span data-ng-bind="item.limitBuyQuantity"></span> 份</span>
+                            <!--<span>开团说明</span>-->
+                        </div>
+                        <div class="price-buttons">
+                            <div class="prices">
+                                <span class="price"><i>￥</i><span data-ng-bind="item.itemPrice"></span></span>
+                                <del class="old-price"><i>￥</i> <span data-ng-bind="item.basePrice"></span></del>
+                            </div>
+                            <div class="buttons" data-ng-class="item.isBtnActive?'active':''">
+                                <div class="button-left" data-ng-class="item.isBtnActive?'active':''">
+                                    <span class="iconfont icon-pt-people"></span>
+                                    <span class="number">{{item.joinNum}}人团</span>
+                                </div>
+                                <div class="button-right" data-ng-bind="item.tuanStatus"
+                                     data-ng-class="item.isBtnActive?'active':''"
+                                     data-ng-click="gotoProductDetails(item)"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="pt-index" data-ng-if="showPtIndex" data-ng-click="gotoUrl('/groupBuying/main')">
+    <span class="iconfont icon-enter-active"></span>
+    <div class="index">首页</div>
+</div>
+
+<!--=============== 团成员弹框 ===================-->
+<div ui-dialog class="groupon-info-dialog" overlay="true" close-by-overlay="true"
+     is-visible="grouponInfoDialog.isVisible" z-index="583">
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix  groupon-info-dialog-content"
+         style="{{overflowBugFix}}">
+        <div class="groupon-info-top">
+            <img src="../../../app/assets/imgs/groupon/icon_tuxedodetails_close.png" class="img-close"
+                 data-ng-click="grouponInfoDialog.closeDialog()">
+            <img src="../../../app/assets/imgs/groupon/image_avatar_leader.png" class="avatar">
+            <div class="phone" data-ng-bind="ptLeaderPhone"></div>
+            <div class="groupon-time">
+                <span data-ng-bind="ptLeaderInfo.createTime | dateFormat:'yyyy-MM-dd hh:mm:ss'"></span>开团
+            </div>
+        </div>
+        <ul class="groupon-info-list" data-ng-if="showMemberList">
+            <li class="group-member" data-ng-repeat="member in ptMember track by $index"
+                data-ng-if="showMemberList">
+                <img src="../../../app/assets/imgs/groupon/image_default_avatar.png" class="avatar">
+                <div class="phone" data-ng-bind="member.phone"></div>
+                <div class="groupon-time">
+                    <span data-ng-bind="member.createTime | dateFormat:'yyyy-MM-dd hh:mm:ss'"></span>参团
+                </div>
+            </li>
+        </ul>
+
+            <div class="groupon-info-list-blank" data-ng-if="!showMemberList">
+                <img src="../../../app/assets/imgs/groupon/image_pt_nomember.png" class="group-member-blank">
+                <div class="no-member">暂无其他团成员</div>
+            </div>
+    </div>
+</div>
+
+
+<!--=============== 产品详情弹框 ===================-->
+<div ui-dialog class="join-groupon-dialog" overlay="true" close-by-overlay="true"
+     is-visible="joinGrouponDialog.isVisible" z-index="583">
+    <div class="setting-table active-content dialog-content ios-overflow-scrolling-bug-fix"
+         style="{{overflowBugFix}}">
+        <div class="content">
+            <div class="groupon-product">
+                <div class="product-details">
+                    <img src="../../../app/assets/imgs/groupon/icon_tuxedodetails_close.png" class="close-img"
+                         data-ng-click="joinGrouponDialog.closeDialog()">
+                    <div class="product-instruction">
+                        <div class="price" data-ng-bind="productPrice"></div>
+                        <div class="desc" data-ng-bind="desc"></div>
+                    </div>
+                    <img src="{{productImg}}" class="product-img">
+                </div>
+                <div class="user-choise" id="userDialog">
+                    <div class="size-choice first-choice"
+                         data-ng-repeat="categoryItem in data.shareSkuAttrVOList track by $index">
+                        <div class="color-title" data-ng-bind="categoryItem.name"></div>
+                        <ul class="color-map">
+                            <li class="color-item"
+                                data-ng-repeat="attr in categoryItem.shareSkuAttrItemDTOList track by $index"
+                                data-ng-click="select(categoryItem,attr)"
+                                data-ng-class="attr.isSelect == true?'active':''">
+                                <span data-ng-bind="attr.value"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-button active" data-ng-if="hasStock" data-ng-click="gotoGrouponOrderConfirm()">
+                去拼团
+            </div>
+            <div class="bottom-button" data-ng-if="!hasStock">拼光了</div>
+        </div>
+    </div>
+</div>
+
+<address-info data-choose-address-fn="chooseAddressFn"></address-info>
+
+<!--================== 分享引导（弹框）=============================-->
+<div ui-dialog class="share-guide-dialog" overlay="true" close-by-overlay="true"
+     is-visible="shareGuideDialog.isVisible" z-index="600">
+    <img src="../../../app/assets/imgs/works-share/share_guide02.png" class="share_guide02"/>
+    <img src="../../../app/assets/imgs/works-share/share_guide01.png" class="share_guide01"
+         data-ng-click="shareGuideDialog.closeDialog()"/>
+    <img src="../../../app/assets/imgs/works-share/share_guide03.png" class="share_guide03"/>
+</div>
+
+
+<div ui-dialog class="dialog-fullscreen" overlay="true" close-by-overlay="true"
+     is-visible="agreementDialog.isVisible" z-index="570">
+
+    <div class="ui-header-bar">
+        <div class="ui-header-bar-left-icon">
+            <div class="iconfont header-bar-icon icon-back" ng-click="agreementDialog.goBack()"></div>
+        </div>
+        <div class="ui-header-bar-text">
+            <div class="setting-left">
+                <span>用户注册协议</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="agreement-content dialog-content ios-overflow-scrolling-bug-fix" style="{{overflowBugFix}}">
+        <sys-notice type="register"></sys-notice>
+    </div>
+</div>

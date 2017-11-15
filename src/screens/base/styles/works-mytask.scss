@@ -1,0 +1,374 @@
+.mytask-main {
+  background-color: $base-background-color;
+  width: 100%;
+  position: absolute;
+  top: $header-height;
+
+  .task-aging {
+    top: 90px;
+  }
+  .mytask-banner-img {
+    height: 80px;
+    .task-img-banner {
+      height: 100%;
+      width: 100%;
+      border-bottom: 1px solid $base-border-color;
+    }
+  }
+  .mytask-banner-img2 {
+    height: 68px;
+    margin-top: 30px;
+
+    .task-img-banner {
+      height: 100%;
+      width: 100%;
+      border-bottom: 1px solid $base-border-color;
+    }
+  }
+  .carousel-page {
+    margin-top: $header-height;
+    .textarea {
+      height: 130px;
+    }
+  }
+}
+
+.task-aging-dialog {
+  top: 150px !important;
+}
+
+.task-aging {
+  top: 233px;
+  .task-container {
+    .goods-list {
+      .goods-item {
+        margin-bottom: 1px;
+        .goods-brief {
+          padding: 10px 6px;
+          .task-title-inline {
+            display: inline-block;
+            margin-right: 10px;
+          }
+          .task-title-top {
+            color: $base-color;
+            font-size: 13px;
+          }
+        }
+      }
+      .task-goods-img-thumbnail {
+        width: 50px;
+        height: 50px;
+        float: left;
+      }
+      .goods-desc {
+        width: 65%;
+        .goods-text-large {
+          margin-bottom: 10px;
+        }
+      }
+      .task-price-container {
+        width: 18%;
+        height: 40px;
+        line-height: 40px;
+        float: right;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.task-experience-container {
+  .work-main {
+    top: $header-height;
+    height: 30px;
+  }
+}
+
+.half-goods {
+  width: 45%;
+  display: inline-block;
+  height: 28px;
+  line-height: 28px;
+
+}
+
+.task-carousel {
+  margin-top: $header-height;
+  min-height: 400px;
+  background-color: $white;
+  .pic-middle {
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .task-doing-stepNumber {
+    background: url(../../../app/assets/imgs/works_nav/task-do-background.png) center no-repeat;
+    height: 35px;
+    line-height: 35px;
+    background-size: 100% 100%;
+    color: $white;
+
+  }
+  .task-doing-detail {
+    padding: 10px;
+    border-bottom: 2px dotted $base-background-color;
+    .task-description-content {
+      line-height: 22px;
+    }
+  }
+  .task-do-textLeft {
+    text-align: left;
+  }
+  .task-picture-up {
+    .works-resume {
+      position: relative;
+      background-color: $white;
+      top: 0;
+      bottom: 0;
+      .resume-content-table {
+        .resume-content-sell {
+          border-bottom: 0;
+        }
+      }
+    }
+  }
+  .task-do-line {
+    .copy-textarea {
+      text-align: center !important;
+      line-height: 30px;
+      padding: 10px;
+      margin: 2em;
+      border-radius: 5px;
+      border: 1px dashed $base-color;
+      @include user-select(text);
+    }
+
+    .copy-textarea-none {
+      text-align: center !important;
+      line-height: 30px;
+      padding: 10px;
+      margin: 2em;
+      border-radius: 5px;
+      border: 1px dashed $base-color;
+      @include user-select(none);
+
+      &.has-copy {
+        background-color: $base-background-color;
+      }
+    }
+  }
+  .task-carousel-part {
+    margin-top: 10px;
+    .task-do-title {
+      font-size: $font-size-large;
+      margin-bottom: 15px;
+      display: inline-block;
+
+    }
+
+    .resume-content-sell-add {
+      width: 100%;
+      height: 50px;
+      padding: 5px 10px;
+      background-color: #fff;
+      border: 1px solid #e6e6e6;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      text-align: left;
+      color: #999;
+    }
+    .resume-content-sell-substance {
+      width: 100%;
+      padding: 5px 10px;
+      background-color: #fff;
+      border: 1px solid #e6e6e6;
+      -webkit-border-radius: 5px;
+      border-radius: 5px;
+      line-height: 20px;
+      color: #333;
+    }
+    .textarea {
+      height: 100px;
+      background-color: $base-background-color;
+    }
+
+  }
+}
+
+.task-img-up {
+  width: 30%;
+  height: 70px;
+  .task-img-add {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 68px;
+    font-size: 30px;
+    background-color: $base-background-color;
+  }
+}
+
+.task-carousel-indicator-wrapper {
+  bottom: 60px;
+  left: 45%;
+  position: absolute;
+  span {
+    .active {
+      color: $brand-warning
+    }
+  }
+}
+
+.task-experience-aging {
+  top: 70px;
+}
+
+.taskInformation-showImg-container {
+  width: 100%;
+  overflow-x: scroll;
+  li:nth-child(4) {
+    clear: both;
+  }
+  li {
+    width: 33.333333%;
+    height: 220px;
+    float: left;
+    padding: 10px 3px;
+    img {
+      width: 100%
+    }
+  }
+
+  .img-add-wrapper {
+    height: 70px;
+    .img-add {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      line-height: 44px;
+      font-size: 30px;
+      color: $base-text-color2;
+      background-color: $white;
+      border: 1px solid $base-border-color;
+      border-radius: 5px;
+    }
+  }
+
+}
+
+.task-margin-top {
+  margin-top: 6px;
+}
+
+.taskInformation-btn-half {
+  .dialog-bottom-btn-wrapper {
+
+    @include flexBox();
+
+    .submit-btn {
+      @include flex(1);
+      border-right: 1px solid darken($base-color, 5%);
+
+      &:last-child {
+        border-right: 0 none;
+      }
+    }
+  }
+}
+
+.pic-show-content {
+  &.dialog-content {
+    background-color: $white !important;
+  }
+}
+
+.task-spreed-container {
+
+  .llq-sys-notice-wrapper {
+    padding: 20px;
+    p {
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      font-size: $font-size-large;
+      &.danger{
+        color: $brand-danger;
+      }
+    }
+  }
+
+  .task-spreed-content {
+    border-bottom: 1px solid $base-border-color;
+    overflow: auto;
+    background-color: $white;
+    .blanknote-aging {
+      .text-right {
+        float: right;
+        right: 0;
+        .copy-textarea {
+          border: 1px dashed black;
+          line-height: 30px;
+          @include user-select(text);
+        }
+        .copy-textarea-none {
+          border: 1px dashed black;
+          line-height: 30px;
+
+          &.has-copy {
+            background-color: $base-background-color;
+          }
+        }
+      }
+    }
+    .spreed-top {
+      margin-top: 10px;
+      text-align: center;
+      padding: 5px 0;
+      font-size: $font-size-xxl;
+
+    }
+    .spreed-apprentices {
+      margin: 15px 0;
+      width: 50%;
+      float: left;
+      text-align: center;
+      border-right: 1px solid $base-border-color;
+      font-size: $font-size-xl;
+    }
+    .top-third-part {
+      span {
+        display: inline-block;
+        width: 32.333333%
+      }
+    }
+  }
+  .task-spreed-describe {
+    margin-top: 20px;
+    .block-text-center {
+      padding: 0 20px;
+    }
+  }
+}
+
+.strategy-info-content {
+  background-color: $white;
+  padding: 10px;
+  position: absolute;
+  top: $header-height;
+  bottom: 0;
+  overflow-y: scroll;
+  .second-title {
+    display: inline-block;
+    margin: 10px 0;
+    font-size: $font-size-xl;
+  }
+  .second-content {
+    line-height: 19px;
+  }
+}

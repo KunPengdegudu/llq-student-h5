@@ -1,0 +1,65 @@
+<div id="viewport">
+    <div class="guide-intro-desc-goto"
+         ng-click="gotoUrl()">
+        跳过
+    </div>
+    <div id="wrapper" ng-iscroll="wrapper" ng-iscroll-delay="50">
+        <div id="scroller">
+            <div class="slide slide1">
+                <div class="slide-title">年轻人信用贷款</div>
+                <!--<div class="through" ng-click="gotoUrl()">跳过</div>-->
+                <div class="painting">
+                    <div class="bg-img"></div>
+                </div>
+                <div class="slide-desc">
+                    <p class="desc-line1">新人1000元免息</p>
+
+                    <p class="desc-line2">5000元现金15分钟到账</p>
+                </div>
+                <div class="channel_logo_wrapper">
+                    <div class="channel_logo"></div>
+                </div>
+            </div>
+            <div class="slide slide2">
+                <div class="slide-title">年轻人分期商城</div>
+                <div class="painting">
+                    <div class="bg-img"></div>
+                </div>
+                <div class="slide-desc">
+                    <p class="desc-line1">信用分期“0”首付</p>
+
+                    <p class="desc-line2">正品保证 击穿最低价</p>
+                </div>
+                <div class="channel_logo_wrapper">
+                    <div class="channel_logo"></div>
+                </div>
+            </div>
+            <div class="slide slide3">
+                <!--<div class="slide-title">年轻人分期就上零零期</div>-->
+                <div class="painting">
+                    <div class="bg-img"></div>
+                </div>
+                <div class="slide-desc">
+                    <p class="desc-line1">借款利率低至0.75%</p>
+
+                    <p class="desc-line2">极速借款 秒杀借钱之难</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="guide-intro-desc-button" ng-class="{'button-hide': !isNeedShow, 'button-show': isNeedShow, 'hide': isInit}"
+   ng-click="gotoUrl()">
+    立即体验
+</p>
+
+<div id="indicator">
+    <div id="dotty"></div>
+</div>
+
+<ul class="indicator-background">
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>

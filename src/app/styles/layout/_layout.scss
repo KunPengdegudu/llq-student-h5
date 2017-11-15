@@ -1,0 +1,66 @@
+html, body {
+  height: auto;
+}
+
+body {
+  min-width: 300px;
+  max-width: 640px;
+  margin: 0;
+  padding: 0;
+  background-color: $body-bg;
+  font-size: $font-size-base;
+  font-family: $font-family-sans-serif;
+  /* prevent copy paste, to allow, change 'none' to 'text' */
+  user-select: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  /* prevent callout to copy image, etc when tap to hold */
+  -webkit-touch-callout: none;
+  /* prevent webkit from resizing text to fit */
+  text-size-adjust: none;
+  -webkit-overflow-scrolling: touch;
+
+}
+
+ol, ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+a {
+  text-decoration:none;
+}
+
+input {
+  border-radius: 0;
+}
+
+#nav {
+  position: fixed;
+  bottom: 0;
+  height: $nav-height;
+}
+
+// 图层蒙版
+.ui-backdrop-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $backdrop-default;
+  background-color: #666;
+  @include opacity(0.5);
+}
+.ui-backdrop-bg-no-scroll {
+  overflow: hidden !important;
+}
+
+dl,dt,dd {
+  margin: 0;
+  padding: 0;
+}
+
+div, span a, header {
+  -webkit-tap-highlight-color: rgba(255,255,255,0);
+}

@@ -1,0 +1,60 @@
+<div class="experience-goods-container">
+
+    <ol class="goods-list" data-ng-cloak>
+        <li class="goods-item" data-ng-repeat="item in items"
+            data-ng-if="item.status =='recruiting' || item.status =='tasking'">
+            <a ng-click="getMoreInformation(item)">
+                <div class="goods-brief">
+                    <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.smallImage}}"
+                         data-ng-if="item.logo.smallImage">
+                    <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.compressUrl}}"
+                         data-ng-if="item.logo.compressUrl">
+                    <img class="works-goods-img-thumbnail" data-ng-src="{{item.logo.url}}"
+                         data-ng-if="item.logo.url&&!item.logo.compressUrl">
+                    <img class="works-goods-img-thumbnail" src="../../../app/assets/imgs/works_nav/company_logo.png"
+                         data-ng-if="!item.logo">
+
+                    <div class="goods-desc">
+                        <div class="work-title-container">
+                            <span class="goods-text-large">{{item.title | htmlDecode}}</span>
+                            <span class="qts-tag" data-ng-if="item.source=='qtshe'">青</span>
+                            <span class="goods-text-right goods-container-right right-part">
+                                <!--<span>薪资</span>-->
+                                <span class="goods-text-warn" data-ng-bind="item.oncePayment"></span>
+                                <span ng-if="item.salaryTimeUnitDesc!='其他'">{{item.salaryTimeUnitDesc}}</span>
+                                <span ng-if="!item.salaryTimeUnitDesc||item.salaryTimeUnitDesc=='其他'">元</span>
+                            </span>
+                        </div>
+                        <div class="goods-subtitle second-goods-subtitle">
+                                <div data-ng-repeat="tagItem in item.tagNameList" data-ng-if="item.tagNameList"
+                                      data-ng-bind="tagItem | toTrusted" class="text-brand"></div>
+                        </div>
+
+                        <div class="goods-subtitle">
+                            <div class="time-text-left" data-ng-if="item.beginTime">
+                                <!--时间-->
+                                <span class="goods-text-gray icon-seckill iconfont"></span>
+                                <span class="goods-text-gray" data-ng-bind="item.beginTime.substr(5,5)"></span><span
+                                    class="goods-text-gray">~</span><span
+                                    data-ng-bind="item.endTime.substr(5,5)" class="goods-text-gray"></span>
+                            </div>
+                            <div class="time-text-left text-overflow-ellipsis" data-ng-if="!item.beginTime">
+                                <!--时间-->
+                                <span class="goods-text-gray icon-seckill iconfont"></span>
+                                <span class="goods-text-gray" data-ng-bind="item.jobTimeStandard | toTrusted"></span>
+                            </div>
+                            <div class="address-text-right  text-overflow-ellipsis goods-container-left goods-text-gray" data-ng-if="item.areaName">
+                                <span class="iconfont icon-position"></span>
+                                <span data-ng-bind="item.areaName | toTrusted"></span>
+                            </div>
+                            <div class="address-text-right  text-overflow-ellipsis goods-container-left goods-text-gray" data-ng-if="!item.areaName">
+                                <span class="iconfont icon-position"></span>
+                                <span data-ng-bind="item.address | toTrusted"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    </ol>
+</div>

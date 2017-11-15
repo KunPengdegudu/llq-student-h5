@@ -1,0 +1,61 @@
+<div class="shop-activity">
+    <ol class="goods-list" data-ng-cloak>
+        <li class="goods-item" data-ng-repeat="item in items track by $index">
+            <div class="goods-brief"
+                 ng-click="gotoProductDetail(item.productId, item.promotionType,item.skuAttrValues)">
+                <img class="goods-img-thumbnail" data-ng-src="{{item.productPic | fixImage : '@!200x200'}}">
+
+                <div class="goods-desc">
+                    <div class="goods-title">
+                        <span data-ng-bind="item.productName"></span>
+                    </div>
+                    <div class="goods-subtitle">
+                        <div class="goods-text">
+                            <span>团购价:</span>
+                            <span class="goods-text-warn" data-ng-bind="item.productPrice | moneyFixed"></span>
+                                <span class="goods-text-gray goods-text-delete"
+                                      data-ng-bind="item.originalPrice | moneyFixed"></span>
+                        </div>
+
+                    </div>
+                    <div class="goods-subtitle">
+                        <div class="goods-text">
+                            <div data-ng-if="item.inActivity">
+                                <span>距离团购结束:</span>
+                            <span class="goods-text-warn">
+                                <span data-ng-bind="item.h || '00'"></span>:<span data-ng-bind="item.m || '00'"></span>:<span
+                                    data-ng-bind="item.s || '00'"></span>
+                            </span>
+                            </div>
+                            <div data-ng-if="!item.inActivity">
+                                <span>距离团购开始:</span>
+                            <span class="goods-text-warn">
+                                <span data-ng-bind="item.h || '00'"></span>:<span
+                                    data-ng-bind="item.m ||'00'"></span>:<span
+                                    data-ng-bind="item.s || '00'"></span>
+                            </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="goods-btn">
+                        <div class="goods-subtitle">
+                            <div class="goods-active-btn" data-ng-if="item.inActivity"
+                                 ng-click="gotoProductDetail(item.productId, item.promotionType,item.skuAttrValues)">
+                                立即团购
+                            </div>
+                            <div class="goods-inactive-btn" data-ng-if="!item.inActivity"
+                                 ng-click="gotoProductDetail(item.productId, item.promotionType,item.skuAttrValues)">
+                                即将开始
+                            </div>
+                            <div class="goods-active-text" data-ng-if="item.inActivity">
+                                <span>已团购</span>
+                                <span class="goods-text-warn" data-ng-bind="item.salesQuantity || 0"></span>件
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+    </ol>
+</div>

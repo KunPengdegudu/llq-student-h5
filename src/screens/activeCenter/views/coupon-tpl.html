@@ -1,0 +1,123 @@
+<div class="active-center center-coupon" data-ng-style="activeCenter" id="activeMain">
+    <div class="coupon-banner">
+        <img src="../../../app/assets/imgs/active-center/coupon/coupon-banner.jpg"/>
+    </div>
+    <div class="coupon-time-down" data-ng-if="showTimeDown">
+        <div class="time-title" data-ng-if="!inActive">
+            距<span data-ng-bind="showTitle"></span>场活动开始
+        </div>
+        <div class="time-title" data-ng-if="inActive">
+            距本次活动活动结束
+        </div>
+        <div class="time-wrapper">
+            <div class="item-time">
+                <div class="show-time">
+                    <img src="../../../app/assets/imgs/active-center/coupon/coupon-time-bg.png"/>
+                    <div class="time-number" data-ng-bind="showHour||'00'"></div>
+                </div>
+                <div class="show-unit">
+                    <span>时</span>
+                </div>
+            </div>
+            <div class="item-time">
+                <div class="show-time">
+                    <img src="../../../app/assets/imgs/active-center/coupon/coupon-time-bg.png"/>
+                    <div class="time-number" data-ng-bind="showMinute||'00'"></div>
+                </div>
+                <div class="show-unit">
+                    <span>分</span>
+                </div>
+            </div>
+            <div class="item-time">
+                <div class="show-time">
+                    <img src="../../../app/assets/imgs/active-center/coupon/coupon-time-bg.png"/>
+                    <div class="time-number" data-ng-bind="showSecond||'00'"></div>
+                </div>
+                <div class="show-unit">
+                    <span>秒</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="coupon-wrappers">
+        <div class="coupon-wrapper" data-ng-repeat="itemArea in couponArea track by $index"
+             data-ng-if="itemArea.isShow">
+            <div class="coupon-wrapper-bg">
+                <img src="../../../app/assets/imgs/active-center/coupon/coupon-wrapper-bg.png"/>
+            </div>
+            <div class="coupon-contents">
+                <div class="coupon-title">
+                    <div class="title-time">
+                        <span data-ng-bind="itemArea.time"></span>
+                    </div>
+                    <div class="title-name" data-ng-bind="itemArea.title"></div>
+                </div>
+                <div class="coupon-content">
+                    <div class="coupon-rows" data-ng-repeat="itemRow in itemArea.couponRows track by $index">
+                        <div class="itemRow-title" data-ng-bind="itemRow.title"></div>
+                        <div class="item-coupon" data-ng-repeat="itemCoupon in itemRow.couponList track by $index"
+                             data-ng-click="getRed(itemCoupon)">
+                            <div class="item-coupon-bg">
+                                <img src="../../../app/assets/imgs/active-center/coupon/coupon-bg.png"/>
+                            </div>
+                            <div class="item-coupon-content">
+                                <div class="content-left">
+                                    <div class="coupon-number"><span data-ng-bind="itemCoupon.amount"></span>元</div>
+                                    <div class="coupon-rule" data-ng-bind="itemCoupon.ruleDescList[0]"></div>
+                                </div>
+                                <div class="content-right">
+                                    <div class="right-top">立即领取</div>
+                                    <div class="right-bottom">
+                                        <span data-ng-bind="itemCoupon.type|couponType"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="coupon-btn" data-ng-bind="itemArea.btnText" data-ng-click="itemArea.fn()"></div>
+            </div>
+        </div>
+    </div>
+    <div class="coupon-goods-area">
+        <div class="goods-wrapper" data-ng-repeat="itemArea in productAreaList track by $index">
+            <div class="goods-title">
+                <img src="../../../app/assets/imgs/active-center/coupon/product-title-bg.png"/>
+                <div class="title-content" data-ng-bind="itemArea.nodeName"></div>
+            </div>
+            <div class="item-goods" data-ng-repeat="itemProduct in itemArea.templateGoodsList">
+                <div class="goods-content"
+                     ng-click="gotoProductDetail(itemProduct)">
+                    <div class="goods-img">
+                        <img data-ng-src="{{itemProduct.mainProImgUrl}}"/>
+                    </div>
+                    <div class="goods-desc">
+                        <div class="goods-name" data-ng-bind="itemProduct.name"></div>
+                        <div class="goods-price">
+                            <div class="market-price">
+                                <div class="price-amount">
+                                    <span data-ng-bind="itemProduct.marketPrice"></span>¥
+                                </div>
+                                <div>券后价</div>
+                            </div>
+                            <div class="base-price" data-ng-bind="itemProduct.proSkuPrice"></div>
+                        </div>
+                        <div class="goods-btn">
+                            <img src="../../../app/assets/imgs/active-center/coupon/product-btn.png"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="coupon-hint coupon" data-ng-click="gotoRed()">
+    <img src="../../../app/assets/imgs/active-center/coupon/red-coupon-btn.png"/>
+</div>
+
+
+<div style="position: fixed;width: 40px;height: 40px;  z-index: 300;  bottom: 10%;  right: 0;"
+     data-ng-click="backToTop()">
+    <img src="../../../app/assets/imgs/active-center/main/active-back-top.png" style="width: 100%"/>
+</div>
